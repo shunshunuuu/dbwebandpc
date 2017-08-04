@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="GBK"?>
+<system>
+	<interceptors>
+		<interceptor class="com.thinkive.tbservice.interceptor.LoggingInterceptor" name="logging" description="打印参数日志" />
+		<interceptor class="com.thinkive.tbservice.interceptor.TimerInterceptor" name="timer" description="记录接口执行时间 " />
+		<interceptor class="com.thinkive.project.interceptor.TicketInterceptor" name="ticket" description="验证码拦截器 " />
+		<interceptor class="com.thinkive.project.interceptor.SecurityInterceptor" name="security" description="权限拦截器 " />
+		<interceptor class="com.thinkive.project.interceptor.LoginInterceptor" name="login" description="登录拦截器 " />	
+		<interceptor class="com.thinkive.project.interceptor.ParamsInterceptor" name="params" description="参数拦截器 " />	
+		<interceptor class="com.thinkive.project.interceptor.RsaInterceptor" name="rsa" description="RSA拦截器 " />		
+		<interceptor class="com.thinkive.project.interceptor.LogoutInterceptor" name="logout" description="退出登录拦截器 " />
+		<!-- <interceptor class="com.thinkive.project.interceptor.TicketInterceptor" name="tick" description="退出登录拦截器 " />	 -->
+		<interceptor class="com.thinkive.project.interceptor.SSOLoginTokenInterceptor" name="FunctionChkToken" description="统一登录模拟登录拦截器" />			
+		<interceptor class="com.thinkive.project.interceptor.SSOUserInfoInterceptor" name="getUserInfo" description="返回用户信息拦截器" />			
+		<interceptor class="com.thinkive.project.interceptor.PasswordInterceptor" name="password" description="密码拦截器" />	
+		<interceptor class="com.thinkive.project.interceptor.UpdateMobilePhoneInterceptor" name="updateMobilePhone" description="修改手机号码" />	
+			
+		<!--营销活动新增-->
+		<interceptor class="com.thinkive.project.interceptor.WxuserAccessIntercepter" name="wxuserAccessIntercepter" description="微信用户请求访问拦截，防止用户恶意频繁刷屏 " />
+		<interceptor class="com.thinkive.project.interceptor.ActivityFlowIntercepter" name="activityFlowIntercepter" description="活动参与概率拦截 " />
+		<!-- 奥运分享下载活动 -->
+		<interceptor class="com.thinkive.project.interceptor.Function1105088Intercaptor" name="aoyunHdIntercepter" description="奥运活动拦截 " />
+		<!-- 嵌入对账单地址 -->
+		<interceptor class="com.thinkive.project.interceptor.Function1105089Intercaptor" name="myAccountIntercepter" description="嵌入对账单地址拦截 " />
+		<!-- 调用中焯统一登录接口46150地址获取用户信息 -->
+		<interceptor class="com.thinkive.project.interceptor.Function1105090Intercaptor" name="sdzzLoginIntercepter" description="调用中焯统一登录接口46150地址获取用户信息 " />
+		<!-- 处理中焯的交易密码 -->
+		<interceptor class="com.thinkive.project.interceptor.Function1105091Intercaptor" name="tradepwdIntercepter" description="处理中焯的交易密码 " />
+		<!-- 中秋活动 -->
+		<interceptor class="com.thinkive.project.interceptor.MidAutumnIntercaptor" name="midAutumnIntercaptor" description="中秋活动 " />
+		<!-- 大转盘活动获取用户凭证 -->
+		<interceptor class="com.thinkive.project.interceptor.BigWheelIntercaptor" name="bigWheelIntercaptor" description="大转盘获取应用凭证" />
+        <!-- 大转盘活动用户接口接入-->
+		<interceptor class="com.thinkive.project.interceptor.BigWheelUserIntercaptor" name="bigWheelUserIntercaptor" description="大转盘用户接入" />
+        <interceptor-stack name="wxActivityIntercepterStack">
+			<interceptor-ref name="wxuserAccessIntercepter" />
+			<interceptor-ref name="activityFlowIntercepter" />
+		</interceptor-stack>
+		
+		<interceptor-stack name="defaultStack">
+			<interceptor-ref name="params" />
+			<interceptor-ref name="logging" />
+			<interceptor-ref name="timer" />
+		</interceptor-stack>
+		<interceptor-stack name="loginStack">
+			<!-- <interceptor-ref name="ticket" /> -->
+			<interceptor-ref name="login" />
+		</interceptor-stack>
+		<interceptor-stack name="securityStack">
+			<interceptor-ref name="security" />
+		</interceptor-stack>
+		<interceptor-stack name="rsaStack">
+			<interceptor-ref name="rsa" />
+		</interceptor-stack>
+		<interceptor-stack name="logoutStack">
+			<interceptor-ref name="logout" />
+		</interceptor-stack>
+		<interceptor-stack name="ticketStack">
+			<interceptor-ref name="ticket" />
+		</interceptor-stack>
+		<!-- <interceptor-stack name="ticketTest">
+			<interceptor-ref name="tick" />
+		</interceptor-stack> -->
+		<!-- 大转盘获取凭证拦截器 -->
+		<interceptor-stack name="bigWheelIntercepterStack">
+			<interceptor-ref name="bigWheelIntercaptor" />
+		</interceptor-stack>
+		<!-- 大转盘用户接入拦截器 -->
+		<interceptor-stack name="bigWheelUserIntercepterStack">
+			<interceptor-ref name="bigWheelUserIntercaptor" />
+		</interceptor-stack>
+		<!-- 奥运拦截器 -->
+       <interceptor-stack name="aoyunHdIntercepterStack">
+			<interceptor-ref name="aoyunHdIntercepter" />
+		</interceptor-stack>
+		<!-- 嵌入对账单地址拦截 -->
+       <interceptor-stack name="myAccountIntercepterStack">
+			<interceptor-ref name="myAccountIntercepter" />
+		</interceptor-stack>
+		<!-- 调用中焯统一登录接口46150地址获取用户信息拦截 -->
+       <interceptor-stack name="sdzzLoginIntercepterStack">
+			<interceptor-ref name="sdzzLoginIntercepter" />
+		</interceptor-stack>
+		<!-- 处理中焯交易密码拦截 -->
+       <interceptor-stack name="tradepwdIntercepterStack">
+			<interceptor-ref name="tradepwdIntercepter" />
+		</interceptor-stack>
+		<!-- 统一登录模拟登录拦截器 -->
+		<interceptor-stack name="FunctionChkTokenStack">
+			<interceptor-ref name="FunctionChkToken" />
+		</interceptor-stack>
+		<interceptor-stack name="getUserInfoStack">
+			<interceptor-ref name="getUserInfo" />
+		</interceptor-stack>
+		<interceptor-stack name="passwordStack">
+			<interceptor-ref name="password" />
+		</interceptor-stack>
+		<interceptor-stack name="updateMobilePhoneStack">
+			<interceptor-ref name="updateMobilePhone" />
+		</interceptor-stack>
+		<!-- 中秋拦截 -->
+       <interceptor-stack name="midAutumnIntercaptorStack">
+			<interceptor-ref name="midAutumnIntercaptor" />
+		</interceptor-stack>
+		<default-interceptor-ref name="defaultStack" />	
+	</interceptors>
+	<functions>
+		<function>
+			<config-addr>conf/functions</config-addr>
+			<config-name>function.xml</config-name>
+			<buskey>thinkive_mall</buskey>
+			<interceptor-ref name="defaultStack">
+				<!-- <filter-function>1000204|1000207|</filter-function> -->
+			</interceptor-ref>
+		</function>	
+		<function>
+			<config-addr>conf/functions</config-addr>
+			<config-name>function_security.xml</config-name>
+			<buskey>thinkive_mall</buskey>
+			<interceptor-ref name="securityStack">
+				<!-- <filter-function>1000204|1000207|</filter-function> -->
+			</interceptor-ref>
+		</function>
+		
+		
+		<function>
+			<function-list>1000253</function-list>
+			<buskey>thinkive_mall</buskey>
+		</function>
+		<function>
+			<function-list>1000254</function-list>
+			<buskey>thinkive_mall</buskey>
+		</function>
+		
+		<function>
+			<function-list>1000000</function-list>
+			<buskey>thinkive_mall</buskey>
+			<interceptor-ref name="rsaStack" />
+		</function>
+		
+		<function>
+			<function-list>1000001</function-list>
+			<buskey>thinkive_mall</buskey>
+			<interceptor-ref name="logoutStack" />
+		</function>
+		<function>
+			<function-list>7777777</function-list>
+			<buskey>thinkive_mall</buskey>
+			<interceptor-ref name="ticketTest" />
+		</function>
+		<!-- 登录拦截 ，这里配置后会往session中存入相应数据-->
+		<function>
+			<function-list>1000007|1000010|1000006|1000011|1000024|1001970</function-list>
+			<buskey>thinkive_mall</buskey>
+			<interceptor-ref name="loginStack" />
+		</function>
+		<!-- 图片验证码校验，这里配置后会进行图片验证码的校验 -->
+		<function>
+			<function-list>1000006|1000007</function-list>
+			<buskey>thinkive_mall</buskey>
+			<interceptor-ref name="ticketStack" />
+		</function>
+		
+		<!-- 奥运活动拦截器-->
+		<function>
+			<function-list>1105088</function-list>
+			<interceptor-ref name="aoyunHdIntercepterStack">
+			</interceptor-ref>
+		</function>
+		
+		<!-- 嵌入对账单拦截器-->
+		<function>
+			<function-list>1105089</function-list>
+			<interceptor-ref name="myAccountIntercepterStack">
+			</interceptor-ref>
+		</function>
+		
+		<!-- 调用中焯统一登录接口46150地址获取用户信息拦截器-->
+		<function>
+			<function-list>1105090</function-list>
+			<interceptor-ref name="sdzzLoginIntercepterStack">
+			</interceptor-ref>
+		</function>
+		<!-- 中焯交易密码处理拦截器-->
+		<function>
+			<function-list>1105091</function-list>
+			<interceptor-ref name="tradepwdIntercepterStack">
+			</interceptor-ref>
+		</function>
+		<!-- 中秋活动拦截器-->
+		<function>
+			<function-list>1105092</function-list>
+			<interceptor-ref name="midAutumnIntercaptorStack">
+			</interceptor-ref>
+		</function>
+		<!-- 大转盘获取凭证拦截器-->
+		<function>
+			<function-list>1105093</function-list>
+			<interceptor-ref name="bigWheelIntercepterStack">
+			</interceptor-ref>
+		</function>
+		<!-- 大转盘用户接入拦截器-->
+		<function>
+			<function-list>1105094</function-list>
+			<interceptor-ref name="bigWheelUserIntercepterStack">
+			</interceptor-ref>
+		</function>
+		<!-- 微信营销活动 -->
+		<function>
+			<config-addr>conf/functions</config-addr>
+			<config-name>function_weixin_marketing.xml</config-name>
+			<buskey>wxbus</buskey>
+			<interceptor-ref name="wxActivityIntercepterStack" >
+				<filter-function>1105028|1105032|1105033|1105034|1105035|1105036|</filter-function>
+			</interceptor-ref>
+		</function>
+		
+		<!-- 统一账户登录 -->
+		<function>
+			<function-list>600002</function-list>
+			<interceptor-ref name="FunctionChkTokenStack">
+			</interceptor-ref>
+		</function>
+		<function>
+			<function-list>600003</function-list>
+			<interceptor-ref name="getUserInfoStack">
+			</interceptor-ref>
+		</function>
+		<function>
+			<function-list>600009</function-list>
+			<interceptor-ref name="updateMobilePhoneStack">
+			</interceptor-ref>
+		</function>
+	</functions>	
+</system>

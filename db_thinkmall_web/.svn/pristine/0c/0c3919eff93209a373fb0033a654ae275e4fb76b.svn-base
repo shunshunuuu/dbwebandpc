@@ -1,0 +1,277 @@
+define(function(require, exports, module) {
+	var _pageId = "#software_myOrder "; // 页面id
+	var pageCode = "software/myOrder";
+	var appUtils = require("appUtils"); // 核心工具类
+	var service = require("mobileService"); // 业务层接口，请求数据
+	var layerUtils = require("layerUtils"); // 弹出层工具类
+	var global = require("gconfig").global; // 全局配置对象
+	var constants = require("constants");// 常量类
+	var common = require("common"); // 公共类
+	var putils = require("putils"); //
+	
+	var InfoNum = null;
+	var updateNum = 0;
+	var value = null;
+	/*
+	 * 初始化
+	 */
+	function init() {
+		//查询我的软件产品
+		queryMySoftProduct("qb");
+	}
+	
+	function comparaTime(startTime,endTime){
+	       var arr1 = startTime.split("-");
+	       var arr2 = endTime.split("-");
+	       var date1=new Date(parseInt(arr1[0]),parseInt(arr1[1])-1,parseInt(arr1[2]),0,0,0); 
+	       var date2=new Date(parseInt(arr2[0]),parseInt(arr2[1])-1,parseInt(arr2[2]),0,0,0);
+	       if(date1.getTime() == date2.getTime()) {                                
+	             return true;
+	         }else{
+	             return false;
+	         }
+	}
+	function queryMySoftProduct(value){
+		var param = {
+			  "user_id" : common.getUserId(),
+			  "product_type" : 4
+		};
+		
+		service.queryMyInfoOrder(param, function(resultVo){
+			if(0==resultVo.error_no){
+				var results = resultVo.results;
+				var zxProductEle = $(_pageId+"#mysoftwareProduct").empty();
+			    if(results.length > 0){
+			      for (var i = 0; i < results.length; i++) {
+			    	  var order_id = results[i].order_id;
+			    	  var product_id = results[i].product_id;
+			    	  var product_name = results[i].product_name;
+			    	  var product_description = results[i].product_description;
+					  var end_time = results[i].service_end_time;
+					  var nb_time = end_time.substr(0,4);
+					  var yb_time = end_time.substr(4,2);
+					  var rb_time = end_time.substr(6,2);
+					  var service_end_time = nb_time+"年"+yb_time+"月"+rb_time;
+					  var begin_time = results[i].begin_time;
+					  var order_time = nb_time+"-"+yb_time+"-"+rb_time;
+					  var imgPath = results[i].img_info_pro_url;
+					  imgPath = global.url + imgPath;
+					  var rules_price_cash = results[i].rules_price_cash;
+					  var rules_unit = results[i].rules_unit;
+					  var rules_long = results[i].rules_long;
+					  var rules_time = null;
+					  var sysdate = getNowFormatDate();
+					  if(rules_unit == "0"){
+						  rules_time = rules_long+"天";
+					  }else if(rules_unit == "1"){
+						  rules_time = rules_long+"日";
+					  }else if(rules_unit == "2"){
+						  rules_time = rules_long+"个月";
+					  }else if(rules_unit == "4"){
+						  rules_time = rules_long+"年";
+					  }
+					  
+					  var price_time = rules_price_cash+"元/"+rules_time;
+					  var gmzt = null;
+					  var gmname = null;
+					  var sfxf = null;
+					  if(value == "qb"){
+						  var isfalse = validTime(sysdate,order_time);
+						  if(isfalse){
+							   gmzt = "0";
+							   gmname = "已失效";
+							   sfxf = "";
+						  }else{
+							   gmzt = "1";
+							   gmname = "已购买";
+							   sfxf = '<a gmzt = "'+gmzt+'" product_id = "'+product_id+'" href="javascript:;" id = "renewal">续费</a>';
+						  }
+						  var itemHtml = '<li order_id = "'+order_id+'" gmzt = "'+gmzt+'" product_id = "'+product_id+'">'+
+							'<div class="softtits">'+
+						        '<p>'+product_name+'</p>'+
+						        '<span>'+gmname+'</span>'+
+					        '</div>'+
+							'<div class="sibnews flex-father">'+
+								'<div class="sibnews_soft">'+
+									'<img src="'+imgPath+'" alt="" />'+
+								'</div>'+
+								'<div class="sibnews_r flex-children">'+
+									'<p class="sp1">'+product_description+'</p>'+
+									'<p class="sp2">到期时间：'+service_end_time+'</p>'+
+									'<div class="theprice"><span>'+price_time+'</span></div>'+
+									'<div class="exchange">'+
+										sfxf+
+									'</div>'+
+								'</div>'+
+							'</div>'+
+						'</li>';
+						  zxProductEle.append(itemHtml); 
+					  }else if(value == "ysx"){
+						  var isfalse = validTime(sysdate,order_time);
+						  if(isfalse){
+							  var itemHtml = '<li order_id ="'+order_id+'" gmzt = "0" product_id = "'+product_id+'">'+
+								'<div class="softtits">'+
+							        '<p>'+product_name+'</p>'+
+							        '<span>已失效</span>'+
+						        '</div>'+
+								'<div class="sibnews flex-father">'+
+									'<div class="sibnews_soft">'+
+										'<img src="'+imgPath+'" alt="" />'+
+									'</div>'+
+									'<div class="sibnews_r flex-children">'+
+										'<p class="sp1">'+product_description+'</p>'+
+										'<p class="sp2">到期时间：'+service_end_time+'</p>'+
+										'<div class="theprice"><span>'+price_time+'</span></div>'+
+										'<div class="exchange">'+
+//											'<a gmzt = "0" product_id = "'+product_id+'" href="javascript:;" id = "renewal"></a>'+
+										'</div>'+
+									'</div>'+
+								'</div>'+
+							'</li>';
+							  zxProductEle.append(itemHtml); 
+						  }
+					  }else if(value == "ygm"){
+						  var isfalse = validTime(sysdate,order_time);
+						  if(isfalse == false){
+							  var itemHtml = '<li order_id = "'+order_id+'" gmzt = "1" product_id = "'+product_id+'">'+
+								'<div class="softtits">'+
+							        '<p>'+product_name+'</p>'+
+							        '<span>已购买</span>'+
+						        '</div>'+
+								'<div class="sibnews flex-father">'+
+									'<div class="sibnews_soft">'+
+										'<img src="'+imgPath+'" alt="" />'+
+									'</div>'+
+									'<div class="sibnews_r flex-children">'+
+										'<p class="sp1">'+product_description+'</p>'+
+										'<p class="sp2">到期时间：'+service_end_time+'</p>'+
+										'<div class="theprice"><span>'+price_time+'</span></div>'+
+										'<div class="exchange">'+
+											'<a gmzt = "1" product_id = "'+product_id+'" href="javascript:;" id = "renewal">续费</a>'+
+										'</div>'+
+									'</div>'+
+								'</div>'+
+							'</li>';
+							  zxProductEle.append(itemHtml); 
+						  }
+					  }
+					  
+					 
+					appUtils.bindEvent(_pageId + "#mysoftwareProduct li", function() {
+						var gmzt = $(this).attr("gmzt");
+						var productid = $(this).attr("product_id");
+						var order_id = $(this).attr("order_id");
+						var param = {
+								"gmzt" : gmzt,
+								"productid" : productid,
+								"order_id" : order_id
+						}
+						appUtils.pageInit(pageCode, "software/sellDetail", param);
+					});
+					
+					appUtils.bindEvent(_pageId + "#mysoftwareProduct li a", function(){
+						var gmzt = $(this).attr("gmzt");
+						var productid = $(this).attr("product_id");
+						var param = {
+							  "productid" : productid
+						}
+						appUtils.pageInit(pageCode, "software/orderPay", param)
+					});
+				}
+			  }else{
+				  zxProductEle.append('<li style="text-align:center; color:#c0c2c6; ">暂无数据</li>');
+			  }
+			}else{
+				layerUtils.iAlert("查询我的软件订单列表失败:"+resultVo.error_info,-1);
+			}
+		});
+	};
+	
+	/*
+	 * 绑定事件
+	 */
+	function bindPageEvent() {
+		// 返回
+		appUtils.bindEvent(_pageId + ".back_btn", function() {
+//			appUtils.pageBack();
+			var prePageCode = appUtils.getSStorageInfo("_prePageCode"); 
+			if (prePageCode && prePageCode != "software/convertSuccess" ) {
+				appUtils.pageBack();
+			} else {
+                appUtils.pageInit(pageCode,"account/userCenter");
+			}
+		});
+		
+		//我的订单
+		appUtils.bindEvent(_pageId + ".zfbtn", function(){
+			$(_pageId + ".zflist").show();
+		});
+		
+		appUtils.bindEvent(_pageId + ".zflist li", function(){
+			$(_pageId + ".zflist li").removeClass();
+			$(this).attr("class","on");
+			var contents = $(this).text();
+			var value = $(this).attr("val");
+			$(_pageId + ".zflist").hide();
+			$(_pageId + ".zfbtn").html(contents);
+			queryMySoftProduct(value);
+		});
+		
+		//续费
+		appUtils.bindEvent(_pageId + "#renewal", function(){
+			appUtils.pageInit(pageCode, "software/renewal");
+		});
+		
+		//订单详情
+		appUtils.bindEvent(_pageId + ".flex-father", function(){
+			appUtils.pageInit(pageCode, "software/sellDetail");
+		});
+	};
+	
+	//比较时间
+	function validTime(startTime,endTime){
+	       var arr1 = startTime.split("-");
+	       var arr2 = endTime.split("-");
+	       var date1=new Date(parseInt(arr1[0]),parseInt(arr1[1])-1,parseInt(arr1[2]),0,0,0); 
+	       var date2=new Date(parseInt(arr2[0]),parseInt(arr2[1])-1,parseInt(arr2[2]),0,0,0);
+	       if(date1.getTime()>= date2.getTime()) {                                
+	             return true;
+	         }else{
+	             return false;
+	         }
+	}
+	//获取当前日期  yyyy-MM-dd
+	function getNowFormatDate() {
+	    var date = new Date();
+	    var seperator1 = "-";
+	    var seperator2 = ":";
+	    var month = date.getMonth() + 1;
+	    var strDate = date.getDate();
+	    if (month >= 1 && month <= 9) {
+	        month = "0" + month;
+	    }
+	    if (strDate >= 0 && strDate <= 9) {
+	        strDate = "0" + strDate;
+	    }
+	    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate;
+	    return currentdate;
+	}
+
+	/*
+	 * 页面销毁
+	 */
+	function destroy() {
+		value = "qb";
+		$(_pageId+"#mysoftwareProduct").empty();
+		$(_pageId + ".zfbtn").html("我的订单");
+	};
+
+	var main = {
+		"init" : init,
+		"bindPageEvent" : bindPageEvent,
+		"destroy" : destroy
+	};
+	
+	// 暴露对外的接口
+	module.exports = main;
+});

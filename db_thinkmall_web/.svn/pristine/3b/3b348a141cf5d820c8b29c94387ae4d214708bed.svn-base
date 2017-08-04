@@ -1,0 +1,142 @@
+<div class="page"  id="finan_fixedInvestment_updatePlaceOrder" data-pageTitle="东北证券-定投下单" data-urlParam="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner header_dt_inner" style="background: -webkit-linear-gradient(top,#0081E2,#00AEF4);">
+			<h1>定投修改</h1>
+			<a href="javascript:void(0);" id="dtxd" class="back_btn"></a>
+		</div>
+	</header>
+	<article>
+		<div class="index_page">
+			<div class="invest_order_list">
+				<div class="text_box disable">
+					<div class="ui layout">
+						<span>基金代码</span>
+						<input type="text" class="row-1" id="fundCode" readonly placeholder="请输入基金代码" />
+					</div>
+				</div>
+				<div class="text_box disable">
+					<div class="ui layout">
+						<span>基金净值</span>
+						<input type="text" class="row-1" id="fundNav" readonly placeholder="--" />
+					</div>
+				</div>
+				<div class="ui layout pay_tab_box">
+					<div class="row-1">
+						<a href="javascript:void(0);" class="text_box">银行卡支付</a>
+					</div>
+					<div class="row-1">
+						<a href="javascript:void(0);" class="text_box active" style="background: #5eb2f8;">保证金支付</a>
+					</div>
+				</div>
+				<div class="pay_tab_con">
+					<div class="text_box">
+						<div class="ui layout">
+							<span>定投金额</span>
+							<input type="tel" maxlength="9" class="row-1" id="castSureMoney" placeholder="请输入每期定投金额" />
+							<span>元</span>
+						</div>
+					</div>
+ 					<div class="ui layout date_text_box">
+						<div class="row-2 text_box date_txt" id="setStart" style="height: 0.58rem;">
+							<em>开始日期</em>
+							<p id="startDate">2016-05-20</p>
+                			<input id="startInput" data-dateplugin="mobiScroll" type="text" style="position: relative; z-index: -1; display: inline-block; width: 91%; top: -0.28rem; left: 0.02rem;  border: none;" />
+						</div>
+						<div class="row-1"></div>
+						<div class="row-2 text_box date_txt" id="setEnd" style="height: 0.58rem;">
+							<em>截止日期</em>
+							<p id="endDate">2016-05-20</p>
+							<input id="endInput" data-dateplugin="mobiScroll" type="text" style="position: relative; z-index: -1; display: inline-block; width: 91%; top: -0.28rem; left: 0.02rem; border: none;" />
+						</div>
+					</div>
+					<div class="text_box">
+						<div class="ui layout">
+							<span>扣款日</span>
+							<input type="tel" class="row-1" maxlength="2" id="moneyDate" placeholder="请输入扣款日" />
+						</div>
+					</div>
+					<a href="javascript:void(0);" class="ui button block rounded" id="submit" style="background: #5eb2f8;">提交</a>
+					<div class="tips_txt_box mt20">
+						<p>温馨提示：</p>
+						<p>1.基金定投周期为按月定投，会在扣款日在您委托的资金账户中扣款并委托基金申购。</p>
+						<p>2.你可以在查询中查阅基金定投的委托情况。</p>
+						<p>3.请保证每月扣款日时资金账户中有足够的可用资金，否则将申购失败哦。</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>
+	<!--遮罩层-->
+	<div id="placeBox" style="display: none;">
+		<div class="ui dialog-overlay" style="display: block;"></div>
+		<div class="ui dialog invest_dialog_box">
+			<div class="inv_dialog_tit">
+				<h3>定投下单</h3>
+			</div>
+			<div class="inv_dialog_cet">
+				<h4>华安沪深300指数分级基金 160417</h4>
+				<div class="dialog_txt">
+					<p><span>定投类型</span>设定结束日期</p>
+					<p><span>定投金额</span>100000（元）</p>
+					<p><span>开始日期</span>2016-05-23</p>
+					<p><span>截止日期</span>2016-06-23</p>
+					<p><span>扣款日期</span>12</p>
+				</div>
+			</div>
+			<div class="ui layout inv_dialog_btn">
+				<a href="#" class="row-1 cancel_btn">取消</a>
+				<a href="#" class="row-1 define_btn">确定</a>
+			</div>
+		</div>
+	</div>
+	
+		<!--弹窗1-->
+		<div class="window_dialog" id="window_one" style="display: none;">
+			<div class="dialog_cet">
+				<div class="dialog_tit">
+					<h3><i></i>风险提示</h3>
+				</div>
+				<div class="dialog_cet_det">
+					<div class="dialog_txt">
+						<p id="riskTip" style="text-indent: 2em;text-align: left; margin:0 0.12rem;"></p>
+					</div>
+				</div>
+				<div class="dialog_btn">
+					<div class="ui layout">
+						<div class="row-1">
+							<a href="javascript:void(0);" id="buyContinue">已审慎考虑</a>
+						</div>
+						<div class="row-1">
+							<a href="javascript:void(0);" id="risk">重新风险测评</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			<!--弹窗2-->
+		<div class="window_dialog" id="window_one1" style="display: none;">
+			<div class="dialog_cet">
+				<div class="dialog_tit">
+					<h3><i></i>风险提示</h3>
+				</div>
+				<div class="dialog_cet_det">
+					<div class="dialog_txt">
+						<p id="entrustTip" style="text-indent: 2em;text-align: left; margin:0 0.12rem;"></p>
+					</div>
+				</div>
+				<div class="dialog_btn">
+					<div class="ui layout">
+						<div class="row-1">
+							<a href="javascript:void(0);" id="submit">确认委托</a>
+						</div>
+						<div class="row-1">
+							<a href="javascript:void(0);" id="cencal">放弃委托</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+</section>
+</div>

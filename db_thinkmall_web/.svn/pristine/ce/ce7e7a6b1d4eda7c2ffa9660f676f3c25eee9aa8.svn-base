@@ -1,0 +1,85 @@
+<div class="page"  id="active_oneMberserk" data-pageTitle="一米疯抢" data-pageLevel="1">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner_02">
+			<a href="javascript:void(0)" class="back_btn"></a>
+			<h1>商品详情</h1>
+			<!--  
+			<a href="javascript:void(0)" class="rt_icon share_btn">分享</a>
+			-->
+		</div>
+	</header>
+	<article>
+		<div class="products_det" id="pageContent">
+			<div class="activity_box">
+				<div class="activity_pic">
+					<img src="" width="100%" id="detailImg"/>
+				</div>
+				<div class="activity_mes mt10">
+					<h3 id="actPdtName"></h3>
+					<em class="tips_txt" id="actPdtDesc"></em>
+					<div class="bar_box bar_box2">
+						<div class="bar" id="percent">
+                            <span class="porfit_bar" style="width:50%"><em>已筹集50%</em></span>
+                        </div> 
+					</div>
+					<p class="surplus_txt">已有<em class="ared" id="joinNum"></em>人参与</p>
+					<div class="allocation_box">
+						<div class="ui layout">
+							<div class="row-1">
+								<em></em>
+								<p>已筹份额</p>
+								<span id="soldAmount"></span>
+							</div>
+							<div class="row-1">
+								<em></em>
+								<p>目标份额</p>
+								<span id="productAmount"></span>
+							</div>
+							<div class="row-1">
+								<em></em>
+								<p>剩余天数</p>
+								<span id="surplusTime"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="pro_con">
+				<div class="pro_tit">
+					<h3>活动说明</h3>
+				</div>
+				<div class="pro_con_txt" id="actDetail">
+				</div>
+				<div class="pro_tit">
+					<h3>商品详情</h3>
+				</div>
+				<div class="pro_con_txt" id="productDetail">
+				</div>
+<!-- 				<div class="go_detail"> -->
+<!-- 					<a href="javascript:void(0)" class="go_det_btn" id="productImg" data-img_url="">查看图文详情</a> -->
+<!-- 				</div> -->
+			</div>
+			<div class="par_list_box mt10">
+				<div class="par_tit">
+					<h3>参与详情</h3>
+				</div>
+				<div class="par_list_tx">
+					<div class="ui layout">
+						<div class="row-1">
+							<ul id="orderList">
+							</ul>
+						</div>
+						<a href="javascript:void(0)" class="more_btn" id="cyxq"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>
+	<footer>
+		<div class="btn_box" style="position: relative;">
+			<a href="javascript:void(0)" class="sub_btn">立即参与</a>
+		</div>
+	</footer>
+</section>
+</div>

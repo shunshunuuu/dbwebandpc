@@ -1,0 +1,233 @@
+<div class="page"  id="finan_detail" data-pageTitle="东北证券-基金详情" data-urlParam="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner_07">
+			<a href="javascript:void(0);" class="back_btn"></a>
+			<h1>基金详情</h1>
+			<a href="javascript:void(0);" class="ewm_txt">二维码</a>
+		</div>
+	</header>
+	<article>
+		<div class="pro_con_page" id="pageContent">
+			<div class="pro_con_box1">
+				<h3 id="productName"></h3>
+				<p id="incomeunit"></p>
+				<p class="heart_box" id="followNumHead"><i class="heart_icon"></i></p>
+			</div>
+			<div class="pro_con_box2">
+				<div class="ui layout">
+					<div class="row-1">
+						<p>最新净值</p>
+						<h4 id="current_price"></h4>
+					</div>
+					<div class="row-1">
+						<p>起购金额（元）</p>
+						<h4 class="zh_txt" id="perBuyLimit"></h4>
+					</div>
+					<div class="row-1">
+						<p>投资风险</p>
+						<h4 class="zh_txt" id="risk_level"></h4>
+					</div>
+				</div>
+			</div>
+			<div class="gg_pic_box clearfix" id="advertDiv" style="display: none;">
+				<img src="" width="100%" id="adImg"/>
+				<a href="javascript:void(0);" class="close_btn"></a>
+			</div>
+			<div class="pro_con_box3" id="productPriceDiv" style="display: none;">
+				<div class="tab">
+					<div class="ui layout" id="tab_price">
+						<div class="row-1"><a href="javascript:void(0);" class="act"><i class="icon1"></i>净值走势</a></div>
+						<div class="row-1"><a href="javascript:void(0);"><i class="icon2"></i>历史净值</a></div>
+					</div>
+				</div>
+				<div id="tab_price_zs" class="tab_con tab_con2">
+					<div class="graph_box">
+						<h3 id="yieldrateForDate">月涨跌幅(%):0</h3>
+						<div class="graph_con">
+							<div class="graph_pic">
+								<div id="container"></div>
+							</div>
+							<div class="time_line">
+								<div class="ui layout" id="dateList">
+									<div class="row-1 act">
+										<p>月</p>
+									</div>
+									<div class="row-1">
+										<p>季</p>
+									</div>
+									<div class="row-1">
+										<p>半年</p>
+									</div>
+									<div class="row-1">
+										<p>年</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="tab_price_ls" class="tab_con" style="display: none">
+					<table width="100%" border="0" cellspacing="0" cellpadding="0" id="price_list">
+				        <tr>
+				            <th scope="col">日期</th>
+				            <th scope="col">当日净值</th>
+				            <th scope="col">累计净值</th>
+				        </tr>
+				    </table>
+				    <a href="javascript:void(0);" class="more_btn">查看更多</a>
+				</div>
+				<!-- 货币基金展示七日年化，万份收益 -->
+				<div id="tab_price_zsh" class="tab_con tab_con2" style="display: none">
+					<div class="graph_box">
+						<!-- <h3 id="yieldrateForDate">月涨跌幅(%):0</h3> -->
+						<div class="graph_con">
+							<div class="graph_pic">
+								<div id="fundNav"></div>
+							</div>
+						</div>
+					</div>
+				
+				</div>
+				<div id="tab_price_zshb" class="tab_con tab_con2" style="display: none">
+					<!-- <h3 id="yieldrateForDate">月涨跌幅(%):0</h3> -->
+						<div class="graph_con">
+							<div class="graph_pic">
+								<div id="fundNavs"></div>
+							</div>
+						</div>
+				</div>
+			<div class="pro_con_box4 mt10">
+				<div class="pro_mes_list">
+					<ul>
+						<li class="ui layout">
+							<div class="row-1"><p>产品代码</p></div>
+							<div class="row-1"><p class="text-right" id="product_code"></p></div>
+						</li>
+<!-- 						<li class="ui layout">
+							<div class="row-1"><p>关注人数</p></div>
+							<div class="row-1"><p class="text-right" id="followNum"></p></div>
+						</li> -->
+						<!--  
+						<li class="ui layout">
+							<div class="row-1"><p>推荐度</p></div>
+							<div class="row-1"><p><span class="star"><em class="level" id="recommendDegree"></em></span></p></div>
+						</li>
+						-->
+						<li class="ui layout">
+							<div class="row-1"><p>投资风险</p></div>
+							<div class="row-1"><p class="text-right" id="risk_level_tz"></p></div>
+						</li>
+						<li class="ui layout">
+							<div class="row-1"><p>开放状态</p></div>
+							<div class="row-1"><p class="text-right" id="status_detail"></p></div>
+						</li>
+						<li class="ui layout">
+							<div class="row-1"><p>起购金额</p></div>
+							<div class="row-1"><p class="text-right" id="per_buy_limit"></p></div>
+						</li>
+						<!--  
+						<li class="ui layout">
+							<div class="row-1"><p>申购费率</p></div>
+							<div class="row-1"><p class="text-right" id="purchase_rates"></p></div>
+						</li>
+						-->
+						<li class="ui layout">
+							<div class="row-1"><p>基金类型</p></div>
+							<div class="row-1"><p class="text-right" id="fund_type"></p></div>
+						</li>
+						<!--  
+						<li class="ui layout">
+							<div class="row-1"><p>分红方式</p></div>
+							<div class="row-1"><p class="text-right" id="share_type"></p></div>
+						</li>
+						-->
+						<li class="ui layout">
+							<div class="row-1"><p>成立时间</p></div>
+							<div class="row-1"><p class="text-right" id="found_time"></p></div>
+						</li>
+						<p id="more" style="text-align: center;color: #5eb2f8;margin: 0.12rem auto; position:relative;" class="more_pic">更多信息</p>
+					</ul>
+				</div>
+			</div>
+			<!-- 			
+			<a href="javascript:void(0);" class="buy_now">立即购买</a> 
+			-->
+		</div>
+		<!--弹窗1-->
+		<div class="window_dialog" id="window_one" style="display: none">
+			<div class="dialog_cet">
+				<div class="dialog_tit">
+					<h3><i></i>风险提示</h3>
+				</div>
+				<div class="dialog_cet_det">
+					<div class="dialog_txt">
+						<p>该产品的风险等级较高</p>
+						<p>与您的风险等级<em>保守型</em>不匹配</p>
+						<p>是否继续购买？</p>
+					</div>
+				</div>
+				<div class="dialog_btn">
+					<div class="ui layout">
+						<div class="row-1">
+							<a href="javascript:void(0);">重新风险评测</a>
+						</div>
+						<div class="row-1">
+							<a href="javascript:void(0);">继续购买</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--弹窗2-->
+		<div class="window_dialog" style="display: none">
+			<div class="dialog_cet">
+				<div class="dialog_tit">
+					<h3><i></i>风险提示</h3>
+				</div>
+				<div class="dialog_cet_det">
+					<div class="dialog_txt">
+						<p>该风险已经超出您的风险承受能力！</p>
+						<p>如需购买请至营业厅或拨打40000咨询</p>
+					</div>
+				</div>
+				<div class="dialog_btn">
+					<div class="ui layout">
+						<div class="row-1">
+							<a href="javascript:void(0);">朕知道了</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>
+	<footer>
+		<div class="sub_box ui layout">
+			<a href="javascript:void(0);" class="sub_btn row-1" id="sub_btn_buy" style="position: relative;">立即购买</a>
+			<a href="javascript:void(0);" class="sub_btn row-1" id="sub_btn_place" style="display:none;position: relative;margin: 0 0 0 0.01rem;">立即定投</a>
+		</div>
+	</footer>
+	<div class="window_dialog" id="ewmWindow" style="display: none;">
+		<div class="dialog_cet">
+			<div class="dialog_cet_det">
+				<div class="ewm_box">
+					<p>直接点击分享将二维码分享到朋友圈 </p>
+					<p>or</p>
+					<p>拿出手机扫一扫</p>
+					<div class="ewm_pic" style="text-align: center; width: 180; height: 180" >
+						
+					</div>
+				</div>
+				
+			</div>
+			<div class="dialog_btn">
+				<div class="ui layout">
+					<div class="row-1">
+						<a href="javascript:void(0)" id="closeEwm">关闭</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+</div>

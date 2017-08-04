@@ -1,0 +1,180 @@
+.mt10 { margin-top:0.1rem; }
+.mt20 { margin-top:0.2rem; }
+.mt15 { margin-top:0.15rem; }
+.mt30{margin-top: 0.3rem;}
+.ared { color:#ed4235 !important; }
+.agreen { color:#22AA22 !important; }
+.ablue{ color: #1199ee !important;}
+.ayellow{ color: #fff045 !important;}
+::-webkit-scrollbar{width:0px}
+::-webkit-input-placeholder {
+    color:#cccccc !important;
+    font-size: 0.14rem;
+}
+body{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+html{
+	overflow: hidden;
+}
+#afui, #content, .page{
+	width:100%;
+	height: 100%;
+}
+
+/*抽奖页面*/
+.header_inner{
+	width: 100%;
+	height: 0.44rem;
+	background: #FFFFFF;
+	position: relative;
+}
+.header_inner h1{
+	font-size: 0.18rem;
+	color: #323232;
+	text-align: center;
+	line-height: 0.44rem;
+}
+.header_inner .back_btn{
+	display: block;
+	width: 0.44rem;
+	height: 0.44rem;
+	background: url(../images/back_btn.png) center no-repeat;
+	background-size: 0.44rem;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.header_inner .rules_btn{
+	display: inline-block;
+	padding: 0 0.15rem;
+	font-size: 0.14rem;
+	color: #fa727f;
+	line-height: 0.44rem;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.turn_lottery_page{
+	width: 100%;
+	height: 100%;
+	min-height: 4.74rem;
+	background: #00C3D8;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.turn_lottery_top{
+	width: 100%;
+	height: 1.48rem;
+	background: url(../images/turn_lottery_top.png) left bottom no-repeat;
+	background-size: 100% 1.02rem;
+	position: relative;
+	z-index: 100;
+}
+.turn_lottery_top .tit{
+	display: block;
+	width: 3.2rem;
+	height: 1.62rem;
+	background: url(../images/lotter_tit.png) center no-repeat;
+	background-size: 3.2rem 1.62rem;
+	position: absolute;
+	left: 50%;
+	bottom: -0.15rem;
+	margin-left: -1.6rem;
+}
+.turn_lottery_top .tit:before{
+	content: "";
+	width: 0.6rem;
+	height: 0.94rem;
+	background: url(../images/lottery_line.png) center no-repeat;
+	background-size: 0.6rem 0.94rem;
+	position: absolute;
+	left: 0.38rem;
+	bottom: -0.8rem;
+}
+.turn_lottery_det{
+	width: 100%;
+	height: 3.4rem;
+	background: #FFDB58;
+}
+
+.lottery_box{
+	width: 3.2rem;
+	height: 3.4rem;
+	background: url(../images/lotter_box_bg.png) center no-repeat;
+	background-size: 3.2rem 3.4rem;
+	margin: -0.14rem auto 0;
+	position: relative;
+	z-index: 10;
+	padding-top: 0.45rem;
+}
+.lottery_box_list{
+	padding: 0 0.4rem 0;
+}
+.lottery_box_list li{
+	width: 0.75rem;
+	height: 0.75rem;
+	float: left;
+	margin: 0 0.02rem;
+	background: #FFFFFF;
+	border-radius: 0.08rem;
+	-webkit-border-radius: 0.08rem;
+	-moz-border-radius: 0.08rem;
+	margin-bottom: 0.1rem;
+	box-shadow: 0 0.06rem 0 #d2d0d0;
+	-webkit-box-shadow: 0 0.06rem 0 #d2d0d0;
+	-moz-box-shadow: 0 0.06rem 0 #d2d0d0;
+	text-align:center;
+	vertical-align:middle;
+	display:table-cell;
+	line-height: 0.75rem;
+}
+
+.lottery_box_list li img{
+	width: 0.74rem;
+	vertical-align:middle;
+}
+.lottery_box_list .lottery_btn{
+	background: #fdff00;
+	box-shadow: 0 0.06rem 0 #f8b104;
+	-webkit-box-shadow: 0 0.06rem 0 #f8b104;
+	-moz-box-shadow: 0 0.06rem 0 #f8b104;
+}
+.lottery_box_list .lottery_btn a{
+	display: block;
+	font-size: 0.24rem;
+	color: #b5251d;
+	line-height: 0.3rem;
+	text-align: center;
+	font-weight: bold;
+	padding: 0.07rem 0.1rem;
+}
+.turn_lotter{
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.lottery_box_list .lottery_btn_new {
+    background: #fdff00;
+    box-shadow: 0 0.06rem 0 #f8b104;
+    -webkit-box-shadow: 0 0.06rem 0 #f8b104;
+    -moz-box-shadow: 0 0.06rem 0 #f8b104;
+}
+
+.lottery_btn_new span{
+	display: block;
+    font-size: 0.24rem;
+    color: #b5251d;
+    line-height: 0.3rem;
+    text-align: center;
+    font-weight: bold;
+    padding: 0.07rem 0.1rem;
+}
+
+
+

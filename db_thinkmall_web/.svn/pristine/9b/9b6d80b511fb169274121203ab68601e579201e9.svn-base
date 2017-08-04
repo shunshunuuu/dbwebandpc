@@ -1,0 +1,333 @@
+ /**
+  * 用户中心
+  * @author wangwz
+  * 
+  */
+define(function(require, exports, module){ 
+	var _pageId = "#account_userCenter "; // 当前页面ID
+	var appUtils = require("appUtils"); // 核心工具类
+	var layerUtils = require("layerUtils"); // 弹出层工具类
+	var common = require("common"); // 公共类
+	var service = require("mobileService"); // 业务层接口，请求数据
+	var validatorUtil = require("validatorUtil"); // 校验工具类
+	var putils = require("putils"); 
+	var app = navigator.appVersion,
+    appversion = app.toLocaleLowerCase();
+	
+	// 页面全局变量，当前js的所有全局变量 定义在该对象中，便于代码中一目了然
+	var pageGlobal = {
+		"accountType" : "" // 判断资金账户、理财账户
+	};
+
+	/*
+	 * 初始化
+	 */
+	function init(){
+		var userInfo = appUtils.getSStorageInfo("userInfo"); // 用户信息
+		pageGlobal.accountType = JSON.parse(userInfo).account_type; // 判断资金账户、理财账户
+
+		
+		common.dealIOSScrollBug($(_pageId + "article"), $(_pageId + ".login_page"));
+		
+		common.footerTab(_pageId);
+		userAsset();
+		queryUserIntergral();
+		initView(); // 初始化页面
+	}
+	
+	/*
+	 * 初始化页面
+	 */
+	function initView(){
+		var userInfo = appUtils.getSStorageInfo("userInfo"); // 用户信息
+		var userName = JSON.parse(userInfo).user_name; // 用户名
+		var mobilePhone =  JSON.parse(userInfo).mobile_phone; // 手机号
+		if (userName && userName != "") {
+			$(_pageId + "#userName").html(userName); //用户名
+		}else{
+			$(_pageId + "#userName").html(mobilePhone.substring(0,3)+"****"+mobilePhone.substring(7,11)); //用户名
+		}
+		$(_pageId + "#total_assets").html("0");
+		$(_pageId + "#cash_assets").html("0");
+		$(_pageId + "#fund_assets").html("0");
+		
+		var recomcode = JSON.parse(userInfo).recommon_code; // 登录查询的推荐码
+/*		var recomcode = appUtils.getSStorageInfo("recomCode"); // 获取登录时输入的推荐码
+		var recomStr = /^00\d{4}$/;*/
+//		if (recomStr.test(recomcode)){
+		if (recomcode){
+			$(_pageId + "#login_nav_list a").eq(0).show();
+			$(_pageId + "#login_nav_list a").eq(1).show();
+		} else {
+			$(_pageId + "#login_nav_list a").eq(0).hide();
+			$(_pageId + "#login_nav_list a").eq(1).hide();
+		}
+//		if(!recomcode){
+//			$(_pageId + "#login_nav_list a").eq(0).hide();
+//			$(_pageId + "#login_nav_list a").eq(1).hide();
+//		}else{
+//			$(_pageId + "#login_nav_list a").eq(0).show();
+//			$(_pageId + "#login_nav_list a").eq(1).show();
+//		}
+	}
+	/*
+	 * 查询东北币
+	 */
+	function queryUserIntergral(){
+
+		var param = {
+			"user_id" : common.getUserId()
+		};
+		service.queryUserIntergral(param, function(data){
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+			if(error_no == "0"){
+				var Item = data.results[0];
+				var enableIntegral = Item.enable_integral; // 可用积分
+				
+				$(_pageId + "#myIntegral").html(putils.setAmount(enableIntegral));
+			}else{
+				layerUtils.iMsg(-1,error_info);
+			}
+		});
+		
+	}
+	
+	/*
+	 * 用户资产(1000181)
+	 */
+	function userAsset(){
+		// 检验是否为理财用户
+		if (pageGlobal.accountType && pageGlobal.accountType == "8") {
+			return false;
+		}
+		var userInfo = appUtils.getSStorageInfo("userInfo"); // 用户信息
+		var fundAccount = JSON.parse(userInfo).fund_account; // 资金账号
+		if (validatorUtil.isEmpty(fundAccount)) {
+			return false;
+		}
+		var param = {
+			"fund_account" : fundAccount
+		};
+		service.queryAsset(param, function(data){
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+			if(error_no == "0"){
+				var results = data.results;
+				for (var i = 0; i < results.length; i++) {
+					//0 是人民币，1 是港币，2 是美元
+					if (results[i].money_type == "0") {
+						var withdrawCash = common.fmoney(results[i].useable_money, 2); // 可用金额
+						var fundMoney = common.fmoney(results[i].stock_money, 2); // 证券市值
+						var totalMoney = common.fmoney(results[i].total_money, 2); // 总金额
+						$(_pageId + "#total_assets").html(totalMoney);
+						$(_pageId + "#cash_assets").html(withdrawCash);
+						$(_pageId + "#fund_assets").html(fundMoney);
+						break;
+					}
+				}
+				
+			}else{
+				layerUtils.iMsg(-1,error_info);
+			}
+		});
+		
+	}
+
+	
+	/**
+	 * 调用中焯的统一登录方法
+	 */
+	window.onJsOverrideUrlLoading = function(str){
+        if(appversion.indexOf("windows phone")>0){
+            window.external.notify(str);
+        }else if(appversion.indexOf("iphone")>0){
+            window.location.href=str;
+        }else if(appversion.indexOf("android")>0){
+            window.MyWebView.onJsOverrideUrlLoading(str);
+        }else{
+            window.location.href = str;
+        }
+    };
+	/*
+	 * 绑定事件
+	 */
+	function bindPageEvent(){
+		
+		// 禁止头部和底部滑动
+		common.stopHeadAndFooterEvent(_pageId); 
+		
+		appUtils.bindEvent(_pageId + "#setUp", function(){
+			layerUtils.iConfirm("确定退出吗？",function(){
+				// 调用接入层退出功能号，清空浏览器sessioin
+				service.loginOut({}, function(data){
+					var error_no = data.error_no;
+	    			var error_info = data.error_info;
+	    			if (error_no == "0"){
+	    				// 清空本地cookie 用户信息
+	    				common.clearSessionUserInfo();
+	    				// 判断链接来源是否来自中焯APP, 如果是,头部隐藏 首先去cookie里面是否有值，再去页面参数中是否有值
+	    				var isFromApp = appUtils.getSStorageInfo("isFromApp",isFromApp);
+	    				if(isFromApp && isFromApp == "zzapp"){
+							appUtils.clearSStorage("isFromApp");
+							appUtils.clearSStorage("user_token");
+							appUtils.clearSStorage("mobilecode");
+							appUtils.setSStorageInfo("login_flag", "0");//0标识退出
+	        				//调用中焯app接口退出商城
+	        				//window.location="http://action:10402/";
+							var str = "http://action:10402/";
+							onJsOverrideUrlLoading(str);
+	    				}else{
+	    					appUtils.pageInit("account/userCenter", "main", {});
+	    				}
+	    			} else {
+	    				layerUtils.iMsg(-1,error_info);
+	    				return false;
+	    			}
+				});
+			}, function(){});
+		
+		});
+		
+		appUtils.bindEvent(_pageId + "#login_nav_list a", function(){
+			var index = $(_pageId + "#login_nav_list a").index(this);
+			//alert(index);
+			switch (index) {
+			case 3: 
+				// 我的现金管家
+				appUtils.pageInit("account/userCenter", "account/cashbutler/detail", {"backPage" : "account/userCenter"});
+				break;
+			case 4: // 我的理财
+				if (common.checkUserIsLogin(true, false)) {
+					appUtils.pageInit("account/userCenter", "account/myFinancial", {});
+				}
+				break;
+			case 5: // 实时货币基金
+				appUtils.pageInit("account/userCenter", "account/realOrder", {});
+				break;
+			case 6: // 我的订单
+				if (common.checkUserIsLogin(true, false)) {
+					appUtils.pageInit("account/userCenter", "account/myOrder", {});
+				}
+				break;
+			case 7: // 我的东北币
+				appUtils.pageInit("account/userCenter", "account/myIntegral", {});
+				break;
+			case 8: // 活动订单
+				appUtils.pageInit("account/userCenter", "active/myOrder", {});
+				break;
+			case 9: // 银证转账
+				if (common.checkUserIsLogin(true, false)) {
+					appUtils.pageInit("account/userCenter", "account/stockBank", {});
+				}
+				break;
+			case 10: // 我的资料
+				appUtils.pageInit("account/userCenter", "account/myProfile", {});
+				break;
+			case 11: // 风险测评
+				if (common.checkUserIsLogin(true, false)) {
+					queryRiskLevel();
+				}
+				break;
+			case 12: // 我的银行卡
+				appUtils.pageInit("account/userCenter", "account/myBankCard", {});
+				break;
+			case 13: // 我的账单
+				if (common.checkUserIsLogin(true, false)) {
+					var userInfo = appUtils.getSStorageInfo("userInfo"); // 用户信息
+					var fund_account = JSON.parse(userInfo).fund_account; // 资金账号
+					var param = {
+							"fund_account" : fund_account
+					};
+					var callBack = function(resultVo){
+						var error_no = resultVo.error_no;
+						var error_info = resultVo.error_info;
+						if (error_no == "0"){
+							var user_token = JSON.parse(resultVo.results[0].result).user_token;
+							if(user_token){
+								window.location="http://122.141.224.5:1000/index.htm?user_token="+user_token;
+							}else{
+								layerUtils.iMsg(-1, "没有获取到user_token");
+								return false;
+							}
+						} else {
+							layerUtils.iMsg(-1, error_info);
+							return false;
+						}
+					};
+					service.goMyAccount(param,callBack);
+					
+				}
+				break;
+			case 0: // 我要推广
+				appUtils.pageInit("account/userCenter", "account/promote", {});
+				break;
+			case 1: // 推荐查询
+				appUtils.pageInit("account/userCenter", "account/promoteQuery", {});
+				break;
+			case 2: // 中奖查询
+				appUtils.pageInit("account/userCenter", "activity/winList", {});
+				break;
+			default:
+				break;
+			}
+		});
+	}
+	
+	/*
+	 * 查询风险测评等级
+	 */
+	function queryRiskLevel(){
+		var reqParam = {
+			"user_id" : common.getUserId()
+		}
+		
+		service.queryRiskLevel(reqParam, function(data){
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+			if(error_no == "0"){
+				var results = data.results;
+				if (results.length > 0) {
+					var item = results[0];
+					var pageParam = appUtils.getPageParam(); // 测评成功后需要返回的页面
+					if (!pageParam) {
+						pageParam = {};
+					}
+					pageParam.riskScore = item.risk_fraction || "0.0";
+					pageParam.riskName = item.risk_name;
+					pageParam.backPage = "account/userCenter";
+					appUtils.pageInit("account/userCenter", "register/riskAssDetail", pageParam);
+				} else {
+					appUtils.pageInit("account/userCenter", "register/riskAssessment", {"backPage" : "account/userCenter"});
+				}
+			}else{
+				layerUtils.iMsg(-1,error_info);
+				return false;
+			}
+		});
+	}
+	
+	/*清除页面显示的值*/
+	function clearPage(){
+		$(_pageId + "#myIntegral").html("");
+		$(_pageId + "#userName").html(""); //用户名
+		$(_pageId + "#total_assets").html("");
+		$(_pageId + "#cash_assets").html("");
+		$(_pageId + "#fund_assets").html("");
+	}
+	
+	/*
+	 * 页面销毁
+	 */
+	function destroy(){
+		clearPage();
+	}
+	
+	var userCenter = {
+		"init": init,
+		"bindPageEvent": bindPageEvent,
+		"destroy": destroy
+	};
+	// 暴露对外的接口
+	module.exports = userCenter;
+});

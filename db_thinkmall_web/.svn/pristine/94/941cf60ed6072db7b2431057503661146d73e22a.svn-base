@@ -1,0 +1,126 @@
+<div class="page"  id="active_signIn" data-pageTitle="签到" data-pageLevel="1" data-refresh="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner_02">
+			<a href="javascript:void(0)" class="back_btn"></a>
+			<h1>签到</h1>
+			<!--  
+			<a href="javascript:void(0)" class="rule_txt">签到规则</a>
+			-->
+		</div>
+	</header>
+	<article>
+		<div class="pro_page registration_page" id="pageContent">
+			<div class="registration_banner">
+				<img src="images/registration_banner.png" width="100%" />
+			</div>
+			<div class="registration_det">
+				<div class="reg_box_list">
+				<div class="ui layout" id="regBoxDiv">
+					<div class="row-1">
+						<div class="gift_box gift_get">
+							<span>+100东北币</span>
+						</div>
+						<p>6天大礼</p>
+					</div>
+					<div class="row-1">
+						<div class="gift_box"></div>
+						<p>12天大礼</p>
+					</div>
+					<div class="row-1">
+						<div class="gift_box"></div>
+						<p>18天大礼</p>
+					</div>
+					<div class="row-1">
+						<div class="gift_box"></div>
+						<p>25天大礼</p>
+					</div>
+				</div>
+			</div>
+			<div class="want_reg_box">
+				<a href="javascript:void(0)" class="reg_btn" id="signBtn">我要签到</a>
+			</div>
+			<div class="reg_date_list clearfix">
+				<ul id="regDateListUl">
+					<li>
+						<a href="javascript:void(0)"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)" class="gift_pic"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)" class="gift_pic"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)" class="gift_pic"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)"></a>
+					</li>
+					<li>
+						<a href="javascript:void(0)" class="gift_pic"></a>
+					</li>
+				</ul>
+			</div>
+			</div>
+		</div>
+	</article>
+</section>
+</div>

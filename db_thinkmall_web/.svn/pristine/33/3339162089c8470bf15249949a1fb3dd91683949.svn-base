@@ -1,0 +1,30 @@
+<div class="page"  id="register_bankCardSuccess" data-pageTitle="绑卡成功">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner_02">
+			<a href="javascript:void(0)" class="back_btn"></a>
+			<h1>绑卡</h1>
+		</div>
+	</header>
+	<article>
+		<div class="pro_page">
+			<div class="tie_cards_box">
+				<div class="tips_box success_tips">
+					<em></em>
+					<h4>恭喜您，绑卡成功！</h4>
+				</div>
+				<p id="riskDesc">您的风险承受能力默认为保守型</p>
+				<a href="javascript:void(0)" class="again_btn">重新评测</a>
+				<div class="ui layout">
+					<div class="row-1">
+						<a href="javascript:void(0)" id="backBank" class="ui button block rounded">返回银行卡</a>
+					</div>
+					<div class="row-1">
+						<a href="javascript:void(0)" id="toInvest" class="ui button block rounded">前往投资</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>
+</section>
+</div>

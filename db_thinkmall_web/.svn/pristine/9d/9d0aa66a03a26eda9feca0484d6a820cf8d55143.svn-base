@@ -1,0 +1,53 @@
+
+<div class="page"  id="tucao_goTc" data-pageTitle="我要吐槽" data-pageLevel="1" data-urlParam="true" data-refresh="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner header_inner_02">
+			<h1>我要吐槽</h1>
+			<a href="javascript:void(0);" class="back_btn"></a>
+		</div>
+	</header>
+	
+	<article>
+		<div class="myideas">
+			<div class="youridea">
+				<s></s>
+				<div class="ideaword">
+					<textarea name="" id="rrrrr" placeholder="本次吐槽对象为融e通APP，吐槽内容可以是问题或建议，描述越详细越容易被采纳哦~
+"></textarea>
+				</div>
+			</div>
+			<div class="uploadbox my_page_con" status="2">
+				<p class="pp1"><i></i>上传截图</p>
+				<p class="pp2">支持.jpg .png .gif .bmp .psd .tiff</p>
+				<div class="ideaword">
+					<p class="pp3" id="path">请选择小于20m文件进行上传</p>
+					 <!-- <input type="file"   multiple="multiple"  id="upload" style="width:0;height:0" /> --> 
+					<a class="plus" id="img" href="javascript:void(0);"><i><input type="button"  id="btn1" style="width:0.7rem;height:100%;position:absolute;top:0;right:0;opacity: 0;"></i></a>
+				</div>
+			</div>
+			<div class="phonebox">
+				<p class="pp1"><i></i>您的手机号码是</p>
+				<div class="ideaword clearfix" style="width:99%">
+					<input type="text" id="phoneNo"/>
+				</div>
+				<p class="pp2"><i></i>您的建议被采纳后，将对此手机号码进行充值</p>
+			</div>
+			<div class="sendmas">
+				<a href="javascript:void(0);"></a>
+			</div>
+		</div>
+	</article>
+	<div style="display:none;">
+	 <form action="" method="post" name="form1" id="form1">
+		 <input type="hidden" name="pictureBase64" id="pictureBase64" value=""/>
+		 <input type="hidden" name="tp_file_name" id="tp_file_name" value=""/>
+		 <!--<input type="hidden" name="userID" id="userID" value=""  /><br />-->
+	 </form>
+	 <div style="position:relative;display:none;width:0px;height:0px;">
+	<input type="file" accept="image/*,camera" capture="camera"  id="btn1" style="width:0px;height:0px;position:absolute;top:0;left:0;"/>        
+	<input type="file" accept="image/*,camera" capture="camera"  id="btn2" style="width:0px;height:0px;position:absolute;top:0;left:0;"/> 
+    </div>
+    </div>
+</section>
+</div>

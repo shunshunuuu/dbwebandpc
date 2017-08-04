@@ -1,0 +1,177 @@
+<div class="page"  id="active_index" data-pageTitle="粉丝福利" data-pageLevel="1" data-refresh="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner">
+			<h1>米仓</h1>
+			<a class="qiand" href="javascript:void(0);">签到</a>
+		</div>
+	</header>
+	<article class="boost">
+		<div class="index_page">
+<!-- 			<div class="jp_banner"><a href="javascript:void(0);"><img src="images/activity_pic10.jpg" alt="" /></a></div> -->
+			<div class="mall_banner">
+				<div class="pic_box pic_box_ccs" id="ad_index">
+					<ul class="boost" id="banner_ul">
+					</ul>
+				</div>
+				<div class="dots_box" id="dots_box">
+					<em class="act"></em>
+					<em></em>
+					<em></em>
+				</div>
+			</div>
+<!-- 			<div class="ification_on"> -->
+<!-- 				<div class="gound_news" id="scroll_vertical_news"> -->
+<!-- 					<s></s> -->
+<!-- 				    <ul id="qdxx"> -->
+<!-- 				    </ul> -->
+<!-- 				</div> -->
+<!-- 				<div class="gound_news"  id="scroll_vertical_news1"></div> -->
+<!-- 				<div class="gound_news" id="scroll_vertical_news2"></div> -->
+<!-- 			</div> -->
+
+             <div class="smnews">
+				<div class="smnews_in">
+					<em></em>
+					<div class="scroll_verticals" id="scroll_vertical">
+					    <ul id="qdxx">
+
+					    </ul>
+					</div>
+					<div class="scroll_verticals" id="scroll_vertical1">
+					
+					</div>
+					<div class="scroll_verticals" id="scroll_vertical2">
+					
+					</div>
+				</div>
+			</div>
+			<div class="pro_box_01">
+				<div class="pro_main">
+					<div class="pro_tits pro_tits_bc">
+						<a href="javascript:;">
+							<p class="sp01_cc">热门兑换</p>
+							<p class="sp02">精挑细选 速来兑换</p>
+						</a>
+					</div>
+                    <div class="gsmebox newyear">
+						<div class="gsmein">
+							<div class="gsme_l" id = "ymfq">
+								<a href="javascript:;"><img src="images/gsme_bg011.png" alt="" /></a>
+							</div>
+							<div class="gsme_r">
+								<div class="gsme_top" id = "xsdh">
+									<a href="javascript:;"><img src="images/gsme_bg021.png" alt="" /></a>
+								</div>
+								<div class="gsme_bom" id = "dbm">
+									<a href="javascript:;"><img src="images/gsme_bg031.png" alt="" /></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="pro_box_01">
+				<div class="pro_main">
+					<div class="pro_tits pro_tits_bb">
+						<a href="javascript:;">
+							<p class="sp01_cc">热门活动</p>
+							<p class="sp02">参加活动 赢各类好礼</p>
+						</a>
+					</div>
+					<div class="jp_banner" id="bigWheel">
+<!-- 						<a href="javascript:;"><img src="images/activity_pic11.jpg" alt="" /></a> -->
+					</div>
+					<div class="pricebox newyear">
+						<ul class="flex-father">
+							<li class="flex-children">
+								<img src="images/prize_031.jpg" alt="" />
+							</li>
+							<li class="flex-children">
+								<img src="images/prize_021.jpg" alt="" />
+							</li>
+							<li class="flex-children">
+								<img src="images/prize_011.jpg" alt="" />
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+<!-- 			<div class="pro_box_01"> -->
+<!-- 				<div class="pro_main"> -->
+<!-- 					<div class="pro_tits pro_tits_ba"> -->
+<!-- 						<a href="javascript:;"> -->
+<!-- 							<p class="sp01_cc">便捷生活</p> -->
+<!-- 							<p class="sp02">便捷生活只有指尖距离</p> -->
+<!-- 						</a> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="paice"> -->
+<!-- 					<ul> -->
+<!-- 						<li><a href="javascript:;"> -->
+<!-- 							<img src="images/paice_01.png" alt="" /> -->
+<!-- 							<p>话费流量</p> -->
+<!-- 						</a></li> -->
+<!-- 						<li><a href="javascript:;"> -->
+<!-- 							<img src="images/paice_02.png" alt="" /> -->
+<!-- 							<p>生活缴费</p> -->
+<!-- 						</a></li> -->
+<!-- 						<li><a href="javascript:;"> -->
+<!-- 							<img src="images/paice_03.png" alt="" /> -->
+<!-- 							<p>交通罚款</p> -->
+<!-- 						</a></li> -->
+<!-- 						<li><a href="javascript:;"> -->
+<!-- 							<img src="images/paice_04.png" alt="" /> -->
+<!-- 							<p>金融</p> -->
+<!-- 						</a></li> -->
+<!-- 						<li><a href="javascript:;"> -->
+<!-- 							<img src="images/paice_05.png" alt="" /> -->
+<!-- 							<p>机酒火车</p> -->
+<!-- 						</a></li> -->
+<!-- 						<li><a href="javascript:;"> -->
+<!-- 							<img src="images/paice_06.png" alt="" /> -->
+<!-- 							<p>消费备用金</p> -->
+<!-- 						</a></li> -->
+<!-- 						<li><a href="javascript:;"> -->
+<!-- 							<img src="images/paice_07.png" alt="" /> -->
+<!-- 							<p>推荐APP有礼</p> -->
+<!-- 						</a></li> -->
+<!-- 					</ul> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+		</div>
+		<div class="footer_box total_footer_box">
+			<img src="images/total_footer_pic.png" width="100%" />
+			<p>东北证券股份有限公司版权所有 @ 2015 </p>
+		</div>
+	</article>
+	<footer>
+		<div class="ui layout footer_nav footer_new_nav">
+			<div class="row-1">
+				<a href="javascript:void(0)">
+					<em></em>
+					<p>推荐</p>
+				</a>
+			</div>
+			<div class="row-1">
+				<a href="javascript:void(0)">
+					<em></em>
+					<p>理财</p>
+				</a>
+			</div>
+			<div class="row-1 active">
+				<a href="javascript:void(0)">
+					<em></em>
+					<p>活动</p>
+				</a>
+			</div>
+			<div class="row-1">
+				<a href="javascript:void(0)">
+					<em></em>
+					<p>我的</p>
+				</a>
+			</div>
+		</div>
+	</footer>
+</section>
+</div>

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- ################################################################## ## 
+	## ## 用于配置服务器需要动态加载的功能模块 ## ## ## ## ## ## id : 业务功能编号 ## ## class : 业务功能的具体实现类 
+	## ## desc : 功能描述信息 ## ## ## ################################################################## -->
+<functions>
+	<!-- 本地接口 -->
+	<function id="1000007">
+		<desc>资金账户登录</desc>
+	</function>
+	<function id="1000008">
+		<desc>找回登录密码</desc>
+	</function>
+	<function id="1000009">
+		<desc>查询用户注册状态</desc>
+	</function>
+	<function id="1000010">
+		<desc>用户登录</desc>
+	</function>
+	<function id="1000011">
+		<desc>手机、邮箱、身份证等注册</desc>
+	</function>
+	<function id="1000012">
+		<desc>验证手机验证码</desc>
+	</function>
+	<function id="1000022">
+		<desc>刷新用户积分规则</desc>
+	</function>
+	<function id="1000024">
+		<desc>短信登录</desc>
+	</function>
+	<function id="1000050">
+		<desc>查询理财产品（分页）</desc>
+	</function>
+	<function id="1000051">
+		<desc>查询基金产品（分页）</desc>
+	</function>
+	<function id="1000052">
+		<desc>理财产品模糊查询，无对应的旧版功能号</desc>
+	</function>
+	<function id="1000053">
+		<desc>查询理财产品详情</desc>
+	</function>
+	<function id="1000054">
+		<desc>查询基金产品详情</desc>
+	</function>
+	<function id="1000055">
+		<desc>查询净值流水表信息（分页）</desc>
+	</function>
+	<function id="1000065">
+		<desc>推荐产品查询（分页）</desc>
+	</function>
+	<function id="1000066">
+		<desc>otc产品列表展示（分页）</desc>
+	</function>
+	<function id="1000068">
+		<desc>产品是否由足够可用于购买的份额</desc>
+	</function>
+	<function id="1000070">
+		<desc>查询所有金融产品</desc>
+	</function>
+	<function id="1000095">
+		<desc>otc产品历史净值列表展示（分页）</desc>
+	</function>
+	<function id="1000128">
+		<desc>现金理财取现</desc>
+	</function>
+	<function id="1000129">
+		<desc>现金理财协议查询与开通</desc>
+	</function>
+	<function id="1000150">
+		<desc>查询风险测评试题信息</desc>
+	</function>
+	<function id="1000151">
+		<desc>提交风险测评结果信息</desc>
+	</function>
+	<function id="1000156">
+		<desc>查询协议信息</desc>
+	</function>
+	<function id="1000159">
+		<desc>查询版本信息</desc>
+	</function>
+	<function id="1000160">
+		<desc>查询数字字典接口</desc>
+	</function>
+	<function id="1000161">
+		<desc>交易时间校准接口</desc>
+	</function>
+	<function id="1000162">
+		<desc>根据广告组ID或广告ID查询广告信息</desc>
+	</function>
+	<function id="1000163">
+		<desc>查询电子合同协议(分页)</desc>
+	</function>
+		<function id="1000164">
+		<desc>查询电子合同协议详情</desc>
+	</function>
+	<function id="1000192">
+		<desc>检查身份证号，手机号，银行卡号是否已被使用</desc>
+	</function>
+	<function id="1000500">
+		<desc>发送短信验证码</desc>
+	</function>
+	<function id="1000650">
+		<desc>积分商城产品分页查询</desc>
+	</function>
+	<function id="1000651">
+		<desc>积分商城产品单个查询</desc>
+	</function>
+	<function id="1000653">
+		<desc>订单查询</desc>
+	</function>
+	<function id="1001852">
+		<desc>查询转账需要哪些密码</desc>
+	</function>
+	<function id="1001950">
+		<desc>生成二维码图片</desc>
+	</function>
+	<function id="1001951">
+		<desc>查询报告列表</desc>
+	</function>
+	<function id="1001952">
+		<desc>查询报告详细信息</desc>
+	</function>
+	<function id="1001953">
+		<desc>查询报告类型</desc>
+	</function>
+	<function id="1001954">
+		<desc>产品模糊查询</desc>
+	</function>
+	<function id="1001955">
+		<desc>文章列表查询</desc>
+	</function>
+	<function id="1001956">
+		<desc>文章详细查询</desc>
+	</function>
+	<function id="1000026">
+		<desc>手机验证码验证编号获取接口</desc>
+	</function>
+	<function id="1000188">
+		<desc>查询所支持的银行</desc>
+	</function>
+	<function id="1000195">
+		<desc>保存用户信息</desc>
+	</function>
+	<function id="1000501">
+		<desc>签名发送</desc>
+	</function>
+	<function id="1000503">
+		<desc>开户</desc>
+	</function>
+	<function id="1000197">
+		<desc>查询用户绑定的银行卡</desc>
+	</function>
+	<function id="1000502">
+		<desc>验证签名</desc>
+	</function>
+	<function id="1000504">
+		<desc>绑卡</desc>
+	</function>
+	<function id="1000198">
+		<desc>解绑银行卡</desc>
+	</function>
+	<function id="1000190">
+		<desc>理财功能开通</desc>
+	</function>
+	<function id="1001958">
+		<desc>活动题目查询</desc>
+	</function>
+	<function id="1001965">
+		<desc>查询吉视通投票系统选手信息</desc>
+	</function>
+	<function id="1001966">
+		<desc>客户投票（吉视通）</desc>
+	</function>
+	<function id="1001967">
+		<desc>查询吉视通投票系统选手详细信息</desc>
+	</function>
+	<function id="1001970">
+		<desc>模拟商城资金账户登录获取用户信息</desc>
+	</function>
+	<function id="1001972">
+		<desc>登录前判断是否在统一账户登录</desc>
+	</function>
+	<function id="1001973">
+		<desc>新客专享活动产品订单限额</desc>
+	</function>
+	<function id="1001974">
+		<desc>查询平台最新购买的订单</desc>
+	</function>
+	<function id="1001975">
+		<desc>查询最高收益</desc>
+	</function>
+	<function id="1001976">
+		<desc>根据手机号查询用户信息</desc>
+	</function>
+	<function id="1001977">
+		<desc>注册接口</desc>
+	</function>
+	<function id="1001978">
+		<desc>查询送积分的活动</desc>
+	</function>
+	<function id="1000056">
+	    <desc>查询资讯产品信息</desc>
+	</function>
+	<function id="1000058">
+	    <desc>根据资讯产品编号查询资讯产品详情</desc>
+	</function>
+	<function id="1001981">
+	    <desc>查看兑换此资讯产品的所有用户</desc>
+	</function>
+	<function id="1000105">
+	    <desc>大转盘活动获取应用凭证</desc>
+	</function>
+	<function id="1105094">
+	    <desc>大转盘活动用户接口接入</desc>
+	</function>
+	<function id="1001980">
+	    <desc>使用票据登录</desc>
+	</function>
+</functions>

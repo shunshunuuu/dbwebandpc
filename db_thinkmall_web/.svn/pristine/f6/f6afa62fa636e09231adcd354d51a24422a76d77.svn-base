@@ -1,0 +1,24 @@
+<div class="page"  id="account_promote" data-pageTitle="我的" data-refresh="true">
+<section class="main fixed" data-page="home">
+	<article>
+		<div class="spread_page">
+			<div class="spread_box_up">
+				<img src="images/spread_banner.jpg" width="100%">
+				<div class="spread_box_det">
+					<h3></h3>
+					<p>就有机会获得Iphone 6s哦！</p>
+					<p>更有Ipad、小米手环</p>
+					<p>流量等丰厚奖品等你来拿</p>
+				</div>
+			</div>
+			<div class="spread_box_lower">
+				<em class="ewm_box"><img src="images/spread_ewm.png"></em>
+				<div class="ewm_tips">
+					<p>扫描上方二维码，关注东北证券融e通</p>
+					<p>点击掌上融e通&gt;&gt;软件下载</p>
+				</div>
+			</div>
+		</div>
+	</article>
+</section>
+</div>

@@ -1,0 +1,129 @@
+<div class="page"  id="finan_ziguan_index" data-pageTitle="资管" data-pageLevel="1"
+	data-urlParam="true" data-refresh="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner header_inner_index">
+			<h1>资管</h1>
+		</div>
+		<div class="mallnav flex-father">
+			<a class="flex-children" href="javascript:void(0);" id="finan"><span>基金</span></a>
+			<a class="flex-children" href="javascript:void(0);" id="otc"><span>OTC</span></a>
+			<a class="flex-children curent" href="javascript:void(0);" id="ziguan"><span>资管</span></a>
+			<a class="flex-children" href="javascript:void(0);" id="cf"><span>财富</span></a>
+		</div>
+	</header>
+	<article>
+		<div class="index_page">
+			<div class="jp_banner"></div>
+			<div class="pro_tits blem">
+				<a href="javascript:void(0);">
+					<p class="sp01"><i></i>常见问题</p>
+					<p class="sp02"><s></s></p>
+				</a>
+			</div>
+			<div class="pro_box">
+				<div class="pro_main_fuk" id="ziguanlist">
+					<div class="prolist">
+						<div class="dutc_tit">
+							<p class="sp01">融鑫理财一号<span>600045</span></p>
+							<p class="sp02">
+								<span class="san01">5万起购</span>
+							</p>
+						</div>
+						<div class="dutc_box flex-father">
+							<s></s>
+							<div class="dutc_bl flex-children">
+								<p class="sp01">3.70<span>%</span></p>
+								<p class="sp02">业绩比较基准</p>
+							</div>
+							<div class="dutc_bt flex-children">
+								<p class="sp01">63<span>天</span></p>
+								<p class="sp02">投资期限</p>
+							</div>
+						</div>
+						<div class="shopping_btn_a">
+							<a href="javascript:void(0);">立即购买</a>
+						</div>
+					</div>
+					<div class="prolist">
+						<div class="dutc_tit">
+							<p class="sp01">融鑫理财一号</p>
+							<p class="sp02">
+								<span class="san01">5万起购</span>
+							</p>
+						</div>
+						<div class="dutc_box flex-father">
+							<s></s>
+							<div class="dutc_bl flex-children">
+								<p class="sp01">3.70<span>%</span></p>
+								<p class="sp02">业绩比较基准</p>
+							</div>
+							<div class="dutc_bt flex-children">
+								<p class="sp01">63<span>天</span></p>
+								<p class="sp02">投资期限</p>
+							</div>
+						</div>
+						<div class="shopping_btn_b">
+							<a href="javascript:void(0);">即将开始（2016-12-12开放）</a>
+						</div>
+					</div>
+					<div class="prolist">
+						<div class="dutc_tit">
+							<p class="sp01">融鑫理财一号</p>
+							<p class="sp02">
+								<span class="san01">5万起购</span>
+							</p>
+						</div>
+						<div class="dutc_box flex-father">
+							<s></s>
+							<div class="dutc_bl flex-children">
+								<p class="sp01">3.70<span>%</span></p>
+								<p class="sp02">业绩比较基准</p>
+							</div>
+							<div class="dutc_bt flex-children">
+								<p class="sp01">63<span>天</span></p>
+								<p class="sp02">投资期限</p>
+							</div>
+						</div>
+						<div class="shopping_btn_c">
+							<a href="javascript:void(0);">暂停交易</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer_box total_footer_box">
+				<img src="images/total_footer_pic.png" width="100%" />
+				<p>东北证券股份有限公司版权所有 @ 2015 </p>
+			</div>
+		</div>
+	</article>
+	<footer>
+		<div class="ui layout footer_nav footer_new_nav">
+			<div class="row-1">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>推荐</p>
+				</a>
+			</div>
+			<div class="row-1 active">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>理财</p>
+				</a>
+			</div>
+			<div class="row-1">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>活动</p>
+				</a>
+			</div>
+			<div class="row-1">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>我的</p>
+				</a>
+			</div>
+		</div>
+	</footer>
+</section>
+</div>

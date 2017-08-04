@@ -1,0 +1,268 @@
+ /**
+  * 一米风抢
+  * @author wanliang
+  */
+define(function(require, exports, module){ 
+	var _pageId = "#active_oneMberserk "; // 当前页面ID
+	var appUtils = require("appUtils"); // 核心工具类
+	var service = require("mobileService"); // 服务类
+	var layerUtils = require("layerUtils"); // 弹出层工具类
+	var common = require("common"); // 公共类
+	var validatorUtil = require("validatorUtil"); // 校验工具类
+	var constants = require("constants");// 常量类
+	var gconfig = require("gconfig"); // 全局配置对象
+	var global = require("gconfig").global; // 全局配置对象
+	var putils = require("putils");
+	
+	// 页面全局变量，当前js的所有全局变量 定义在该对象中
+	var pageGlobal = {
+		"productId" : "", // 产品ID
+		"surplusAmount" : "" // 产品在活动期剩余库存
+	};
+	/*
+	 * 初始化
+	 */
+	function init(){
+		
+		// 清空页面信息
+		initView();
+		
+		// 处理ios滚动问题
+		common.dealIOSScrollBug($(_pageId + "article"), $(_pageId + "#pageContent"));
+		
+		pageGlobal.productId = appUtils.getPageParam("product_id"); // 产品编号
+		
+		if (!pageGlobal.productId) {
+			appUtils.pageInit("active/oneMberserk", "active/index", {});
+			return false;
+		}
+		// 查询产品详情
+		queryProductDetails(); 
+		
+		// 查询参与列表
+		queryActiveOrder();
+	}
+	
+	/*
+	 * 查询当前产品订单流水
+	 */
+	function queryActiveOrder(){
+		var reqParam = {
+			"product_id" : pageGlobal.productId,
+			"page" : 1,
+			"numPerPage" : 5
+		}
+		
+		service.queryOrderList(reqParam, function(data){
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+			if(error_no == "0"){
+				var results = data.results[0].data;
+				var itemHtml = "";
+				var dataListEle = $(_pageId + "#orderList").empty();
+				var totalRows = data.results[0].totalRows; // 总记录数
+				if (totalRows == "0" ) {
+					itemHtml += '<li>' + 
+								'		<p>快来抢沙发吧</p>' + 
+								'</li>';
+					$(_pageId +"#cyxq").hide();
+					dataListEle.html(itemHtml);
+				}
+				$(_pageId + "#joinNum").html(parseFloat(totalRows)); 
+				if (results && results.length > 0) {
+					var resultsLen = results.length; // 记录结果集长度
+					for (var i = 0; i < resultsLen; i++) {
+						var item = results[i];
+						var joinNum = item.order_amount; // 参与人次
+							itemHtml += '<li>' + 
+										'	<div class="tx_box">' + 
+										'		<img src="images/tx_pic3.png" />' + 
+										'		<em>' + joinNum + '</em>' + 
+										'	</div>' + 
+										'</li>';
+							$(_pageId +"#cyxq").show();
+							
+					}
+					dataListEle.html(itemHtml);
+				}
+			} else {
+				layerUtils.iMsg(-1,error_info);
+				return false;
+			}
+		});
+	}
+	
+	/*
+	 * 查询活动产品详情
+	 */
+	function queryProductDetails(){
+		var reqParam = {
+			"product_id" : pageGlobal.productId
+		};
+		service.activePdtDetail(reqParam, function(data){
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+			if(error_no == "0"){
+				var results = data.results;
+				if (results.length > 0) {
+					var item = results[0];
+					var logoImgUrl = item.logo_url; // 详情大图片
+					logoImgUrl = global.url + '/mall' + logoImgUrl;
+					
+					$(_pageId + "#detailImg").attr("src", logoImgUrl); 
+					
+					var actPdtName = item.product_name; // 产品名称
+					
+					var productAmount = item.product_amount; // 产品数量
+					var perProductTotAmount = item.per_product_tot_amount; // 产品在活动期最多能卖多少个
+					if (validatorUtil.isNotEmpty(perProductTotAmount)) {
+						// 如果产品活动期限制购买数不为空时，目标份额取该字段值
+						productAmount = perProductTotAmount;
+					}
+					
+					var soldAmount = item.sold_amount || "0"; // 已售数量
+					
+					pageGlobal.surplusAmount = parseInt(productAmount) - parseInt(soldAmount); // 剩余数量
+					var soldPerTotal = parseFloat(putils.division(soldAmount, productAmount) * 100); // 已售数量占产品总数量的百分比
+					var productDesc = item.product_desc; // 产品简介
+					var actDetail = item.activity_rule_detail; // 活动说明
+					var productDetail = item.product_detail; // 产品简介
+					var tempSoldPerTOtal = soldPerTotal; // 用于控制tips
+					if (soldPerTotal <= 10) {
+						tempSoldPerTOtal = 10;
+					} else if (soldPerTotal >= 86) {
+						tempSoldPerTOtal = 86;
+					}
+					
+					soldPerTotal = soldPerTotal >= 100 ? "100" : soldPerTotal.toFixed(2);
+					
+					var percentHtml = '<span class="porfit_bar" style="width:' + soldPerTotal + '%"><em style="left: ' + tempSoldPerTOtal + '%">已筹集' + soldPerTotal + '%</em></span>';
+					
+					var beginTime = item.activity_per_begin_time;  //参与活动的产品的活动计时开始时间
+					var endTime = item.activity_per_end_time;  //参与活动的产品的活动计时开始时间
+					var curTime = (new Date()).getTime(); // 当前时间
+					var surplusTime = putils.calSurplusTime(endTime); // 计算剩余时间
+					var showDay = surplusTime.day; // 剩余天数
+					if (!showDay) { // 不足一天时显示 1天【代表最后一天】
+						if (putils.getDateTime(endTime) > curTime) {
+							showDay = "1";
+						} else {
+							showDay = "0";
+						}
+					}
+					
+					if (parseInt(soldAmount) == parseInt(productAmount)) {
+						$(_pageId + ".sub_btn").unbind().css("background", "#CCC").html("敬请期待下一次活动");
+						isOver = true;
+					} else {
+						if (putils.getDateTime(beginTime) > curTime) {
+							$(_pageId + ".sub_btn").unbind().css("background", "#CCC").html("呀~活动还没开始^_^");
+						} else if (putils.getDateTime(endTime) > curTime) {
+							$(_pageId + ".sub_btn").css("background", "#5eb2f8").html("立即参与");
+							
+							// 绑定事件
+							appUtils.bindEvent(_pageId + ".sub_btn", function(){
+								joinIn(); // 立即参与
+							});
+						} else {
+							$(_pageId + ".sub_btn").unbind().css("background", "#CCC").html("活动已结束");
+						}
+					}
+					
+					$(_pageId + "#actPdtName").html(actPdtName);
+					$(_pageId + "#actPdtDesc").html(productDesc);
+					$(_pageId + "#percent").html(percentHtml);
+					$(_pageId + "#soldAmount").html(soldAmount);
+					$(_pageId + "#productAmount").html(productAmount);
+					$(_pageId + "#surplusTime").html(showDay);
+					$(_pageId + "#actDetail").html(actDetail);
+					$(_pageId + "#productDetail").html(productDetail);
+				}
+				
+			}else{
+				layerUtils.iMsg(-1,error_info);
+				return false;
+			}
+		});
+	}
+	
+	/*
+	 * 判断用户是否可以兑换
+	 */
+	function isExchange(){
+		
+	}
+	
+	/*
+	 * 立即参与
+	 */
+	function joinIn(){
+		appUtils.pageInit("active/oneMberserk", "active/orderSure", {"product_id" : pageGlobal.productId,"activeType" : constants.activeType.ACTIVE_TYPE_ONEMBER,"surplusAmount" : pageGlobal.surplusAmount});
+	}
+	
+	/*
+	 * 绑定事件
+	 */
+	function bindPageEvent(){
+		
+		// 禁止头部和底部滑动
+		common.stopHeadAndFooterEvent(_pageId); 
+		
+//		// 返回按钮
+//		appUtils.bindEvent(_pageId + ".back_btn", function(){
+////			appUtils.pageInit("active/oneMberserk", "active/index", {});
+//			appUtils.pageBack();
+//		});
+		
+		// 返回
+		appUtils.bindEvent(_pageId + ".back_btn", function() {
+			var prePageCode = appUtils.getSStorageInfo("_prePageCode"); 
+			if (prePageCode && prePageCode != "active/participateDetails" && prePageCode != "login/userLogin") {
+				appUtils.pageBack();
+			} else {
+				appUtils.pageInit("active/oneMberserk", "active/valueList",{"active_type":1});
+			}
+		});
+		
+		// 图文详情
+		appUtils.bindEvent(_pageId + "#productImg", function(){
+			var imgUrl = $(this).attr("data-img_url");
+			appUtils.pageInit("active/oneMberserk", "active/pictureDetails", {"product_id" : pageGlobal.productId});
+		});
+		
+		// 参与详情
+		appUtils.bindEvent(_pageId + ".more_btn", function(){
+			appUtils.pageInit("active/oneMberserk", "active/participateDetails", {"product_id" : pageGlobal.productId});
+		});
+	}
+	
+	/*清除页面显示值*/
+	function initView(){
+		$(_pageId + "#actPdtName").html("");
+		$(_pageId + "#actPdtDesc").html("");
+		$(_pageId + "#percent").html("");
+		$(_pageId + "#soldAmount").html("");
+		$(_pageId + "#productAmount").html("");
+		$(_pageId + "#surplusTime").html("");
+		$(_pageId + "#actDetail").html("");
+		$(_pageId + "#productDetail").html("");
+		$(_pageId + "#joinNum").html(""); 
+		$(_pageId + ".porfit_bar em").html("已兑换0%");
+		$(_pageId + "#detailImg").attr("src", ""); 
+	}
+	
+	/*
+	 * 页面销毁
+	 */
+	function destroy(){
+		
+	}
+	
+	var oneMberserk = {
+		"init": init,
+		"bindPageEvent": bindPageEvent,
+		"destroy": destroy
+	};
+	// 暴露对外的接口
+	module.exports = oneMberserk;
+});

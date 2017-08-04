@@ -1,0 +1,92 @@
+<div class="page"  id="product_rmcp" data-pageTitle="热门产品" data-pageLevel="1"
+	 data-refresh="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner header_inner_index">
+			<h1>热门产品</h1>
+			<a href="javascript:void(0);" class="home_btn"></a>
+			<a href="javascript:void(0);" class="per_btn"></a>
+		</div>
+	</header>
+	<article>
+		<div class="index_page">
+			<div class="pro_box_01">
+				<div class="pro_main" id="pro_main">
+					<div class="prolist">
+						<div class="dutc_tit">
+							<p class="sp01">融鑫理财一号</p>
+							<p class="sp02">
+								<span class="san01">5万起购</span>
+								<span class="san02">银行理财</span>
+							</p>
+						</div>
+						<div class="dutc_box flex-father">
+							<s></s>
+							<div class="dutc_bl flex-children">
+								<p class="sp01">3.70<span>%</span></p>
+								<p class="sp02">业绩比较基准</p>
+							</div>
+							<div class="dutc_bt flex-children">
+								<p class="sp01">63<span>天</span></p>
+								<p class="sp02">投资期限</p>
+							</div>
+						</div>
+					</div>
+					<div class="prolist">
+						<div class="dutc_tit">
+							<p class="sp01">融鑫理财一号</p>
+							<p class="sp02">
+								<span class="san01">5万起购</span>
+								<span class="san02">银行理财</span>
+							</p>
+						</div>
+						<div class="dutc_box flex-father">
+							<s></s>
+							<div class="dutc_bl flex-children">
+								<p class="sp01">3.70<span>%</span></p>
+								<p class="sp02">业绩比较基准</p>
+							</div>
+							<div class="dutc_bt flex-children">
+								<p class="sp01">63<span>天</span></p>
+								<p class="sp02">投资期限</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer_box total_footer_box">
+				<img src="images/total_footer_pic.png" width="100%" />
+				<p>东北证券股份有限公司版权所有 @ 2015 </p>
+			</div>
+		</div>
+	</article>
+	<footer>
+		<div class="ui layout footer_nav footer_new_nav">
+			<div class="row-1 active">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>推荐</p>
+				</a>
+			</div>
+			<div class="row-1">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>理财</p>
+				</a>
+			</div>
+			<div class="row-1">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>活动</p>
+				</a>
+			</div>
+			<div class="row-1">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>我的</p>
+				</a>
+			</div>
+		</div>
+	</footer>
+</section>
+</div>

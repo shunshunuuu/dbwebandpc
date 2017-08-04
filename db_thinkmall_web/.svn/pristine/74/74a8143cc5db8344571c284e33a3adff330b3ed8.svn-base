@@ -1,0 +1,41 @@
+<!--组件清单-->
+<section class="main fixed page" data-page="home" id="index_ssoLogin" data-pageTitle="统一登录" data-pageLevel="2" data-refresh="true" data-animation-in-name="slideRight">
+    <header class="header">
+        <div class="header_inner">
+        	<!--<a herf="javascript:void(0);" class="icon_back"></a>-->
+        	<a herf="javascript:void(0);" class="icon_left_panel first"></a>
+            <h1 class="text-center">SSO统一登录</h1>
+        </div>
+    </header>
+    <article>
+<div class="weui_cells weui_cells_form">
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">用户名</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" id="sso_userid"  placeholder="请输入用户名">
+                </div>
+            </div>
+            <div class="weui_cell">
+                <div class="weui_cell_hd"><label class="weui_label">密码</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" id="sso_password" placeholder="请输入密码">
+                </div>
+
+            </div>
+            <div class="weui_cell weui_vcode ">
+                <div class="weui_cell_hd"><label class="weui_label">验证码</label></div>
+                <div class="weui_cell_bd weui_cell_primary">
+                    <input class="weui_input" type="text" id="sso_ticket" placeholder="请输入验证码">
+                </div>
+                <div class="weui_cell_ft">
+                    <i class="weui_icon_warn"></i>
+                    <img src=" ./images/vcode.jpg">
+                </div>
+            </div>
+			<div class="weui_btn_area">
+              <a class="weui_btn weui_btn_primary" href="javascript:void(0)" id="sso_submit">登录</a>
+            </div>
+        </div>
+    </article>
+</section>
+<!--组件清单-->

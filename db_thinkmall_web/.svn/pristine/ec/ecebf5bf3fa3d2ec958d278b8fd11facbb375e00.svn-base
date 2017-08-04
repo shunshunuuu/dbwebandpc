@@ -1,0 +1,77 @@
+<div class="page"  id="finan_consult" data-pageTitle="资讯列表" data-pageLevel="1">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner_02" id="search_isBox">
+		<a href="javascript:void(0);" class="back_btn"></a>
+			<!-- 搜索框 -->
+			<div class="search_box" style="display: none;">
+				<div class="ui layout search_text">
+	    			<div class="row-1">
+	    				<input id="search_value" type="text" placeholder="请输入代码或者基金名称进行查询">
+	    			</div>
+	    			<a href="javascript:void(0);" class="search_btn3"></a>
+	    		</div>
+			</div>
+			
+			<a href="javascript:void(0);" class="rt_icon search_btn" id="search_consult"></a>
+			<h1 id="consultTitle"></h1>
+		</div>
+	</header>
+	<article>
+		<div class="pro_page news_page">
+			<div class="news_list">
+				<div class="left_nav">
+					<ul style="height: 100%; overflow-y: scroll;">
+					</ul>
+				</div>
+				<!-- 咨询列表 -->
+				<div class="news_txt">
+					<div class="no_data_box" style="display: none;">
+						<em></em>
+						<p>查询无结果</p>
+					</div>
+					<div id="v_container_productList">
+					   	<div class="visc_wrapper" id="v_wrapper_productList" data-iscrollPageId="finan_market">
+							<div class="visc_scroller">
+								<div class="visc_pullDown" style="display:none;">
+									<span class="visc_pullDownIcon"></span>
+									<div class="visc_pullDownDiv">
+										<span class="visc_pullDownLabel">下拉加载上一页</span><br/>
+										时间更新于：<span class="visc_pullDownTime"></span>
+									</div>
+								</div>
+							   
+							    	<ul>
+									    <li>
+											<!-- <a href="javascript:void(0);">
+												<div class="li_con">
+													<h3>央企制造天价地王被疑推高房价</h3>
+													<p>北京丰台地价贵过房价 外资继续杀入...</p>
+													<span>11-05 12:15</span>
+												</div>
+											</a> -->
+										</li>
+							    	</ul>
+							    
+		 					    <div class="visc_pullUp" style="display:none;">
+									<span class="visc_pullUpIcon"></span>
+									<div class="visc_pullUpDiv">
+										<span class="visc_pullUpLabel">上拉加载下一页</span><br/>
+										时间更新于：<span class="visc_pullUpTime"></span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="pro_page search_page" style="display: none;" id="searchResult">
+			<div class="sl_list">
+				<ul>
+				</ul>
+			</div>
+		</div>
+	</article>
+</section>
+</div>

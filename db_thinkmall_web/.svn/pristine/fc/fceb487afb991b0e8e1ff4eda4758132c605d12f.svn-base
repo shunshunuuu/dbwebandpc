@@ -1,0 +1,73 @@
+<div class="page"  id="finan_fund_gdsx" data-pageTitle="更多筛选" data-pageLevel="1"
+ data-refresh="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner_02">
+			<h1>筛选条件</h1>
+			<a href="javascript:void(0);" class="back_btn"></a>
+		</div>
+	</header>
+	<article>
+		<div class="pro_page">
+			<div class="changeside">
+				<div class="changebox">
+					<div class="chanleft">类型</div>
+					<div class="chanright" id="lx">
+						<a class="on" href="javascript:void(0);">全部</a>
+						<a href="javascript:void(0);" val="b">混合型</a>
+						<a href="javascript:void(0);" val="6">债券型</a>
+						<a href="javascript:void(0);" val="1">股票型</a>
+						<a href="javascript:void(0);" val="2">货币型</a>
+						<a href="javascript:void(0);" val="8">指数型</a>
+						<a href="javascript:void(0);" val="a">QDII</a>
+					</div>
+				</div>
+			</div>
+			<div class="changeside">
+				<div class="changebox">
+					<div class="chanleft">风险</div>
+					<div class="chanright" id="fx">
+						<a class="on" href="javascript:void(0);">全部</a>
+						<a href="javascript:void(0);" val="1">低</a>
+						<a href="javascript:void(0);" val="2">中低</a>
+						<a href="javascript:void(0);" val="3">中</a>
+						<a href="javascript:void(0);" val="4">中高</a>
+						<a href="javascript:void(0);" val="5">高</a>
+					</div>
+				</div>
+			</div>
+			<div class="changeside">
+				<div class="changebox">
+					<div class="chanleft">净值</div>
+					<div class="chanright" id="jz">
+						<a class="on" href="javascript:void(0);">全部</a>
+						<a href="javascript:void(0);" min="0" max="0.5">0-0.5</a>
+						<a href="javascript:void(0);" min="0.5" max="1.0">0.5-1.0</a>
+						<a href="javascript:void(0);" min="1.0" max="1.5">1.0-1.5</a>
+						<a href="javascript:void(0);" min="1.5" max="2.0">1.5-2.0</a>
+						<a href="javascript:void(0);" min="2.5" max="3.0">2.5-3.0</a>
+						<a href="javascript:void(0);" min="3.0">3.0以上</a>
+					</div>
+				</div>
+			</div>
+			<div class="changeside">
+				<div class="changebox">
+					<div class="chanleft">起购<br />金额</div>
+					<div class="chanright" id="qgje">
+						<a class="on" href="javascript:void(0);">全部</a>
+						<a href="javascript:void(0);" min="1000">1千以下</a>
+						<a href="javascript:void(0);" min="1000" max="10000">1千~1万</a>
+						<a href="javascript:void(0);" min="10000" max="5000">1万~5万</a>
+						<a href="javascript:void(0);" min="50000">5万以上</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>
+	<footer>
+		<div class="imready">
+			<a href="javascript:void(0);">立即筛选</a>
+		</div>
+	</footer>
+</section>
+</div>

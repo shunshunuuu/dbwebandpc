@@ -1,0 +1,5 @@
+
+使用以下方式替代代码中的AcpService.sign调用：
+
+//多证书使用方法：如果有多个商户号接入银联,每个商户号对应不同的证书可以使用此方法:传入私钥证书和密码(并且在acp_sdk.properties中 配置 acpsdk.singleMode=false) 
+//Map<String, String> reqData = AcpService.sign(data,"D:\\certs\\PM_700000000000001_acp.pfx", "000000");

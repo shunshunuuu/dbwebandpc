@@ -1,0 +1,73 @@
+<div class="page"  id="account_userCenter" data-pageTitle="我的"  data-refresh="true">
+	<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner_03">
+			<h1 id="userName"></h1>
+			<a href="javascript:void(0);" class="tc_btn" id="setUp">退出</a>
+		</div>
+	</header>
+	<article>
+		<div class="login_page">
+			<div class="assets_box">
+				<div class="assets_box_up">
+					<p>总资产(元)</p>
+					<h3 id="total_assets">0</h3>
+				</div>
+				<div class="ui layout assets_box_lower">
+					<div class="row-1">
+						<h4 id="cash_assets">0</h4>
+						<p>可用金额(元)</p>
+					</div>
+					<div class="row-1">
+						<h4 id="fund_assets">0</h4>
+						<p>产品市值(元)</p>
+					</div>
+				</div>
+			</div>
+			<div class="login_nav_list" id="login_nav_list">
+				<ul>
+					<li><a href="javascript:void(0);"><i></i>我要推广</a></li>
+					<li><a href="javascript:void(0);"><i></i>推荐查询</a></li>
+					<li><a href="javascript:void(0);"><i></i>中奖查询</a></li>
+					<li><a href="javascript:void(0);"><i></i>我的现金管家</a></li>
+					<li><a href="javascript:void(0);"><i></i>我的理财</a></li>
+					<li><a href="javascript:void(0);"><i></i>实时货币基金</a></li>
+					<li><a href="javascript:void(0);"><i></i>理财订单</a></li>
+					<li><a href="javascript:void(0);"><i></i>我的米袋子<span id="myIntegral"></span></a></li>
+					<li><a href="javascript:void(0);"><i></i>米仓订单</a></li>
+					<li><a href="javascript:void(0);"><i></i>银证转账</a></li>
+					<li><a href="javascript:void(0);"><i></i>我的资料</a></li>
+					<li><a href="javascript:void(0);"><i></i>风险测评</a></li>
+					<li><a href="javascript:void(0);"><i></i>我的银行卡</a></li>
+					<li><a href="javascript:void(0);"><i></i>我的账单</a></li>
+					
+				</ul>
+			</div>
+		</div>
+	</article>
+	<footer>
+		<div class="ui layout footer_nav footer_new_nav">
+			<div class="row-1">
+					<a href="javascript:void(0);"> <em></em>
+						<p>推荐</p>
+					</a>
+				</div>
+				<div class="row-1">
+					<a href="javascript:void(0);"> <em></em>
+						<p>理财</p>
+					</a>
+				</div>
+				<div class="row-1">
+					<a href="javascript:void(0);"> <em></em>
+						<p>活动</p>
+					</a>
+				</div>
+				<div class="row-1 active">
+					<a href="javascript:void(0);"> <em></em>
+						<p>我的</p>
+					</a>
+				</div>
+		</div>
+	</footer>
+</section>
+</div>

@@ -1,0 +1,59 @@
+<div class="page" id="index_assetAllocation" data-pageTitle="资产配置">
+	<section class="main fixed" data-page="home">
+			<article class="boost bg_gray"  style = "background-color:#ffffff;">
+				<!-- ASSETS_BOX START -->
+				<div class="assets_box">
+					<div class="asset_allocation"   style="margin-top:150px;">
+						<h2>资产配置</h2>
+						<div class="asset_ratio clearfix">
+							<div class="ratio_left">
+								<img src="front/images/ratio.png" width="90" alt="">
+							</div>
+							<div class="ratio_right">
+								<table width="100%" cellpadding="0" cellspacing="0">
+									<tr>
+										<th><em></em>股票</th>
+										<td>0.00</td>
+										<!-- <td>37.11%</td> -->
+									</tr>
+									<tr>
+										<th><em></em>理财</th>
+										<td>0.00</td>
+										<!-- <td>12.62%</td> -->
+									</tr>
+									<!-- <tr>
+										<th><em></em>基金</th>
+										<td>50,000.00</td>
+										<td>45.20%</td>
+									</tr> -->
+									<tr>
+										<th><em></em>余额</th>
+										<td>0.00</td>
+										<!-- <td>6.07%</td> -->
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+					<!-- <div class="pro_trend">
+						<div class="tab_box2 mt10 clearfix">
+							<a href="javascript:void(0);" class="active">累计收益走势</a>
+							<a href="javascript:void(0);">总资产走势n</a>
+						</div>
+						<div class="chart_box text-center">
+							<p class="text-center">手指移至下方曲线图上，可观看近七日年化(%)</p>
+							<img src="front/images/chart_01.png" width="292" alt="">
+							<div class="time_tab mt20">
+								<a href="javascript:void(0);" class="active">近一月</a>
+								<a href="javascript:void(0);">近三月</a>
+								<a href="javascript:void(0);">近六月</a>
+								<a href="javascript:void(0);">近一年</a>
+							</div>
+						</div>
+					</div> -->
+				</div>
+				<!-- ASSETS_BOX END -->
+			</article>
+			<a href="javascript:void(0);" class="btn_home" id="homeBtn"></a>
+		</section>
+</div>

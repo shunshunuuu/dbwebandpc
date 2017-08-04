@@ -1,0 +1,749 @@
+/**
+ * 首页
+ * @Author: wangwz
+ * 
+ */
+define(function(require, exports, module) {
+	var _pageId = "#main1 "; // 页面id
+	var appUtils = require("appUtils"); // 核心工具类
+	var service = require("mobileService"); // 业务层接口，请求数据
+	var layerUtils = require("layerUtils"); // 弹出层工具类
+	var global = require("gconfig").global; // 全局配置对象
+	var constants = require("constants");// 常量类
+	var common = require("common"); // 公共类
+	var putils = require("putils"); //
+    var HIscroll = require("hIscroll"); //hIscroll别名已经配置到hSea中
+    var myHIscroll = null;
+	require("mall/scripts/common/plugins/swiperEvent");
+	
+	var user_id = appUtils.getSStorageInfo("user_id");
+	var user_name = appUtils.getSStorageInfo("user_name");
+	var pageGlobal = {
+			"isFileState" : "0", // 广告是否有效
+			"enumData" : [] // 用户缓存数据字典信息item_name,item_value
+		}
+    var aid="";
+	
+	/*
+	 * 初始化
+	 */
+	
+	function init() {
+		
+		//统计页面打开的次数
+		openPage(this);
+		//统计页面关闭的次数
+		closePage(this);
+		
+		// 处理ios滚动的问题
+		common.dealIOSScrollBug($(_pageId + "article"), $(_pageId + ".index_page"));
+		
+		// 初始化页面
+		initView();
+		
+		// 底部导航
+		common.footerTab(_pageId);
+		
+		// 产品广告
+		productAdvert(); 
+		
+		// 现金管家
+		cashbutlerAdvert();
+		
+		// 热销产品推荐
+		hotsaleProduct();
+		
+		// 热门主题推荐
+		queryHotTheme();
+
+		// 即将推出广告位
+		comingSoon();
+		
+		//查询数据字典
+		queryMotifType();
+		
+		// 是否显示登录成功后的窗口
+		var showLoginSuccess = appUtils.getPageParam("showLoginSuccess");
+		if (showLoginSuccess && showLoginSuccess == "1") {
+			// 显示注册成功窗口
+			$(_pageId + ".window_dialog").show();
+			$(_pageId + "#userCenter").addClass("highlight");
+			
+			// 只有注册成功后才加载当前图片，不要直接放到html页面中，影响首页加载速度
+			var imgHtml = '<img src="images/sy_win_icon2.png" width="100%" />';
+			$(_pageId + ".window_dialog .dialog_icon_box").html(imgHtml);
+			
+			// 点击页面关闭弹出窗口
+			appUtils.bindEvent(_pageId , function(){
+				$(_pageId + ".window_dialog").hide();
+				$(_pageId + "#userCenter").removeClass("highlight");
+			});
+		}
+		
+//		layerUtils.iAlert("关于融e通系统维护的公告:<br/> 本公司将于2016年4月22日15：30-23日进行系统维护，届时我公司融e通理财平台系统将暂停服务，系统将于4月24日恢复正常。敬请广大客户周知。<br/>特此公告。<br/><span>东北证券股份有限公司<br/>2016年4月21日</span>");
+	}
+	
+	/*
+	 * 首页滑动效果
+	 */
+	function indexReanimate(){
+		/*首页切换*/
+		var rewrap = $("article .rotation_box").children(".inner"),
+			renum = rewrap.find(".re_box").length;
+			rewidth = $(window).width()- 70,
+			recurrent = 1;
+			
+		function reanimate(id) {
+			if (id < renum && id >= 0) {
+				rewrap.css("transform","translate3d("+(- id * rewidth)+"px, 0px, 0px)");
+				
+			} else {
+				return false;
+			}
+		}
+		
+		reanimate(recurrent);
+		
+		$('article .rotation_box .re_box').swipeEvents().bind("swipeLeft", function(){
+			if(recurrent < renum-1 && recurrent >= 0){
+				reanimate(recurrent+=1);
+			}
+		}).bind("swipeRight", function(){
+			if(recurrent == 0){
+				reanimate(0);
+			}else{
+				reanimate(recurrent-=1);
+			}
+		});
+	}
+	
+	function initView(){
+		clearHIscroll();
+		// 设置APP综合首页地址
+		$(_pageId + ".home_btn").attr("href", global.appIndexUrl);
+		
+		
+		// 判断链接来源是否来自APP, 如果来自APP,头部隐藏 首先去cookie里面是否有值，再去页面参数中是否有值
+		var isFromApp = appUtils.getSStorageInfo("isFromApp");
+		if (isFromApp && isFromApp == "zzapp") { 
+			$(_pageId + "header").hide();
+		} else {
+			var  srcType = appUtils.getPageParam("src_type");
+			if (srcType && srcType == "zzapp") {
+				appUtils.setSStorageInfo("isFromApp", "zzapp");
+				$(_pageId + "header").hide();
+			} else {
+				$(_pageId + "header").show();
+			}
+		}
+	}
+	
+	/**
+	 * 清除滑动组件
+	 */
+	function clearHIscroll(){
+		if(myHIscroll){
+			myHIscroll.destroy();
+			myHIscroll = null;
+		}
+	}
+
+//	appUtils.bindEvent(_pageId+".jrtjs", function(e){
+//		customEvent(this);				
+//	});
+	
+	$(_pageId+"#jrtjs").live("click", function(e){
+		customEvent(this);
+	});
+	
+	appUtils.bindEvent(_pageId+"#tj", function(e){
+		customEvent(this);
+	});
+
+	appUtils.bindEvent(_pageId+"#lc", function(e){
+		customEvent(this);
+	});
+	
+	appUtils.bindEvent(_pageId+"#hd", function(e){
+		customEvent(this);
+	});
+	
+	appUtils.bindEvent(_pageId+"#wd", function(e){
+		customEvent(this);
+	});
+	
+	appUtils.bindEvent(_pageId+"#home_btn", function(e){
+		customEvent(this);
+	});
+
+	
+	/*
+	 * 产品广告
+	 */
+	function productAdvert() {
+		var productAdverBackFun = function(result){
+			// 产品广告区域元素，初始化清空
+			var adAreaEle = $(_pageId + "#inner").empty();
+			var dotsBox = $(_pageId + " #dots_box").empty();
+			var j = 0;//统计有效广告个数
+			var adItems = "";
+			var sadItems = "";
+			for (var i = 0; i < result.length; i++) {
+				
+				var item = result[i];
+				var imgPath = item.picture ? item.picture : item.small_picture; // 图片地址
+				var file_state = item.file_state; // 文件状态是否有效
+				if (file_state != "1") {
+					continue;
+					
+				}else{
+					pageGlobal.isFileState = "1";
+				}
+				
+				// 广告控制在4个以内
+				if (j++ > 3) {
+					break;
+				};
+				
+				imgPath = global.url + '/mall' + imgPath;
+				
+				var linkUrl = ""; // 链接地址			
+				var state = item.state; // 链接是否有效
+	
+				if (state == "1") {
+					linkUrl = item.url;
+					
+				} else {
+					linkUrl = "javascript:void(0)";
+				}
+				
+				if (i == 0) {
+					adItems += "<li url='" + linkUrl + "'><img src='"+ imgPath + "'  width='100%' style='height:1.44rem;'/></li>";
+					sadItems += "<em class='active'></em>";
+				} else {
+					adItems += "<li url='" + linkUrl + "'><img src='"+ imgPath + "'  width='100%' style='height:1.44rem;'/></li>";
+					sadItems += "<em></em>";
+				}
+			};
+			
+			if(pageGlobal.isFileState == "1"){
+				adAreaEle.append(adItems); // 显示位置ul
+				dotsBox.append(sadItems);
+				HIscroll_init();
+			}
+			
+			appUtils.bindEvent(_pageId+" #inner li", function(e){
+				aid="xqlc"
+				countCs(this);
+				e.stopPropagation();
+				var Url=$(this).attr("url");
+				appUtils.sendDirect(Url);					
+			});
+			
+		};
+		
+		// 获取常量类中广告组ID值
+		var groupId = constants.advertGroupId.ADVERT_GROUP_ID_PRODUCT;
+		queryAdvert(groupId, productAdverBackFun);
+	};
+	
+	/**
+	 * HIscroll左右滑动组件
+	 */
+	function HIscroll_init(){
+		if(!myHIscroll){
+	        var config = {
+	            wrapper: $(_pageId+' #rotation_box'), //wrapper对象
+	            scroller: $(_pageId+' #inner'), //scroller对象
+	            perCount: 1,  //每个可视区域显示的子元素，就是每个滑块区域显示几个子元素
+	            showTab: true, //是否有导航点
+	            tabDiv: $(_pageId+'#dots_box'), //导航点集合对象
+	            auto: true //是否自动播放
+	        };
+	        myHIscroll = new HIscroll(config);
+	        $(_pageId+'#inner li').show();
+	    }
+	}
+	
+	/*
+	 * 现金管家广告
+	 */
+	function cashbutlerAdvert() {
+		var cashbutlerAdverBackFun = function(result){
+			
+			// 产品广告区域元素，初始化清空
+			var adAreaEle = $(_pageId + ".index_banner").empty();
+			$(_pageId + ".index_banner").attr("id","jrtj");
+			if (result.length > 0) {
+				var item = result[0];
+				var imgPath = item.picture ? item.picture : item.small_picture; // 图片地址
+				var file_state = item.file_state; // 文件状态是否有效
+				if (file_state != "1") {
+					return;
+					
+				}
+		
+				imgPath = global.url + '/mall' + imgPath;
+				var linkUrl = ""; // 链接地址
+				var state = item.state; // 链接是否有效
+				if (state == "1") {
+					linkUrl = item.url;
+				} else {
+					linkUrl = "javascript:void(0)";
+				}
+				
+				var itemHtml = 	'<a href="' + linkUrl + '" id="jrtjs">' +
+								'	<img src="' + imgPath + '"  width="100%"/>' + 
+								'	<span class="tag">今日推荐</span>' +
+								'</a>';
+				
+/*				var itemHtml = '<div class="pic_box">' + 
+								'	<a href="' + linkUrl + '">' + 
+								'		<img src="' + imgPath + '" width="100%" />' +
+								'	</a>' +
+								'</div>';*/
+				adAreaEle.append(itemHtml);
+			}
+		};
+		
+		// 获取常量类中广告组ID值
+		var groupId = constants.advertGroupId.ADVERT_GROUP_ID_CASHBUTLER;
+		queryAdvert(groupId, cashbutlerAdverBackFun);
+	};
+	
+	/*
+	 * 即将推出广告位
+	 */
+	function comingSoon() {
+		var comingSoonBackFun = function(result){
+			
+			// 产品广告区域元素，初始化清空
+			var adAreaEle = $(_pageId + "#coming_soon").empty();
+			if (result.length > 0) {
+				var item = result[0];
+				var imgPath = item.picture ;// 图片地址
+				if(imgPath!=""){
+					var file_state = item.file_state; // 文件状态是否有效
+					if (file_state != "1") {
+						return;
+						
+					}
+					imgPath = global.url + '/mall' + imgPath;
+					var linkUrl = ""; // 链接地址
+					var state = item.state; // 链接是否有效
+					if (state == "1") {
+						linkUrl = item.url;
+					} else {
+						linkUrl = "javascript:void(0)";
+					}
+					
+					var itemHtml = 	'<img src="' + imgPath + '"  width="100%" data-pro_url="' + linkUrl + '" onclick=""/>';
+					
+					adAreaEle.append(itemHtml);
+					// 点击图片 链接跳转
+					common.clickImg(_pageId);
+				}else{
+					$(_pageId + "#coming_soon").hide();
+				}
+			}
+		};
+		
+		// 获取常量类中广告组ID值
+		var groupId = constants.advertGroupId.ADVERT_GROUP_ID_COMINGSOON;
+		queryAdvert(groupId, comingSoonBackFun);
+	};
+	
+	/*
+	 * 根据广告组ID查询广告信息
+	 * @param groupId 广告组ID
+	 * @param callBackFun 处理结果集的回调函数
+	 */
+	function queryAdvert(groupId, callBackFun) {
+		var param = {
+			"group_id" : groupId, // 广告组编号
+			"ad_id" : "" // 广告编号
+		};
+		
+		service.queryAd(param, function(data) {
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+			
+			if (error_no == "0") {
+				var result = data.results;
+				
+				// 返回结果集处理
+				callBackFun(result);
+			} else {
+				// 错误信息提示
+				layerUtils.iMsg(-1, error_info);
+			}
+		});
+	};
+	
+	/*
+	 * 热销产品推荐
+	 */
+	function hotsaleProduct(){
+		// 推荐产品结果集回调函数
+		var recomProBackFun = function(result) {
+			var monthHotProductEle = $(_pageId + "#financial_pro_list").empty();
+
+			// 热销产品区域填充数据
+			for (var i = 0; i < result.length; i++) {
+				// 最多显示3个
+				if (i > 2) {
+					break;
+				}
+				// 显示标题
+				var title = "";
+				if (i == 0){
+					title = '<div class="index_box_tit">' +
+						    '	<h2><span>人气产品</span>提前锁定未来收益</h2>' +
+						    '</div>';
+				}
+				
+				var item = result[i];
+				var productName = item.product_name; // 产品名称
+				var productSubType = item.product_sub_type; // 产品类型
+				var productId = item.product_id; // 产品编号
+				var productCode = item.product_code; // 产品代码
+				var period = item.period || "--"; // 理财周期
+				var annual_profit = item.annual_profit || "--"; // 七日年化预期收益率
+				var earnings = item.earnings || "--"; // 预期年化收益率
+				var productStatus = item.product_status; // 产品状态
+				var finaBelongs  = item.fina_belongs;
+				if(productSubType && productSubType == '0'){
+					var showName = "理财基金";
+					var showNameOne = "业绩比较基准";
+					var showValueOne = annual_profit + '<em style="font-size: smaller;">%</em>';
+					
+					// 第二个要展示的字段名称&值
+					var showNameTwo = "理财周期";
+					var showValueTwo = period;
+				}else{
+					if(finaBelongs && finaBelongs == '1'){
+						var showName = "资管理财";
+					}else if(finaBelongs == '2'){
+						var showName = "银行理财";
+					}else if(finaBelongs == '5'){
+						var showName = "OTC";
+					}
+				}
+				
+				if (finaBelongs && finaBelongs == '2' || finaBelongs == '5') {
+						var showFiledOneObj = putils.getRecomField(1, item, true); // 第一个要展示的字段名称&值
+						var showNameOne = showFiledOneObj.name;
+						var showValueOne = showFiledOneObj.value;
+						var showFiledTwoObj = putils.getRecomField(2, item, true); // 第二个要展示的字段名称&值
+						var showNameTwo = showFiledTwoObj.name;
+						var showValueTwo = showFiledTwoObj.value;
+				}else if(finaBelongs == '1'){
+						var showFiledOneObj = putils.getRecomField(1, item, true); // 第一个要展示的字段名称&值
+						var showNameOne = "业绩比较基准";
+						var showValueOne = earnings + '<em style="font-size: smaller;">%</em>';
+						var showFiledTwoObj = putils.getRecomField(2, item, true); // 第二个要展示的字段名称&值
+						var showNameTwo = showFiledTwoObj.name;
+						var showValueTwo = showFiledTwoObj.value;
+				}
+				
+				var showFiledThreeObj = putils.getRecomField(3, item, true); // 第三个要展示的字段名称&值
+				var showNameThree = showFiledThreeObj.name;
+				var showValueThree = (showFiledThreeObj.value).toString();
+//				showValueThree = showValueThree.replaceAll(",","");
+				showValueThree = showValueThree.replace("万", "<em>万</em>");
+				
+				productName = putils.delProSpecialStr(productName);
+				if (productName.length > 17) {
+					productName = productName.substring(0, 16) + "...";
+				}
+				
+				var itemHtml = '' + title + '' +
+							   '<div class="financial_pro_item" productCode="' + productCode + '" productId="' + productId + '" productSubType="' + productSubType + '">' +
+							   '	<div class="item_tit">' +
+							   '		<span class="tit_tag">' + showName + '</span>' +
+							   '		<h3>' + productName + '</h3>' +
+							   '	</div>' +
+							   '	<div class="ui layout item_con">' +
+							   '		<div class="row-1">' +
+							   '			<span>' + showNameOne + '</span>' +
+							   '			<strong>' + showValueOne + '</strong>' +
+							   '		</div>' +
+							   '		<div class="row-1">' +
+							   '			<div class="item_txt">' +
+							   '				<p><i class="icon1"></i>' + showNameThree + '&nbsp&nbsp<em class="ared">' + showValueThree + '元</em></p>' +
+							   '				<p><i class="icon2"></i>' + showNameTwo + '&nbsp&nbsp<em class="ared">' + showValueTwo + '天</em></p>' +
+							   '			</div>' +	
+							   '		</div>' +
+							   '	</div>' +
+							   '</div>' ;
+				
+/*				var itemHtml = '<div class="earning_box" productCode="' + productCode + '" productId="' + productId + '" productSubType="' + productSubType + '">' + 
+								'	<div class="earning_inner">' + 
+								'		<h3>' + productName + '</h3>' +
+								'		<strong>' + yieldrate1m + '</strong>' +
+								'		<p>' + showName + '</p>' + 
+								'		<a href="javascript:void(0);" productCode="' + productCode + '" productId="' + productId + '" productSubType="' + productSubType + '" class="buy_btn">' + showValueThree + '元起购</a>' + 
+								'	</div>' + 
+								'</div>'; */
+				
+				monthHotProductEle.append(itemHtml);
+			}
+			
+			// 绑定详情事件
+			appUtils.bindEvent(_pageId + ".financial_pro_item", function(){
+				var curEle = $(this);
+				productDetail(curEle.attr("productId"), curEle.attr("productSubType"), curEle.attr("productCode"));
+			});
+		};
+
+		// 调用后台方法查询推荐产品
+		var recommendType = constants.recommendType.RECOMMEND_TYPE_INDEX_REC;
+		queryRecomProductByType(recommendType, recomProBackFun);
+	}
+	
+	/*
+	 * 获取主题类型所有数据字典
+	 */
+	function queryMotifType(){
+		// 清空数据字典数据
+		pageGlobal.enumData = [];
+		
+		var param = {
+			"enum_name" : "motifType" 
+		}
+		
+		service.queryEnum(param, function(data){
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+			
+			if(error_no == "0"){
+				var results = data.results;
+				if (results.length > 0) {
+					for (var i = 0; i < results.length; i++) {
+						var result = data.results[i];
+						var item_id = result.item_id; // 值编号 
+						var item_name = result.item_name; // 项目名
+						var item_value = result.item_value; // 项目值
+						var enumTemp = {
+								"itemValue" : item_value,
+								"itemName" : item_name,
+								"itemId" : item_id
+							}
+						pageGlobal.enumData.push(enumTemp);
+					}
+					// 热门主题
+					queryHotTheme();
+				}
+			}else{
+				layerUtils.iMsg(-1,error_info);
+				return false;
+			}
+		});
+	}
+	
+	/*
+	 * 查询数据字典
+	 */
+	function queryenum(key){
+		var enumData = pageGlobal.enumData;
+		for (var i = 0; i < enumData.length; i++) {
+			var item = enumData[i];
+			if (item.itemValue == key) {
+				return item.itemName;
+			}
+		}
+	}
+	
+	/*
+	 * 热门主题
+	 */
+	function queryHotTheme(){
+		// 推荐产品结果集回调函数
+		var hotThemeBackFun = function(result) {
+			var hotThemeProductEle = $(_pageId + "#hotTheme").empty();
+
+			// 热销产品区域填充数据
+			for (var i = 0; i < result.length; i++) {
+				// 最多显示3个
+				if (i > 2) {
+					break;
+				}
+				
+				var item = result[i];
+				var productName = item.product_name; // 产品名称
+				var productSubType = item.product_sub_type; // 产品类型
+				var productId = item.product_id; // 产品编号
+				var productCode = item.product_code; // 产品代码
+				var themeName = item.custom_types || "-1"; // 主题名称 工作平台配置
+				themeName = queryenum(themeName);
+				var yieldrate1m = item.yieldrate1m || "0"; // 近一个月收益率
+				var currentPrice = item.current_price || "0"; // 预期收益
+				
+				var showValue = ""; // 界面显示的值
+				var showName = "近一月收益率"; // 显示字段名称
+				if (productSubType == "0") {
+					showValue = parseFloat(yieldrate1m).toFixed(2) + "<span style='font-size: smaller;'>%</span>";
+					showName = "近一月收益率";
+				} else {
+					showValue = parseFloat(currentPrice).toFixed(4);
+					showName = "最新净值";
+				}
+				productName = putils.delProSpecialStr(productName);
+				var itemHtml = '<li productCode="' + productCode + '" productId="' + productId + '" productSubType="' + productSubType + '">' + 
+								'	<div class="ui layout">' + 
+								'		<div class="tag_box">' + 
+								'			<span>' + themeName +'</span>' + 
+								'		</div>' + 
+								'		<div class="row-1">' + 
+								'			<h3>' + productName + '</h3>' + 
+								'			<strong>' + showValue + '</strong>' + 
+								'			<p>' + showName + '</p>' + 
+								'		</div>' + 
+								'		<div class="btn_box">' + 
+								'			<a href="javascript:void(0)" class="buy_btn"><p>立即<br/>购买</p></a>' + 
+								'		</div>' + 
+								'	</div>' + 
+								'</li>';
+				
+				hotThemeProductEle.append(itemHtml);
+			}
+			
+			// 绑定详情事件
+			appUtils.bindEvent(_pageId + "#hotTheme li", function(){
+				var curLiEle = $(this);
+				productDetail(curLiEle.attr("productId"), curLiEle.attr("productSubType"), curLiEle.attr("productCode"));
+			});
+		};
+
+		// 调用后台方法查询推荐产品
+		var recommendType = constants.recommendType.RECOMMEND_TYPE_HOTTHEME;
+		queryRecomProductByType(recommendType, hotThemeBackFun);
+	}
+	
+	/*
+	 * 根据推荐类型查询推荐产品
+	 * @param recommendType 推荐类型。
+	 * @param callBackFun 查询成功后回调函数。
+	 * @param 查询失败或结果为空时回调函数。
+	 */
+	function queryRecomProductByType(recommendType, callBackFun) {
+		var param = {
+			"recommend_type" : recommendType
+		};
+
+		service.queryRecomProduct(param, function(data) {
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+
+			if (error_no == "0") {
+				var result = data.results;
+				
+				if (result && result.length > 0) {
+					// 数据处理函数
+					callBackFun(result);
+				}
+			} else {
+				// 错误信息提示
+				layerUtils.iMsg(-1, error_info);
+			}
+		});
+	};
+	
+	/*
+	 * 产品详情
+	 */
+	function productDetail(productId, subType, productCode) {
+		if (productCode == global.product_code) {
+			// 现金管家
+			appUtils.pageInit("finan/index", "account/cashbutler/detail", {});
+		} else {
+			// 非现金管家
+			if(subType == constants.product_sub_type.FUND){
+				aid="rmzt";
+				countCs(this);
+				// 基金产品详情
+				appUtils.pageInit("finan/index", "finan/detail", {"product_id" : productId});	
+			}else if(subType == constants.product_sub_type.FINANCIAL){
+				aid="rqcp";
+				countCs(this);
+				// 理财产品详情
+				appUtils.pageInit("finan/index", "finan/finanDetail", {"product_id" : productId});	
+			}
+		}
+		
+	}
+	
+	/*
+	 * 绑定事件
+	 */
+	function bindPageEvent() {
+		// 登录
+		appUtils.bindEvent(_pageId + ".per_btn", function() {
+			customEvent(this);
+			appUtils.pageInit("main", "account/userCenter", {});
+			return false;
+		});
+		
+		// 禁止头部和底部滑动
+		common.stopHeadAndFooterEvent(_pageId); 
+	};
+	
+    /*********************************埋点*********************************/
+    //页面统计打开页面
+    var openPage = function (ob) { 
+        Countly.q.push(['openPage', {
+            userId: user_id, pageId: "main"
+        }]);
+    };
+    
+    //页面统计打开页面
+    var closePage = function (ob) {  //关闭页面
+        Countly.q.push(['closePage', {
+            userId: user_id, pageId: "main"
+        }]);
+    };
+    
+    //事件统计
+    var customEvent = function (ob) { 
+        Countly.q.push(['customEvent', {
+            eventId: ob.id, duration: "1000", userId: user_id
+        }]);
+    };
+    
+    var countCs = function (ob) {
+    	Countly.q.push(['customEvent', {
+    		eventId: aid, duration: "1000", userId: user_id
+    	}]);
+    }
+    
+    
+    //查询用户信息
+    var userinfo = function (ob) {   
+        Countly.q.push(['userinfo', {
+            userId: user_id,
+          userName: user_name 
+        }]);
+    };
+	
+    //用户信息
+    if(user_id != null && user_id != ""){
+    	userinfo(this);
+    }
+	
+
+	/*
+	 * 页面销毁
+	 */
+	function destroy() {
+		clearHIscroll();
+	};
+
+	var main = {
+		"init" : init,
+		"bindPageEvent" : bindPageEvent,
+		"destroy" : destroy
+	};
+	
+	// 暴露对外的接口
+	module.exports = main;
+});

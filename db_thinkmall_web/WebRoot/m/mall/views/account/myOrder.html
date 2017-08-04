@@ -1,0 +1,233 @@
+<div class="page"  id="account_myOrder" data-pageTitle="我的">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner_02">
+			<h1>我的订单</h1>
+			<a href="javascript:void(0)" class="back_btn"></a>
+		</div>
+<!-- 		<div class="header_inner header_dt_inner" style="background: -webkit-linear-gradient(top,#0081E2,#00AEF4);">
+			<h1>理财订单</h1>
+			<a href="javascript:void(0)" class="back_btn"></a>
+		</div> -->
+		<div class="lc_top_nav">
+			<div class="ui layout" id="tra_tab_list">
+				<div class="row-1"><a href="javascript:void(0)" class="active"><span>交易</span></a></div>
+				<div class="row-1"><a href="javascript:void(0)"><span>定投</span></a></div>
+			</div>
+		</div>
+<!-- 		<div class="header_inner_02">
+			<h1>理财订单</h1>
+			<a href="javascript:void(0);" class="back_btn"></a>
+		</div> -->
+	</header>
+	<article>
+		<div class="my_order">
+			<div class="my_order_list">
+				<div class="no_data_box" style="display: none;">
+					<em></em>
+					<p>查询无结果</p>
+				</div>
+				<div id="v_container_orderList">
+				   <div class="visc_wrapper" id="v_wrapper_orderList" data-iscrollPageId="account_myOrder">
+						<div class="visc_scroller">
+							<div class="visc_pullDown" style="display:none;">
+								<span class="visc_pullDownIcon"></span>
+								<div class="visc_pullDownDiv">
+									<span class="visc_pullDownLabel">下拉加载上一页</span><br/>
+									时间更新于：<span class="visc_pullDownTime"></span>
+								</div>
+							</div>
+
+						    <div class="month_list">
+						    </div>
+						    
+				    		<!-- 基金定投 -->
+							<div class="index_page" id="fund_place" style="display: none;">
+							</div>
+						    
+							<div class="visc_pullUp" style="display:none;">
+								<span class="visc_pullUpIcon"></span>
+								<div class="visc_pullUpDiv">
+									<span class="visc_pullUpLabel">上拉加载下一页</span><br/>
+									时间更新于：<span class="visc_pullUpTime"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+<!-- 			<div class="month_list">
+					<h3>8月</h3>
+					<ul>
+						<li>
+							<div class="ui layout">
+								<div class="row-2">
+									<h4>东北1号收益凭证<span class="ui tag rounded subscription">认购</span></h4>
+									<p>2015-09-22  16:16:01</p>
+								</div>
+								<div class="row-1">
+									<h4 class="ared">－5000.00</h4>
+									<p>购买中</p>
+								</div>
+							</div>
+							<i class="tag_icon"><span>基金</span></i>
+						</li>
+						<li>
+							<div class="ui layout">
+								<div class="row-2">
+									<h4>东北1号收益凭证<span class="ui tag rounded prchase">申购</span></h4>
+									<p>2015-09-22  16:16:01</p>
+								</div>
+								<div class="row-1">
+									<h4 class="ared">－5000.00</h4>
+									<p>购买中</p>
+								</div>
+							</div>
+							<i class="tag_icon"><span>基金</span></i>
+						</li>
+						<li>
+							<div class="ui layout">
+								<div class="row-2">
+									<h4>东北1号收益凭证<span class="ui tag rounded redemption">赎回</span></h4>
+									<p>2015-09-22  16:16:01</p>
+								</div>
+								<div class="row-1">
+									<h4 class="ared">－5000.00</h4>
+									<p>购买中</p>
+								</div>
+							</div>
+							<i class="tag_icon"><span>理财</span></i>
+						</li>
+					</ul>
+				</div>-->
+			</div>
+		</div>
+		
+	</article>
+		<div class="dropdown_box2" style="display: none;" id="dateList">
+		<div class="cate_dropdown">
+			<div class="dates_list">
+				<div class="year_box">
+					<div class="ui layout">
+						<a href="javascript:void(0)" class="prev_btn"><i></i></a>
+						<input class="row-1" type="tel" value="" id="yearValue"/>
+						<a href="javascript:void(0)" class="next_btn"><i></i></a>
+					</div>
+				</div>
+				<div class="month_num clearfix">
+					<ul>
+						<li>
+							<a href="javascript:void(0)">1月</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">2月</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">3月</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">4月</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">5月</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">6月</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">7月</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">8月</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">9月</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">10月</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">11月</a>
+						</li>
+						<li>
+							<a href="javascript:void(0)">12月</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>		
+	<!--弹窗-->
+	<div class="window_dialog" id="order_buy" style="display: none;">
+		<div class="dialog_cet">
+			<a href="javascript:void(0);" class="close_btn" id="close_btn_buy"></a>
+			<div class="dialog_tit2">
+				<h3>请输入交易密码</h3>
+			</div>
+			<div class="dialog_cet_det">
+				<div class="dialog_text">
+					<p id = "isBuy">确认支付</p>
+					<strong id="top_price_value" >¥168.00</strong>
+					<div class="pass_text" id="trade_pwd_box">
+		            	<input type="text" fina_belongs = "" productType = "" operating_type = "" order_id = "" id="trade_pwd" class="text" readonly="readonly" keyboard-plugin="true">
+		                <em></em><em></em><em></em><em></em><em></em><em></em>
+		            </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--弹窗-->
+	<div class="window_dialog" id="window_two" style="display: none;">
+		<div class="dialog_cet dialog_cet3">
+			<div class="order_det_list">
+				<div class="order_det_tit" style="height: 0.45rem">
+					<h3 style="line-height: 0.45rem">订单详情</h3>
+					<span class="lt_dot"></span> <span class="rt_dot"></span>
+				</div>
+				<div class="order_det_table">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%">
+						<tr>
+							<th style="height: 0.38rem">订单号:</th>
+							<td id="orderId" style="height: 0.38rem"></td>
+						</tr>
+						<tr>
+							<th style="height: 0.38rem">代码:</th>
+							<td id="productCode" style="height: 0.38rem"></td>
+						</tr>
+						<tr>
+							<th style="height: 0.38rem">创建时间:</th>
+							<td id="time" style="height: 0.38rem"></td>
+						</tr>
+						<tr>
+							<th style="height: 0.38rem">金额:</th>
+							<td id="price" style="height: 0.38rem"></td>
+						</tr>
+						<tr>
+							<td colspan="2" class="ts">
+								<p id="orderState">待提交</p>
+							</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="ui layout btn_box">
+				<div class="row-1">
+					<a href="javascript:void(0)" class="save_btn" id="cancelFund">关闭</a> 
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		<div class="select_dates" id="dateBtn">
+			<a href="javascript:void(0);"><i></i>选择日期</a>
+		</div>
+		<div class="select_dates" id="allOrders" style="display: none;">
+			<a href="javascript:void(0);">查看全部</a>
+		</div>
+		<div class="select_dates" id="footerBtn" style="display: none;background: #FFFFFF;">
+			<a href="javascript:void(0);"></a>
+		</div>
+	</footer>
+</section>
+</div>

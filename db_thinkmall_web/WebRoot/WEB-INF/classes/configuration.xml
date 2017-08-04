@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="GBK"?>
+<system>
+    <category name="system" description="系统相关配置">
+    	<item name="verifyKey" value="B49A86FA425D439dB510A234A3E25A3E" description="验签使用的加解密KEY"/>
+    	<item name="desKey" value="thinkive_mall" description="商城 DES key"/>
+    	<item name="passwordFields" value="trade_pwd|fund_pwd|bank_pwd|login_pwd|new_trade_pwd|new_trade_pwd1|new_fund_pwd|new_fund_pwd1|login_pwd_second|pwd_value_after|pwd_value_aft_true|pwd_src|pwd_new|pwd_twice|trade_pwd_src|trade_pwd_new|trade_pwd_twice|trade_pwd_old" description="需要解密的字段,多个用|分割"/>
+    	<item name="filterParam" value="address" description="需要过滤的字段,多个用|分割"/>
+    	<item name="filterCharacter" value="alert|console" description="需要过滤的字符,多个用|分割"/>
+    	<item name="domainName" value="thinkive.cn" description="保存Cookie的域名"/>
+    	<item name="secretBusKey" value="secret_bus" description="加密服务器bus"/>
+    	<!-- 
+    		trade_pwd:交易密码, fund_pwd:资金密码 ,login_pwd:商城用户登录密码 ,bank_pwd:银行密码 
+    	-->
+    	<item name="isOracleSequence" value="1" description="是否使用oracle的sequence(0或空不使用 1使用)"/>
+    	<item name="busKey" value="thinkive_mall" description="Action中直接调接口，bus配置"/>
+    	<item name="token_time" value="5000" description="验证token间隔时间,单位毫秒"/>
+    	<item name="is_sms_verify" value="0" description="是否需要校验手机验证码"/>
+		<item name="is_secret" value="1" description="1:启用加密服务器，2.不启用"/>
+		<item name="secret_timeout" value="1" description="设置密码失效时间（分）"/>
+<!-- 	<item name="zz_rsaKey" value="MIICXAIBAAKBgQCiSBMt8/uNiF05SBGTHExOlIkB8/oqQwcD92uYRyqPxyNHo5IQapALUdsSJF+pK/6BtllRdeFZ+4hLebTxjqNVFVVP/zidExeQYU3xvoq/iWpIE5/FG77YVE54H1DGKI56TSQNT6PYrwFYNne5P9nAg8O22ZnTmtie/0psGJqHTQIDAQABAoGBAJaXa7TpBDaCpH/TcPui9uy0ya8WSL+PE6OKpj3ZTJW/pe2EzLaPLLxUaYacWmkSekrEfH4rdcOatw/TESZXxxhjJI9xADTP2cGEfXNKb+plFV+i6NfnZz06KsUMIWEUwlfMQxMtjbeuUmU2tWR0RbbLQ6RR0U6J33h/lAH/QxoBAkEA0CV9+MEKZN9AMPZbYTVuVQp5EGoeolFT8tS3e++K0Belcxbkq43+NDuGR4ulvK56V+sM7XJXg3wSznHpk9rGqQJBAMeXMV7VKn0gmZvFVhQtSmGRSqIwWfaAbFSlMm6MwIoWVRfmovJ6UZKBTzwPuaA4w9fzZ1tk1ve3DpX0LzElNgUCQHRwZNYhd2USluBNELWCpGQiZbNPCjAXevTfFn3YdTkP4VhOuEFYP5qMqgOgFWlF2d8Q+LxkOJyvbf3bL6Wsv3ECQHaZegXPBztpRr3QSjEdJIjLjBzKPHsEntrBezFDxBmJ4bCdJRCO7K/w1MNs2LHDaWSGR1GAn1h9V1Z1ziEW6n0CQHpuRFSEfKVL9MLAuXKoFCSSDyqa1pYrWiV8X63xCP/pX69OISeJFc1nTiWndqN8qh3gUEa1+GcnUb1aCk8h2HI=" description="与中焯统一登录后RSA解码秘钥"/>
+ -->		
+ 		<item name="zz_rsaKey" value="MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAKJIEy3z+42IXTlIEZMcTE6UiQHz+ipDBwP3a5hHKo/HI0ejkhBqkAtR2xIkX6kr/oG2WVF14Vn7iEt5tPGOo1UVVU//OJ0TF5BhTfG+ir+JakgTn8UbvthUTngfUMYojnpNJA1Po9ivAVg2d7k/2cCDw7bZmdOa2J7/SmwYmodNAgMBAAECgYEAlpdrtOkENoKkf9Nw+6L27LTJrxZIv48To4qmPdlMlb+l7YTMto8svFRphpxaaRJ6SsR8fit1w5q3D9MRJlfHGGMkj3EANM/ZwYR9c0pv6mUVX6Lo1+dnPToqxQwhYRTCV8xDEy2Nt65SZTa1ZHRFtstDpFHRTonfeH+UAf9DGgECQQDQJX34wQpk30Aw9lthNW5VCnkQah6iUVPy1Ld774rQF6VzFuSrjf40O4ZHi6W8rnpX6wztcleDfBLOcemT2sapAkEAx5cxXtUqfSCZm8VWFC1KYZFKojBZ9oBsVKUybozAihZVF+ai8npRkoFPPA+5oDjD1/NnW2TW97cOlfQvMSU2BQJAdHBk1iF3ZRKW4E0QtYKkZCJls08KMBd69N8Wfdh1OQ/hWE64QVg/moyqA6AVaUXZ3xD4vGQ4nK9t/dsvpay/cQJAdpl6Bc8HO2lGvdBKMR0kiMuMHMo8ewSe2sF7MUPEGYnhsJ0lEI7sr/DUw2zYscNpZIZHUYCfWH1XVnXOIRbqfQJAem5EVIR8pUv0wsC5cqgUJJIPKprWlitaJXxfrfEI/+lfr04hJ4kVzWdOJad2o3yqHeBQRrX4ZydRvVoKTyHYcg==" description="与中焯统一登录后RSA解码秘钥"/>
+ 		<item name="filterParam" value="address" description="需要过滤的字段,多个用|分割"/>
+    	<item name="filterCharacter" value="alert|console" description="需要过滤的字符,多个用|分割"/>
+    </category> 
+    
+    <category name="uums" description="统一账户相关配置">
+        <item name="appid" value="mall" description="站点appid"/>
+    	<item name="corp_id" value="20151027000000004" description="公司编号" />
+    	<item name="app_id" value="20151027000000001" description="应用编号" />
+    	<item name="encry_key" value="B49A86FA425D439dB510A234A3E25A3E" description="密码加密key" />
+    </category>
+    
+    <category name="upop" description="银联支付">
+    	<item name="version" value="5.0.0" description="版本号" />
+    	<item name="charset" value="UTF-8" description="编码方式" />
+		<item name="merCode" value="777290058136696" description="商户代码" />
+		<item name="merName" value="dbzqUnionPaytest" description="商户名称" />
+		<!--由于银联的frontUrl不能带能带有#,所以用m/payJump.html作为中转页，-->
+		<item name="merFrontEndUrl" value="http://localhost:80/servlet/pay/InfoPay?function=MallBack" description="交易下单前台回调URL(该接口会生成一个跳转的HTML)" />
+	   <!-- 回调 --> 
+		<item name="merBackEndUrl" value="http://localhost:80/servlet/pay/InfoPay?function=backUpop" description="(签约)交易下单后台回调URL" />
+		<!-- 每个渠道都会有一个环境值 -->
+		<item name="01" value="000686hwzd" description="本地验证环境值" />
+		<item name="02" value="000686hscd" description="本地验证环境值" />
+		
+		<!-- （最后）前台回调页面地址 name=渠道号+订单类型 -->
+		<item name="0101" value="http://localhost:80/m/mall/index.html#!/infoproduct/orderPay.html?isqdly=01" description="(签约)交易下单前台回调页面" />
+		<item name="0102" value="http://localhost:80/m/mall/index.html#!/infoproduct/convertSuccess.html?isqdly=01" description="资讯购买成功回调页面" />
+		<item name="0103" value="http://localhost:80/m/mall/index.html#!/software/convertSuccess.html?isqdly=01" description="软件购买成功回调页面" />
+		<!-- 渠道号和订单类型 -->
+		<item name="dbzq_cn" value="01" description="东北证券渠道号" />
+		<item name="sign_type" value="01" description="订单类型" />
+		
+    </category>
+</system>
+

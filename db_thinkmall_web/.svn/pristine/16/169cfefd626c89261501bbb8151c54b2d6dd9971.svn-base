@@ -1,0 +1,79 @@
+<div class="page"  id="software_ActiveSoftDetail" data-pageTitle="软件产品活动详情" data-pageLevel="1"
+	data-urlParam="true" data-refresh="true">
+<section class="main fixed" data-page="home">
+    <header>
+		<div class="header_inner header_inner_02">
+			<h1>软件产品</h1>
+			<a href="javascript:void(0);" class="back_btn"></a>
+		</div>
+	</header>
+	<article>
+		<div class="allpages">
+			<div class="imgbox_auto" id = "cpbanner">
+<!-- 			    <img src="images/bannerfor_page.png" alt="" /> -->
+			</div>
+			<div class="product_ds" id = "cpjs">
+<!-- 				<p class="tit">产品介绍</p> -->
+<!-- 				<p class="p2">融易达一款可提供诸如高速行情、快速下单、多账号管理全业务交易支持、篮子下单、多市场批量下单、套利交易以及策略交易等丰富投资交易模式证券PC端交易分析软件</p> -->
+			</div>
+			<!-- 标题 -->
+			<div class="imgbox_auto">
+				<img src="images/pro_tit_bg.png" alt="" />
+				<p class="img_intit">四大核心功能</p>
+			</div>
+			<div class="bigcore">
+				<ul>
+					<li>
+						<img src="images/bigcore_01.png" alt="" />
+						<p class="sp1">整合看盘</p>
+						<p class="sp2">同一界面实现多业务多品种的支持</p>
+					</li>
+					<li>
+						<img src="images/bigcore_02.png" alt="" />
+						<p class="sp1">策略交易平台</p>
+						<p class="sp2">可实现自主策略开发、回测等</p>
+					</li>
+					<li>
+						<img src="images/bigcore_03.png" alt="" />
+						<p class="sp1">高端套利</p>
+						<p class="sp2">ETF套利和股指期货套利功能</p>
+					</li>
+					<li>
+						<img src="images/bigcore_04.png" alt="" />
+						<p class="sp1">多账户管理</p>
+						<p class="sp2">实现多账户管理，方便快捷</p>
+					</li>
+				</ul>
+			</div>
+			<div class="imgbox_auto">
+				<img src="images/pro_tit_bg.png" alt="" />
+				<p class="img_intit">使用流程引导</p>
+			</div>
+			<div class="ydlc">
+				<img src="images/ydlc_img.png" alt="" />
+				<p><s></s>获取的产品信息包括软件的下载链接，和初始登录账号和初始登录密码。用户通过下载链接下载软件，输入账号和密码方可使用</p>
+			</div>
+			<div class="imgbox_auto">
+				<img src="images/pro_tit_bg.png" alt="" />
+				<p class="img_intit">活动规则与说明</p>
+			</div>
+			<div class="gamerules" id = "cpactive">
+<!-- 				<p>1.活动时间：<span>2016</span>年<span>12</span>月<span>20</span>日-<span>12</span>月<span>31</span>日</p> -->
+<!-- 				<p>2.本活动仅限融e通注册用户参与，非注册用户需在相关的页面进行注册后参与活动</p> -->
+<!-- 				<p>3.用户可在客户端购买此软件，获取下载链接和账户密码在PC端使用</p> -->
+<!-- 				<p class = "zk" style = "display:none;">4.通过活动页面参与的，当日购买当日生效，每个用户仅限参与一次</p> -->
+<!-- 				<p class = "zk" style = "display:none;">5.软件使用期有效期从购买当天计算开始，过期自动失效</p> -->
+<!-- 				<p class = "zk" style = "display:none;">6.活动资源有限，先到先得，活动资源用完活动可提前结束。若出现通过技术手段获得软件用权，我司有权停止相关人员使用权限，并依法追究其法律责任</p> -->
+<!-- 				<p  style = "display:none;" class="zk sp001">*活动解释权归东北证券所有，如有疑问请咨询<span>95360</span></p> -->
+<!-- <!-- 				<a class="sq" href="javascript:void(0);">收起<i></i></a> --> -->
+<!-- 				<a href="javascript:void(0);" id = "zhankai">展开更多<i></i></a> -->
+			</div>
+		</div>
+	</article>
+	<footer>
+		<div class="joinnow">
+			<a href="javascript:void(0);" id = "nowjoin">立即参与</a>
+		</div>
+	</footer>
+</section>
+</div>

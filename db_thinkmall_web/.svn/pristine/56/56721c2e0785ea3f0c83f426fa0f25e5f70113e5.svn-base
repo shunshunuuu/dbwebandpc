@@ -1,0 +1,290 @@
+define(function(require, exports, module) {
+	var appUtils = require("appUtils"); // 核心工具类
+	var service = require("mobileService"); // 业务层接口，请求数据
+	var layerUtils = require("layerUtils"); // 弹出层工具类
+	var global = require("gconfig").global; // 全局配置对象
+	var constants = require("constants");// 常量类
+	var validatorUtil = require("validatorUtil"); // 校验工具类
+	var common = require("common"); // 公共类
+	var putils = require("putils"); //
+	var VIscroll = require("vIscroll");
+	var vIscroll = {"scroll":null, "_init":false}; // 上下滑动对象
+    var pageCode = "finan/fund/search";
+    var _pageId = "#finan_fund_search "; // 页面id
+    
+    var pageGlobal = {
+    		"productData" : [] // 用户缓存所有产品信息 id,productCode,productName
+    }
+    
+	
+    /*
+	 * 初始化
+	 */
+	
+	function init() {
+		// 底部导航
+		common.footerTab(_pageId);
+		
+		// 初始化搜索历史
+		$(_pageId + "#search_value").val("");
+		$(_pageId + "#searchResult").hide();
+		$(_pageId + "#searchView").show();
+		$(_pageId + "#hoter_tiit").show();
+		// 把所有产品信息缓存到本地
+		initProduct();
+		
+		// 初始化搜索历史
+		initSearchHistory();
+	}
+	
+	/**
+	 * 初始化搜索历史
+	 */
+	function initSearchHistory(){
+		var searchHistory = appUtils.getLStorageInfo("searchHistory");
+		var historyEle = $(_pageId + "#searchView ul").empty();
+		if (searchHistory) {
+			searchHistory = JSON.parse(searchHistory);
+			for (var i = searchHistory.length - 1; i >= 0; i--) {
+				 var history =new Array();
+				 history = searchHistory[i].split(",")
+			     for (var j = 0; j < history.length; j++) {
+						var value = history[0];
+						var productId = history[1];
+						var productCode = history[2];
+						var subType = history[3];
+				}
+				 historyEle.append('<li productId="'+productId+'" productCode="'+productCode+'" productSubType="'+subType+'">' + value+ '</li>'); 
+			}
+			
+			appUtils.bindEvent(_pageId + "#searchView li", function(){
+//				searchProduct($(this).text(), "1");
+				var curEle=$(this);
+				var productId = curEle.attr("productId");
+				var productCode = curEle.attr("productCode");
+				var subType = curEle.attr("productSubType");
+				productDetail(productId, subType, productCode);
+			});
+		}
+	}
+	
+	/**
+	 * 搜索
+	 * @param searchValue 搜索条件关键字
+	 * @param searchValue 查询类型 0：根据基金类型查询【1000070】，1: 模糊查询【1000052】
+	 */
+	function searchProduct(searchValue, searchType){
+		var param = {
+			"searchValue" : searchValue,
+			"pageSrc" : "finan/fund/search",
+			"searchType" : searchType
+		};
+		
+		appUtils.pageInit(pageCode, "finan/fund/jjph", param);
+	}
+	
+	/**
+	 * 搜索过的条件存储到历史记录里面
+	 */
+	function searchHistory(val){
+		var searchValue = val;
+		var searchHistory = appUtils.getLStorageInfo("searchHistory");
+		if (!searchHistory) {
+			searchHistory = [];
+		} else {
+			searchHistory = JSON.parse(searchHistory);
+			// 只保存30个最新的记录
+			if (searchHistory.length > 30) {
+				searchHistory.remove(0);
+			}
+		}
+		
+		// 如果数组中没有存当前值 则添加到历史中
+		if (validatorUtil.isNotEmpty(searchValue) && searchHistory.indexOf(searchValue) == -1) {
+			searchHistory.push(searchValue);
+			appUtils.setLStorageInfo("searchHistory", JSON.stringify(searchHistory));
+		}
+	}
+	/*
+	 * 把所有产品查询出来缓存到本地
+	 */
+	function initProduct(){
+		// 清空产品数据
+		pageGlobal.productData = [];
+		
+		service.queryProduct({}, function(data){
+			var result = common.getResultList(data);
+			if (result.length > 0) {
+				for(var i = 0; i < result.length; i++){
+					var item = result[i];
+					var productSubType = item.product_sub_type;// 产品类型 0基金 1理财
+					var productCode = item.product_code;// 产品代码
+					var productName = item.product_name; // 产品名称
+					productName = putils.delProSpecialStr(productName); 
+					var productId = item.product_id; // 产品ID
+					var productTemp = {
+						"productId" : productId,
+						"productCode" : productCode,
+						"productSubType" : productSubType,
+						"productName" : productName
+					}
+					pageGlobal.productData.push(productTemp);
+				}
+			}
+		});
+	}
+	
+	/*
+	 * 模糊查询金融产品
+	 */
+	function queryProduct(key){
+		if (key) {
+			key = $.trim(key).toUpperCase();
+		}
+		$(_pageId + "#searchResult").hide();
+		$(_pageId + "#searchView").show();
+		$(_pageId + "#hoter_tiit").hide();
+		
+		var searchResultEle = $(_pageId + ".hotsearch ul").empty();
+		var productData = pageGlobal.productData;
+		var index = 0;
+		if (productData.length > 0) {
+			for(var i = 0; i < productData.length; i++){
+				// 最多显示10条
+				if (index >= 10) {
+					break;
+				}
+				var item = productData[i];
+				var productCode = item.productCode;// 产品代码
+				var productName = item.productName; // 产品名称
+				var codeTemp = ""; // 把产品代码转为大写
+				if (productCode) {
+					codeTemp = productCode.toUpperCase();
+				}
+				var nameTemp = "";// 把产品名称转为大写
+				if (productName) {
+					nameTemp = productName.toUpperCase();
+				}
+				
+				// 查询当前对象中产品代码和产品名称是否符合关键字 全部转换成大写后比较
+				if (codeTemp.indexOf(key) != -1 || nameTemp.indexOf(key) != -1) {
+					var productSubType = item.productSubType;// 产品类型 0基金 1理财
+					var productId = item.productId; // 产品ID
+					var itemHtml = '<li productId="' + productId + '" productCode="' + productCode + '" productSubType="' + productSubType + '">' + productCode + ' ' + productName + '</li>';
+					searchResultEle.append(itemHtml);
+					index ++;
+				}
+			}
+			
+			if (index > 0) {
+				$(_pageId + "#searchResult").show();
+				$(_pageId + "#searchView").hide();
+				
+				// 点击进入详情
+				appUtils.bindEvent(_pageId + "#searchResult ul li", function(){
+					var curEle = $(this);
+					var productId = curEle.attr("productId");
+					var productCode = curEle.attr("productCode");
+					var subType = curEle.attr("productSubType");
+					var val =$(this).html()+","+productId+","+productCode+","+subType;
+					searchHistory(val);
+					productDetail(productId, subType, productCode);
+				});
+			}
+			
+		}
+	}
+	
+	/*
+	 * 绑定事件
+	 */
+	function bindPageEvent() {
+		
+		// 禁止头部和底部滑动
+		common.stopHeadAndFooterEvent(_pageId); 
+		
+		/*
+		 * 文本框改变时查询
+		 */
+		appUtils.bindEvent(_pageId + "#search_value", function(){
+			searchHistory();
+    		
+		}, "blur");
+		
+		/*
+		 * 文本框改变时查询
+		 */
+		appUtils.bindEvent(_pageId + "#search_value", function(){
+			var key = $.trim($(this).val());
+			if (validatorUtil.isEmpty(key)) {
+				$(_pageId + "#searchResult").hide();
+				$(_pageId + "#searchView").show();
+				return false;
+			}
+			queryProduct(key);
+		}, "keyup");
+		
+		/*
+		 * 清空历史记录
+		 */
+		appUtils.bindEvent(_pageId + "#cleanHistory", function(){
+
+			layerUtils.iConfirm("您确定要清空历史搜索记录吗？",function(){
+				
+				appUtils.clearLStorage("searchHistory");
+				$(_pageId + ".hotsearch ul").empty();
+				
+				}, function(){}); 
+		
+		});
+		
+		appUtils.bindEvent(_pageId + "#away", function(){
+//			appUtils.pageInit(pageCode,"finan/fund/jjph");
+			appUtils.pageBack();
+		});
+		
+	};
+	
+	/*
+	 * 产品详情
+	 */
+	function productDetail(productId, subType, productCode) {
+		if (productCode == global.product_code) {
+			// 现金管家详情
+			var userInfo = appUtils.getSStorageInfo("userInfo");
+			if (userInfo) {
+				var user_id = JSON.parse(userInfo).user_id;
+				if (user_id) {
+					appUtils.pageInit(pageCode, "account/cashbutler/detail", {});
+					return false;
+				}
+			}
+			
+			appUtils.pageInit(pageCode, "login/userLogin", {});
+			return false;
+		} else {
+			if(subType == constants.product_sub_type.FUND){
+				// 基金产品详情
+				appUtils.pageInit(pageCode, "finan/detail", {"product_id" : productId});
+			}else if(subType == constants.product_sub_type.FINANCIAL){
+				// 理财产品详情
+				appUtils.pageInit(pageCode, "finan/finanDetail", {"product_id" : productId});
+			}
+		}
+		
+	}
+
+	/*
+	 * 页面销毁
+	 */
+	function destroy() {};
+
+	var main = {
+		"init" : init,
+		"bindPageEvent" : bindPageEvent,
+		"destroy" : destroy
+	};
+	
+	// 暴露对外的接口
+	module.exports = main;
+});

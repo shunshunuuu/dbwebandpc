@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta name="format-detection" content="telephone=no">
+	<title>商城</title>
+	<meta http-equiv="Cache-Control" content="no-store" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<meta name="browsermode" content="application">
+	<meta name="x5-page-mode" content="app">
+	<meta name="msapplication-tap-highlight" content="no">
+	<link href="/m/mall/css/common.css" rel="stylesheet" />
+	<link href="/m/mall/css/style.css" rel="stylesheet" />
+	<link href="/m/mall/css/animate.css" rel="stylesheet" />
+	<link href="/m/mall/css/ui-font.css" rel="stylesheet" />
+</head>
+<body>
+<section class="main fixed" data-page="home">
+	<article>
+		<div class="pro_page news_page">
+			<div class="error_box">
+				<em></em>
+				<p>很抱歉！您访问的页面不存在...</p>
+				<p><span id="times">3</span> 秒后将自动返回首页，或点击<a href="javascript:void(0)" onclick="jumpMain()">首页</a></p>
+				<p>直接返回！</p>
+				<div class="error_icon"></div>
+			</div>
+		</div>
+	</article>
+</section>
+
+<script>
+	var seconds = 3; // 初始化倒计时秒数
+	
+	var timer = setInterval(function(){
+		if (seconds == 0) {
+			jumpMain();
+			return false;
+		}
+		
+		document.getElementById("times").innerHTML = seconds--;
+	}, 1000);
+	
+	// 跳转到首页
+	function jumpMain(){
+		window.clearInterval(timer); // 清空定时器
+		window.location.href = "/m/mall/index.html";
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<div class="page" id="index_earningsDetail" data-pageTitle="收益明细">
+	<section class="main fixed" data-page="home">
+			<header class="header">
+				<div class="filter_box2 filter_box">
+					<a href="javascript:void(0);">全部产品<em></em></a>
+					<a href="javascript:void(0);">所有月份<em></em></a>
+				</div>
+			</header>
+			<article class="boost bg_gray">
+				<!-- ASSETS_BOX START -->
+				<div class="assets_box">
+					<div class="total_earning">
+						<h3>累计收益(元)<em>300.66</em></h3>
+					</div>
+					<div class="earning_list">
+						<div class="earning_inner">
+							<a href="javascript:void(0);">2016-03-11<span>+2.37</span></a>
+						</div>
+						<div class="earning_inner">
+							<a href="javascript:void(0);">2016-03-11<span>+2.37</span></a>
+						</div>
+						<div class="earning_inner open">
+							<a href="javascript:void(0);">2016-03-11<span>+2.37</span></a>
+							<div class="earning_detail">
+								<p><em><img src="front/images/category_01.png" alt=""></em>股票收益<span>+1.37</span></p>
+								<p><em><img src="front/images/category_02.png" alt=""></em>理财收益<span>+1.37</span></p>
+							</div>
+						</div>
+						<div class="earning_inner">
+							<a href="javascript:void(0);">2016-03-11<span>+2.37</span></a>
+						</div>
+						<div class="earning_inner">
+							<a href="javascript:void(0);">2016-03-11<span>+2.37</span></a>
+						</div>
+					</div>
+				</div>
+				<!-- ASSETS_BOX END -->
+			</article>
+		</section>
+</div>

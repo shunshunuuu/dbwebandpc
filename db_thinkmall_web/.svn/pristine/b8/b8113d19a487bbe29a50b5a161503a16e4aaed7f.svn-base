@@ -1,0 +1,33 @@
+<div class="page" id="midAutumn_index"  data-pageTitle="邀请好友下载app" >
+<section class="main fixed" data-page="home">
+	<article class="boost">
+		<div class="share_page">
+			<div class="share_it_box">
+				<h2 class="share_logo"></h2>
+				<!-- <div class="app_logo"></div> -->
+				<div class="share_it_banner">
+					<img src="images/share_midautumn.png" width="100%" />
+				</div>
+				<div class="fill_number_box">
+					<div class="fill_number_list">
+						<div class="number_text">
+							<input id="telenumber" type="text" placeholder="输入预注册手机号码" />
+						</div>
+						<div class="fill_btn">
+							<a href="javascript:void(0)" class="ui button block rounded" id="load_app">立即去下载</a>
+							<a href="javascript:void(0)" class="ui button block rounded" id="join">我也要参加</a>
+						</div>
+					</div>
+				</div>
+				<div class="share_step_list">
+					<ul class="ui layout">
+						<li class="row-1"><div class="li_con"></div></li>
+						<li class="row-1"><div class="li_con"></div></li>
+						<li class="row-1"><div class="li_con"></div></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</article>
+</section>
+</div>

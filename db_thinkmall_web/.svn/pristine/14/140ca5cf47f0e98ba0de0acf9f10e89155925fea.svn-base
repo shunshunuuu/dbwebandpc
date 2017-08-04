@@ -1,0 +1,158 @@
+define(function(require, exports, module) {
+	var _pageId = "#infoproduct_convertSuccess "; // 页面id
+	var pageCode = "infoproduct/convertSuccess";
+	var appUtils = require("appUtils"); // 核心工具类
+	var service = require("mobileService"); // 业务层接口，请求数据
+	var layerUtils = require("layerUtils"); // 弹出层工具类
+	var global = require("gconfig").global; // 全局配置对象
+	var constants = require("constants");// 常量类
+	var common = require("common"); // 公共类
+	var putils = require("putils"); //
+    var HIscroll = require("hIscroll"); //hIscroll别名已经配置到hSea中
+    var myHIscroll = null;
+	require("mall/scripts/common/plugins/swiperEvent");
+	var isqdly = 01;
+	/*
+	 * 初始化
+	 */
+	function init() {
+		var product_name = appUtils.getPageParam("product_name");
+		var service_end_time = appUtils.getPageParam("service_end_time");
+		var integral = appUtils.getPageParam("integral");
+		var order_no = appUtils.getPageParam("order_no");
+		isqdly = appUtils.getPageParam("isqdly");
+		//兑换成功的产品
+		sellProduct(product_name,service_end_time,integral,order_no);
+		//购买次数最多的产品
+		recommonProduct();
+	}
+	
+	function sellProduct(product_name,service_end_time,integral,order_no){
+			var orderEle = $(_pageId + "#dhxx").empty();
+			  var nb_time = service_end_time.substr(0,4);
+			  var yb_time = service_end_time.substr(4,2);
+			  var rb_time = service_end_time.substr(5,2);
+			  var end_time = nb_time+"年"+yb_time+"月"+rb_time+"日";
+			  var order_price = null;
+			  if(isqdly == 01){
+				  order_price = integral+"元";
+			  }else{
+				  order_price = integral+"东北米";
+			  }
+			 
+			var itemHtml = '<p><span>产品名称</span>'+product_name+'</p>' +
+			'<p><span>订单编号</span>'+order_no+'</p>' +
+			'<p><span>支付金额</span>'+order_price+'</p>' +
+			'<p><span>到期时间</span>'+end_time+'</p>';
+			orderEle.append(itemHtml);
+	};
+	
+	//购买次数最多的产品
+	function recommonProduct(){
+		var param = {
+				"page" : 1, 
+				"numPerPage" : 8,
+			    "is_mouth_rate" : 1,//近一月收益率  0 升序 1降序
+			    "product_shelf" : "1"// 上线产品
+			};
+		service.findFund(param,function(resultVo){
+			if(0==resultVo.error_no){
+				var gmproductEle = $(_pageId + "#gmproduct").empty();
+				var results = resultVo.results[0].data;
+				var resultDataLen = results.length; // 记录结果集长度
+				for(var i = 0; i < 2; i++){
+					var item = results[i];
+					var productName = item.product_name; // 产品名称
+					productName = putils.delProSpecialStr(productName);
+					if (productName.length > 7) {
+						productName = productName.substring(0, 6) + "...";
+					}
+					var productId = item.product_id; // 产品编号
+					var productSubType = item.product_sub_type;// 产品类型 0基金 1理财
+					var productCode = item.product_code; // 产品代码
+					var yieldrate1m = item.yieldrate1m || "0"; // 近一个月收益率
+					var yield1m = parseFloat(yieldrate1m).toFixed(2);
+					var productStatus = item.product_status;//产品状态
+					var itemHtml = '<div class="ld_l" productId="'+productId+'" productCode="' + productCode + '" productSubType="'+productSubType+'" productStatus="'+productStatus+'">' +
+						'<p class="p009">'+productName+'</p>' +
+						'<p class="p010">'+yield1m+'<span>%</span></p>' +
+						'<p class="p011">近一个月收益</p>' +
+						'<a href="javascript:;" id = "goumai">立即购买</a>' +
+					'</div>';
+					gmproductEle.append(itemHtml);
+					// 立即购买
+					appUtils.bindEvent(_pageId + ".ld_l", function(){
+						var productId = $(this).attr("productId");
+						var productCode = $(this).attr("productCode");
+						var productStatus = $(this).attr("productStatus");
+						if(checkProductStatus(productStatus)){
+							var recommendPersonId = appUtils.getPageParam("uk"); // 获取请求参数中推荐人用户编号
+							var param = {
+								"product_id" : productId,
+								"product_code" : productCode,
+								"sub_type" : constants.product_sub_type.FUND,
+								"recommend_person_id" : recommendPersonId
+							}
+							var _loginInPageCode = "finan/buy";
+							if (common.checkUserIsLogin(true, false, _loginInPageCode, param, true)) {
+								appUtils.pageInit(pageCode, "finan/buy", param);
+								return false;
+							}
+						}
+					});
+				}
+			}
+		});
+	}
+	
+	
+	/*
+	 * 校验产品是否能够购买
+	 */
+	function checkProductStatus(productStatus){
+		if (productStatus != "0" && productStatus != "1" && productStatus != "2") {
+			layerUtils.iMsg(-1, "该产品非购买时期");
+			return false;
+		}
+		return true;
+	}
+	/*
+	 * 绑定事件
+	 */
+	function bindPageEvent() {
+		// 返回
+		appUtils.bindEvent(_pageId + ".back_btn", function() {
+			 if(isqdly == 01){
+				  appUtils.pageInit(pageCode, "infoproduct/myInfo");
+			  }else{
+				  appUtils.pageBack();
+			  }
+		});
+		
+		//继续逛逛
+		appUtils.bindEvent(_pageId + "#jxgg", function() {
+			appUtils.pageInit(pageCode, "active/index");
+		});
+		
+		//查看详情
+		appUtils.bindEvent(_pageId + "#ckxq", function() {
+			appUtils.pageInit(pageCode, "infoproduct/myInfo");
+		});
+		
+	};
+	
+
+	/*
+	 * 页面销毁
+	 */
+	function destroy() {};
+
+	var main = {
+		"init" : init,
+		"bindPageEvent" : bindPageEvent,
+		"destroy" : destroy
+	};
+	
+	// 暴露对外的接口
+	module.exports = main;
+});

@@ -1,0 +1,45 @@
+<div class="page"  id="software_convertSuccess" data-pageTitle="订单支付" data-pageLevel="1"
+	data-urlParam="true" data-refresh="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner header_inner_index header_inner_02">
+			<h1>订单支付</h1>
+			<a href="javascript:void(0);" class="back_btn"></a>
+		</div>
+	</header>
+	<article>
+		<div class="index_page">
+			<div class="test_one">
+				<div class="dh_cg"><img src="images/dh_cg.png" alt="" /></div>
+				<p class="p007">恭喜您购买成功！</p>
+			</div>
+			<div class="test_two" id = "dhxx">
+<!-- 				<p><span>付款金额</span>100.00元</p> -->
+<!-- 				<p><span>订单编号</span>SPXQWE2016</p> -->
+<!-- 				<p><span>支付方式</span>银联支付</p> -->
+<!-- 				<p><span>付款账号</span>资金账号</p> -->
+			</div>
+			<div class="main_001">
+				<div class="reco_ld">
+					<p class="pre_tit">购买产品信息</p>
+					<div class="test_two border-none" id = "cpxx">
+<!-- 						<p class="sp2">融易达普通版</p> -->
+<!-- 						<p class="sp3">100.00元/12个月</p> -->
+<!-- 						<p class="sp1"><span>下载链接</span>www.dongbei.com</p> -->
+<!-- 						<p><span>登录账号</span>dongbeizhengquan</p> -->
+<!-- 						<p><span>初始密码</span>8888888</p> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>
+	<footer>
+		<div class="twobtn_sp">
+			<div class="twobtns_in">
+				<a href="javascript:void(0);" id = "jxgg">继续逛逛</a>
+				<a href="javascript:void(0);" id = "ckxq">查看详情</a>
+			</div>
+		</div>
+	</footer>
+</section>
+</div>

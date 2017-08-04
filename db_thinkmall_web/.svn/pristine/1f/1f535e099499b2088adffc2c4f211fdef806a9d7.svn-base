@@ -1,0 +1,62 @@
+<div class="page"  id="infoproduct_myInfo" data-pageTitle="我的资讯" data-pageLevel="1"
+	data-urlParam="true" data-refresh="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner header_inner_index header_inner_02">
+			<h1>资讯产品</h1>
+			<a href="javascript:void(0);" class="back_btn"></a>
+			<a href="javascript:void(0);" class="rt_icon share_btn">更多</a>
+		</div>
+	</header>
+	<article>
+		<div class="index_page">
+			<div class="pronews all_mynews">
+				<ul>
+					<li>
+						<div class="mynewstit">
+							<p>每日投资决策内参</p>
+							<span>到期时间：2017年5月20日</span>
+						</div>
+						<div class="sibnews">
+							<div class="sibnews_l">
+								<img src="images/pronews_bg003.jpg" alt="" />
+							</div>
+							<div class="sibnews_r">
+								<div class="newstits">
+									<p>股市有风险，入行需谨慎</p>
+								</div>
+								<div class="thestarts">今日更新：<span>2</span></div>
+								<div class="theprice">所有资讯：<span>28</span></div>
+								<div class="exchange">
+									<a href="javascript:void(0);">立即查看</a>
+								</div>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="mynewstit">
+							<p>涨停集中营</p>
+							<span>到期时间：2017年7月20日</span>
+						</div>
+						<div class="sibnews">
+							<div class="sibnews_l">
+								<img src="images/pronews_bg005.jpg" alt="" />
+							</div>
+							<div class="sibnews_r">
+								<div class="newstits">
+									<p>股市有风险，入行需谨慎，投资有风险</p>
+								</div>
+								<div class="thestarts">今日更新：<span>2</span></div>
+								<div class="theprice">所有资讯：<span>28</span></div>
+								<div class="exchange">
+									<a href="javascript:void(0);">立即查看</a>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul> 
+			</div>
+		</div>
+	</article>
+</section>
+</div>

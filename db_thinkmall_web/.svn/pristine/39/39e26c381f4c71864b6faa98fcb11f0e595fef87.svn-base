@@ -1,0 +1,126 @@
+<div class="page"  id="infoproduct_orderPay" data-pageTitle="订单支付" data-pageLevel="1"
+	data-urlParam="true" data-refresh="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner header_inner_index header_inner_02">
+			<h1>订单支付</h1>
+			<a href="javascript:void(0);" class="back_btn"></a>
+		</div>
+	</header>
+	<article>
+		<div class="index_page">
+			<div class="mainboxs" id = "infoproduct">
+<!-- 				<div class="main_001"> -->
+<!-- 					<div class="userage"> -->
+<!-- 						<p>客户姓名：<span>张迪</span></p> -->
+<!-- 						<p>订单编号：<span>SPXQWE2016101500001</span></p> -->
+<!-- 						<s></s> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="main_001"> -->
+<!-- 					<div class="proamsg"> -->
+<!-- 						<div class="pro_tits pro_tit_ah"> -->
+<!-- 							<a href="javascript:;"> -->
+<!-- 								<p class="sp01"><i></i>产品信息</p> -->
+<!-- 							</a> -->
+<!-- 						</div> -->
+<!-- 						<div class="everyday"> -->
+<!-- 							<div class="p001"> -->
+<!-- 								<p>每日投资决策内参</p> -->
+<!-- 								<span>已有12人兑换</span> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="bbretail"> -->
+<!-- 							<div class="bbtail_in"> -->
+<!-- 								<img src="images/pronews_bg003.jpg" alt="" /> -->
+<!-- 								<p class="aap01">简介：每日投资决策内参每日投资决策内参每日投资决策内参……</p> -->
+<!-- 								<p class="aap02"><s></s>10东北米/10元</p> -->
+<!-- 								<p class="aap03">兑换份数x1</p> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<div class="setabox"> -->
+<!-- 							<div class="setatop"> -->
+<!-- 								<p class="p002">订阅数量</p> -->
+<!-- 								<div class="free"> -->
+<!-- 									<a class="minus" href="javascript:;"></a> -->
+<!-- 									<input type="text" id = "nr" value="1" /> -->
+<!-- 									<a class="plus" href="javascript:;"></a> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 							<div class="setabottom"> -->
+<!-- 								<p class="p002">订阅周期</p> -->
+<!-- 								<p class="p003">2016年10月15~2017年10月14</p> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+
+			</div>
+			<div class="main_001">
+					<div class="paystyle">
+						<div class="pro_tits pro_tit_al">
+							<a href="javascript:;">
+								<p class="sp01"><i></i>支付方式</p>
+							</a>
+						</div>
+						<div class="payboxs">
+							<ul>
+								<li>
+									<div class="bankboxs">
+										<div class="bankimg"><img src="images/bankicon001.png" alt="" /></div>
+										<input type="radio" name="pay" />
+										<label for="" id = "yhkzf"></label>
+										<p class="p004">银行卡支付</p>
+										<p class="p005"><span>5万起购</span>安全急速支付，无需开通网银</p>
+									</div>
+								</li>
+								<li>
+									<div class="bankboxs">
+										<div class="bankimg"><img src="images/bankicon002.png" alt="" /></div>
+										<input type="radio" name="pay" />
+										<label for="" id = "dbmdh"></label>
+										<p class="p004">东北米兑换</p>
+										<p class="p005">无需现金支付，东北米直接当钱用</p>
+									</div>
+								</li>
+<!-- 								<li> -->
+<!-- 									<div class="bankboxs"> -->
+<!-- 										<div class="bankimg"><img src="images/bankicon003.png" alt="" /></div> -->
+<!-- 										<input type="radio" name="pay" /> -->
+<!-- 										<label for=""></label> -->
+<!-- 										<p class="p004">使用体验券（1张券可使用）</p> -->
+<!-- 										<p class="p005">免费体验使用30日，新客专享</p> -->
+<!-- 									</div> -->
+<!-- 								</li> -->
+							</ul>
+						</div>
+					</div>
+				</div>
+		</div>
+	</article>
+	<footer>
+		<div class="enterpay" >
+			<p class="p006">合计：<span id="hj"></span></p>
+			<a href="javascript:;" id="ljzf">立即支付</a>
+		</div>
+	</footer>
+	<!-- 弹出层 -->
+	<div class="blockbg_pay" id="zzc" style="display:none;"></div>
+	<div class="tckbox" id="ddzf" style = "display:none;">
+		<div class="titforlc" id="error">
+			<a href="javascript:;"><s></s></a>
+		</div>
+		<div class="orders">
+			<p><span>订单编号</span>SPXQWE2016101500001</p>
+			<p><span>产品名称</span>每日投资决策内参</p>
+			<p><span>支付金额</span><strong>10元</strong></p>
+		</div>
+		<div class="twobtns">
+			<div class="twobtns_in">
+				<a href="javascript:;" id="zfcg">支付成功</a>
+				<a href="javascript:;" id="zfsb">支付失败</a>
+			</div>
+		</div>
+	</div>
+</section>
+</div>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="GBK"?>
+<!-- ################################################################ ## 
+	DO:需要登录后才能使用的功能号在本文件中定义 ## ## 用于配置服务器需要动态加载的功能模块 ## ## id : 业务功能编号 ## ## 
+	desc : 功能描述信息 ## ## ## ################################################################ -->
+<functions>
+	<function id="1000002">
+		<desc>查询用户资料</desc>
+	</function>
+	<function id="1000003">
+		<desc>修改用户资料</desc>
+	</function>
+	<function id="1000004">
+		<desc>修改用户密码</desc>
+	</function>
+	<function id="1000006">
+		<desc>资金账号绑定</desc>
+	</function>
+	<function id="1000013">
+		<desc>校验资金账号与资金密码是否匹配</desc>
+	</function>
+	<function id="1000014">
+		<desc>更改手机号</desc>
+	</function>
+	<function id="1000015">
+		<desc>资金账号解绑</desc>
+	</function>
+	<function id="1000017">
+		<desc>增加用户关注</desc>
+	</function>
+	<function id="1000018">
+		<desc>取消用户关注</desc>
+	</function>
+	<function id="1000019">
+		<desc>查询用户关注</desc>
+	</function>
+	<function id="1000020">
+		<desc>积分商城用户签到</desc>
+	</function>
+	<function id="1000021">
+		<desc>查询用户积分流水</desc>
+	</function>
+	<function id="1000023">
+		<desc>开通功能（绑定手机、邮箱）</desc>
+	</function>
+	<function id="1000100">
+		<desc>是否已购买过</desc>
+	</function>
+	<function id="1000101">
+		<desc>基金购买</desc>
+	</function>
+	<function id="1000102">
+		<desc>理财订单生成</desc>
+	</function>
+	<function id="1000103">
+		<desc>OTC产品购买</desc>
+	</function>
+	<function id="1000104">
+		<desc>资讯购买</desc>
+	</function>
+	<function id="1000105">
+		<desc>查询订单</desc>
+	</function>
+	<function id="1000108">
+		<desc>取消订单</desc>
+	</function>
+	<function id="1000114">
+		<desc>订单支付</desc>
+	</function>
+	<function id="1000115">
+		<desc>OTC产品订单支付</desc>
+	</function>
+	<function id="1000116">
+		<desc>理财产品订单支付</desc>
+	</function>
+	<function id="1000117">
+		<desc>确认非金融产品订单有效</desc>
+	</function>
+	<function id="1000119">
+		<desc>商城金融订单撤单</desc>
+	</function>
+	<function id="1000120">
+		<desc>赎回</desc>
+	</function>
+	<function id="1000121">
+		<desc>查询订单异常信息</desc>
+	</function>
+	<function id="1000122">
+		<desc>订单查询分页(金融类)</desc>
+	</function>
+	<function id="1000123">
+		<desc>订单查询(金融类)</desc>
+	</function>
+	<function id="1000124">
+		<desc>订单查询分页(非金融类)</desc>
+	</function>
+	<function id="1000125">
+		<desc>订单查询(非金融类)</desc>
+	</function>
+	<function id="1000127">
+		<desc>产品登记</desc>
+	</function>
+	<function id="1000152">
+		<desc>查询用户风险测评等级信息</desc>
+	</function>
+	<function id="1000153">
+		<desc>查询用户风险测评分数信息</desc>
+	</function>
+	<function id="1000154">
+		<desc>判断协议是否签署</desc>
+	</function>
+	<function id="1000155">
+		<desc>签署协议</desc>
+	</function>
+	<function id="1000181">
+		<desc>查询资金</desc>
+	</function>
+	<function id="1000182">
+		<desc>基金持仓</desc>
+	</function>
+	<function id="1000183">
+		<desc>理财持仓</desc>
+	</function>
+	<function id="1000185">
+		<desc>用户银行余额查询</desc>
+	</function>
+	<function id="1000186">
+		<desc>用户存管银行查询</desc>
+	</function>
+	<function id="1000187">
+		<desc>修改交易密码</desc>
+	</function>
+	<function id="1000509">
+		<desc>基金户查询与开通</desc>
+	</function>
+	<function id="1000652">
+		<desc>订单提交</desc>
+	</function>
+	<function id="1000654">
+		<desc>签到</desc>
+	</function>
+	<function id="1000655">
+		<desc>签到查询</desc>
+	</function>
+	<function id="1000656">
+		<desc>查询积分流水</desc>
+	</function>
+	<function id="1000657">
+		<desc>查总积分</desc>
+	</function>
+	<function id="1000658">
+		<desc>用户订单产品购买个人限额</desc>
+	</function>
+	<function id="1000660">
+		<desc>收货地址管理</desc>
+	</function>
+	<function id="1001850">
+		<desc>银证转账</desc>
+	</function>
+	<function id="1001851">
+		<desc>银证转账查询</desc>
+	</function>
+	<function id="1001853">
+		<desc>基金交换</desc>
+	</function>
+	<function id="1001854">
+		<desc>基金认申购</desc>
+	</function>
+	<function id="1001855">
+		<desc>理财申认购</desc>
+	</function>
+	<function id="1001856">
+		<desc>OTC认申购</desc>
+	</function>
+	<function id="1000523">
+		<desc>基金定投订单列表</desc>
+	</function>
+	<function id="1000521">
+		<desc>基金定投提交</desc>
+	</function>
+	<function id="1000522">
+		<desc>取消基金定投</desc>
+	</function>
+	<function id="1001961">
+		<desc>实时货币基金再次购买</desc>
+	</function>
+	<function id="1001962">
+		<desc>实时货币基金订单撤销</desc>
+	</function>
+	<function id="1001963">
+		<desc>实时货币基金订单列表查询</desc>
+	</function>
+	<function id="1001964">
+		<desc>实时货币基金赎回</desc>
+	</function>
+	<function id="1001971">
+		<desc>本地是否首次购买</desc>
+	</function>
+	<!-- 订单相关功能号 start -->
+	
+</functions>

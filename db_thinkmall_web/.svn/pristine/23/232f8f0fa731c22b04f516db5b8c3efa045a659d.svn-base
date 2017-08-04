@@ -1,0 +1,100 @@
+<div class="page" id="register_bindBankCard" data-pageTitle="绑卡" data-refresh="true">
+	<section class="main fixed" data-page="home">
+		<header class="header">
+			<div class="header_inner_02">
+				<h1 class="title text-center">我的银行卡</h1>
+				<a href="javascript:void(0)" class="back_btn" id="backBtn"></a>
+			</div>
+		</header>
+		<article>
+			<div class="login_page">
+				<div class="register_list login_list">
+					<div class="login_list_det care_list_det mt10">
+						<div class="text_item">
+							<div class="ui field border rounded">
+								<input type="text" id="userName" class="ui input" placeholder="请输入持卡人姓名" maxlength="50">
+								<span class="text_name">持卡人</span>
+							</div>
+						</div>
+						<div class="text_item">
+							<div class="ui field border rounded">
+								<input type="text" id="idCard" class="ui input" placeholder="请输入身份证号码" maxlength="18">
+								<span class="text_name">身份证号</span>
+							</div>
+						</div>
+					</div>
+					
+					<div class="login_list_det care_list_det mt10">
+						<div class="text_item">
+							<div class="ui field border rounded">
+								<input type="text" id="show" class="ui input check_input" placeholder="请选择银行卡">
+								<span class="text_name">银行卡</span>
+							</div>
+						</div>
+						<div class="text_item">
+							<div class="ui field border rounded">
+								<input type="text" id="bankCard" class="ui input" placeholder="请输入卡号" maxlength="23">
+								<span class="text_name">卡号</span>
+							</div>
+						</div>
+						<div class="text_item">
+							<div class="ui field border rounded">
+								<input type="text" id="mobilePhone" class="ui input" placeholder="请输入手机号"  maxlength="11">
+								<span class="text_name">银行预留手机号</span>
+							</div>
+						</div>
+						<div class="text_item">
+							<div class="ui field border rounded">
+								<input type="text" id="smsCode" class="ui input yzm_input" placeholder="" maxlength="8">
+								<span class="text_name">手机验证码</span>
+								<a href="javascript:void(0)" class="yzm_btn" id="smsBtn">发送验证码</a>
+							</div>
+						</div>
+					</div>
+					
+					<div class="next_btn_box">
+						<div class="ui layout">
+							<div class="row-1">
+								<a href="javascript:void(0)" class="ui button block rounded" id="submitBtn">下一步</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</article>
+		<!-- 选择银行卡弹框 -->
+		<div class="dropdown_menu">
+			<select id="treelist">
+			    <option value="1">中国银行</option>
+			    <option value="2">中国工商银行</option>
+			    <option value="3">中国建设银行</option>
+			    <option value="4">中国农业银行</option>
+			    <option value="5">招商银行</option>
+			    <option value="6">中国农业银行</option>
+			    <option value="7">招商银行</option>
+			    <option value="8">中国农业银行</option>
+			    <option value="9">招商银行</option>
+			</select>
+		</div>
+		
+		<!--密码弹窗-->
+		<div class="window_dialog" id="Pwd_box" style="display: none;">
+			<div class="dialog_cet">
+				<a href="javascript:void(0);" class="close_btn" id="close_btn"></a>
+				<div class="dialog_tit2">
+					<h3>请输入交易密码</h3>
+				</div>
+				<div class="dialog_cet_det">
+					<div class="dialog_text">
+						<p>确认银行卡</p>
+						<strong id="bankNo" style="font-size: 0.26rem;"></strong>
+						<div class="pass_text" id="trade_pwd_box">
+			            	<input type="text" readonly unselectable="on" id="trade_pwd" class="text" readonly="readonly" keyboard-plugin="true">
+			                <em></em><em></em><em></em><em></em><em></em><em></em>
+			            </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

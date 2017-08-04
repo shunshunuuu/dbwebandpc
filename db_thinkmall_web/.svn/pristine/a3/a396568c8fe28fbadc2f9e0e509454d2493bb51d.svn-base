@@ -1,0 +1,101 @@
+<div class="page" id="index_tradeDetail" data-pageTitle="交易明细">
+	<section class="main fixed" data-page="home">
+			<header class="header">
+				<div class="filter_box"  id="filterBox">
+					<a href="javascript:void(0);"   style="width:50%;">证券<em></em></a>
+					<!-- <a href="javascript:void(0);">全部产品<em></em></a> -->
+					<a href="javascript:void(0);"  style="width:50%;">所有月份<em></em></a>
+					<div class="downlist" style="display: none;">
+						<ul style="display: none;">
+							<li><a href="javascript:void(0);" data-val="2">证券</a></li>
+							<li><a href="javascript:void(0);" data-val="3">理财</a></li>
+							<li><a href="javascript:void(0);" data-val="4">转账流水</a></li>
+						</ul>
+						<!-- <ul style="display: none;">
+							<li><a href="javascript:void(0);" data-val="1">全部产品</a></li>
+						</ul> -->
+						<ul style="display: none;">
+							<li><a href="javascript:void(0);" data-val="1">所有月份</a></li>
+							<li><a href="javascript:void(0);" data-val="2">1-3月</a></li>
+							<li><a href="javascript:void(0);" data-val="3">4-6月</a></li>
+							<li><a href="javascript:void(0);" data-val="4">7-9月</a></li>
+							<li><a href="javascript:void(0);" data-val="5">10-12月</a></li>
+						</ul>
+					</div>
+					<div class="ui dialog-overlay pop_filter" style="display: none;"></div>
+				</div>
+			</header>
+			<article class="boost bg_gray">
+			<div id="v_container_orderList">
+					<div class="visc_wrapper" id="v_wrapper_orderList" data-iscrollPageId="account_myShare" data-iscrollParentId="v_container_orderList">
+						<div class="visc_scroller">
+							<div class="visc_pullDown_new" style="display: none;">
+								<span class="visc_pullDownIcon_new">
+									<img src="../images/project/loading.gif"/>
+								</span>
+								<div class="visc_pullDownDiv_new">
+									<span class="visc_pullDownLabel">下拉刷新第一页</span>
+								</div>
+							</div>
+				<!-- ASSETS_BOX START -->
+				<div class="assets_box"   style="display:none;">
+					<div class="transaction_box">
+						<dl>
+							<dt class="type_01">买</dt>
+							<dd>
+								<strong>重庆水泥厂<span>(346721)</span></strong>
+								<p>2016-03-11</p>
+								<em class="redcol">+1,000.00</em>
+							</dd>
+						</dl>
+					</div>
+					<div class="transaction_box">
+						<dl>
+							<dt class="type_02">卖</dt>
+							<dd>
+								<strong>重庆水泥厂<span>(346721)</span></strong>
+								<p>2016-03-11</p>
+								<em class="greencol">+1,000.00</em>
+							</dd>
+						</dl>
+					</div>
+					<div class="transaction_box">
+						<dl>
+							<dt class="type_03">转</dt>
+							<dd>
+								<strong>转入</strong>
+								<p>2016-03-11</p>
+								<em class="redcol">+1,000.00</em>
+							</dd>
+						</dl>
+					</div>
+					<div class="transaction_box">
+						<dl>
+							<dt class="type_03">转</dt>
+							<dd>
+								<strong>转出</strong>
+								<p>2016-03-11</p>
+								<em class="greencol">-1,000.00</em>
+							</dd>
+						</dl>
+					</div>
+				</div>
+				<!-- ASSETS_BOX END -->
+				 <div class="visc_pullUp_new" style="display: none;">
+								<span class="visc_pullUpIcon_new">
+									<img src="../images/project/loading.gif"/>
+								</span>
+								<div class="visc_pullUpDiv_new">
+									<span class="visc_pullUpLabel">上拉加载更多数据</span>
+								</div>
+							</div>
+							<div class="visc_no_data" style="display: none;">
+								<span>没有更多数据了</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+			<a href="javascript:void(0);" class="btn_home" id="homeBtn"></a>
+		</section>
+</div>

@@ -1,0 +1,47 @@
+<div class="page" id="activity_newCustomer"  data-pageTitle="新客专享活动" >
+<section class="main fixed">
+	<article>
+		<div class="leaflet_page">
+			<div class="leaflet_banner">
+				<!-- <img src="images/leaflet_banner.png" width="100%" />
+				<a href="#" class="to_buy_btn">立即购买</a> -->
+			</div>
+			<div class="event_description">
+				<div class="event_des_tit">
+					<span><em>活</em><em>动</em><em>说</em><em>明</em></span>
+				</div>
+				<div class="event_des_list">
+					<ul>
+						<li>
+							<em>1</em>
+							<span class="li_tit">新客特权</span>
+							<p>只要你是距产品发行首日前30个自然日内开通公司证券账户的客户，都有机会享此特权</p>
+						</li>
+						<li>
+							<em>2</em>
+							<span class="li_tit">产品亮点</span>
+							<p><i>预期年化收益</i>6%</p>
+							<p><i>起购金额 </i>5万元</p>
+							<p><i>购买期限</i>28天</p>
+							<p><i>募集期</i>2天</p>
+						</li>
+						<li>
+							<em>3</em>
+							<span class="li_tit">购买限制</span>
+							<p>单个客户仅限购买一次，购买上限5万元</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="welfare_box">
+				<div class="box_con">
+					<span>新客福利，专享理财产品</span>
+					<p>额度有限，售完即止</p>
+					<p>优质理财</p>
+					<p>尽在东北证券融e通</p>
+				</div>
+			</div>
+		</div>
+	</article>
+</section>
+</div>

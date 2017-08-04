@@ -1,0 +1,59 @@
+<div class="page" id="index_accountView" data-pageTitle="资金视图">
+	<section class="main fixed" data-page="home">
+			<article class="boost bg_gray">
+				<!-- ASSETS_BOX START -->
+				<div class="assets_box">
+					<div class="my_assets"  style="height: 100px;">
+						<ul>
+							<!-- <li>
+								<p>累计收益(元)</p>
+								<strong>0.00</strong>
+							</li> -->
+							<li  style="width:100%;">
+								<p>总资产(元)</p>
+								<strong>0.00</strong>
+							</li>
+						</ul>
+					</div>
+					<div class="nav_box2 nav_box mt10">
+						<a href="javascript:void(0);"><em></em><span>银证转账</span></a>
+						<a href="javascript:void(0);"><em></em><span>资产视图</span></a>
+						<a href="javascript:void(0);"><em></em><span>交易明细</span></a>
+						<!-- <a href="javascript:void(0);"><em></em><span>收益明细</span></a> -->
+					</div>
+					<div class="assets_category mt10">
+						<div class="category_box">
+							<dl>
+								<dt><img src="front/images/category_01.png" alt=""></dt>
+								<dd>
+									<strong>股票<em  id="stock_money">0.00</em></strong>
+								</dd>
+							</dl>
+						</div>
+						<div class="category_box">
+							<dl>
+								<dt><img src="front/images/category_02.png" alt=""></dt>
+								<dd>
+									<strong>理财<em   id="finaMoney">0.00</em></strong>
+									<!-- <p>5,000.00<span class="redcol">+23.55</span></p> -->
+									<!-- <p  id="finaMoney">0.00<span >0.00</span></p> -->
+								</dd>
+							</dl>
+						</div>
+						<div class="category_box">
+							<dl>
+								<dt><img src="front/images/category_03.png" alt=""></dt>
+								<dd>
+									<strong>余额<em  id="useableMoney">0.00</em></strong>
+									<!-- <p >0.00</p> -->
+								</dd>
+							</dl>
+						</div>
+					</div>
+				</div>
+				<!-- ASSETS_BOX END -->
+			</article>
+			<!-- <a href="javascript:void(0);" class="btn_home" id="homeBtn"></a> -->
+		</section>
+		<div  id="windowContainer"></div>
+</div>

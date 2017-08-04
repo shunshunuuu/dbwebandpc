@@ -1,0 +1,27 @@
+<div class="page"  id="infoproduct_decisionDetails" data-pageTitle="资讯详情" data-pageLevel="1"
+	data-urlParam="true" data-refresh="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner header_inner_index header_inner_02">
+			<h1 id = "title"></h1>
+			<a href="javascript:void(0);" class="back_btn"></a>
+			<a href="javascript:void(0);" class="all_share"></a>
+		</div>
+	</header>
+	<article>
+		<div class="index_page" id = "decision">
+<!-- 			<div class="bt_tits"> -->
+<!-- 				<p class="p014">两融内参：多空系数由负转正 两市场连续3日净流入</p> -->
+<!-- 				<p class="p015">2016-10-19<span>08:25</span></p> -->
+<!-- 			</div> -->
+<!-- 			<div class="coretext"> -->
+<!-- 				<p class="p016">导读</p> -->
+<!-- 				<p class="p017">两融看市：多空系数由负转正 两市资金连续3日净流入</p> -->
+<!-- 				<p class="p017">两融点将：香溢融通打上券转股的顺风车</p> -->
+<!-- 				<div class="graph_cc"><img src="images/graph_pic03.jpg" alt="" /></div> -->
+<!-- 				<p class="p018">就后市而言，市场围绕半年线的整固还会延续，指数可能大致在5日线和半年线之间运行、如上冲至5日线则还是以控制仓位为主。虽然市场从8月15日3140点调整一个多月了，但是笔者依然倾向于继续隐忍观察。之所以以隐忍观察等待、小仓位试盘为操作思路，某种意义上，是在为后市反抽20日均线乃至更高位置做准备，但是，由于指数空间本身不太大、因此，选择一个胜率更高的时间或点位较为重要、否则胜率或盈亏比均不高；也许后半周的时候、会更加明朗些。当然，就交易的角度看，结合短期盘面、在短期主线不明的情况下，券商股的运行是市场热度的主要关注点。</p> -->
+<!-- 			</div> -->
+		</div>
+	</article>
+</section>
+</div>

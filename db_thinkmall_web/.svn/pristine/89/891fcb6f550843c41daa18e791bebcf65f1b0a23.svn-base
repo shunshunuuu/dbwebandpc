@@ -1,0 +1,175 @@
+package root;
+
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.util.UUID;
+
+import org.apache.log4j.Logger;
+
+import sun.misc.BASE64Decoder;
+
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.thinkive.base.util.FileHelper;
+import com.thinkive.project.util.ImageHepler;
+import com.thinkive.web.base.ActionResult;
+import com.thinkive.web.base.BaseAction;
+import com.thinkive.web.system.Application;
+
+
+/**
+ * 描述：H5上传用户图像
+ * @author 周云星
+ * @created 2015年10月19日 下午3:29:29
+ */
+public class UploadMobileImage extends BaseAction
+{
+	private Logger logger = Logger.getLogger(UploadMobileImage.class);
+	
+	private String        tempPath    = "/uploadImageTemp";//临时存储目录
+
+	private String        savePath    = "/mall/tucaoImage";//存储目录
+	
+	private String        userId       = "";
+
+
+	/**上传用户图像
+	 * @return
+	 */
+	public ActionResult doSetUserImage(){
+        JSONArray jsonArr = new JSONArray();
+        JSONObject jsonObj = new JSONObject();
+        PrintWriter writer = null;
+		try
+		{
+			writer = getResponse().getWriter();
+			//接收参数:
+			String pictureBase64 = getRequest().getParameter("pictureBase64");
+			
+			/**
+			 * uuid生成文件名，保持唯一性
+			 */
+			String fileName = String.valueOf(UUID.randomUUID());
+			String picture = savePictoServer(pictureBase64,fileName);
+
+			jsonObj.put("Picurl", picture);
+			jsonObj.put("result", "ture");
+			
+		}
+		catch (Exception e)
+		{
+			jsonObj.put("result", "false");
+			jsonObj.put("message", "图片保存失败："+e.getMessage());
+			logger.error("",e);
+		}
+		finally
+		{
+			jsonArr.add(jsonObj);
+			writer.print(jsonArr.toString());
+			writer.flush();
+			writer.close();
+		}
+		return null;
+	}
+	
+	/**
+	  * 将一个base64转换成图片保存在  path  文件夹下   名为imgName.gif
+	  * @param base64String
+	  * @param path  是一个文件夹路径
+	  * @param imgName 图片名字(没有后缀)
+	  * @throws Exception
+	  */
+	public String savePictoServer(String base64String,String imgName)throws Exception{
+		//对字节数组字符串进行Base64解码并生成图片  
+        if (base64String == null) //图像数据为空  
+            return "false";  
+        BASE64Decoder decoder = new BASE64Decoder();  
+        try{
+        	//Base64解码  
+            byte[] b = decoder.decodeBuffer(base64String);  
+            for(int i=0;i<b.length;++i)  
+            {  
+                if(b[i]<0)  
+                {//调整异常数据  
+                    b[i]+=256;  
+                }  
+            } 
+        	
+            java.io.File tempMkdir = new java.io.File(Application.getRootPath()+tempPath);
+    		//如果临时图片文件夹不存在则创建    
+    		if  (!tempMkdir .exists()  && !tempMkdir .isDirectory())      
+    		{       
+    			tempMkdir.mkdir();    
+    		} 
+        	java.io.File mkdir = new java.io.File(Application.getRootPath()+savePath);
+    		//如果大图片文件夹不存在则创建    
+    		if  (!mkdir .exists()  && !mkdir .isDirectory())      
+    		{       
+    			mkdir.mkdir();    
+    		} 
+    		java.io.File smallMkdir = new java.io.File(Application.getRootPath()+savePath+"/small");
+    		//如果小图片文件夹不存在则创建    
+    		if  (!smallMkdir .exists()  && !smallMkdir .isDirectory())      
+    		{       
+    			smallMkdir.mkdir();    
+    		}
+
+    		//备注: linux 服务器下需要将“\\”改为“/”
+    		String tempFileName = tempMkdir+"/"+imgName+".jpg";
+    		String bigFileName = mkdir+"/"+imgName+".jpg";
+    		String smallFileName = smallMkdir+"/"+imgName+".jpg";
+    		//将图片写入临时文件夹
+    		OutputStream out = new FileOutputStream(tempFileName);      
+            out.write(b);  
+            out.flush();  
+            out.close();
+           
+            //裁剪图片并且保存大小图片到对应文件夹
+            java.io.File tempImageFile = new java.io.File(tempFileName);
+            java.io.File bigImageFile = new java.io.File(bigFileName);
+            java.io.File smallImageFile = new java.io.File(smallFileName);
+            //保存大图片
+            Image image = javax.imageio.ImageIO.read(tempImageFile);
+            if(image.getHeight(null)>220 || image.getWidth(null)>220){
+            	//尺寸大于220*220 做裁剪
+            	Rectangle rec = new Rectangle(0,0,220,220);
+                saveSubImage(tempImageFile,bigImageFile,220,220,rec);
+                saveSubImage(tempImageFile,smallImageFile,220,220,rec);
+            }
+            else{
+            	// 否则直接保存
+            	OutputStream bigImageStream = new FileOutputStream(bigFileName);      
+            	bigImageStream.write(b);  
+            	bigImageStream.flush();  
+            	bigImageStream.close();
+            	OutputStream smallImageStream = new FileOutputStream(smallImageFile);      
+            	smallImageStream.write(b);  
+            	smallImageStream.flush();  
+            	smallImageStream.close();
+            }
+            
+            //保存小图片(此处放弃84*84的大小)
+            //ImageHepler.getFixedIcon(bigImageFile, smallImageFile, 84, 84);  //小图片84*84
+            //删除临时图片
+            FileHelper.deleteFile(Application.getRootPath()+tempPath+"/"+imgName+".jpg");
+
+    		return imgName+".jpg";
+        }
+        catch (Exception e)   
+        {  
+            return "false";  
+        } 
+		
+	}
+	
+	private static void saveSubImage(java.io.File srcImageFile, java.io.File descDir,int width,int height,Rectangle rect) throws IOException   
+    {   
+        ImageHepler.cut(srcImageFile, descDir, width, height, rect);
+    } 
+	
+	
+}

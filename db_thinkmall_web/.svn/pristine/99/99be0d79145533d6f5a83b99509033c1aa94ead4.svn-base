@@ -1,0 +1,196 @@
+define(function(require, exports, module) {
+	var _pageId = "#infoproduct_myInfo "; // 页面id
+	var pageCode = "infoproduct/myInfo";
+	var appUtils = require("appUtils"); // 核心工具类
+	var service = require("mobileService"); // 业务层接口，请求数据
+	var layerUtils = require("layerUtils"); // 弹出层工具类
+	var global = require("gconfig").global; // 全局配置对象
+	var constants = require("constants");// 常量类
+	var common = require("common"); // 公共类
+	var putils = require("putils"); //
+    var HIscroll = require("hIscroll"); //hIscroll别名已经配置到hSea中
+    var myHIscroll = null;
+	require("mall/scripts/common/plugins/swiperEvent");
+	
+	var InfoNum = null;
+	var updateNum = 0;
+	/*
+	 * 初始化
+	 */
+	function init() {
+		//查询资讯产品
+		queryInfo();
+		updateNum = 0;
+	}
+	
+	function queryInfo(){
+		var param = {
+			"page" : 1, 
+			"numPerPage" : 8,
+			"product_shelf" : 1 //上架状态
+		};
+
+		service.queryInfo(param,function(resultVo){
+			if(0==resultVo.error_no){
+				var results = resultVo.results[0].data;
+				InfoNum = resultVo.results[0].totalRows;
+				for (var i = 0; i < results.length; i++) {
+				    var create_time = results[i].create_time;
+					var strs= new Array(); //定义一数组 
+					strs=create_time.split(" "); 
+					var time = strs[0];
+					var sysdate = getNowFormatDate();
+					var isfalse = comparaTime(time,sysdate);
+					if(isfalse){
+						updateNum = updateNum + 1;
+					}
+				}
+				
+				//查询我的资讯产品
+				queryMyInfoProduct();
+			}else{
+				layerUtils.iAlert("查询资讯产品列表失败:"+resultVo.error_info,-1);
+			}
+		})
+		
+	}
+	
+	
+	function comparaTime(startTime,endTime){
+	       var arr1 = startTime.split("-");
+	       var arr2 = endTime.split("-");
+	       var date1=new Date(parseInt(arr1[0]),parseInt(arr1[1])-1,parseInt(arr1[2]),0,0,0); 
+	       var date2=new Date(parseInt(arr2[0]),parseInt(arr2[1])-1,parseInt(arr2[2]),0,0,0);
+	       if(date1.getTime() == date2.getTime()) {                                
+	             return true;
+	         }else{
+	             return false;
+	         }
+	}
+	function queryMyInfoProduct(){
+		var param = {
+			  "user_id" : common.getUserId()
+		};
+		
+		service.queryMyInfoOrder(param, function(resultVo){
+			if(0==resultVo.error_no){
+				var results = resultVo.results;
+				var zxProductEle = $(_pageId+"#myInfoProduct").empty();
+			    if(results.length > 0){
+			      for (var i = 0; i < results.length; i++) {
+			    	  var product_name = results[i].product_name;
+			    	  var product_description = results[i].product_description;
+					  var end_time = results[i].service_end_time;
+					  var nb_time = end_time.substr(0,4);
+					  var yb_time = end_time.substr(4,2);
+					  var rb_time = end_time.substr(5,2);
+					  var service_end_time = nb_time+"年"+yb_time+"月"+rb_time;
+					  var order_time = nb_time+"-"+yb_time+"-"+rb_time;
+					  var imgPath = results[i].img_info_pro_url;
+					  imgPath = global.url + imgPath;
+					  var themeid = results[i].themeid;
+					  var itemHtml = '<li themeid = '+themeid+' order_time = '+order_time+'>'+
+							'<div class="mynewstit">'+
+						'<p>'+product_name+'</p>'+
+						'<span>到期时间：'+service_end_time+'</span>'+
+					'</div>'+
+					'<div class="sibnews">'+
+						'<div class="sibnews_l">'+
+							'<img src="'+imgPath+'" alt="" />'+
+						'</div>'+
+						'<div class="sibnews_r">'+
+							'<div class="newstits">'+
+								'<p>'+product_description+'</p>'+
+							'</div>'+
+							'<div class="thestarts">今日更新：<span>'+updateNum+'</span></div>'+
+							'<div class="theprice">所有资讯：<span>'+InfoNum+'</span></div>'+
+							'<div class="exchange">'+
+								'<a href="javascript:void(0);">立即查看</a>'+
+							'</div>'+
+						 '</div>'+
+					 '</div>'+
+				    '</li>';
+				    zxProductEle.append(itemHtml);
+				    
+					appUtils.bindEvent(_pageId + "#myInfoProduct li", function() {
+						var sysdate = getNowFormatDate();
+						var order_time = $(this).attr("order_time");
+						var isfalse = validTime(sysdate,order_time);
+						if(isfalse){
+							var themeid = $(this).attr("themeid");
+							appUtils.pageInit(pageCode, "infoproduct/decision",{"themeid" : themeid});
+							
+						}else{
+							layerUtils.iAlert("你购买的资讯产品已到期!","确定");
+						}
+					});
+				}
+			  }else{
+				  zxProductEle.append('<li style="text-align:center; color:#c0c2c6; ">暂无数据</li>');
+			  }
+			}else{
+				layerUtils.iAlert("查询我的资讯产品列表失败:"+resultVo.error_info,-1);
+			}
+			    
+		});
+	};
+	
+	/*
+	 * 绑定事件
+	 */
+	function bindPageEvent() {
+		// 返回
+		appUtils.bindEvent(_pageId + ".back_btn", function() {
+			appUtils.pageBack();
+		});
+		
+		//更多资讯
+		appUtils.bindEvent(_pageId + "#gdzx", function() {
+			appUtils.pageInit(pageCode, "infoproduct/productInfo");
+		});
+		
+	};
+	
+	//比较时间
+	function validTime(startTime,endTime){
+	       var arr1 = startTime.split("-");
+	       var arr2 = endTime.split("-");
+	       var date1=new Date(parseInt(arr1[0]),parseInt(arr1[1])-1,parseInt(arr1[2]),0,0,0); 
+	       var date2=new Date(parseInt(arr2[0]),parseInt(arr2[1])-1,parseInt(arr2[2]),0,0,0);
+	       if(date2.getTime()>= date1.getTime()) {                                
+	             return true;
+	         }else{
+	             return false;
+	         }
+	}
+	//获取当前日期  yyyy-MM-dd
+	function getNowFormatDate() {
+	    var date = new Date();
+	    var seperator1 = "-";
+	    var seperator2 = ":";
+	    var month = date.getMonth() + 1;
+	    var strDate = date.getDate();
+	    if (month >= 1 && month <= 9) {
+	        month = "0" + month;
+	    }
+	    if (strDate >= 0 && strDate <= 9) {
+	        strDate = "0" + strDate;
+	    }
+	    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate;
+	    return currentdate;
+	}
+
+	/*
+	 * 页面销毁
+	 */
+	function destroy() {};
+
+	var main = {
+		"init" : init,
+		"bindPageEvent" : bindPageEvent,
+		"destroy" : destroy
+	};
+	
+	// 暴露对外的接口
+	module.exports = main;
+});

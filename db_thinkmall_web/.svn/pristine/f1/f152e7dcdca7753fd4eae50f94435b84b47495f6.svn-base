@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee" version="2.4">
+
+    <display-name>web</display-name>
+
+    <!-- filter definition begin -->
+    <filter>
+		<filter-name>CORS</filter-name>
+		<filter-class>com.thetransactioncompany.cors.CORSFilter</filter-class>
+		<init-param>
+			<param-name>cors.allowOrigin</param-name>
+			<param-value>http://192.168.11.217:8099</param-value>
+		</init-param>
+		<init-param>
+			<param-name>cors.supportedMethods</param-name>
+			<param-value>GET, POST, HEAD, PUT, DELETE</param-value>
+		</init-param>
+	</filter>
+    <filter>
+        <filter-name>Encoding</filter-name>
+        <filter-class>com.thinkive.web.common.filter.SetCharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+
+    <!-- filter-mapping definition begin -->
+    <filter-mapping>
+        <filter-name>CORS</filter-name>
+        <url-pattern>/*</url-pattern>
+	</filter-mapping>
+    <filter-mapping>
+        <filter-name>Encoding</filter-name>
+        <url-pattern>*.htm</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Encoding</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Encoding</filter-name>
+        <url-pattern>/servlet/*</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Encoding</filter-name>
+        <url-pattern>/cgi-bin/*</url-pattern>
+    </filter-mapping>
+    <!-- filter-mapping definition end -->
+
+
+    <!-- listener definition begin -->
+    <listener>
+        <listener-class>com.thinkive.base.listener.ApplicationLifecycleListener</listener-class>
+    </listener>
+    <!-- listener definition end -->
+
+
+    <!-- servlet definition begin -->
+    <servlet>
+        <servlet-name>FastServlet</servlet-name>
+        <servlet-class>com.thinkive.web.base.FastServlet</servlet-class>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet>
+        <servlet-name>SSIServlet</servlet-name>
+        <servlet-class>com.thinkive.web.common.servlet.SSIServlet</servlet-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+    <servlet>
+       <servlet-name>fxckhTicketImg</servlet-name>
+       <servlet-class>com.thinkive.tbservice.action.BuildImageServlet</servlet-class>
+    </servlet>
+	<servlet>
+		<servlet-name>BusService</servlet-name>
+		<servlet-class>com.thinkive.tbservice.action.TBClientServlet</servlet-class>
+		<init-param>
+			<param-name>isSaveResult</param-name>
+			<param-value>1</param-value>
+		</init-param>
+		<init-param>
+			<param-name>saveResultDirPath</param-name>
+			<param-value>D:/thinkive/thinkive_mall/log_data</param-value>
+		</init-param>
+	</servlet>
+	<servlet>
+		<servlet-name>TradeBusService</servlet-name>
+		<servlet-class>com.thinkive.tbservice.action.TBClientServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Base64ToImageService</servlet-name>
+		<servlet-class>com.thinkive.tbservice.action.Base64ToImageServlet</servlet-class>
+		<init-param>
+			<param-name>base64Key</param-name>
+			<param-value>img_data</param-value>
+		</init-param>
+		<init-param>
+			<param-name>contentType</param-name>
+			<param-value>image/jpeg</param-value>
+		</init-param>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>FlashServlet</servlet-name>
+		<servlet-class>root.FlashViewAction</servlet-class>
+	</servlet>
+    <!-- servlet definition end -->
+
+
+    <!-- servlet-mapping definition begin -->
+    <servlet-mapping>
+        <servlet-name>FastServlet</servlet-name>
+        <url-pattern>/servlet/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FastServlet</servlet-name>
+        <url-pattern>/cgi-bin/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SSIServlet</servlet-name>
+        <url-pattern>*.shtml</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SSIServlet</servlet-name>
+        <url-pattern>*.shtm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+       <servlet-name>fxckhTicketImg</servlet-name>
+       <url-pattern>/servlet/TicketImgServlet</url-pattern>
+    </servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>BusService</servlet-name>
+		<url-pattern>/servlet/json</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TradeBusService</servlet-name>
+		<url-pattern>/servlet/trade/json</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Base64ToImageService</servlet-name>
+		<url-pattern>/servlet/buildimageservlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>FlashServlet</servlet-name>
+		<url-pattern>/servlet/flash</url-pattern>
+	</servlet-mapping>
+    <!-- servlet-mapping definition end -->
+
+
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/m/mall/views/404.html</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/m/mall/views/500.html</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/m/mall/views/500.html</location>
+    </error-page>
+
+
+    <jsp-config>
+        <taglib>
+            <taglib-uri>/tags/jstl-core</taglib-uri>
+            <taglib-location>/WEB-INF/tlds/c.tld</taglib-location>
+        </taglib>
+        <taglib>
+            <taglib-uri>/tags/jstl-format</taglib-uri>
+            <taglib-location>/WEB-INF/tlds/fmt.tld</taglib-location>
+        </taglib>
+        <taglib>
+            <taglib-uri>/tags/jstl-function</taglib-uri>
+            <taglib-location>/WEB-INF/tlds/fn.tld</taglib-location>
+        </taglib>
+         <taglib>
+	        <taglib-uri>/tags/stringHelper</taglib-uri>
+	        <taglib-location>/WEB-INF/tlds/stringHelper.tld</taglib-location>
+		</taglib>
+    </jsp-config>
+</web-app>
+ 

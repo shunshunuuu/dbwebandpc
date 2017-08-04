@@ -1,0 +1,426 @@
+.mt10 { margin-top:0.1rem; }
+.mt20 { margin-top:0.2rem; }
+.mt50 { margin-top:0.5rem; }
+.ared { color:#ff4e2f!important; }
+.agreen { color:#009933!important; }
+.ablue{color: #00B0FF !important;}
+::-webkit-scrollbar{width:0px}
+input::-webkit-input-placeholder {
+    color:#A5A19C !important;
+    font-size: 0.12rem;
+}
+body{
+	width: 100%;
+	height: 100%;
+	background: #F3F2F0;
+}
+
+.text-right{
+	text-align: right !important;
+}
+.white_bg{
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.cet_txt{
+	padding: 0.1rem 0.12rem 0.2rem;
+	background: #FFFFFF;
+}
+.cet_txt p{
+	font-size: 0.14rem;
+	color: #c21705;
+	line-height: 0.22rem;
+	font-weight: bold;
+	margin: 0;
+}
+.time_box{
+	height: 0.56rem;
+	padding-left: 0.6rem;
+	background: url(../images/answerActive/monkey_p1.png) left center no-repeat;
+	background-size: 0.56rem;
+	margin-bottom: 0.2rem;
+}
+.time_box p{
+	line-height: 0.56rem;
+}
+.rule_box{
+	min-height: 0.56rem;
+	padding-left: 0.6rem;
+	padding-top: 0.12rem;
+	background: url(../images/answerActive/monkey_p2.png) left top no-repeat;
+	background-size: 0.56rem;
+	
+}
+.cet_txt .go_btn{
+	display: block;
+	width: 1.76rem;
+	height: 0.52rem;
+	background: url(../images/answerActive/go_btn_bg.png) center no-repeat;
+	background-size: 1.76rem 0.52rem;
+	font-size: 0.23rem;
+	color: #edba1e;
+	text-align: center;
+	line-height: 0.52rem;
+	font-weight: bold;
+	/*position: absolute;
+	left: 50%;
+	margin-left: -0.88rem;
+	bottom: 0.3rem;*/
+	margin: 0.8rem auto 0;
+}
+
+.answer_bg{
+	width: 100%;
+	height: 100%;
+	background: url(../images/answerActive/answer_bg.png) center bottom  no-repeat;
+	background-size: cover;
+	position: relative;
+}
+.lantern_icon{
+	display: block;
+	width: 0.94rem;
+	height: 1.32rem;
+	background: url(../images/answerActive/lantern_icon.png) center no-repeat;
+	background-size: 0.94rem 1.32rem;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 9;
+}
+.branch_p1{
+	display: block;
+	width: 1.6rem;
+	height: 0.52rem;
+	background: url(../images/answerActive/branch_p1.png) center no-repeat;
+	background-size: 1.62rem 0.52rem;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 9;
+}
+.branch_p2{
+	display: block;
+	width: 1.2rem;
+	height: 0.48rem;
+	background: url(../images/answerActive/branch_p2.png) left center no-repeat;
+	background-size: 1.2rem 0.48rem;
+	position: absolute;
+	left: 0;
+	bottom: 0.1rem;
+	z-index: 9;
+}
+.result_box{
+	width: 3.2rem;
+	height: 3.6rem;
+	position: absolute;
+	left: 50%;
+	top: 14%;
+	margin-left: -1.6rem;
+	z-index: 10;
+}
+.result_box h3{
+	margin-bottom: 0.08rem;
+}
+.result_box h3 span{
+	display: inline-block;
+	height: 0.3rem;
+	vertical-align: top;
+}
+
+.result_box .result_box_tit{
+	overflow: hidden;
+}
+.result_box .result_box_tit .tit_con{
+	float: right;
+}
+.result_box h3 .txt_p1{
+	width: 1.68rem;
+	background: url(../images/answerActive/txt_p1.png) left bottom no-repeat;
+	background-size: 1.68rem 0.24rem;
+}
+.result_box h3 .txt_p2{
+	width: 0.24rem;
+	background: url(../images/answerActive/txt_p2.png) center bottom no-repeat;
+	background-size: 0.24rem;
+}
+.result_box h3 .fraction_txt{
+	font-size: 0.3rem;
+	color: #FE0925;
+	line-height: 0.3rem;
+	margin: 0 0.05rem;
+	font-weight: bold;
+}
+.result_box .result_box_tit p{
+	width: 1.8rem;
+	height: 0.18rem;
+	background: url(../images/answerActive/txt_p3.png) left center no-repeat;
+	background-size: 1.8rem 0.18rem;
+}
+.result_box_tips{
+	padding: 0.1rem 0 0.15rem;
+}
+.btn_box_active {
+	position: absolute;
+	bottom: 0.7rem;
+	left: 0;
+	width: 100%;
+	z-index: 10;
+}
+.btn_box_active .ui.button.again{
+	width: 1.8rem;
+	height: 0.4rem;
+	line-height: 0.4rem;
+	background: #9f2821;
+	font-size: 0.23rem;
+	color: #edba1e;
+	font-weight: bold;
+	margin: 0 auto;
+}
+
+.btn_box_active .phone_text{
+	display: block;
+	width: 1.8rem;
+	height: 0.4rem;
+	border: 0.02rem solid #9f2821;
+	border-radius: 0.05rem;
+	-webkit-border-radius: 0.05rem;
+	-moz-border-radius: 0.05rem;
+	background: none;
+	padding-left: 0.1rem;
+	font-size: 0.18rem;
+	margin: 0 auto 0.12rem;
+	outline: none;
+	
+}
+.result_box .phone_text::-webkit-input-placeholder{
+	font-size: 0.18rem;
+	color: #5d5d5c;
+}
+.result_box2{
+	height: 2.83rem;
+}
+@media (device-height:480px) and (-webkit-min-device-pixel-ratio:2){/* 兼容iphone4/4s */
+	.result_box{
+		top: 12%;
+	}
+}
+
+.dialog{
+	width: 2.64rem;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -1.32rem;
+	margin-top: -1.36rem;
+	z-index: 6000;
+}
+.dialog .dialog_tit{
+	width: 2.64rem;
+	height: 1.56rem;
+	background: url(../images/answerActive/dialog_tit_bg.png) center no-repeat;
+	background-size: 2.64rem 1.56rem;
+	border-top-left-radius: 0.1rem;
+	-webkit-border-top-left-radius: 0.1rem;
+	-moz-border-radius-topleft: 0.1rem;
+	border-top-right-radius: 0.1rem;
+	-webkit-border-top-right-radius: 0.1rem;
+	-moz-border-radius-topright: 0.1rem;
+}
+.dialog .close_btn{
+	display: block;
+	width: 0.3rem;
+	height: 0.3rem;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.dialog .dialog_cet{
+	background: #FFFFFF;
+	border-bottom-left-radius: 0.1rem;
+	-webkit-border-bottom-left-radius: 0.1rem;
+	-moz-border-radius-bottomleft: 0.1rem;
+	border-bottom-right-radius: 0.1rem;
+	-webkit-border-bottom-right-radius: 0.1rem;
+	-moz-border-radius-bottomright: 0.1rem;
+}
+.dialog .dialog_cet{
+	padding: 0.05rem 0;
+}
+.dialog .dia_txt p{
+	font-size: 0.12rem;
+	color: #654e49;
+	line-height: 0.2rem;
+	text-align: center;
+	margin: 0;
+	font-weight: bold;
+}
+.dialog .dia_btn{
+	padding: 0.1rem 0 0.05rem;
+}
+.dialog .dia_btn .sub_btn{
+	display: block;
+	width: 1.2rem;
+	height: 0.3rem;
+	background: #FF2C1C;
+	border-radius: 0.05rem;
+	-webkit-border-radius: 0.05rem;
+	-moz-border-radius: 0.05rem;
+	font-size: 0.14rem;
+	text-align: center;
+	line-height: 0.3rem;
+	color: #FFFFFF;
+	margin: 0 auto;
+}
+.problem_box{
+	width: 3.2rem;
+	position: absolute;
+	left: 50%;
+	margin-left: -1.6rem;
+	top: 16%;
+	z-index: 10;
+}
+.problem_box .topic_box{
+	margin-bottom: 0.35rem;
+}
+.problem_box .answer_list li{
+	width: 3.2rem;
+	height: 0.52rem;
+	background: url(../images/answerActive/answer_li_bg.png) center no-repeat;
+	background-size: 3.2rem 0.52rem;
+	font-size: 0.2rem;
+	color: #060606;
+	line-height: 0.52rem;
+	text-align: center;
+	font-weight: bold;
+	margin-bottom: 0.1rem;
+}
+.dialog_tip{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin: -0.22rem 0 0 -0.77rem;
+	z-index: 6000;
+}
+.dialog_tip img{
+	width: 1.54rem;
+	height: 0.44rem;
+}
+
+/*活动首页*/
+.activity_bg{
+	width: 100%;
+	height: 100%;
+	background: url(../images/answerActive/activity_bg.png) center no-repeat;
+	background-size: cover;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.activity_tit{
+	padding-top: 0.45rem;
+}
+.activity_tit h2{
+	width: 1.54rem;
+	height: 0.92rem;
+	background: url(../images/answerActive/activity_tit.png) center no-repeat;
+	background-size: 1.54rem 0.92rem;
+	margin: 0 auto;
+}
+.activity_btn{
+	width: 100%;
+	position: absolute;
+	bottom: 0.12rem;
+	left: 0;
+}
+.activity_btn .go_btn{
+	display: block;
+	width: 1.76rem;
+	height: 0.52rem;
+	background: url(../images/answerActive/go_btn_bg.png) center no-repeat;
+	background-size: 1.76rem 0.52rem;
+	font-size: 0.23rem;
+	color: #edba1e;
+	text-align: center;
+	line-height: 0.52rem;
+	font-weight: bold;
+	margin: 0 auto 0.1rem;
+}
+.activity_btn .rule_btn{
+	display: block;
+	font-size: 0.18rem;
+	color: #02040d;
+	line-height: 0.22rem;
+	text-align: center;
+} 
+.rule_dialog{
+	width: 3rem;
+	height: auto;
+	border: 0.03rem solid #BB0000;
+	background: #e8d6b4;
+	border-radius: 0.05rem;
+	-webkit-border-radius: 0.05rem;
+	-moz-border-radius: 0.05rem;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -1.5rem;
+	margin-top: -1.72rem;
+	z-index: 6000;
+}
+.rule_dialog_det{
+	padding: 0.15rem 0.1rem;
+}
+.rule_dialog_det h2{
+	margin-bottom: 0.2rem;
+}
+.rule_dialog_det h3{
+	font-size: 0.15rem;
+	color: #101010;
+	line-height: 0.24rem;
+	font-weight: bold;
+}
+.rule_dialog_det h3 span{
+	font-weight: normal;
+}
+.rule_dialog_det h3.time{
+	margin-bottom: 0.15rem;
+}
+.rule_dialog_det p{
+	font-size: 0.14rem;
+	color: #101010;
+	line-height: 0.2rem;
+	margin-bottom: 0.15rem;
+}
+.rule_dialog_det .tips{
+	display: block;
+	font-size: 0.13rem;
+	color: #101010;
+	line-height: 0.2rem;
+	text-align: center;
+	padding-top: 0.3rem;
+}
+.rule_dialog .close_btn{
+	display: block;
+	width: 0.3rem;
+	height: 0.3rem;
+	background: url(../images/answerActive/close_btn2.png) center no-repeat;
+	background-size: 0.28rem;
+	position: absolute;
+	top: -0.15rem;
+	right: -0.1rem;
+}
+.rule_dialog_txt{
+	height: 2rem;
+	overflow: auto;
+}
+
+
+
+
+
+
+

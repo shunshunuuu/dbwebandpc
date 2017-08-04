@@ -1,0 +1,48 @@
+<div class="page" id="activity_recharge"  data-pageTitle="抽奖活动" >
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner">
+			<h1>流量充值</h1>
+			<a href="javascript:void(0);" class="back_btn"></a>
+		</div>
+	</header>
+	<article>
+		<div class="traffic_recharge_page">
+			<div class="recharge_banner">
+				<img src="images/recharge_banner.jpg" width="100%" />
+			</div>
+			<div class="traffic_recharge_box">
+				<img src="images/recharge_box_bg.jpg" width="100%" />
+				<div class="recharge_box_det">
+					<div class="rec_box enter_number_box">
+						<input type="text" placeholder="请输入的手机号" id="phone"/>
+						<a href="javascript:void(0);" class="ui button block rounded" id="goRecharge">马上去领去</a>
+					</div>
+					<div class="rec_box recharge_description">
+						<div class="description_tit">充值说明</div>
+						<div class="description_txt">
+							<p>生效时间：充值成功立即生效</p>
+							<p>使用范围：全国漫游</p>
+							<p>有效期限：充值当月有效，月底清零</p>
+							<p>客服热线：如有任何疑问请拨打95360</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>
+	
+	<!--遮罩层-->
+	<div class="ui dialog-overlay" style="display: none;"></div>
+	<!--弹窗-->
+	<div class="dialog_success_box" style="display: none;">
+		<a href="javascript:void(0);" class="close_btn"></a>
+		<div class="dialog_suc_det">
+			<h3>恭喜您，领取成功！</h3>
+			<p>您所获得的流量将在一周左右为您充值到帐，届时请注意查收哦！</p>
+			<a href="javascript:void(0);" class="ui button block rounded" id="continue">进入商城</a>
+		</div>
+	</div>
+	
+</section>
+</div>

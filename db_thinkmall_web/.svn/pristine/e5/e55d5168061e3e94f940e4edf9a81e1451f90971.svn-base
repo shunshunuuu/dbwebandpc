@@ -1,0 +1,278 @@
+<div class="page" id="finan_buy" data-pageTitle="东北证券-确认 订单"
+	data-pageLevel="1" data-refresh="true" data-urlParam="true">
+	<section class="main fixed" data-page="home">
+		<header>
+			<div class="header_inner_02">
+				<h1>确认订单</h1>
+				<a href="javascript:void(0);" class="back_btn"></a>
+			</div>
+		</header>
+		<article>
+			<div class="order_page">
+				<div class="order_form_list">
+					<div class="order_list_con">
+						<div class="order_tit">
+							<h4 id="product_name"></h4>
+						</div>
+						<div class="order_list_box1">
+							<div class="box1_det">
+								<h3 id="earnings">0.0000</h3>
+								<p>最新净值(元)</p>
+							</div>
+						</div>
+						<div class="order_list_box2">
+							<div class="ui layout order_tab" id="fundClient">
+								<div class="row-1">
+									<a href="javascript:void(0);" style="font-size: .12rem;"> <em></em>
+										<p id="bankCardCss">银行卡支付</p>
+								</a>
+								</div>
+								<div class="row-1">
+									<a href="javascript:void(0);" style="font-size: .12rem;"> <em></em>
+										<p id="bondCss">保证金支付</p>
+									</a>
+								</div>
+							</div>
+							<div class="order_tab_con order_tab_con1">
+								<div class="text_item">
+									<div class="ui field border rounded">
+										<input type="tel" class="ui input nickname_text" value=""
+											id="buyValue" maxlength="18">
+										<p class="nickname">购买金额</p>
+										<span class="unit">元</span>
+									</div>
+								</div>
+								<div class="ui layout amount_text">
+									<div class="row-1">
+										<span id="amount" style="font-size: .12rem;">可用金额: </span>
+									</div>
+									<div class="row-1">
+										<span class="text-right" style="font-size: .12rem;"><em class="ared"
+											id="cash_assets">0</em>元</span>
+									</div>
+								</div>
+								<div class="bank_list" id="bank_list" style="display: none">
+									<ul>
+										<!-- 									<li>
+										<div class="ui radio">
+											<input type="radio" id="radio_1" name="bankCard" checked="checked" />
+											<label for="radio_1"><i class="bank_icon"></i>中国银行(3327 **** **** 9598)</label>
+										</div>
+									</li>
+									<li>
+										<div class="ui radio">
+											<input type="radio" id="radio_2" name="bankCard" />
+											<label for="radio_2"><i class="bank_icon"></i>中国银行(3327 **** **** 9598)</label>
+										</div>
+									</li>
+									<li>
+										<div class="ui radio">
+											<input type="radio" id="radio_3" name="bankCard" />
+											<label for="radio_3"><i class="bank_icon"></i>中国银行(3327 **** **** 9598)</label>
+										</div>
+									</li>-->
+
+									</ul>
+									<li><a href="javascript:void(0);" class="add_bank"><i></i>添加银行卡</a>
+									</li>
+								</div>
+
+								<div class="check_box" style="display: none;">
+									<div class="ui checkbox">
+<!-- 										<input type="checkbox" id="checkbox_1" checked="checked" /> 
+ -->										<input type="checkbox" id="checkbox_1"  /> 
+										<label id="contact" for="checkbox_1"> </label>
+										<!-- 《电子签名约定书》<a href="javascript:void(0)" id="riskBook">《风险揭示书》</a> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</article>
+		<footer>
+			<a href="javascript:void(0);" class="sub_btn">确认购买</a>
+		</footer>
+		<!--弹窗-->
+		<div class="window_dialog" id="order_buy" style="display: none;">
+			<div class="dialog_cet">
+				<a href="javascript:void(0);" class="close_btn" id="close_btn_buy"></a>
+				<div class="dialog_tit2">
+					<h3>请输入交易密码</h3>
+				</div>
+				<div class="dialog_cet_det">
+					<div class="dialog_text">
+						<p>确认购买</p>
+						<strong id="top_price_value">¥0.00</strong>
+						<div class="pass_text" id="trade_pwd_box">
+							<input type="text" readonly unselectable="on" id="trade_pwd"
+								class="text" readonly="readonly" keyboard-plugin="true">
+							<em></em><em></em><em></em><em></em><em></em><em></em>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--弹窗1-->
+		<div class="window_dialog" id="window_one" style="display: none;">
+			<div class="dialog_cet">
+				<div class="dialog_tit">
+					<h3>
+						<i></i>风险提示
+					</h3>
+				</div>
+				<div class="dialog_cet_det">
+					<div class="dialog_txt">
+						<p id="riskTip"
+							style="text-indent: 2em; text-align: left; margin: 0 0.12rem;"></p>
+					</div>
+				</div>
+				<div class="dialog_btn">
+					<div class="ui layout">
+						<div class="row-1">
+							<a href="javascript:void(0);" id="buyContinue">已审慎考虑</a>
+						</div>
+						<div class="row-1">
+							<a href="javascript:void(0);" id="risk">重新风险测评</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--弹窗2-->
+		<div class="window_dialog" id="window_one1" style="display: none;">
+			<div class="dialog_cet">
+				<div class="dialog_tit">
+					<h3>
+						<i></i>风险提示
+					</h3>
+				</div>
+				<div class="dialog_cet_det">
+					<div class="dialog_txt">
+						<p id="entrustTip"
+							style="text-indent: 2em; text-align: left; margin: 0 0.12rem;"></p>
+					</div>
+				</div>
+				<div class="dialog_btn">
+					<div class="ui layout">
+						<div class="row-1">
+							<a href="javascript:void(0);" id="submit">确认委托</a>
+						</div>
+						<div class="row-1">
+							<a href="javascript:void(0);" id="cencal">放弃委托</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="window_dialog" id="window_two" style="display: none;">
+			<div id="agreementDiv">
+				<input type="checkbox" /><a id="agreement" href="javascript:void(0)">《协议》</a>
+			</div>
+
+		</div>
+
+		<!--弹窗-->
+		<div class="window_dialog" id="window_two" style="display: none;">
+			<div class="dialog_cet dialog_cet3">
+				<div class="order_det_list">
+					<div class="order_det_tit" style="height: 0.45rem">
+						<h3 style="line-height: 0.45rem">基金开户</h3>
+						<span class="lt_dot"></span> <span class="rt_dot"></span>
+					</div>
+					<div class="order_det_table">
+						<table cellpadding="0" cellspacing="0" border="0" width="100%">
+							<tr>
+								<th style="height: 0.38rem">基金公司:</th>
+								<td id="exchangeName" style="height: 0.38rem"></td>
+							</tr>
+							<tr>
+								<th style="height: 0.38rem">公司代码:</th>
+								<td id="fundCompany" style="height: 0.38rem"></td>
+							</tr>
+							<tr>
+								<th style="height: 0.38rem">用户姓名:</th>
+								<td id="holderName" style="height: 0.38rem"></td>
+							</tr>
+							<tr>
+								<th style="height: 0.38rem">证件号码:</th>
+								<td id="idNo" style="height: 0.38rem"></td>
+							</tr>
+							<tr>
+								<th style="height: 0.38rem">联系电话:</th>
+								<td id="telephone" style="height: 0.38rem"></td>
+							</tr>
+							<tr>
+								<th style="height: 0.38rem">电子邮箱:</th>
+								<td id="userMail" style="height: 0.38rem"></td>
+							</tr>
+							<tr>
+								<th style="height: 0.38rem">详细地址:</th>
+								<td id="address" style="height: 0.38rem"></td>
+							</tr>
+							<tr>
+								<th style="height: 0.38rem">邮箱编号:</th>
+								<td id="postCode" style="height: 0.38rem"></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="agreemet_box" style="display: none;">
+					<div class="ui checkbox">
+						<input type="checkbox" id="checkbox_2" checked="checked" /><label></label><a
+							id="agreement" href="javascript:void(0)">《基金户开通协议》</a>
+					</div>
+				</div>
+				<div class="ui layout btn_box">
+					<div class="row-1">
+						<a href="javascript:void(0)" class="save_btn" id="cancelFund"
+							style="width: 50%; float: left;">取消</a> <a
+							href="javascript:void(0)" class="save_btn" id="openFund"
+							style="width: 50%; float: left;">开通</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--弹窗-->
+		<div class="window_dialog" id="window_three" style="display: none;">
+			<div class="dialog_cet dialog_cet3">
+				<div class="order_det_list">
+					<div class="order_det_tit">
+						<h3>客户信息确认</h3>
+					</div>
+					<div class="order_det_table">
+						<table cellpadding="0" cellspacing="0" border="0" width="100%">
+							<tr>
+								<th>用户姓名:</th>
+								<td id="windowUserName"></td>
+							</tr>
+							<tr>
+								<th>证件号码:</th>
+								<td id="windowIDNo"></td>
+							</tr>
+							<tr>
+								<th>联系电话:</th>
+								<td id="windowPhone"></td>
+							</tr>
+							<tr>
+								<th>详细地址:</th>
+								<td id="windowAddress"></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="ui layout btn_box">
+					<div class="row-1">
+						<a href="javascript:void(0)" class="save_btn" id="userInfoCancel"
+							style="width: 50%; float: left;">取消</a> <a
+							href="javascript:void(0)" class="save_btn" id="userInfoSure"
+							style="width: 50%; float: left;">确认</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

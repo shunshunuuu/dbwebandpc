@@ -1,0 +1,120 @@
+<div class="page" id="activity_activity"  data-pageTitle="抽奖活动" >
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner">
+			<h1>抽奖</h1>
+			<a href="javascript:void(0);" class="back_btn"></a>
+			<a href="javascript:void(0);" class="rules_btn">中奖规则</a>
+		</div>
+	</header>
+	<article class="boost">
+		<div class="turn_lottery_page">
+			<div class="turn_lotter">
+				<div class="turn_lottery_top"><span class="tit"></span></div>
+				<div class="turn_lottery_det" id="lottery">
+					<div class="lottery_box" id="lotterys">
+						<ul class="lottery_box_list clearfix">
+							<li jp_index="0" class="lottery-unit td_1">
+								<img id="00" src="" />
+							</li>
+							<li jp_index="1" class="lottery-unit td_2">
+								<img id="01" src="" />							
+							</li>
+							<li jp_index="2" class="lottery-unit td_3">
+								<img  id="02" src="" />
+							</li>
+						</ul>
+						<ul class="lottery-group clearfix">
+							<li jp_index="3" class="lottery-unit td_4">
+								<img  id="03" src="" />
+							</li>
+							<li class="lottery_btn_new">
+								<a href="javascript:void(0);" class="td_5" id="award">
+									<span >立即抽奖</span>
+								</a>
+							</li>
+							
+							<li jp_index="4" class="lottery-unit td_5">
+								<img id="04" src="" />
+							</li>
+						</ul>
+						<ul class="lottery-group clearfix">
+							<li jp_index="5" class="lottery-unit td_6">
+								<img id="05" src="" />
+							</li>
+							<li jp_index="6" class="lottery-unit td_7">
+								<img  id="06" src="" />
+							</li>
+							<li jp_index="7" class="lottery-unit td_8">
+								<img  id="07" src="" />
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</article>
+	<!--遮罩层-->
+	<div class="ui dialog-overlay"  style="display:none;"  id="dialog"></div>
+	<!--弹窗-->
+	<div class="dialog_lottery_box" style="display: none;" id="box" >
+		<div class="dialog_lottery_cet">
+			<div class="cet_detail">
+				<div class="tit">
+					<h3>中奖规则</h3>
+				</div>
+				<div class="dialog_lottery_det">
+					<div class="rules_txt">
+						<div class="rules_txt_con">
+							<p>中国的基本法制中缺少关于商事交易行为特殊性的一般规定，按照多数国家法律的规定，证券交易如同票据交易一样并不适用民事法律行为有效成立的一般规则，而应当适用反映商事交易迅捷与安全要求的无因性原则与抽象性原则下面仅依交易程序，对证券交易的集中竞价规则做一简单介绍。</p>
+							<p>依现行法规，每个投资人欲从事证券交易，须首先向证券登记公司申请开设证券帐户，凭该证券帐户可以从事二级市场证券交易，也可以从事一级市场网上认购；其次须向具体的证券公司（交易所会员）申请开设资金帐户，存入交易资金，其限额由证券公司自行规定。</p> 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--遮罩层-->
+	<!-- <div class="ui dialog-overlay" style="display: none;" id="dialog"></div> -->
+	<!--弹窗-->
+	<div class="dialog_lottery_box" style="display:none" id="wining">
+		<div class="dialog_lottery_cet" style="height: -0.42rem;">
+			<div class="cet_detail">
+				<div class="tit">
+					<h3>中奖啦！</h3>
+				</div>
+				<div class="dialog_lottery_det">
+					<em><img src="../images/dialog_pro_pic.png" /></em>
+					<p>恭喜您,获得一个<span id="hongbao"></span>。</p>
+  					<!-- <p>还剩<i id="lotteryNum"></i>次抽奖机会</p> -->
+					<div class="btn_box">
+					<!--<a href="javascript:void(0);" class="ui button  block  rounded" id="jxcj">继续抽奖</a> -->
+						<a href="javascript:void(0);" class="ui button block rounded" id="lqjp">马上去领去</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--弹窗-->
+	<div class="dialog_lottery_box" style="background:none;display:none" id="NoWining">
+		<div class="dialog_lottery_cet" style="height: 2.27rem;top: 65%;">
+			<div class="cet_detail">
+				<div class="tit">
+					<h3>参与奖！</h3>
+				</div>
+				<div class="dialog_lottery_det">
+				    <p style="0 15px">获得商城积分“5个东北米”,积分将在活动结束后，统一为您发放，感谢您的参与!</p>
+  					<!-- <p>还剩<i id="NlotteryNum">1</i>次抽奖机会</p> -->
+					<div class="btn_box">
+						<!-- <!-- <a href="javascript:void(0);" class="ui button  block  rounded" id="Njxcj">继续抽奖</a>
+						<a href="javascript:void(0);" class="ui button1 block rounded" id="Nlqjp">领取奖品</a> -->
+						<a href="javascript:void(0);" class="ui button block rounded" id="Njxcj">关闭</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+</div>

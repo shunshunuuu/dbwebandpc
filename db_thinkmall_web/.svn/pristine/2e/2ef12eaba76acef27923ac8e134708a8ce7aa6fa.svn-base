@@ -1,0 +1,220 @@
+ /**
+  * 签到
+  * @author wangwz
+  */
+define(function(require, exports, module){ 
+	var _pageId = "#active_signIn "; // 当前页面ID
+	var appUtils = require("appUtils"); // 核心工具类
+	var service = require("mobileService"); // 服务类
+	var layerUtils = require("layerUtils"); // 弹出层工具类
+	var common = require("common"); // 公共类
+
+	/*
+	 * 初始化
+	 */
+	function init(){
+		
+		// 处理ios滚动问题
+		common.dealIOSScrollBug($(_pageId + "article"), $(_pageId + "#pageContent"));
+		
+		// 初始化页面
+		initView();
+		
+		var user_id=common.getUserId();
+		if(user_id==""||user_id==null){
+/*			$(_pageId + "#signBtn").html("我要签到").css("background", "#FFCA36")
+			.css("box-shadow", "0 0.04rem 0 0 #FF9000")
+			.css("color", "#bb1e1e")
+			.css("-webkit-box-shadow", "0 0.04rem 0 0 #FF9000");*/
+			$(_pageId + "#signBtn").html("我要签到").removeClass()
+			.addClass("reg_btn");
+			$(_pageId + "#regBoxDiv").find(".gift_box").removeClass("gift_get").html("");
+			// 绑定签到事件
+			appUtils.bindEvent(_pageId + "#signBtn", function(){
+				var _loginInPageCode = "active/signIn";
+				if (!common.checkUserIsLogin(false, false, _loginInPageCode, {})) {
+					return false;
+				}
+			});
+		}else{
+			// 查询签到
+			querySignIn();			
+		}
+	}
+	
+	/*
+	 * 初始化页面
+	 */
+	function initView(){
+		$(_pageId + "#regDateListUl").find("li").removeClass().find(".gift_pic").removeClass("gift_get");
+	}
+	
+	// 查询签到
+	function querySignIn(){
+		var reqParam = {
+			"user_id" : common.getUserId()
+		}
+		
+		service.querySign(reqParam, function(data){
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+			if(error_no == "0"){
+				var results = data.results;
+				if (results.length > 0) {
+					var item = results[0];
+					var isSignIn = item.is_sign_in; //今天是否签到 0未签到
+					var signNum = item.sign_num; //签到数
+					
+					if (isSignIn == "0") { // 未签到
+/*						$(_pageId + "#signBtn").html("我要签到").css("background", "#FFCA36")
+																.css("box-shadow", "0 0.04rem 0 0 #FF9000")
+																.css("color", "#bb1e1e")
+																.css("-webkit-box-shadow", "0 0.04rem 0 0 #FF9000");*/
+						$(_pageId + "#signBtn").html("我要签到").removeClass()
+						.addClass("reg_btn");
+						
+						// 绑定签到事件
+						appUtils.bindEvent(_pageId + "#signBtn", function(){
+							signIn(signNum);
+						});
+					} else { // 已签到
+						// 签到文字变换，背景置黑，解绑点击事件  box-shadow: 0 0.04rem 0 0 #FF9000;
+//						$(_pageId + "#signBtn").html("").css("background", "url(images/sign_btn.png) center no-repeat").unbind();
+/*						$(_pageId + "#signBtn").html("您已签到").css("background", "#DDD")
+														.css("box-shadow", "0 0.04rem 0 0 #AAA")
+														.css("color", "#666")
+														.css("-webkit-box-shadow", "0 0.04rem 0 0 #AAA")
+														.unbind();*/
+						$(_pageId + "#signBtn").html("您已签到").removeClass()
+						.addClass("reg_btn reg_btn_act")
+						.unbind();
+					}
+					
+					// 布局签到选项
+					initView(signNum, isSignIn);
+				}
+			}else{
+				layerUtils.iMsg(-1,error_info);
+				return false;
+			}
+		});
+	}
+	
+	/*
+	 * 布局签到选项
+	 */
+	function initView(signNum, isSignIn){
+		// 由于li的排序与签到完成显示顺序不一致，需要定义次数字 用于校正签到天数与li的排列顺序保持一致
+		// 比如签到了7天 应该显示 0,1,2,3,4,9,8的li序列
+		var numArray = [0,1,2,3,4,9,8,7,6,5,10,11,12,13,14,19,18,17,16,15,20,21,22,23,24];
+		
+		//清空礼包样式
+		var regBoxGiftBox = $(_pageId + "#regBoxDiv").find(".gift_box").removeClass("gift_get").html("");
+		
+		var liEleList = $(_pageId + "#regDateListUl").find("li");
+		// 签到数量累计到规则值时，翻开礼包盒
+		if (signNum >= 6) {
+			regBoxGiftBox.eq(0).addClass("gift_get").html('<span>+5东北米</span>');
+			liEleList.eq(9).find("a").addClass("gift_open");
+		}
+		if (signNum >= 12) {
+			regBoxGiftBox.eq(1).addClass("gift_get").html('<span>+10东北米</span>');
+			liEleList.eq(11).find("a").addClass("gift_open");
+		}
+		if (signNum >= 18) {
+			regBoxGiftBox.eq(2).addClass("gift_get").html('<span>+15东北米</span>');
+			liEleList.eq(17).find("a").addClass("gift_open");
+		}
+		if (signNum >= 25) {
+			regBoxGiftBox.eq(3).addClass("gift_get").html('<span>+20东北米</span>');
+			liEleList.eq(24).find("a").addClass("gift_open");
+		}
+		
+		// 选中已签到的天数
+		$(_pageId + "#regDateListUl").find("li").unbind().removeClass().each(function(index){
+			var curEle = $(liEleList[numArray[index]]);
+			if (index < signNum ) { // 已签到的
+				curEle.addClass("checked_in").find("a").html("");
+			} else if (index == signNum && isSignIn == "0") { // 如果今天未签到时 需要把下一个按钮设置为签到按钮
+				curEle.addClass("now_checked_in").find("a").html("<span>签到</span>");
+				if (index == 5 || index == 11 || index == 17 || index == 24) {
+					curEle.find("a").removeClass();
+				}
+				
+				// 绑定签到事件
+				appUtils.bindEvent(_pageId + "#regDateListUl .now_checked_in", function(){
+					signIn(signNum);
+				});
+			}
+		});
+		
+	}
+	
+	/*
+	 *	签到 
+	 */
+	function signIn(signNum){
+		var reqParam = {
+			"user_id" : common.getUserId() 
+		}
+		
+		service.signIn(reqParam, function(data){
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+			if(error_no == "0"){
+				var results = data.results;
+				if (results.length > 0) {
+					var item = results[0];
+					var perPoints = item.per_points || "0";
+					perPoints = parseFloat(item.per_points).toFixed(0);
+					layerUtils.iMsg(0, "恭喜您获得了" + perPoints + "东北米");
+					$(_pageId + "#signBtn").html("您已签到").removeClass()
+					.addClass("reg_btn reg_btn_act")
+					.unbind();
+					querySignIn(); // 刷新签到
+				}
+			}else{
+				layerUtils.iMsg(-1,error_info);
+				return false;
+			}
+		});
+	}
+	
+	/*
+	 * 绑定事件
+	 */
+	function bindPageEvent(){
+		// 禁止头部和底部滑动
+		common.stopHeadAndFooterEvent(_pageId); 
+		
+		// 返回按钮
+		appUtils.bindEvent(_pageId + ".back_btn", function(){
+			var prePageCode = appUtils.getSStorageInfo("_prePageCode"); 
+			var qdly = appUtils.getSStorageInfo("isqdly");
+			if (prePageCode && prePageCode != "login/userLogin") {
+				appUtils.pageBack();
+			}else if(qdly == "1"){
+				appUtils.pageInit("active/signIn", "main", {});
+				appUtils.clearSStorage("isqdly");
+			}else {
+				appUtils.pageInit("active/signIn", "active/index", {});
+			}
+		});
+		
+	}
+	
+	/*
+	 * 页面销毁
+	 */
+	function destroy(){
+		
+	}
+	
+	var activeSignIn = {
+		"init": init,
+		"bindPageEvent": bindPageEvent,
+		"destroy": destroy
+	};
+	// 暴露对外的接口
+	module.exports = activeSignIn;
+});

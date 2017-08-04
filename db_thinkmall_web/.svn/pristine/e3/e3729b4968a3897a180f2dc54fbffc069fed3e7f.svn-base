@@ -1,0 +1,18 @@
+<!--组件清单-->
+<section class="main fixed page" data-page="home" id="index_index" data-pageTitle="商城首页" data-pageLevel="1" data-refresh="true" data-animation-in-name="slideRight">
+    <header class="header">
+        <div class="header_inner">
+        	<!--<a herf="javascript:void(0);" class="icon_back"></a>-->
+        	<a herf="javascript:void(0);" class="header_inner icon_back" style="display: none;"></a>
+            <h1 class="text-center">商城首页(无需登录)</h1>
+        </div>
+    </header>
+    <article>
+    	<div class="menu">
+    		<ul>    			
+				<li><a href="javascript:void(0);" id='gotomall'>跳转到商城(此页面需要登录)</a></li>
+    		</ul>
+    	</div>
+    </article>
+</section>
+<!--组件清单-->

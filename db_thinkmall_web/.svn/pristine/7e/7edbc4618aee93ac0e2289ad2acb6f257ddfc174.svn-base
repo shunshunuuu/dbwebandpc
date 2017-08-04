@@ -1,0 +1,27 @@
+<div class="page"  id="active_guidePagesTwo" data-pageTitle="活动详情" data-pageLevel="1">
+<section class="main fixed" data-page="home">
+	<article>
+		<div class="activity_page2">
+			<div class="activity_banner">
+				<img src="images/hd_banner2.jpg" width="100%" />
+			</div>
+			<div class="activity_txt2">
+				<div class="activity_tit">
+					<h2><img src="images/hd_tit.png" width="126" /></h2>
+					<span>活动时间：2015-12-1 至2015-12-31</span>
+				</div>
+				<div class="txt_det">
+					<h3>活动一  惠理财 首单赚积分</h3>
+					<p>用户在金融商城首次购买基金类理财产品（金额大于1000元），即可获赠100东北米。</p>
+					<h3>活动二  推荐积分送不停</h3>
+					<p>每推荐一名亲友购买理财产品（金额大于1000元）推荐人将获赠100东北米。（推荐认定的方式为被推荐人使用推荐人给出的二维码或链接进行购买)</p>
+					<span>本次活动的最终解释权归东北证券</span>
+				</div>
+				<div class="btn_box">
+					<a href="javascript:void(0)" class="rig_btn">立即行动</a>
+				</div>
+			</div>
+		</div>
+	</article>
+</section>
+</div>

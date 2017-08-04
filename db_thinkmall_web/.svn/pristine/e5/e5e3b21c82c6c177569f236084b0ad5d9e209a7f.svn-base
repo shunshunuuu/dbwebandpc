@@ -1,0 +1,194 @@
+<div class="page"  id="finan_fund_jjph" data-pageTitle="基金排行" data-pageLevel="1"
+	 data-refresh="true" data-urlParam="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner header_inner_index">
+			<h1>基金排行</h1>
+			<a href="javascript:void(0);" class="back_btn"></a>
+			<a href="javascript:void(0);" class="per_search"></a>
+		</div>
+	</header>
+	<article>
+		<div class="index_page">
+			<div class="mallnav_side">
+				<div class="mallnav flex-father">
+					<a class="curent" href="javascript:void(0);" id="qbTab"><span>全部</span></a>
+					<a href="javascript:void(0);"><span>混合型</span></a>
+					<a href="javascript:void(0);"><span>债券型</span></a>
+					<a href="javascript:void(0);"><span>股票型</span></a>
+					<a href="javascript:void(0);"><span>货币型</span></a>
+					<a href="javascript:void(0);"><span>指数型</span></a>
+					<a href="javascript:void(0);"><span>QDII</span></a>
+				</div>
+			</div>
+			<div class="blockbg" style="display:none;"></div>
+			<div class="pulistit clearfix">
+				<p>基金名称</p>
+				<a class="zfbtn" href="javascript:void(0);">
+					<span>近一月</span>
+					<s></s>
+				</a>
+				<div style="display:none;" iszk="false" class="zflist">
+					<ul>
+						<li class="on" type="month">近一月</li>
+						<li type="season">近三月</li>
+						<li type="halfyear">近六月</li>
+						<li type="year">近一年</li>
+					</ul>
+				</div>
+			</div>
+			
+<!-- 			<div class="pulistbox"> -->
+<!-- 				<ul id="fund"> -->
+<!-- 					<li class="love"> -->
+<!-- 						<i></i> -->
+<!-- 						<div class="pro_bts"> -->
+<!-- 							<p class="rolft">全球新兴市场<span>163560</span></p> -->
+<!-- 							<p class="rorht">5.01%</p> -->
+<!-- 						</div> -->
+<!-- 						<div class="pro_sts"> -->
+<!-- 							<p> -->
+<!-- 								<span class="ls">1000元起购</span> -->
+<!-- 								<span class="hs">净值:1.9500</span> -->
+<!-- 							</p> -->
+<!-- 							<a href="javascript:void(0);">购买</a> -->
+<!-- 						</div> -->
+<!-- 					</li> -->
+<!-- 					<li> -->
+<!-- 						<i></i> -->
+<!-- 						<div class="pro_bts"> -->
+<!-- 							<p class="rolft">全球新兴市场<span>163560</span></p> -->
+<!-- 							<p class="rorht">5.01%</p> -->
+<!-- 						</div> -->
+<!-- 						<div class="pro_sts"> -->
+<!-- 							<p> -->
+<!-- 								<span class="ls">1000元起购</span> -->
+<!-- 								<span class="hs">净值:1.9500</span> -->
+<!-- 							</p> -->
+<!-- 							<a href="javascript:void(0);">购买</a> -->
+<!-- 						</div> -->
+<!-- 					</li> -->
+<!-- 					<li> -->
+<!-- 						<i></i> -->
+<!-- 						<div class="pro_bts"> -->
+<!-- 							<p class="rolft">全球新兴市场<span>163560</span></p> -->
+<!-- 							<p class="rorht">5.01%</p> -->
+<!-- 						</div> -->
+<!-- 						<div class="pro_sts"> -->
+<!-- 							<p> -->
+<!-- 								<span class="ls">1000元起购</span> -->
+<!-- 								<span class="hs">净值:1.9500</span> -->
+<!-- 							</p> -->
+<!-- 							<a href="javascript:void(0);">购买</a> -->
+<!-- 						</div> -->
+<!-- 					</li> -->
+<!-- 					<li> -->
+<!-- 						<i></i> -->
+<!-- 						<div class="pro_bts"> -->
+<!-- 							<p class="rolft">全球新兴市场<span>163560</span></p> -->
+<!-- 							<p class="rorht">5.01%</p> -->
+<!-- 						</div> -->
+<!-- 						<div class="pro_sts"> -->
+<!-- 							<p> -->
+<!-- 								<span class="ls">1000元起购</span> -->
+<!-- 								<span class="hs">净值:1.9500</span> -->
+<!-- 							</p> -->
+<!-- 							<a href="javascript:void(0);">购买</a> -->
+<!-- 						</div> -->
+<!-- 					</li> -->
+<!-- 					<li class="love"> -->
+<!-- 						<i></i> -->
+<!-- 						<div class="pro_bts"> -->
+<!-- 							<p class="rolft">全球新兴市场<span>163560</span></p> -->
+<!-- 							<p class="rorht">5.01%</p> -->
+<!-- 						</div> -->
+<!-- 						<div class="pro_sts"> -->
+<!-- 							<p> -->
+<!-- 								<span class="ls">1000元起购</span> -->
+<!-- 								<span class="hs">净值:1.9500</span> -->
+<!-- 							</p> -->
+<!-- 							<a href="javascript:void(0);">购买</a> -->
+<!-- 						</div> -->
+<!-- 					</li> -->
+<!-- 					<li> -->
+<!-- 						<i></i> -->
+<!-- 						<div class="pro_bts"> -->
+<!-- 							<p class="rolft">全球新兴市场<span>163560</span></p> -->
+<!-- 							<p class="rorht">5.01%</p> -->
+<!-- 						</div> -->
+<!-- 						<div class="pro_sts"> -->
+<!-- 							<p> -->
+<!-- 								<span class="ls">1000元起购</span> -->
+<!-- 								<span class="hs">净值:1.9500</span> -->
+<!-- 							</p> -->
+<!-- 							<a href="javascript:void(0);">购买</a> -->
+<!-- 						</div> -->
+<!-- 					</li> -->
+<!-- 				</ul> -->
+<!-- 			</div> -->
+		    <div class="no_data_box" style="display:none;">
+				<em></em>
+				<p>查询无结果</p>
+			</div>
+			<div id="v_container_productList">
+			   	<div class="visc_wrapper" id="v_wrapper_productList" data-iscrollPageId="finan_market">
+					<div class="visc_scroller">
+						<div class="visc_pullDown" style="display:none;">
+							<span class="visc_pullDownIcon"></span>
+							<div class="visc_pullDownDiv">
+								<span class="visc_pullDownLabel">下拉加载上一页</span><br/>
+								时间更新于：<span class="visc_pullDownTime"></span>
+							</div>
+						</div>
+						
+					    <div class="pulistbox">
+				          <ul id="fund">
+					    </ul>
+					    </div>
+					    <div class="visc_pullUp" style="display:none;">
+							<span class="visc_pullUpIcon"></span>
+							<div class="visc_pullUpDiv">
+								<span class="visc_pullUpLabel">上拉加载下一页</span><br/>
+								时间更新于：<span class="visc_pullUpTime"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- 		<div class="footer_box total_footer_box"> -->
+<!-- 			<img src="images/total_footer_pic.png" width="100%" /> -->
+<!-- 			<p>东北证券股份有限公司版权所有 @ 2015 </p> -->
+<!-- 		</div> -->
+     
+	</article>
+	<footer>
+		<div class="ui layout footer_nav footer_new_nav">
+			<div class="row-1">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>推荐</p>
+				</a>
+			</div>
+			<div class="row-1 active">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>理财</p>
+				</a>
+			</div>
+			<div class="row-1">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>活动</p>
+				</a>
+			</div>
+			<div class="row-1">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>我的</p>
+				</a>
+			</div>
+		</div>
+	</footer>
+</section>
+</div>

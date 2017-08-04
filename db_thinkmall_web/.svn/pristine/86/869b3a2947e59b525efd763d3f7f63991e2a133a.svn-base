@@ -1,0 +1,30 @@
+﻿.sk_div {
+	BORDER-BOTTOM: #D85C59 1px solid; POSITION: absolute; 
+	TEXT-ALIGN: center; BORDER-LEFT: #D85C59 1px solid; PADDING-BOTTOM: 3px; 
+	BACKGROUND-COLOR: #FFFAF9; PADDING-LEFT: 3px; WIDTH: 120px; PADDING-RIGHT: 3px;
+	BORDER-TOP: #D85C59 1px solid; BORDER-RIGHT: #D85C59 1px solid; PADDING-TOP: 3px;
+}
+.skb_button {
+	BORDER-BOTTOM: #996633 1px solid; BORDER-LEFT: #996633 1px solid; 
+	PADDING-BOTTOM: 1px; BACKGROUND-COLOR: #f8f8f8; PADDING-LEFT: 1px; 
+	PADDING-RIGHT: 1px; BORDER-TOP: #996633 1px solid; BORDER-RIGHT: #996633 1px solid; PADDING-TOP: 1px
+}
+.num {
+	BACKGROUND-IMAGE: url(../images/login09.jpg); TEXT-ALIGN: center; WIDTH: 31px;
+	 BACKGROUND-REPEAT: no-repeat; BACKGROUND-POSITION: center center; HEIGHT: 25px;
+	  FONT-SIZE: 14px; CURSOR: hand; PADDING-TOP: 5px
+}
+.span_kb {
+	BACKGROUND-IMAGE: url(../images/kb.gif); TEXT-ALIGN: center; MARGIN-TOP:
+	 4px; WIDTH: 117px;  BACKGROUND-REPEAT: no-repeat; HEIGHT: 24px; 
+	 COLOR: #000000; FONT-SIZE: 12px; CURSOR: hand; PADDING-TOP: 0px
+}
+.span_kb_open {
+	BACKGROUND-POSITION: 0px 0px
+}
+.span_kb_close {
+	BACKGROUND-POSITION: 0px -24px
+}
+.button_kb {
+	TEXT-ALIGN: center; PADDING-RIGHT: 0px; BACKGROUND-POSITION: 0px -48px
+}

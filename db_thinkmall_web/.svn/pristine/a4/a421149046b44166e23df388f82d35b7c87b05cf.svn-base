@@ -1,0 +1,140 @@
+<div class="page"  id="active_orderSure" data-pageTitle="订单确认" data-pageLevel="1">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner_02">
+			<a href="javascript:void(0)" class="back_btn"></a>
+			<h1>订单确认</h1>
+		</div>
+	</header>
+	<article>
+		<div class="exchange_detail" id="pageContent">
+			<div class="order_det exchange_mes">
+				<div class="ui layout">
+					<div class="pro_pic">
+						<img src="" id="productImg">
+					</div>
+					<div class="row-1">
+						<h4 id="actPdtName"></h4>
+						<p id="productIntegral"><i class="mon_icon"></i></p>
+						<div class="num_box">
+							<span>兑换份数</span>
+							<div class="num_rt">
+								<div class="text_box">
+									<a href="javascript:void(0);" class="add_btn"></a><input type="tel" value="1" id="exchange_value" /><a href="javascript:void(0);" class="less_btn"></a>
+								</div>
+								<em class="tips" id="joinMaxNum"></em>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="receiver_mes_box">
+				<div class="receiver_mes_tit">
+					<h4 style="width: 40%">收货人信息</h4>
+				</div>
+				<div class="mes_list">
+					<ul id="addressList">
+						
+					</ul>
+					<ul>
+						<li id="addMes">
+							<a href="javascript:void(0);" class="add_mes">请添加收货人信息</a>
+						</li>
+					</ul>
+				</div>
+				<p class="tips_txt">（该信息仅用于派发奖品时使用）</p>
+			</div>
+		</div>
+	</article>
+	<footer>
+		<div class="btn_box">
+			<div class="ui layout">
+				<div class="row-1">
+					<input type="hidden" id="unitIntegral" value="0"/>
+					<p class="total_box">合计：<em class="ared" id="totalIntegral">600</em>东北米</p>
+				</div>
+				<div class="row-1">
+					<a href="javascript:void(0);" class="sub_btn">确认</a>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--弹窗-->
+	<div class="window_dialog" id="windowSubmit" style="display: none;">
+		<div class="jz_box_02">
+			<div class="dialog_cet_03">
+				<div class="tit_icon"></div>
+				<div class="dialog_txt">
+					<h3>您已参与成功</h3>
+					<p>订单号：<em class="ared" id="orderId"></em></p>
+					<span id="is_activeType">（中奖结果请关注微信：<em>东北证券融e通</em>）</span>
+				</div>
+				<div class="btn_box">
+					<div class="ui layout">
+						<div class="row-1" id="viewOrder">
+							<a href="javascript:void(0)">查看订单</a>
+						</div>
+						<div class="row-1" id="continue">
+							<a href="javascript:void(0)">继续逛逛</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!--弹窗-->
+	<div class="window_dialog" id="windowAddress" style="display: none;">
+		<div class="dialog_cet dialog_cet2">
+			<div class="xq_dialog_con">
+				<ul>
+					<li class="ui layout">
+						<span>电话：</span>
+						<div class="row-1 text_box">
+							<input type="tel" id="editPhone" maxlength="11"  placeholder="请填写收货人手机号(必填)"/>
+						</div>
+					</li>
+					<li class="ui layout">
+						<span>姓名：</span>
+						<div class="row-1 text_box">
+							<input type="text" id="editName"  placeholder="请填写收货人姓名"/>
+						</div>
+					</li>
+					<li class="ui layout">
+						<span>地址：</span>
+						<div class="row-1 text_box">
+							<input type="text" id="editAddress"  placeholder="请填写收货人地址"/>
+						</div>
+					</li>
+<!-- 					<li class="ui layout">
+						<span>备注：</span>
+						<div class="row-1 text_box">
+							<input type="text" id="editRemark"/>
+						</div>
+					</li> -->
+					<li class="ui layout">
+						<span>默认地址</span>
+						<div class="row-1 text_box clearfix">
+							<div class="ui switch">
+								<input type="checkbox" checked="checked" id="defaultAddress"/>
+								<div class="ui switch-inner">
+									<div class="ui switch-btn"><span class="active">ON</span><span class="inactive">OFF</span></div>
+									<div class="ui switch-arrow"></div>
+								</div>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="ui layout btn_box">
+				<div class="row-1">
+					<a href="javascript:void(0)" class="save_btn" id="close_btn">关闭</a>
+				</div>
+				<div class="row-1">
+					<a href="javascript:void(0)" class="save_btn" id="saveAddressBtn">保存</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+</div>

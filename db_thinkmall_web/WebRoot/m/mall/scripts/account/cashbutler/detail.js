@@ -1,0 +1,706 @@
+ /**
+  * 现金管家详情页（开通现金管家入口页面）
+  * @author wangwz
+  * 
+  */
+define(function(require, exports, module){ 
+	var _pageId = "#account_cashbutler_detail "; //当前页面ID
+	var appUtils = require("appUtils"); //核心工具类
+	var layerUtils = require("layerUtils"); //弹出层工具类
+	var common = require("common"); //公共类
+	var service = require("mobileService"); // 业务层接口，请求数据
+	var validatorUtil = require("validatorUtil"); // 校验工具类
+	var gconfig = require("gconfig");
+	var global = gconfig.global;
+	var	platform = gconfig.platform; // 渠道
+	var isOpen = false;//是否开通成功-默认为false
+    var putils = require("putils"); 
+	var constants = require("constants");// 常量类
+    
+	var pageGlobal = {
+			"productId" : "", // 产品编号
+			"fundAccount" : "", // 资金账户
+			"totalPrice_take" : "", // 取现金额
+			"register_corp_code" : "", // 基金公司代码
+			"exchange_name" : "", // 基金公司
+			"userableSell" : "", // 可用份额
+			"_flag" : false // 是否开通现金管家开关
+		}
+
+	/*
+	 * 初始化
+	 */
+	function init(){
+		// 处理ios滑动问题
+		common.dealIOSScrollBug($(_pageId + "article"), $(_pageId + "#pageContent"));
+		
+		clearPage();
+		
+			// 获取资金账号
+			var userInfo = appUtils.getSStorageInfo("userInfo");
+			if(userInfo){
+				pageGlobal.fundAccount = JSON.parse(userInfo).fund_account;
+				if(pageGlobal.fundAccount){
+					// 查询现金管家是否开通
+					queryCashButler(); 
+					
+					// 从开通现金管家页面传过来的isOpen 控制是否显示弹出开通成功提示
+					var isOpen  = appUtils.getPageParam("isOpen");
+					if(isOpen){
+						$(_pageId + "#openDetail").show();//开启开通成功弹框
+						isOpen = false;
+					}else{
+						$(_pageId + "#openDetail").hide();//关闭开通成功弹框
+					}
+					
+					// 初始化界面
+					initView();
+					$(_pageId + "#cancelBtn").hide(); // 隐藏  设置预留/取消登记 按钮
+					$(_pageId + "#openBtn").html("立即参与");  // 为开通过现金管家显示立即参与
+					$(_pageId + "#openBtn").show(); // 显示立即参与按钮
+				}else{
+					// 判断链接来源是否来自中焯APP
+					var isFromApp = appUtils.getSStorageInfo("isFromApp");
+					//票据
+					var servticket_id = appUtils.getSStorageInfo("servticket_id");
+					//错误号
+					var errorcode = appUtils.getSStorageInfo("errorcode");
+					//手机号token值
+					var temp_token_mall = appUtils.getSStorageInfo("temp_token_mall");
+					
+					var client_id = appUtils.getSStorageInfo("client_id")
+					// 判断链接来源是否来自中焯APP,如果是，则模拟登录
+					if (isFromApp && isFromApp == "zzapp" && !errorcode && !servticket_id || isFromApp && isFromApp == "zzapp" && !temp_token_mall && !client_id) {
+						common.getLoginClientInfo(true);
+					}else if(isFromApp && isFromApp == "zzapp" && errorcode && !servticket_id){
+						layerUtils.iAlert("请使用资金帐号登录","",function(){
+							appUtils.pageInit("account/balance/detail", "login/userLogin", {});
+						});
+					}else{
+						layerUtils.iAlert("请使用资金帐号登录","",function(){
+							appUtils.pageInit("account/balance/detail", "login/userLogin", {});
+						});
+					}
+				}
+			}
+			
+			$(_pageId + "#cancelBtn").hide(); // 隐藏  设置预留/取消登记 按钮
+			$(_pageId + "#sub_btn_out").hide();//隐藏  设置预留/取消登记 按钮
+			$(_pageId + "#openBtn").html("立即参与");  // 为开通过现金管家显示立即参与
+			$(_pageId + "#openBtn").show(); // 显示立即参与按钮
+			
+			//查询现金管家详情
+			fundDetail();
+	}
+	
+	function initView(){
+		// 隐藏设置金额弹出层
+		$(_pageId + "#setMoneyDiv").hide();
+		$(_pageId + "#quickAccess_box").hide();
+		$(_pageId + "#totalPrice_take").val("");
+	}
+	
+	/*
+	 * 查询是否开通现金管家
+	 */
+	function queryCashButler(){
+		var param = {
+			"type" : 3, // 查询
+			"fund_account" : pageGlobal.fundAccount, 
+			"product_code" : global.product_code
+		}
+		
+		service.productRegister(param, function(data){
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+			
+			if(error_no == "0"){
+				var results = data.results;
+				if (results.length > 0) {
+					var result = results[0];
+					if (result.account_status == "0") {
+						pageGlobal._flag = true;
+						// 已开通现金管家
+						$(_pageId + "#cancelBtn").show();  // 显示 设置预留/取消登记 按钮
+						$(_pageId + "#openBtn").hide();	//隐藏 开通 按钮
+						$(_pageId + "#sub_btn_out").show();//隐藏  设置预留/取消登记 按钮
+						pageGlobal.userableSell = result.userable_sell || "0"; // 可卖数量
+						var money = result.money || "0"; // 保留额度
+						$(_pageId + "#money").html(parseFloat(money).toFixed(2)); // 保留额度
+						$(_pageId + "#userableSell").html(parseFloat(pageGlobal.userableSell).toFixed(2)); // 可用份额
+					} else {
+						// 开通但已取消登记
+						pageGlobal._flag = true;
+						$(_pageId + "#openBtn").html("立即参与"); // 开通后将按钮改为立即登记
+						$(_pageId + "#openBtn").show();	//显示 立即参与 按钮
+						
+						$(_pageId + "#cancelBtn").hide();//隐藏  设置预留/取消登记 按钮
+						$(_pageId + "#sub_btn_out").hide();//隐藏  设置预留/取消登记 按钮
+						$(_pageId + "#money").html("0.00"); // 保留额度
+						$(_pageId + "#userableSell").html("0.00"); // 保留额度
+					}
+					
+				} else {
+					// 未开通现金管家
+					pageGlobal._flag = false;
+				}
+			}else{
+				//layerUtils.iMsg(-1, error_info);
+				return false;
+			}
+		});
+	}
+	
+	/*
+	 * 现金管家详情
+	 */
+	function fundDetail(){
+		var param = {
+			"product_code" : global.product_code 
+		}
+		
+		service.finanInfo(param, function(data){
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+			
+			if(error_no == "0"){
+				var results = data.results;
+				
+				if (results.length > 0) {
+					var result = data.results[0];
+					var product_name = result.product_name; // 产品名称
+					pageGlobal.productId = result.product_id; // 产品编号
+					pageGlobal.register_corp_code = result.register_corp_code; // 基金公司code
+					pageGlobal.exchange_name = result.manager_name || result.ta_code_txt; // 基金公司名称
+					var earnings = result.earnings || "0"; // 年化收益率
+					$(_pageId + "#incomeunitHead").html(parseFloat(earnings).toFixed(4) + "<small>%</small>"); // 年化收益率
+					
+				}
+			}else{
+				layerUtils.iMsg(-1,error_info);
+				return false;
+			}
+		});
+	}
+	
+	/**
+	 * 查询判断是否开通基金户
+	 */
+	function isOpenCashButler(){
+		var param = {
+				"type" : 0, // 0查询，1开通
+				"fina_belongs" : "3",
+				"product_id" : pageGlobal.productId,
+				"product_sub_type" : "1", // 0基金，1理财
+				"fund_account" : pageGlobal.fundAccount
+			}; 
+			
+			service.openCashButler(param,function(data){
+				var result = common.getResultList(data);
+				if(result.length > 0){
+					var isOpen = false;
+					for (var i = 0; i < result.length; i++) {
+					var item = result[i];
+						if(item.fund_company == pageGlobal.register_corp_code){
+							// 开通了现金管家户
+							if(pageGlobal._flag){
+								openCashButler();
+							}else{
+								appUtils.pageInit("account/cashbutler/detail", "account/cashbutler/openDetail", {"product_id" : pageGlobal.productId});
+							}
+							isOpen = true;
+							return;
+						}else{
+							// 未开通当前基金公司的基金户 
+							isOpen = false;
+						}
+					}
+					if(!isOpen){
+						showWindowTwo();
+					}
+				}
+		});
+	}
+	
+	/*
+	 * 弹出开基金户提示
+	 */
+	function showWindowTwo(){
+		var fundCompany = pageGlobal.register_corp_code; // 基金公司代码
+		var exchangeName = pageGlobal.exchange_name; // 基金公司名称; // 基金公司
+		var userInfo = appUtils.getSStorageInfo("userInfo"); // 用户信息
+		var holderName = ""; // 用户姓名
+		var idNo = ""; // 证件号码
+		var address = ""; // 详细地址
+		var telephone = ""; // 联系电话
+		var userMail = ""; // 电子邮箱
+		var postCode = ""; // 邮政编码
+		if (userInfo) {
+			userInfo = JSON.parse(userInfo);
+			address = userInfo.address; // 详细地址
+			telephone = userInfo.telephone; // 联系电话
+			userMail = userInfo.user_mail; // 电子邮箱
+			postCode = userInfo.post_code; // 邮政编码
+			idNo = userInfo.identity_num; // 证件号码
+			holderName = userInfo.user_name; // 用户姓名
+		}
+		
+		$(_pageId + "#fundCompany").html(fundCompany);
+		$(_pageId + "#exchangeName").html(exchangeName);
+		$(_pageId + "#holderName").html(holderName);
+		$(_pageId + "#idNo").html(idNo);
+		$(_pageId + "#address").html(address);
+		$(_pageId + "#telephone").html(telephone);
+		$(_pageId + "#userMail").html(userMail);
+		$(_pageId + "#postCode").html(postCode);
+		
+		$(_pageId + "#window_two").show();
+	}
+	
+	/**
+	 * 现金管家登记
+	 */
+	function openCashButler(){
+		var param = {
+				"type" : "0", // 产品登记
+				"fund_account" : pageGlobal.fundAccount,
+				"product_code" : global.product_code,
+				"tot_price" : 0, // 登记金额
+				"order_channel" : platform,
+				"money_type" : "0" // 币种 0 人民币
+			}
+			
+			service.productRegister(param, function(data){
+				var error_no = data.error_no;
+				var error_info = data.error_info;
+				
+				if(error_no == "0"){
+					var results = data.results;
+					if (results.length > 0) {
+						var item = results[0];
+						var is_risk = item.is_risk; // 风险测评等级返回结果
+						if (is_risk == "1" || is_risk == "") { // 开通成功， 跳转到成功页面
+							layerUtils.iMsg(-1, "现金管家开通成功，请设置留存金额");
+							$(_pageId + "#cancelBtn").show();  // 显示 设置预留/取消登记 按钮
+							$(_pageId + "#openBtn").hide();	//隐藏 开通 按钮
+							pageGlobal.userableSell = item.userable_sell || "0"; // 可卖数量
+							var money = item.money || "0"; // 保留额度
+							$(_pageId + "#money").html(parseFloat(money).toFixed(2)); // 保留额度
+							$(_pageId + "#userableSell").html(parseFloat(pageGlobal.userableSell).toFixed(2)); // 可用份额
+							
+							// 登记成功后，马上弹出设置金额的框出来，【客户需求】
+							var setMoneyDivEle = $(_pageId + "#setMoneyDiv");
+							if (setMoneyDivEle.css("display") == "none") {
+								$(_pageId + "#totalPrice").val("");
+								setMoneyDivEle.show();
+							} else {
+								setMoneyDivEle.hide();
+							}
+							
+							return false;
+						} else { // 开通失败，风险测评等级不符合
+							var pageInitParam = appUtils.getPageParam();
+							pageInitParam.backPage = "account/cashbutler/detail";
+							switch(Number(is_risk)){
+								case 0:
+									layerUtils.iMsg(-1,"您还未进行风险测评！");
+									appUtils.pageInit("finan/buy", "register/riskAssessment", pageInitParam);
+									break;
+								case 2:
+									layerUtils.iMsg(-1,"您的风险等级低于产品风险等级！");
+									appUtils.pageInit("finan/buy", "register/riskAssessment", pageInitParam);
+									break;
+								case 3:
+									layerUtils.iMsg(-1,"您的风险测评已过期！");
+									appUtils.pageInit("finan/buy", "register/riskAssessment", pageInitParam);
+									break;
+								default:
+									break;
+							}
+						}
+					}
+					
+				}else{
+					layerUtils.iMsg(-1, error_info);
+					return false;
+				}
+			});
+	}
+	
+	/**
+	 * 现金管家快速取现
+	 */
+	function queryCashTaking(){
+		var param = {
+				"type" : "0", // 操作类型 0查询 1开通
+				"fund_account" : pageGlobal.fundAccount
+			}
+			
+			service.queryCashTaking(param, function(data){
+				var error_no = data.error_no;
+				var error_info = data.error_info;
+				
+				if(error_no == "0"){
+					var results = data.results[0];
+						var client_id = results.client_id;
+						if(client_id){
+							$(_pageId + "#quickAccess_box").show();
+						}else{
+							appUtils.pageInit("account/cashbutler/detail","account/cashbutler/openDetail",{});
+						}
+					
+				}else{
+					layerUtils.iMsg(-1, error_info);
+					return false;
+				}
+			});
+	}
+	
+	/**
+	 * 现金管家快速取现
+	 */
+	function cashTaking(tot_price){
+		var param = {
+				"fund_account" : pageGlobal.fundAccount,
+				"product_code" : global.product_code,
+				"tot_price" : tot_price
+			}
+			
+			service.cashTaking(param, function(data){
+				var error_no = data.error_no;
+				var error_info = data.error_info;
+				
+				if(error_no == "0"){
+					var results = data.results[0];
+					layerUtils.iMsg(-1, "快速取现成功");
+					queryCashButler();
+					$(_pageId + "#window_Three").hide();
+					
+				}else{
+					$(_pageId + "#window_Three").hide();
+					layerUtils.iMsg(-1, error_info);
+					return false;
+				}
+			});
+	}
+	
+	/*
+	 * 绑定事件
+	 */
+	function bindPageEvent(){
+		
+		// 点击页面
+	    appUtils.bindEvent($(_pageId + " #setMoneyDiv"),function(e){
+			$(_pageId + "#setMoneyDiv").hide();
+			e.stopPropagation();
+	    });
+	    
+		// 点击页面
+	    appUtils.bindEvent($(_pageId + " #quickAccess_box"),function(e){
+			$(_pageId + "#quickAccess_box").hide();
+			$(_pageId + "#totalPrice_take").val("");
+			e.stopPropagation();
+	    });
+		
+		// 返回
+		appUtils.bindEvent(_pageId + ".back_btn2", function(){
+			var backPage = appUtils.getPageParam("backPage");
+			if (backPage) {
+				appUtils.pageInit("account/cashbutler/detail", backPage, {});
+				return false;
+			}
+			var prePageCode = appUtils.getSStorageInfo("_prePageCode"); 
+			if (prePageCode && prePageCode != "login/userLogin" 
+				&& prePageCode != "register/riskAssSuccess" 
+					&& prePageCode != "account/cashbutler/openDetail" && prePageCode != "account/cashbutler/detail") {
+				appUtils.pageBack();
+			} else {
+				appUtils.pageInit("account/cashbutler/detail", "main", appUtils.getPageParam());
+			}
+		});
+		
+		// 关闭按钮-开通现金管家完成提示弹窗
+		appUtils.bindEvent(_pageId + ".close_btn", function(){
+			$(_pageId + ".window_dialog").hide();//关闭开通成功弹框
+			
+			// 关闭成功提示框后，马上弹出设置金额的框出来，【客户需求】
+			var setMoneyDivEle = $(_pageId + "#setMoneyDiv");
+			if (setMoneyDivEle.css("display") == "none") {
+				$(_pageId + "#totalPrice").val("");
+				setMoneyDivEle.show();
+			} else {
+				setMoneyDivEle.hide();
+			}
+		});
+		
+		// 登记
+		appUtils.bindEvent(_pageId + "#openBtn", function(){
+			
+			var userInfo = appUtils.getSStorageInfo("userInfo"); // 用户信息
+			var _loginInPageCode = "account/cashbutler/detail";
+//			var client_rights = JSON.parse(userInfo).client_rights; // 获取资金账号
+			if(userInfo){
+				var client_rights = JSON.parse(userInfo).client_rights; // 获取资金账号
+				// 判断是否开通e权限
+				if(client_rights.indexOf("e") == -1){
+					layerUtils.iAlert("您尚未签署电子签名约定书，请先至我司官网网上营业厅或营业部柜台签署！");
+					return false;
+				}
+				// 判断是否开通W权限
+				if(client_rights.indexOf("W") == -1){
+					layerUtils.iAlert('您还未开通基金代销权限请阅读<a href="http://www.nesc.cn/risktext4.jsp" data-id=""  data-title=""  data-url="">《证券投资基金投资人权益须知》</a>并同意开通','',function(){
+						// 开通W权限
+						var userInfo = appUtils.getSStorageInfo("userInfo");
+						var user_id = JSON.parse(userInfo).user_id;
+						var param = {
+								"user_id" : user_id,
+								"contract_type" : constants.contractType.FUND_DISTRIBUTION
+							}
+						service.queryContract(param, function(data){
+							var error_no = data.error_no;
+							var error_info = data.error_info;
+							
+							if(error_no == "0"){
+								var results = data.results[0];
+								var agreement_id = results.agreement_id;
+								
+								var param = {
+										"user_id" : user_id,
+										"agreement_id" : agreement_id
+									}
+									service.openCashTakingW(param, function(data){
+										var error_no = data.error_no;
+										var error_info = data.error_info;
+										
+										if(error_no == "0"){
+											var results = data.results[0];
+											
+											var _loginInPageCode = "account/cashbutler/detail";
+											if (common.checkUserIsLogin(true, false,_loginInPageCode)) {
+												isOpenCashButler(); // 是否开通深市TA户
+											}
+										}else{
+											layerUtils.iMsg(-1, error_info);
+											return false;
+										}
+									});
+							}else{
+								layerUtils.iMsg(-1, error_info);
+								return false;
+							}
+						});
+					},'同意');
+				}else{
+					isOpenCashButler(); // 是否开通深市TA户
+				}
+			}else{
+				
+				common.checkUserIsLogin(true, false,_loginInPageCode);
+			}
+		});
+		
+		// 取消开通
+		appUtils.bindEvent(_pageId + "#cancelFund", function(e){
+			e.stopPropagation();
+			$(_pageId + "#window_two").hide();
+		});
+		
+		// 设置预留金额
+		appUtils.bindEvent(_pageId + "#openFund", function(e){
+			e.stopPropagation();
+			$(_pageId + "#window_two").hide();
+			// 开通了现金管家户
+			if(pageGlobal._flag){
+				openCashButler();
+			}else{
+				appUtils.pageInit("account/cashbutler/detail", "account/cashbutler/openDetail", {"product_id" : pageGlobal.productId});
+			}
+		});
+		
+		// 金额只能是数字
+		appUtils.bindEvent(_pageId + "#totalPrice", function(e){
+			putils.numberLimit(_pageId + "#totalPrice");
+			if (validatorUtil.isEmpty($(this).val())) {
+				$(this).val("0");
+			}
+			e.stopPropagation();
+		}, "blur");
+		
+		// 金额只能是数字
+		appUtils.bindEvent(_pageId + "#totalPrice_take", function(e){
+			var cur = $(this).val();
+			putils.numberLimit(_pageId + "#totalPrice_take");
+			if (validatorUtil.isEmpty(cur)) {
+				$(this).val("0");
+			}
+			if(parseFloat(cur) < 1000){
+				layerUtils.iMsg(-1, "取现份额必须大于1000");
+				return false;
+			}
+			if(parseFloat(cur) > parseFloat(pageGlobal.userableSell)){
+				layerUtils.iMsg(-1, "取现份额不能大于可用份额");
+				return false;
+			}
+			e.stopPropagation();
+		}, "blur");
+		
+		// 获取焦点时，如果金额为0 则清空
+		appUtils.bindEvent(_pageId + "#totalPrice_take", function(e){
+			var inputValue = $(this).val();
+			if ($.trim(inputValue) == "0") {
+				$(this).val("");
+			}
+			e.stopPropagation();
+		}, "focus");
+		
+		// 获取焦点时，如果金额为0 则清空
+		appUtils.bindEvent(_pageId + "#totalPrice", function(e){
+			var inputValue = $(this).val();
+			if ($.trim(inputValue) == "0") {
+				$(this).val("");
+			}
+			e.stopPropagation();
+		}, "focus");
+		
+		// 设置预留金额
+		appUtils.bindEvent(_pageId + "#totalPrice", function(e){
+			e.stopPropagation();
+		});
+		
+		// 设置预留金额弹框内
+		appUtils.bindEvent(_pageId + ".order_list_box2", function(e){
+			e.stopPropagation();
+		});
+		
+		// 设置预留
+		appUtils.bindEvent(_pageId + "#cancelBtn #sub_btn_into", function(){
+			var setMoneyDivEle = $(_pageId + "#setMoneyDiv");
+			if (setMoneyDivEle.css("display") == "none") {
+				$(_pageId + "#totalPrice").val("");
+				setMoneyDivEle.show();
+			} else {
+				setMoneyDivEle.hide();
+			}
+		});
+		
+		/*
+		 * 提交设置金额
+		 */
+		appUtils.bindEvent(_pageId + "#submitSetBtn", function(e){
+			var totPrice = $(_pageId + "#totalPrice").val();
+			if (validatorUtil.isEmpty(totPrice)) {
+				layerUtils.iMsg(-1, "设置金额不能为空");
+				return;
+			}
+			var param = {
+				"type" : "2", // 预留金额修改
+				"fund_account" : pageGlobal.fundAccount,
+				"product_code" : global.product_code,
+				"tot_price" : totPrice, // 修改金额
+				"order_channel" : platform,
+				"money_type" : "0" // 币种 0 人民币
+			}
+			
+			service.productRegister(param, function(data){
+				var error_no = data.error_no;
+				var error_info = data.error_info;
+				
+				if(error_no == "0"){
+					queryCashButler(); // 刷新页面值
+					$(_pageId + "#setMoneyDiv").hide();
+				}else{
+					layerUtils.iMsg(-1, error_info);
+					return false;
+				}
+			});
+			e.stopPropagation();
+		});
+		
+		// 取消登记
+		appUtils.bindEvent(_pageId + "#sub_btn_out", function(){
+			layerUtils.iConfirm("您确定要取消参与现金管家吗?", function(){
+				var param = {
+					"type" : "1", // 取消产品登记
+					"fund_account" : pageGlobal.fundAccount,
+					"product_code" : global.product_code 	
+				}
+				
+				service.productRegister(param, function(data){
+					var error_no = data.error_no;
+					var error_info = data.error_info;
+					
+					if(error_no == "0"){
+						layerUtils.iMsg(0, "取消成功！");
+						$(_pageId + "#openBtn").show(); // 显示 开通 按钮
+						$(_pageId + "#cancelBtn").hide(); // 隐藏  设置预留/取消登记 按钮
+						/*清空显示*/
+						$(_pageId + "#money").html("0.00"); 
+						$(_pageId + "#userableSell").html("0.00"); 
+						$(_pageId + "#openBtn").html("立即参与");
+					}else{
+						layerUtils.iMsg(-1, error_info);
+						return false;
+					}
+				});
+			}, function(){});
+		});
+		
+		// 快速取现
+		appUtils.bindEvent(_pageId + "#quickAccess", function(){
+			queryCashTaking();
+		});
+		
+		// 快速取现
+		appUtils.bindEvent(_pageId + "#submitTaking", function(){
+			pageGlobal.totalPrice_take = $(_pageId + "#totalPrice_take").val();
+			if(parseFloat(pageGlobal.totalPrice_take) > parseFloat(pageGlobal.userableSell)){
+				layerUtils.iMsg(-1, "取现份额不能大于可用份额");
+				return false;
+			}
+			if (validatorUtil.isEmpty(pageGlobal.totalPrice_take)) {
+				return;
+			}
+			$(_pageId + "#totalPriceTake").html("取现金额："+pageGlobal.totalPrice_take);
+			$(_pageId + "#quickAccess_box").hide();
+			$(_pageId + "#totalPrice_take").val("");
+			$(_pageId + "#window_Three").show();
+			$(_pageId + "#totalPrice_take").val("");
+		});
+		
+		// 确认快速取现
+		appUtils.bindEvent(_pageId + "#taking", function(){
+			cashTaking(pageGlobal.totalPrice_take);
+		});
+		
+		// 确认快速取现取消
+		appUtils.bindEvent(_pageId + "#cancel", function(){
+			$(_pageId + "#window_Three").hide();
+		});
+		
+		// 禁止头部和底部滑动
+		common.stopHeadAndFooterEvent(_pageId); 
+		
+	}
+	
+	/*清除页面显示值*/
+	function clearPage(){
+		$(_pageId + "#money").html("0.00"); // 保留额度
+		$(_pageId + "#userableSell").html("0.00"); // 可用份额
+	}
+	
+	/*
+	 * 页面销毁
+	 */
+	function destroy(){
+		pageGlobal.productId = ""; // 产品ID
+		pageGlobal.fundAccount = ""; // 资金账户
+	}
+	
+	var cashButlerDetail = {
+		"init": init,
+		"bindPageEvent": bindPageEvent,
+		"destroy": destroy
+	};
+	// 暴露对外的接口
+	module.exports = cashButlerDetail;
+});

@@ -1,0 +1,39 @@
+<div class="page"  id="account_does" data-pageTitle="我要吐槽" data-pageLevel="1"
+	data-urlParam="true" data-refresh="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner header_inner_02">
+			<h1>我要吐槽</h1>
+			<a href="javascript:void(0);" class="back_btn"></a>
+		</div>
+	</header>
+	<article>
+		<div class="index_page">
+			<div class="boxinside01">
+				<div class="yournumber">
+					<div class="inputbox3">
+						<input type="text" id="mobile_phone" maxlength="11" placeholder="（选填）您的手机号码"/>
+					</div>
+					<a href="javascript:void(0);" id = "clear"></a>
+				</div>
+			</div>
+			<div class="textbox1">
+				<div class="textboxin">
+					<textarea name="" id="doestext" placeholder="您在使用的过程中，遇到什么问题，或者有什么不好的体验，和一些建议，欢迎向我们的吐槽，我们将努力提高，给您最好的体验。"></textarea>
+					<p>0/300</p>
+				</div>
+			</div>
+			<div class="tucao">
+				<a href="javascript:void(0);" id="sent"><s></s>发送</a>
+			</div>
+		</div>
+	</article>
+	<!-- 遮罩层 -->
+	<div class="blockbg02" id = "zzcone" style="display:none;"></div>
+	<div class="mptbox boxcenter" id = "zzctwo" style="display:none;">
+		<p class="swop_01">温馨提示</p>
+		<p class="swop_02">谢谢您的反馈</p>
+		<a class="swop_03" href="javascript:void(0);" id = "assign">确定</a>
+	</div>
+</section>
+</div>

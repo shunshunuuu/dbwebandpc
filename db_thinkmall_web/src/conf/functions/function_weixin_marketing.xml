@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="GBK"?>
+<!--
+##################################################################
+##                                                              ##
+##         用于配置服务器需要动态加载的功能模块                 ##
+##                                                              ##
+##                                                              ##
+##         id     :  业务功能编号                               ##
+##         class  :  业务功能的具体实现类                       ##
+##         desc   :  功能描述信息                               ##
+##                                                              ##
+##################################################################
+-->
+<functions>
+	<function id="1105028">
+		<desc>获取活动详细信息，并返回奖品信息</desc>
+	</function>
+	<function id="1105029">
+		<desc>参与抽奖(商城用户user_id作为唯一标识)，非微信版</desc>
+	</function>
+	<function id="1105032">
+		<desc>查询中奖列表</desc>
+	</function>
+	<function id="1105033">
+		<desc>中奖商品保存地址信息</desc>
+	</function>
+	<function id="1105034">
+		<desc>查询/增加地址信息 </desc>
+	</function>
+	<function id="1105035">
+		<desc>流量领取 </desc>
+	</function>
+	<function id="1105036">
+		<desc>营销活动推荐统计（东北版） </desc>
+	</function>
+</functions>

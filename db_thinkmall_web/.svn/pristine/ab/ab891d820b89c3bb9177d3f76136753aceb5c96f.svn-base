@@ -1,0 +1,532 @@
+ /**
+  * 我的资料
+  * @author wangwz
+  * 
+  */
+define(function(require, exports, module){ 
+	var _pageId = "#account_updatePwd "; // 当前页面ID
+	var appUtils = require("appUtils"); // 核心工具类
+	var layerUtils = require("layerUtils"); // 弹出层工具类
+	var common = require("common"); // 公共类
+	var service = require("mobileService"); // 业务层接口，请求数据
+	var validatorUtil = require("validatorUtil"); // 校验工具类
+	var constants = require("constants"); // 常量类
+	var gconfig = require("gconfig"); //全局配置对象
+	var global = gconfig.global;//全局对象里面的global
+	var ssoUtils = require("ssoUtils"); // 统一登录工具类
+	// 全局变量统一管理
+	var pageGlobal = {
+			"verify_id" : "", 	// 验证码
+			"timer" : null,  // 计时器
+			"mobile_phone" : "", // 手机号码
+			"updateType" : "", // 修改类型
+			"i" : 60	// 倒计时长
+	}
+
+	/*
+	 * 初始化
+	 */
+	function init(){
+		// 手机号码默认取用户信息中的手机号码
+		var userInfo = appUtils.getSStorageInfo("userInfo");
+		if (userInfo) {
+			pageGlobal.mobile_phone = JSON.parse(userInfo).mobile_phone;
+			if (validatorUtil.isMobile(pageGlobal.mobile_phone)){
+				$(_pageId + "#mobilePhone").val(pageGlobal.mobile_phone);
+			}else {
+				$(_pageId + "#mobilePhone").val("");
+			}
+			
+			initView(); // 初始化页面
+		}
+	}
+	
+	/*
+	 * 判断页面显示
+	 */
+	function checkUpdateType(){
+		/* 当用户是忘记密码时隐藏原密码框 */
+		pageGlobal.updateType = appUtils.getPageParam("update_type");
+		if (pageGlobal.updateType == "3") {
+			$(_pageId + ".register_list .text_item").eq(0).hide();
+			$(_pageId + "#mobilePhone").next("a").hide();
+			$(_pageId + "#mobilePhone").attr("readonly","readonly");
+			
+		}else if(pageGlobal.updateType == "0"){
+			$(_pageId + ".register_list .text_item").eq(3).hide();
+			$(_pageId + ".register_list .text_item").eq(4).hide();
+		}else{
+			$(_pageId + "#mobilePhone").next("a").show();
+			$(_pageId + "#mobilePhone").removeAttr("readonly");
+		}
+	}
+	
+	/**
+	 * 初始化页面
+	 */
+	function initView(){
+		$(_pageId + ".register_list .text_item").eq(3).show();
+		$(_pageId + ".register_list .text_item").eq(4).show();
+		$(_pageId + ".register_list .text_item").eq(0).show();
+		$(_pageId + "#oldPwd").val("");
+		$(_pageId + "#newPwd").val("");
+		$(_pageId + "#surePwd").val("");
+		$(_pageId + "#mobileCode").val("");
+		$(_pageId + "#msgTips").html("");
+		checkUpdateType();
+		clearMsgCodeTimer(); // 清除短信验证码计时器
+	}
+	
+	/*
+	 * 绑定事件
+	 */
+	function bindPageEvent(){
+		// 返回
+		appUtils.bindEvent(_pageId + ".close_btn2", function(){
+			appUtils.pageBack();
+		});
+		
+		appUtils.bindEvent(_pageId + ".del_btn", function(){
+			$(this).prev().val("");
+		});
+		
+		/*
+		 * 发送手机验证码
+		 */
+		appUtils.bindEvent(_pageId + ".yzm_btn", function(){
+			if($(this).attr("data-state") == "false"){
+				return ;
+			}
+			var mobile = $.trim($(_pageId + "#mobilePhone").val());
+			queryMsgCodeId(mobile);
+		});
+		
+		// 下一步
+		appUtils.bindEvent(_pageId + "#nextBtn", function(){
+			// 校验密码基本格式
+			if (!checkInput()) {
+				return false;
+			}
+			
+			if (pageGlobal.updateType == "0") {
+				updatePassword();
+			}else{
+				// 校验手机验证码是否正确
+				var msgCode = $(_pageId + "#mobileCode").val();
+				var mobilePhone = $(_pageId + "#mobilePhone").val();
+				checkMsgCode(msgCode, mobilePhone);
+			}
+		});
+	}
+	
+	/**
+	 * 功能： 手机验证码验证编号获取
+	 * @param mobilePhone: 手机号
+	 * @returns result 获取手机验证编号结果集
+	 */
+	function queryMsgCodeId(mobilePhone){
+
+		var param = {
+				"mobile_phone" : mobilePhone
+		};
+		var result = {};
+		service.queryMsgCodeId(param,function(data){
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+			if (error_no == "0"){
+				var results = data.results[0];
+				var verify_id = results.verify_id;
+				var mobile = results.mobile;
+				var param = {
+						"verify_id" : verify_id,
+						"mobile" : mobile,
+						"type" : constants.sms_type.forget_mobilePhone // 短信内容类型(0更换手机验证码，1委托成功，2注册手机验证码，3忘记手机验证码)
+					};
+				service.sendMsg(param,function(data){
+					var error_no = data.error_no;
+					var error_info = data.error_info;
+					if (error_no == "0"){
+						var result = data.results[0];
+						pageGlobal.verify_id = result.verify_id; // 验证码值
+						$(_pageId + "#msgTips").html('已将短信校验码发送至：<a href="javascript:void(0)">' + $(_pageId + "#mobilePhone").val() + '</a>').show();
+						pageGlobal.timer = setInterval(function(){
+							shows(); // 倒计时读秒
+						}, 1000);
+					} else {
+						clearMsgCodeTimer(); // 清除短信验证码计时器
+						$(_pageId + "#msgTips").hide();
+						layerUtils.iMsg(-1,error_info);
+					}
+				}, {});
+			} else {
+				layerUtils.iMsg(-1,error_info);
+			}
+		}, {});
+	}
+	
+	/**
+	 * 验证验证码
+	 * mobile : 手机号码
+	 * code ： 验证码
+	 */
+	function checkMsgCode(msgCode, mobilePhone){
+		var param = {
+				"mobile_phone" : $.trim(mobilePhone),
+				"code" : $.trim(msgCode),
+				"verify_id" : pageGlobal.verify_id
+		};
+		
+		service.checkMsgCode(param, function(data){
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+			if (error_no == "0"){
+				var result = data.results[0];
+				var is_success = result.is_success;
+				if(is_success == "1"){
+					updatePassword();
+				}else{
+					layerUtils.iMsg(-1, "验证码校验失败！");
+					layerUtils.iLoading(false);
+				}
+			} else {
+				layerUtils.iMsg(-1, error_info);
+				layerUtils.iLoading(false);
+				return false;
+			}
+		}, {"isLastReq" : false});
+	}
+	
+	/*
+	 * 修改密码
+	 */
+	function updatePassword(){
+		var oldPwd = $(_pageId + "#oldPwd").val();
+		var newPwd = $(_pageId + "#newPwd").val();
+		var surePwd = $(_pageId + "#surePwd").val();
+		
+		var param = {
+			"pwd1" : $.trim(oldPwd),
+			"pwd2" : $.trim(newPwd),
+			"pwd3" : $.trim(surePwd)
+		};
+		
+		if (pageGlobal.updateType == "0") {
+			// 修改交易密码
+			common.rsaEncryptTwo(param, updateTradePwd);
+		}
+		if (pageGlobal.updateType == "2") {
+			// 修改登录密码
+			common.rsaEncryptTwo(param, updateQueryPwd);
+		}
+		if (pageGlobal.updateType == "3") {
+			// 忘记密码
+			common.rsaEncryptTwo(param, forgetLoginPwd);
+		}
+		
+	}
+	
+	/*
+	 * 忘记密码【登录密码】
+	 */
+	function forgetLoginPwd(backParam){
+		
+		var param = {
+			"user_id" : common.getUserId(),
+			"pwd_new" : backParam.pwd2,
+			"mobile_phone" : pageGlobal.mobile_phone,
+			"verify_id" : pageGlobal.verify_id,
+			"pwd_twice" : backParam.pwd3
+		}
+		
+		service.forgetLoginPwd(param, function(data){
+			var error_no = data.error_no;
+			var error_info = data.error_info;		
+			if (error_no == "0"){
+				layerUtils.iMsg(0, "登录密码修改成功");
+				appUtils.pageInit("account/updatePwd", "account/myProfile", {});
+				ssoLog();//调统一登入
+				clear();
+			} else {
+				layerUtils.iMsg(-1, error_info);
+				return false;
+			}
+		});
+	}
+	
+	function ssoLog(){
+
+		var loginValue = $.trim($(_pageId + "#mobilePhone").val()); 
+		var pwdBackParam =$.trim($(_pageId + "#mobileCode").val())
+		//		var loginPwd =  pwdBackParam[0];
+		
+		var ssoTicket = $("#mobileCode").val();//验证码
+		var ssoLoginType = "";
+		
+		if(loginValue.length == 11){//理财账号登录 
+			ssoLoginType = "104";
+//			checkPwdMode = "0";
+		}else{
+			ssoLoginType = "201";
+//			checkPwdMode = "1";
+		}
+		
+		//统一登录完成后回调函数
+		var callback = function(data){				
+		    if (data) 
+			{
+	            if (data.error_no == 0) 
+				{		 
+	               var objArr = data.temp_token_info;
+	               var user_info = data.user_info;
+	               if(objArr && objArr.length>0 && user_info && user_info.length>0)
+	               {
+	               	 var obj = objArr[0];
+	               	 var user = user_info[0];
+	               	 var token = obj["temp_token_"+global.sysFlag];
+	               	 var access_token = obj["access_token"];
+	               	 if(token)
+	               	 {
+	               	 	var param = {};
+	               	 	param['temp_token'] = token;
+	               	 	param['access_token'] = obj["access_token"];
+	               	 	 //模拟登录当前应用接口	(自己模块去实现自己独立的登录)
+		               var curCallback = function(data){
+		            		// 获取登录结果
+		       			var results = common.getResultList(data, true, false, function(){
+		       				layerUtils.iMsg(-1,data.error_info);
+		       			});
+			               if (data.error_no == 0) 
+						    {
+			            	   var userInfoCallback = function(data){
+			            		   if (data.error_no == 0) 
+								    {
+		            					var loginParam = {
+		            						"client_id" : user_info[0].client_id
+		            					};
+		            					service.userInfo(loginParam,function(data){
+		            						var error_no = data.error_no;
+		            						var error_info = data.error_info;
+		            						if (error_no == "0" ){
+		            							var results = data.results[0];
+		            							common.saveSessionUserInfo(results);
+		            							var user_id = results.user_id;
+		            							common.userInfo(user_id);
+		            						} else {
+		            							layerUtils.iMsg(-1,error_info);
+		            							return false;
+		            						}
+		            					}, {});
+			       					}
+			            	   }
+			            	   service.getSessionInfo({},userInfoCallback)
+							}
+		               }
+		               service.createSession(param,curCallback);
+	               	 }
+	               }
+	            } 
+	            else if(data.error_no=="-100101"){//账户未绑定，进入绑定页面
+	            	appUtils.setSStorageInfo("huannansan_sso_userid","10000");
+//	            	appUtils.pageInit("index/ssoLogin","index/ssoBind",{"tradePwd":loginPwd});
+	            }
+	           /* else if(data.error_no=="-100100"){//账号密码错误
+	            	errorMsg("账号或密码有误，请重新输入!");
+					return;
+	            }*/
+				else 
+				{
+					if(data.error_info.indexOf("客户交易密码错误")!=-1){
+						errorMsg("交易密码输入有误");
+						return;
+					}
+					else if(data.error_no=="-100100"){
+						errorMsg("请输入资金账号/手机号对应的交易密码/登录密码");
+					}
+					else{
+						layerUtils.iMsg(-1,data.error_info);
+						return;
+						}
+	            }
+	        }			
+			
+		}
+		
+		//业务参数
+		var param = {};	
+		param['login_account'] =  loginValue;
+		param['password'] = pwdBackParam;
+		param['check_pwd_mode'] = "0";
+		param['ticket'] = ssoTicket;
+		param['bizcode'] = 'uums_login';//业务编码
+//	    param['login_mode'] = "0";
+	   	param['login_type'] = ssoLoginType;//如果传递的是手机号码则是104
+	    param['device_number'] = "123456789"; 
+		param['login_source_merid'] = global.sysFlag;
+//		param['checkPwdMode'] =checkPwdMode;
+		//统一登录URL地址
+		var url = global.ssoLoginUrl;
+		
+		//调用统一登录
+		ssoUtils.ssoRemoteLogin(url,param,callback);	
+	
+		
+		
+	}
+	
+	
+	
+	/*
+	 * 修改查询密码【登录密码】
+	 */
+	function updateQueryPwd(backParam){
+		var param = {
+			"user_id" : common.getUserId(),
+			"pwd_src" : backParam.pwd1,
+			"pwd_new" : backParam.pwd2,
+			"pwd_twice" : backParam.pwd3
+		}
+		
+		service.updateLoginPwd(param, function(data){
+			var error_no = data.error_no;
+			var error_info = data.error_info;		
+			if (error_no == "0"){
+				layerUtils.iMsg(0, "查询密码修改成功");
+				appUtils.pageInit("account/updatePwd", "account/myProfile", {});
+				clear();
+			} else {
+				layerUtils.iMsg(-1, error_info);
+				return false;
+			}
+		});
+	}
+	
+	/*
+	 * 修改交易密码
+	 */
+	function updateTradePwd(backParam){
+		var param = {
+			"user_id" : common.getUserId(), // 用户编号
+ 			"trade_pwd_old" : backParam.pwd1, // 旧密码
+			"trade_pwd_new" : backParam.pwd2, // 新密码
+			"trade_pwd_twice" : backParam.pwd3, // 确认密码
+			"type" : "0" // 修改交易密码
+		}
+		
+		service.updateTradePwd(param, function(data){
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+			if (error_no == "0"){
+				layerUtils.iMsg(0, "交易密码修改成功");
+				appUtils.pageInit("account/updatePwd", "account/myProfile", {});
+				clear();
+			} else {
+				layerUtils.iMsg(-1, error_info);
+				return false;
+			}
+		});
+	}
+	
+	/**
+	 * 清空文本框内容
+	 */	
+	function clear(){
+		$(_pageId + "#oldPwd").empty();
+		$(_pageId + "#newPwd").empty();
+		$(_pageId + "#surePwd").empty();
+		$(_pageId + "#mobileCode").empty();
+		$(_pageId + "#msgTips").empty();
+		
+	}
+	
+
+	
+	
+	/**
+	 * 显示读秒
+	 */
+	function shows(){
+		var $code = $(_pageId + ".yzm_btn");
+		$code.attr("data-state", "false");//点击不能发送
+		if(pageGlobal.i >= 1){
+			$code.html("" + pageGlobal.i + "s后重发");
+			pageGlobal.i--;
+		}else{
+			window.clearInterval(pageGlobal.timer);
+			pageGlobal.i=60;
+			$code.attr("data-state","true");
+			$code.html("重新发送");
+		}
+	}
+	
+	/**
+	 * 清除短信验证码计时器
+	 */
+	function clearMsgCodeTimer()
+	{
+		var $code = $(_pageId + " .yzm_btn");
+		window.clearInterval(pageGlobal.timer);
+		pageGlobal.timer = null;
+		$code.attr("data-state", "true");
+		pageGlobal.i = 60;
+		$code.html("发送验证码");
+	}
+	
+	/*
+	 * 校验密码基本格式
+	 */
+	function checkInput(){
+		var oldPwd = $(_pageId + "#oldPwd").val();
+		var newPwd = $(_pageId + "#newPwd").val();
+		var surePwd = $(_pageId + "#surePwd").val();
+		var msgCode = $(_pageId + "#mobileCode").val();
+		
+		if(pageGlobal.updateType != "3"){
+			if (validatorUtil.isEmpty(oldPwd)) {
+				layerUtils.iMsg(-1, "旧密码不能为空");
+				return false;
+			}
+		}
+		
+		if (validatorUtil.isEmpty(newPwd)) {
+			layerUtils.iMsg(-1, "新密码不能为空");
+			return false;
+		}
+		if (validatorUtil.isEmpty(surePwd)) {
+			layerUtils.iMsg(-1, "确认密码不能为空");
+			return false;
+		}
+		if(newPwd != surePwd){
+			layerUtils.iMsg(-1, "新密码与确认密码不一致");
+			return false;
+			
+		}
+		if(pageGlobal.updateType != "0"){
+			if (validatorUtil.isEmpty(msgCode)) {
+				layerUtils.iMsg(-1, "验证码不能为空");
+				return false;
+			}
+			
+			if($(_pageId + ".yzm_btn").attr("data-state") == "true"){
+				layerUtils.iMsg(-1, "请获取验证码");
+				return false;
+			}
+		}
+		
+		return true;
+	}
+	
+	/*
+	 * 页面销毁
+	 */
+	function destroy(){
+		
+	}
+	
+	var updatePwd = {
+		"init": init,
+		"bindPageEvent": bindPageEvent,
+		"destroy": destroy
+	};
+	// 暴露对外的接口
+	module.exports = updatePwd;
+});

@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html><!--  manifest="app.manifest" -->
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta name="format-detection" content="telephone=no">
+	<title>商城</title>
+	<meta http-equiv="Cache-Control" content="no-store" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<meta name="browsermode" content="application">
+	<meta name="x5-page-mode" content="app">
+	<meta name="msapplication-tap-highlight" content="no">
+	<link href="./css/style.css" rel="stylesheet"/>
+ 	<link href="./css/style_active.css" rel="stylesheet"/> 
+</head>
+<body><!-- style="width:320px;margin:0 auto;" -->
+<div style="width: 100%; height: 100%; position: fixed; top: 0px; z-index: 500000; left: 0px; background: rgb(244, 244, 244);" id="loading">
+  <img style="position: absolute;width: 100px;height: 100px;left: 50%;top: 50%;margin-left: -50px;margin-top: -50px;" src="images/loading.gif">
+</div>
+<div id="afui"><!-- appframework扩展储备 -->
+	<div id="header" style="position: relative;"></div><!-- 公用头部，待扩展 -->
+	<div id="content" style="position: relative;"></div><!-- 内容区域，所有业务模块的page/panel放在这里  -->
+	<div id="footer" style="position: relative;"></div><!-- 公用底部，待扩展 -->
+	<nav id="leftNav"></nav><!-- 左抽屉 ，待扩展 -->
+	<aside id="rightNav"></aside><!-- 右抽屉，待扩展 -->
+</div>
+
+<!-- 上线的版本号，更新前更改，开发若存在缓存问题手动改变该值 -->
+<script>var _sysVersion = "1.2.3",_shellVersion = "1.1.4";</script>
+
+<!-- 生产版本 -->
+<script type="text/javascript" src="../1.2.3/hSea.min.js?v=1.2.3"></script>
+
+<script>
+
+	/**新增百度统计相关代码【common.js中checkPermission方法需要新增一段代码】 begin**/
+	var _hmt = _hmt || [];
+	(function() {
+		var hm = document.createElement("script");
+		hm.src = "//hm.baidu.com/hm.js?777a85a64409f1852231a15671a49d76";
+		var s = document.getElementsByTagName("script")[0];
+		s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+</body>
+</html>

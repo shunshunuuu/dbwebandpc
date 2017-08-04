@@ -1,0 +1,80 @@
+<div class="page"  id="infoproduct_infoDetails" data-pageTitle="资讯详情" data-pageLevel="1"
+	data-urlParam="true" data-refresh="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner header_inner_index header_inner_02">
+			<h1>资讯产品</h1>
+			<a href="javascript:void(0);" class="back_btn"></a>
+		</div>
+	</header>
+	<article>
+		<div class="index_page" id="infoproduct">
+<!-- 			<div class="jp_banner"><img src="images/activity_pic8.jpg" alt="" /></div> -->
+<!-- 			<div class="pro_tits pro_tit_ai"> -->
+<!-- 				<a href="javascript:void(0);"> -->
+<!-- 					<p class="sp04">每日决策内参</p> -->
+<!-- 					<p class="sp03"><s></s>10东北米/5元</p> -->
+<!-- 				</a> -->
+<!-- 			</div> -->
+<!-- 			<div class="mainbox"> -->
+<!-- 				<div class="main_001"> -->
+<!-- 					<div class="main_in001"> -->
+<!-- 						<div class="pro_tits pro_tit_ah"> -->
+<!-- 							<a href="javascript:void(0);"> -->
+<!-- 								<p class="sp01"><i></i>产品详情</p> -->
+<!-- 							</a> -->
+<!-- 						</div> -->
+<!-- 						<div class="prowords">本资讯信息来源于第三方机构“博览财经”。本资讯中的内容和意见仅供参考，并不构成对所述证券买卖做出保证,对信息的准确性和完整性不作任何保证，也不保证所包含的信息和建议不会发生任何变更。投资者不应将本资讯作为投资决策的唯一参考因素，亦不应以本资讯取代自己的判断。在任何情况下,东北证券不对的任何内容所引致的任何损失负任何责任。市场有风险，投资需谨慎!</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="main_001"> -->
+<!-- 					<div class="main_in001"> -->
+<!-- 						<div class="pro_tits pro_tit_aj"> -->
+<!-- 							<a href="javascript:void(0);"> -->
+<!-- 								<p class="sp01"><i></i>兑换说明</p> -->
+<!-- 							</a> -->
+<!-- 						</div> -->
+<!-- 						<div class="prowords prowords_aa"> -->
+<!-- 							<p>1、深港通倒计时 沪股通逆转净买6亿元(利好大盘）</p> -->
+<!-- 							<p>2、明晟：A股现积极迹象 但入围还有待观察(利空大盘）</p> -->
+<!-- 							<p>3、垃圾处理获政策力挺 龙头企业有望领跑行(利好垃圾处理概念股)</p> -->
+<!-- 							<p>4、国内首条民营控股高铁落地 行业进入PPP新时代(利好PPP铁路概念股）</p> -->
+<!-- 							<p>5、钙钛矿和CIGS太阳能电池 效率创纪录相关公司受关注(利好太阳能概念股）</p> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+		
+<!-- 			</div> -->
+		</div>
+				<div class="main_001" id = "dhqk">
+					<div class="main_in001">
+						<div class="pro_tits pro_tit_ak">
+							<a href="javascript:void(0);">
+								<p class="sp01" id="exchangeDetail"><i></i>兑换详情</p>
+								<p class="sp05" id="numdh"><s></s></p>
+							</a>
+						</div>
+						<div class="prowords prowords_ab" id="dhtx">
+<!-- 							<span><img src="images/user_mr01.png"  alt="" /></span> -->
+<!-- 							<span><img src="images/user_mr02.png"  alt="" /></span> -->
+<!-- 							<span><img src="images/user_mr03.png"  alt="" /></span> -->
+<!-- 							<span><img src="images/user_mr04.png"  alt="" /></span> -->
+<!-- 							<span><img src="images/user_mr05.png"  alt="" /></span> -->
+						</div>
+					</div>
+				</div>
+	</article>
+	<footer>
+		<div class="imready" id = "imready">
+			<a href="javascript:void(0);" id="exchange">立即兑换</a>
+			<!-- 下面注释的按钮为已经完成兑换，当前为不可兑换状态时所显示的按钮。 -->
+			<!-- <a class="after" href="javascript:void(0);">已兑换，看看其他产品</a> -->
+		</div>
+	</footer>
+	<!-- 浮动广告 -->
+	<div class="float_bg">
+		<img src="images/float_gg01.png" alt="" />
+		<a href="javascript:void(0);" id="close"></a>
+	</div>
+</section>
+</div>

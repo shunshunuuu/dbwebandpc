@@ -1,0 +1,197 @@
+<div class="page"  id="active_index" data-pageTitle="粉丝福利" data-pageLevel="1" data-refresh="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner">
+			<h1>米仓</h1>
+			<a class="qiand" href="javascript:void(0);">签到</a>
+		</div>
+	</header>
+	<article>
+		<div class="index_page">
+<!-- 			<div class="jp_banner"><a href="javascript:void(0);"><img src="images/activity_pic10.jpg" alt="" /></a></div> -->
+			<div class="mall_banner">
+				<div class="pic_box" id="ad_index">
+					<ul id="banner_ul">
+					</ul>
+				</div>
+				<div class="dots_box" id="dots_box">
+					<em class="act"></em>
+					<em></em>
+					<em></em>
+				</div>
+			</div>
+			<div class="ification_on">
+				<div class="gound_news" id="scroll_vertical_news">
+					<s></s>
+				    <ul id="qdxx">
+<!-- 				        <li><a href="javascript:;">客户<span>317xxx69</span>签到获得<span>15452</span>积分！</a></li> -->
+<!-- 				        <li><a href="javascript:;">客户<span>334xxx69</span>签到获得<span>1455</span>积分！</a></li> -->
+<!-- 				        <li><a href="javascript:;">客户<span>623xxx69</span>签到获得<span>545</span>积分！</a></li> -->
+<!-- 				        <li><a href="javascript:;">客户<span>563xxx69</span>签到获得<span>125</span>积分！</a></li> -->
+				    </ul>
+				</div>
+			</div>
+			<div class="pro_box_01">
+				<div class="pro_main">
+					<div class="pro_tits pro_tits_bc">
+						<a href="javascript:;">
+							<p class="sp01_cc">热门兑换</p>
+							<p class="sp02">精挑细选 速来兑换</p>
+						</a>
+					</div>
+<!-- 					<div class="gsmebox"> -->
+<!-- 						<div class="gsmein"> -->
+<!-- 							<div class="gsme_l" id="dbm"> -->
+<!-- 								<s><img src="images/red_hot02.png" alt="" /></s> -->
+<!-- 								<a href="javascript:;"><img src="images/gsme_bg01.png" alt="" /></a> -->
+<!-- 							</div> -->
+<!-- 							<div class="gsme_r" id="gsme_r"> -->
+<!-- 								<div class="gsme_top" id="rj"> -->
+<!-- 									<s><img src="images/red_hot05.png" alt="" /></s> -->
+<!-- 									<a href="javascript:;"><img src="images/gsme_bg02.png" alt="" /></a> -->
+<!-- 								</div> -->
+<!-- 								<div class="gsme_bom" id="zx"> -->
+<!-- 									<s><img src="images/red_hot04.png" alt="" /></s> -->
+<!-- 									<a href="javascript:;"><img src="images/gsme_bg03.png" alt="" /></a> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+                    <div class="gsmebox newyear">
+						<div class="gsmein">
+							<div class="gsme_l">
+								<a href="javascript:;"><img src="images/gsme_bg011.png" alt="" /></a>
+							</div>
+							<div class="gsme_r">
+								<div class="gsme_top">
+									<a href="javascript:;"><img src="images/gsme_bg021.png" alt="" /></a>
+								</div>
+								<div class="gsme_bom">
+									<a href="javascript:;"><img src="images/gsme_bg031.png" alt="" /></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="pro_box_01">
+				<div class="pro_main">
+					<div class="pro_tits pro_tits_bb">
+						<a href="javascript:;">
+							<p class="sp01_cc">热门活动</p>
+							<p class="sp02">参加活动 赢各类好礼</p>
+						</a>
+					</div>
+					<div class="jp_banner" id="bigWheel">
+<!-- 						<a href="javascript:;"><img src="images/activity_pic11.jpg" alt="" /></a> -->
+					</div>
+					<div class="pricebox">
+						<ul class="flex-father">
+							<li class="flex-children">
+								<s><img src="images/red_hot01.png" alt="" /></s>
+								<img src="images/prize_03.jpg" alt="" />
+							</li>
+							<li class="flex-children">
+								<s><img src="images/red_hot03.png" alt="" /></s>
+								<img src="images/prize_02.jpg" alt="" />
+							</li>
+							<li class="flex-children">
+								<s><img src="images/red_hot01.png" alt="" /></s>
+								<img src="images/prize_01.jpg" alt="" />
+							</li>
+						</ul>
+						<div class="price_sm flex-father">
+							<div class="price_wd flex-children">
+								<p>1米疯抢</p>
+								<span>东北米也有大用处</span>
+							</div>
+							<div class="price_wd flex-children">
+								<p>猜股指涨跌</p>
+								<span>赢万元大奖</span>
+							</div>
+							<div class="price_wd flex-children">
+								<p>限时兑换</p>
+								<span>优质奖品带回家</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+<!-- 			<div class="pro_box_01"> -->
+<!-- 				<div class="pro_main"> -->
+<!-- 					<div class="pro_tits pro_tits_ba"> -->
+<!-- 						<a href="javascript:;"> -->
+<!-- 							<p class="sp01_cc">便捷生活</p> -->
+<!-- 							<p class="sp02">便捷生活只有指尖距离</p> -->
+<!-- 						</a> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="paice"> -->
+<!-- 					<ul> -->
+<!-- 						<li><a href="javascript:;"> -->
+<!-- 							<img src="images/paice_01.png" alt="" /> -->
+<!-- 							<p>话费流量</p> -->
+<!-- 						</a></li> -->
+<!-- 						<li><a href="javascript:;"> -->
+<!-- 							<img src="images/paice_02.png" alt="" /> -->
+<!-- 							<p>生活缴费</p> -->
+<!-- 						</a></li> -->
+<!-- 						<li><a href="javascript:;"> -->
+<!-- 							<img src="images/paice_03.png" alt="" /> -->
+<!-- 							<p>交通罚款</p> -->
+<!-- 						</a></li> -->
+<!-- 						<li><a href="javascript:;"> -->
+<!-- 							<img src="images/paice_04.png" alt="" /> -->
+<!-- 							<p>金融</p> -->
+<!-- 						</a></li> -->
+<!-- 						<li><a href="javascript:;"> -->
+<!-- 							<img src="images/paice_05.png" alt="" /> -->
+<!-- 							<p>机酒火车</p> -->
+<!-- 						</a></li> -->
+<!-- 						<li><a href="javascript:;"> -->
+<!-- 							<img src="images/paice_06.png" alt="" /> -->
+<!-- 							<p>消费备用金</p> -->
+<!-- 						</a></li> -->
+<!-- 						<li><a href="javascript:;"> -->
+<!-- 							<img src="images/paice_07.png" alt="" /> -->
+<!-- 							<p>推荐APP有礼</p> -->
+<!-- 						</a></li> -->
+<!-- 					</ul> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+		</div>
+		<div class="footer_box total_footer_box">
+			<img src="images/total_footer_pic.png" width="100%" />
+			<p>东北证券股份有限公司版权所有 @ 2015 </p>
+		</div>
+	</article>
+	<footer>
+		<div class="ui layout footer_nav footer_new_nav">
+			<div class="row-1">
+				<a href="javascript:void(0)">
+					<em></em>
+					<p>推荐</p>
+				</a>
+			</div>
+			<div class="row-1">
+				<a href="javascript:void(0)">
+					<em></em>
+					<p>理财</p>
+				</a>
+			</div>
+			<div class="row-1 active">
+				<a href="javascript:void(0)">
+					<em></em>
+					<p>活动</p>
+				</a>
+			</div>
+			<div class="row-1">
+				<a href="javascript:void(0)">
+					<em></em>
+					<p>我的</p>
+				</a>
+			</div>
+		</div>
+	</footer>
+</section>
+</div>

@@ -1,0 +1,30 @@
+<div class="page"  id="finan_finanMore" data-pageTitle="东北证券-理财详情" data-urlParam="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner_07">
+			<a href="javascript:void(0);" class="back_btn"></a>
+			<h1>理财详情</h1>
+		</div>
+	</header>
+	<article>
+		<div class="pro_con_page" id="pageContent">
+			<div class="pro_con_box4 mt10">
+				<div class="pro_mes_list">
+					<ul>
+						<li class="ui layout">
+							<div id="product_detail">
+							<!-- <span style="font-weight: bold;">投资目标</span><br> &nbsp;&nbsp;&nbsp; 在保证委托人资产安全性、流动性，不影响委托人正常证券交易的前提下，汇集委托人保证金账户中的闲置资金，通过结构化银行存款和固定收益投资，提高客户闲置资金利用效率，追求集合计划资产的稳健、适度增值。<br> <span style="font-weight: bold;"> 投资范围</span><br> &nbsp;&nbsp;&nbsp; 本集合计划投资范围为： <br> （1）银行存款，包括银行同业活期存款、银行协议存款、银行定期存款等；&nbsp;&nbsp;&nbsp; <br> （2）债券逆回购； <br> （3）货币市场基金； <br> （4）剩余期限不超过 397 天（含397天）的国债、央票、金融债以及主体和债项信用评级均为最高级的企业债、公司债、短期融资券、中期票据等投资品种；<br> （5）债券正回购。 委托人在此同意并授权，在《证券公司现金管理产品方案规范指南》修订后，本集合计划按照《证券公司现金管理产品方案规范指南》要求增加投资范围，管理人发布通知后实施，不再另行征求委托人意见。<br> <span style="font-weight: bold;"> 投资比例&nbsp;</span> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <div>（1）银行存款，包括银行同业活期存款、银行协议存款、银行定期存款的投资比例为：0-100%。其中，商业银行活期存款比例为0-100%；商业银行协议存款比例为0-100%；商业银行定期存款比例为0-90%； <br> （2）债券逆回购的投资比例为0-50%； <br> （3）货币市场基金的投资比例为0-50%； <br> （4）剩余期限不超过 397 天（含397天）的国债、央票、金融债以及主体和债项信用评级均为最高级的企业债、公司债、短期融资券、中期票据等投资品种为0-50%；&nbsp;</div> <div>（5）债券正回购的投资比例为0-40%。委托人在此同意并授权管理人可以将集合计划的资产投资于管理人及与管理人有关联方关系的公司发行的证券，但其投资比例不得超过资产净值的7%。<br> <span style="font-weight: bold;"> 投资理念</span><br> &nbsp;&nbsp;&nbsp; 为了保证委托人证券交易正常进行，本集合计划的投资在力求保证资金流动性和安全性的前提下，追求相对较高的收益。但是，投资于本集合计划也存在着一定的风险，集合计划管理人不承诺委托人资产本金不受损失或者取得最低收益。<br> <span style="font-weight: bold;"> 目标规模</span><br> &nbsp;&nbsp; 本集合计划存续期前2个月为试运行期，试运行期规模上限为10亿份，成立满2个月后，集合计划不设规模上限。<br> <span style="font-weight: bold;"> 封闭期和开放期及流动性安排</span><br> &nbsp;&nbsp;&nbsp; 1、封闭期：不设封闭期。<br> &nbsp;&nbsp;&nbsp; 2、开放期：开放期为集合计划成立后的每个交易日,开放期内可以办理参与、退出业务。<br> &nbsp;&nbsp;&nbsp; 3、流动性安排：集合计划存续期间，可用现金及活期存款（包括在解付时实收利息不少于已计提利息的条件下，可以随时解付的协议存款等）连续五个交易日的平均值不低于总资产的10%（含）。<br> <span style="font-weight: bold;"> 集合计划份额面值</span><br> &nbsp;&nbsp;&nbsp; 人民币1.00元。<br> <span style="font-weight: bold;"> 最低参与金额</span><br> &nbsp;&nbsp; 首次参与本集合计划的最低金额为人民币50,000元，超过最低参与金额的追加参与金额为 0.01 元人民币的整数倍。<br> <span style="font-weight: bold;"> 管理费率</span><br> &nbsp;&nbsp;&nbsp; 本集合计划的年管理费率为0.7%。<br> <span style="font-weight: bold;"> 托管费率</span><br> &nbsp;&nbsp;&nbsp; 本集合计划的年托管费率为0.05%。<br> <span style="font-weight: bold;"> 管理人业绩报酬</span><br> &nbsp;&nbsp; 管理人对集合计划年化收益率超过0.7%的部分，提取其中的30%作为业绩报酬。<br> <span style="font-weight: bold;"> 风险收益特征及适合推广对象</span><br> &nbsp;&nbsp;&nbsp; 本集合计划属低风险、高流动性产品,适合保守型及保守型以上各类风险承受能力的投资者。</div> -->
+							</div>
+						</li>
+					</ul>
+					<p class="fx_tips">风险提示详情：以上信息（包括但不限于文字、数据及图表）均基于公开信息采集，本公司不保证该信息全部或者部分内容的准确性、真实性、完整性，不构成本公司任何推荐或保证基金具体信息以管理人相关公告为准。
+                          	投资有风险，理财需谨慎。</p>
+				</div>
+			</div>
+			<!-- 			
+			<a href="javascript:void(0);" class="buy_now">立即购买</a> 
+			-->
+		</div>
+	</article>
+</section>
+</div>

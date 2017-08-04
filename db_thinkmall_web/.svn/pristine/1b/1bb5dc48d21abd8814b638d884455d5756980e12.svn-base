@@ -1,0 +1,83 @@
+define(function(require, exports, module) {
+	var _pageId = "#tucao_myTc "; // 页面id
+	var pageCode = "tucao/myTc";
+	var appUtils = require("appUtils"); // 核心工具类
+	var service = require("mobileService"); // 业务层接口，请求数据
+	var tool = require("tool");
+	var layerUtils = require("layerUtils"); // 弹出层工具类
+	var global = require("gconfig").global; // 全局配置对象
+	var constants = require("constants");// 常量类
+	var common = require("common"); // 公共类
+	var putils = require("putils"); //
+    var HIscroll = require("hIscroll"); //hIscroll别名已经配置到hSea中
+    var myHIscroll = null;
+    
+    
+	var pageGlobal = {
+						
+	};
+    
+    
+    
+    
+	
+	/*
+	 * 初始化
+	 */
+	
+	function init() {
+		// 初始化页面
+		
+		
+	
+	}
+
+
+	/*
+	 * 绑定事件
+	 */
+	function bindPageEvent() {
+		//点击左边按钮，进入我要吐槽界面
+		appUtils.bindEvent(_pageId + " .btnleft",  function() {
+			appUtils.pageInit(pageCode, "tucao/goTc");
+		});
+			//点击右边按钮，弹出输入手机号的弹出层
+		appUtils.bindEvent(_pageId + " .btnright",  function() {
+			$(_pageId+" .tcfox").css("display","block");
+			
+		
+	});
+		//点击关闭按钮弹出层消失
+		
+		appUtils.bindEvent(_pageId + " .closebtm",  function() {
+			$(_pageId+" .tcfox").css("display","none");
+			
+		
+	});
+		
+		//点击右边按钮，进入我的吐槽界面
+		appUtils.bindEvent($(_pageId + " .thisbtn a"), function(e) {
+			var mobile=$(_pageId + " .yournb input").val();
+			alert(mobile)
+			appUtils.pageInit(pageCode, "tucao/queryTc", {"mobile":mobile});
+		});
+
+	};
+
+	/*
+	 * 页面销毁
+	 */
+	function destroy() {
+		$(_pageId+" .tcfox").css("display","none");
+		
+	};
+
+	var tucaoMyTc = {
+		"init" : init,
+		"bindPageEvent" : bindPageEvent,
+		"destroy" : destroy
+	};
+	
+	// 暴露对外的接口
+	module.exports =  tucaoMyTc;
+});

@@ -1,0 +1,566 @@
+define(function(require, exports, module) {
+	var _pageId = "#finan_fund_jjph "; // 页面id
+	var pageCode = "finan/fund/jjph";
+	var appUtils = require("appUtils"); // 核心工具类
+	var service = require("mobileService"); // 业务层接口，请求数据
+	var layerUtils = require("layerUtils"); // 弹出层工具类
+	var global = require("gconfig").global; // 全局配置对象
+	var constants = require("constants");// 常量类
+	var validatorUtil = require("validatorUtil"); // 校验工具类
+	var common = require("common"); // 公共类
+	var putils = require("putils"); //
+	var VIscroll = require("vIscroll");
+	var vIscroll = {"scroll":null, "_init":false}; // 上下滑动对象
+	var tool = require("tool");
+    // 全集变量定义
+	var pageGlobal = {
+			"curPage" : 1, // 当前页码
+			"maxPage" : 0, // 总页数
+			"fund_type" : "", // 产品类型
+			"month" : "1",    //近一月
+			"season" : "",   //近三月
+			"halfyear" : "",   //近六月
+			"year" : ""   //近一年
+	};
+	
+	var productStatus = "";
+	/*
+	 * 初始化
+	 */
+	function init() {
+		// 初始化底部导航菜单
+		common.footerTab(_pageId);
+		$(_pageId + ".blockbg").attr("style","display:none;");
+		// 初始化页面时定位滚动元素到第一个
+		if (vIscroll.scroll && vIscroll.scroll.getWrapperObj()) {
+			vIscroll.scroll.getWrapperObj().scrollTo(0, -40);
+		}
+		//查询所有基金
+		queryFundProduct();
+		
+	}
+	
+	
+	function queryFundProduct(isAppendFlag){
+		var param = {
+				"fund_type" : pageGlobal.fund_type, // 产品类型
+				"page" : pageGlobal.curPage, 
+				"numPerPage" : 8,
+			    "is_mouth_rate" : pageGlobal.month,//近一月收益率  0 升序 1降序
+			    "is_season_rate" : pageGlobal.season,//近三月收益率  0 升序 1降序
+			    "is_half_year_rate" : pageGlobal.halfyear,//近半年收益率  0 升序 1降序
+			    "is_year_rate" : pageGlobal.year,//近一年收益率  0 升序 1降序
+			    "product_shelf" : "1",// 上线产品
+			    "user_id" : common.getUserId() // 用户编号
+			};
+		service.findFund(param,function(resultVo){
+			if(0==resultVo.error_no){
+				var results = resultVo.results[0].data;
+				var resultDataLen = results.length; // 记录结果集长度
+				if (resultDataLen == 0) {
+					// 显示无记录
+					$(_pageId + ".no_data_box").show();
+					$(_pageId + "#v_container_productList").hide();
+				} else {
+					// 隐藏无记录
+					$(_pageId + ".no_data_box").hide();
+					$(_pageId + "#v_container_productList").show();
+				}
+				pageGlobal.maxPage = resultVo.results[0].totalPages; // 总页数
+				var allProduct = "";
+				for(var i = 0; i < results.length; i++){
+					var item = results[i];
+					var productName = item.product_name; // 产品名称
+					productName = putils.delProSpecialStr(productName);
+					if (productName.length > 7) {
+						productName = productName.substring(0, 6) + "...";
+					}
+					var productSubType = item.product_sub_type; // 产品类型
+					var productId = item.product_id; // 产品编号
+					var productCode = item.product_code; // 产品代码
+					var yieldrate1m = item.yieldrate1m || "0"; // 近一个月收益率
+					var yieldrate3m = item.yieldrate3m || "0"; // 近三个月收益率
+					var yieldrate6m = item.yieldrate6m || "0"; // 近六个月收益率
+					var yieldrate1y = item.yieldrate1y || "0"; // 近一年收益率
+					var yield1m = parseFloat(yieldrate1m).toFixed(2);
+					var yield3m = parseFloat(yieldrate3m).toFixed(2);
+					var yield6m = parseFloat(yieldrate6m).toFixed(2);
+					var yield1y = parseFloat(yieldrate1y).toFixed(2);
+					var currentPrice = item.current_price || "0"; // 单位净值
+					var dwjz = parseFloat(currentPrice).toFixed(4);
+					var productSubType = item.product_sub_type;// 产品类型 0基金 1理财
+					var followId = item.follow_id; // 关注编号
+					productStatus = item.product_status;//产品状态
+					
+//					var fund_profit_per_million = item.fund_profit_per_million;
+//					var profit_per = parseFloat(fund_profit_per_million).toFixed(4);
+//					
+//					var zsname = "";
+					
+//					if(pageGlobal.fund_type == 2){
+//						dwjz = fund_profit_per_million;
+//						zsname = "万份收益";
+//					}else{
+//						zsname = "净值";
+//					}
+					
+					var attentionHtml = ""; // 根据是否关注显示关注状态
+					if (validatorUtil.isNotEmpty(followId)) {
+						attentionHtml = '<li id="item_'+productId+'" class="love" productId="'+productId+'" productCode="' + productCode + '" productSubType="'+productSubType+'" productStatus="'+productStatus+'">';
+					} else {
+						attentionHtml = '<li id="item_'+productId+'" productId="'+productId+'" productCode="' + productCode + '" productSubType="'+productSubType+'" productStatus="'+productStatus+'">';
+					}
+					
+					var showFiledThreeObj = putils.getRecomField(3, item, true); // 第三个要展示的字段名称&值
+					var showNameThree = showFiledThreeObj.name;
+					var showValueThree = (showFiledThreeObj.value).toString();
+					showValueThree = showValueThree.replace("万", "<em>万</em>");
+					var proItem = {
+							"productId" : productId,
+							"productSubType" : productSubType,
+							"productName" : productName,
+							"productCode" : productCode,
+							"yield1m" : yield1m,
+							"yield3m" : yield3m,
+							"yield6m" : yield6m,
+							"yield1y" : yield1y,
+							"currentPrice" : currentPrice,
+							"dwjz" : dwjz,
+							"showValueThree" : showValueThree,
+							"attentionHtml" : attentionHtml
+//							"zsname" : zsname
+					}
+					allProduct += getProductItemHtml(proItem);
+				}
+				
+				
+				if(isAppendFlag){
+					$(_pageId+"#fund").append(allProduct);
+				}else{
+					$(_pageId+"#fund").html(allProduct);
+				}
+				pageScrollInit(resultDataLen);
+				bindProEvent();
+				
+			}else{
+				layerUtils.iAlert("查询基金列表失败:"+resultVo.error_info,-1);
+			}
+		});
+	}
+	
+	
+	/*
+	 * 校验产品是否能够购买
+	 */
+	function checkProductStatus(){
+		if (productStatus != "0" && productStatus != "1" && productStatus != "2") {
+			layerUtils.iMsg(-1, "该产品非购买时期");
+			return false;
+		}
+		return true;
+	}
+	/*
+	 * 组装产品单元html元素
+	 */
+	function getProductItemHtml(item){
+		var productName = item.productName; // 产品名称
+		var productSubType = item.productSubType; // 产品类型
+		var productId = item.productId; // 产品编号
+		var productCode = item.productCode; // 产品代码
+		var yield1m = item.yield1m;
+		var yield3m = item.yield3m;
+		var yield6m = item.yield6m;
+		var yield1y = item.yield1y;
+		var currentPrice = item.currentPrice || "0"; // 单位净值
+		var dwjz = item.dwjz;
+		var qgjg = item.showValueThree;
+		var attentionHtml = item.attentionHtml;
+		var rate = "";
+//		var zsname = item.zsname;
+		if(pageGlobal.month == "1"){
+			rate = yield1m;
+		}else if(pageGlobal.season == "1"){
+			rate = yield3m;
+		}else if(pageGlobal.halfyear == "1"){
+			rate = yield6m;
+		}else if(pageGlobal.year == "1"){
+			rate = yield1y;
+		}
+		
+		var isyield = rate.substr(0,1);
+		var classes = "";
+		if(isyield == "-"){
+			classes = "rorhts";
+		}else{
+			classes = "rorht";
+		}
+		
+		 var itemHtml=''+attentionHtml+''+
+	     '<i id="gz"></i>'+
+		'<div class="pro_bts">'+
+			'<p class="rolft">'+productName + '<span>'+productCode+'</span></p>'+
+			'<p class="'+classes+'">'+rate+'%</p>'+
+		'</div>'+
+		'<div class="pro_sts">'+
+			'<p>'+
+				'<span class="ls">'+qgjg+'元起购</span>'+
+				'<span class="hs">净值:'+dwjz+'</span>'+
+			'</p>'+
+			'<a id="goumai" href="javascript:void(0);">购买</a>'+
+		'</div>'+
+	   ' </li>';
+		return itemHtml;
+	}
+	
+	
+	/**
+	 * 上下滑动刷新事件
+	 * 
+	 */
+	function pageScrollInit(resultDataLen){
+		var height = $(_pageId + "#v_container_productList").offset().top;
+		var footerHeight = $(_pageId + ".footer_nav").height();
+		var height2 = $(window).height() - height - footerHeight;
+		if(!vIscroll._init) {
+			var config = {
+				"isPagingType" : false, 
+				"perRowHeight" : 140, 
+				"visibleHeight" : height2, // 这个是中间数据的高度
+				"container" : $(_pageId + "#v_container_productList"), 
+				"wrapper" : $(_pageId + "#v_wrapper_productList"), 
+				"downHandle" : function() {
+					// 上滑到顶端后，重新加载第一页
+					pageGlobal.curPage = 1;
+						// 查询所有产品
+					queryFundProduct(false);
+					
+				}, 
+				"upHandle": function() {
+					// 当前页等于最大页数时，提示用户
+					if(pageGlobal.curPage == pageGlobal.maxPage){
+						return false;
+					}
+					
+					// 加载下一页数据
+					if(pageGlobal.curPage < pageGlobal.maxPage){
+						$(_pageId + ".visc_pullUp").show();
+						pageGlobal.curPage += 1;
+						
+					   // 查询所有产品
+						queryFundProduct(true);
+					}	
+				}, 
+				"wrapperObj": null
+			};
+			vIscroll.scroll = new VIscroll(config); // 初始化
+			vIscroll._init = true;
+		}else{
+			vIscroll.scroll.refresh();
+		}
+		
+		if(resultDataLen < 8 || pageGlobal.curPage == pageGlobal.maxPage){
+			$(_pageId + ".visc_pullUp").hide();
+		}else{
+			$(_pageId + ".visc_pullUp").show();
+		}	
+	}
+	
+
+	
+	/*
+	 * 绑定产品详情/关注事件
+	 */
+	function bindProEvent(){
+		// 点击 名称进入详情
+		appUtils.bindEvent(_pageId + ".pro_bts", function(){
+			var proEle = $(this).parent();
+			var productSubType = proEle.attr("productSubType");
+			var productId = proEle.attr("productId");
+			var productCode = proEle.attr("productCode");
+			productDetail(productId, productSubType, productCode);
+		}, 'click');
+		
+		appUtils.bindEvent(_pageId + "p", function(){
+			var proEle = $(this).parent().parent();
+			var productSubType = proEle.attr("productSubType");
+			var productId = proEle.attr("productId");
+			var productCode = proEle.attr("productCode");
+			productDetail(productId, productSubType, productCode);
+		}, 'click');
+		
+		// 立即购买
+		appUtils.bindEvent($(_pageId + "#goumai"), function(){
+			if(checkProductStatus()){
+				var gzEle = $(this).parent().parent();
+				var productId=gzEle.attr("productId");
+				var productSubType=gzEle.attr("productSubType");
+				var productCode=gzEle.attr("productCode");
+				var recommendPersonId = appUtils.getPageParam("uk"); // 获取请求参数中推荐人用户编号
+				var param = {
+					"product_id" : productId,
+					"product_code" : productCode,
+					"sub_type" : productSubType,
+					"recommend_person_id" : recommendPersonId
+				}
+				var _loginInPageCode = "finan/buy";
+				if (common.checkUserIsLogin(true, false, _loginInPageCode, param, true)) {
+					appUtils.pageInit(pageCode, "finan/buy", param);
+					return false;
+				}
+			}
+		},'click');
+		
+		// 关注/取消关注
+		appUtils.bindEvent($(_pageId + "#gz"), function(){
+			var gzEle = $(this).parent();
+			var productId=gzEle.attr("productId");
+			var productSubType=gzEle.attr("productSubType");
+			if (gzEle.attr("class")) {
+				// 取消关注
+				attentionProduct(0, productId, productSubType, false);
+			} else {
+				// 关注
+				attentionProduct(1, productId, productSubType, false);
+			}
+		}, 'click');
+		
+		
+	}
+	
+	/*
+	 * 校验产品是否能够购买
+	 */
+	function checkProductStatus(){
+		if (productStatus != "0" && productStatus != "1" && productStatus != "2") {
+			layerUtils.iMsg(-1, "该产品非购买时期");
+			return false;
+		}
+		return true;
+	}
+	
+	/**
+	 * 关注/取消关注
+	 * @param isAttent：0取消产品关注，1关注产品
+	 * @param productId 产品编号
+	 */
+	function attentionProduct(isAttent, productId, subType, isRefresh){
+		var param = {"pageSrc": "login/userLogin"}
+		if (!common.checkUserIsLogin(false, false, pageCode, param)) {
+			return false;
+		}
+		
+		var param = {
+			"user_id" : common.getUserId(),
+			"product_id" : productId,
+			"product_sub_type" : subType
+		}
+		
+		if (isAttent == 1) {
+			// 关注产品
+			service.attention(param, function(data){
+				var error_no = data.error_no;
+				var error_info = data.error_info;
+				if (error_no == "0") {
+					$(_pageId + "#item_" + productId).attr("class","love");
+				} else {
+					layerUtils.iMsg(-1, error_info);
+				}
+			});
+		} else {
+			// 取消产品关注
+			service.cancelAttention(param, function(data){
+				var error_no = data.error_no;
+				var error_info = data.error_info;
+				if (error_no == "0") {
+					$(_pageId + "#item_" + productId).removeClass();
+				} else {
+					layerUtils.iMsg(-1, error_info);
+				}
+			});
+		}
+	}
+	
+	/*
+	 * 产品详情
+	 */
+	function productDetail(productId, subType, productCode) {
+		if (productCode == global.product_code) {
+			// 现金管家详情
+			var userInfo = appUtils.getSStorageInfo("userInfo");
+			if (userInfo) {
+				var user_id = JSON.parse(userInfo).user_id;
+				if (user_id) {
+					appUtils.pageInit(pageCode, "account/cashbutler/detail", {});
+					return false;
+				}
+			}
+			
+			appUtils.pageInit(pageCode, "login/userLogin", {});
+			return false;
+			
+		} else {
+			// 非现金管家
+			if(subType == constants.product_sub_type.FUND){
+				// 基金产品详情
+				appUtils.pageInit(pageCode, "finan/detail", {"product_id" : productId});	
+			}else if(subType == constants.product_sub_type.FINANCIAL){
+				// 理财产品详情
+				appUtils.pageInit(pageCode, "finan/finanDetail", {"product_id" : productId});	
+			}
+		}
+		
+	}
+	
+	
+	/*
+	 * 绑定事件
+	 */
+	function bindPageEvent() {
+		// tab栏切换
+		appUtils.bindEvent(_pageId + ".flex-father a", function(){
+			vIscroll.scroll.getWrapperObj().scrollTo(0, -40);
+			if ($(this).hasClass("curent")) {
+				return;
+			} 
+			$(this).addClass("curent").siblings("a").removeClass("curent");
+			
+			// 隐藏所有内容
+			cleanContent();
+			var index = $(_pageId + " .flex-father a").index(this);
+			if (index == 0) {
+				// 全部
+				pageGlobal.fund_type = "";
+			} else if (index == 1) {
+				// 混合型
+				pageGlobal.fund_type = constants.fundType.HH;
+			} else if (index == 2){
+				// 债券型
+				pageGlobal.fund_type = constants.fundType.ZQ;
+			} else if (index == 3){
+				// 股票型
+				pageGlobal.fund_type = constants.fundType.GP;
+			}else if(index == 4){
+				//货币型
+				pageGlobal.fund_type = constants.fundType.HB;
+			}else if(index == 5){
+				// 指数型
+				pageGlobal.fund_type = constants.fundType.ZS;
+			}else if(index == 6){
+				//QDII基金
+				pageGlobal.fund_type = constants.fundType.QDII;
+			}
+			queryFundProduct();
+
+		});
+		
+		
+		//涨幅
+		appUtils.bindEvent(_pageId + ".zflist li", function(){
+			vIscroll.scroll.getWrapperObj().scrollTo(0, -40);
+			// 隐藏所有内容
+			cleanContent();
+			cleanrate();
+			var zf = $(this).attr("type");
+			$(_pageId + ".zflist li").removeClass();
+			$(this).attr("class","on");
+			$(".zflist").attr("style","display:none;");
+			$(".blockbg").attr("style","display:none;");
+			$(_pageId + ".zflist").attr("iszk","false");
+			if(zf == "month"){
+				pageGlobal.month = "1";
+				$(_pageId + ".zfbtn span").html('近一月');
+			}else if(zf == "season"){
+				pageGlobal.season = "1";
+				$(_pageId + ".zfbtn span").html('近三月');
+			}else　if(zf == "halfyear"){
+				pageGlobal.halfyear = "1";
+				$(_pageId + ".zfbtn span").html('近六月');
+			}else if(zf == "year"){
+				pageGlobal.year = "1";
+				$(_pageId + ".zfbtn span").html('近一年');
+			}
+			
+			queryFundProduct();	
+		})
+		//搜索
+		appUtils.bindEvent(_pageId + ".per_search", function(){
+			appUtils.pageInit(pageCode,"finan/fund/search");
+		});
+		
+		appUtils.bindEvent(_pageId + ".zfbtn", function(){
+			var iszk = $(_pageId + ".zflist").attr("iszk");
+			if(iszk == "false"){
+				$(".zflist").attr("style","display:block;");
+				$(".blockbg").attr("style","display:block;");
+				$(_pageId + ".zflist").attr("iszk","true");
+			}
+			if(iszk == "true"){
+				$(".zflist").attr("style","display:none;");
+				$(".blockbg").attr("style","display:none;");
+				$(_pageId + ".zflist").attr("iszk","false");
+			}
+			
+		});
+		
+		//返回
+		appUtils.bindEvent(_pageId + ".back_btn", function(){
+			$(_pageId + ".blockbg").attr("style","display:none;");
+			$(_pageId + ".zflist").attr("style","display:none;");
+			appUtils.pageBack();
+		});
+		
+		//点击遮罩层
+		appUtils.bindEvent(_pageId + ".blockbg", function(){
+			$(this).attr("style","display:none");
+			$(_pageId + ".zflist").attr("style","display:none;");
+			$(_pageId + ".zflist").attr("iszk","false");
+		});
+		
+		// 禁止头部和底部滑动
+		common.stopHeadAndFooterEvent(_pageId); 
+	};
+	
+	
+	
+	/**
+	 * 清除tab内容
+	 */
+	function cleanContent(){
+		pageGlobal.curPage = 1;
+		pageGlobal.maxPage = 0;
+		pageGlobal.param = {};
+
+	}
+	
+	function cleanrate(){
+		pageGlobal.month = "";
+		pageGlobal.season = "";
+		pageGlobal.halfyear = "";
+		pageGlobal.year = "";
+	}
+	
+	/*
+	 * 页面销毁
+	 */
+	function destroy(){
+		//销毁滑动插件
+		if (vIscroll._init == true) {
+			vIscroll.scroll.destroy(); //销毁
+			vIscroll.scroll = null;
+			vIscroll._init = false;
+		}
+		pageGlobal.curPage = 1; //当前也码
+		pageGlobal.maxPage = ""; // 总页数
+//		cleanrate();
+	}
+	
+
+	var main = {
+		"init" : init,
+		"bindPageEvent" : bindPageEvent,
+		"destroy" : destroy
+	};
+	
+	// 暴露对外的接口
+	module.exports = main;
+});

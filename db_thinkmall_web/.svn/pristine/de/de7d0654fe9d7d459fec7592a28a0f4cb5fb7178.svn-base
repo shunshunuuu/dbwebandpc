@@ -1,0 +1,17 @@
+<!--组件清单-->
+<section class="main fixed page" data-page="home" id="index_getSsokey" data-pageTitle="统一登录" data-pageLevel="2" data-refresh="true" data-animation-in-name="slideRight">
+    <header class="header">
+        <div class="header_inner">
+        	<!--<a herf="javascript:void(0);" class="icon_back"></a>-->
+        	<a herf="javascript:void(0);" class="icon_left_panel first"></a>
+            <h1 class="text-center">获得统一登录秘钥key</h1>
+        </div>
+    </header>
+    <article>
+         签名原始秘钥key:<input id='signKey' style="width: 200px;height: 40px" ></input>	
+        商户ID :<input id='merchant_id' style="width: 200px;height: 40px" ></input>	
+    <button id="submit">生成加密key</button>
+         签名秘钥key:<input id='signKeyEncrpt' style="width: 200px;height: 40px" ></input>
+    </article>
+</section>
+<!--组件清单-->

@@ -1,0 +1,474 @@
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) æµ å·†lasspath: /E:/eclipse/db_thinkmall_web/WebRoot/WEB-INF/classes/ é‘¾å³°å½‡çžç‚´ï¿½Ñ„æžƒæµ ï¿½acp_sdk.properties
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) å¯®ï¿½æ¿®å¬©ç² çžç‚´ï¿½Ñ„æžƒæµ æœµè…‘é”çŠºæµ‡é–°å¶‡ç–†æ¤¤ï¿½
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) é—æ›¡ç˜‰æ¶”ï¸½Äå¯®å¿¥ç´æµ£è·¨æ•¤é–°å¶‡ç–†é‚å›¦æ¬¢é–°å¶‡ç–†é¨å‹­î†é–½ãƒ§î„·éšå¶ˆç˜‰æ¶”ï¸¼ç´SingleCertMode:[true]
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) é–°å¶‡ç–†æ¤¤ç™¸ç´°ç»‰ä¾€æŒœç»›æƒ§æ‚•ç’‡ä½·åŠŸç’ºîˆšç·ž==>acpsdk.signCert.path==>D:/certs/acp_test_sign.pfx å®¸æ’å§žæžï¿½
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) é–°å¶‡ç–†æ¤¤ç™¸ç´°ç»‰ä¾€æŒœç»›æƒ§æ‚•ç’‡ä½·åŠŸç€µå—™çˆœ==>acpsdk.signCert.pwd å®¸æ’å§žæžï¿½
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) é–°å¶‡ç–†æ¤¤ç™¸ç´°ç»‰ä¾€æŒœç»›æƒ§æ‚•ç’‡ä½·åŠŸç»«è¯²ç€·==>acpsdk.signCert.type==>PKCS12 å®¸æ’å§žæžï¿½
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) é–°å¶‡ç–†æ¤¤ç™¸ç´°éå¿”åŠ…æ·‡â„ƒä¼…é”çŠ²ç˜‘ç’‡ä½·åŠŸ==>acpsdk.encryptCert.path==>d:/certs/acp_test_enc.cer å®¸æ’å§žæžï¿½
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) é–°å¶‡ç–†æ¤¤ç™¸ç´°æ¥ å²ƒç˜‰ç»›æƒ§æ‚•ç’‡ä½·åŠŸç’ºîˆšç·ž(æ©æ¬“å™·é–°å¶‡ç–†é¨å‹¬æ§¸é©î†¼ç¶é”›å±¼ç¬‰ç‘•ä½¹å¯šç€¹æ°¬åŸŒéî„„æŒœé‚å›¦æ¬¢)==>acpsdk.validateCert.dir==>D:/certs/ å®¸æ’å§žæžï¿½
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) æ‰“å°è¯·æ±‚æŠ¥æ–‡åŸŸ :
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) txnType-->00
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) signMethod-->01
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) encoding-->UTF-8
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) merId-->777290058136696
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) bizType-->000201
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) txnSubType-->00
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) orderId-->201612141007501466
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) txnTime-->20161209151824
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) accessType-->0
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) version-->5.0.0
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) add BC provider
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) ================= SYS INFO begin====================
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) os_name:Windows 8
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) os_arch:amd64
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) os_version:6.2
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) java_vm_specification_version:1.0
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) java_vm_specification_vendor:Sun Microsystems Inc.
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) java_vm_specification_name:Java Virtual Machine Specification
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) java_vm_version:20.45-b01
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) java_vm_name:Java HotSpot(TM) 64-Bit Server VM
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) java.version:1.6.0_45
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) java.vm.vendor=[Sun Microsystems Inc.]
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) java.version=[1.6.0_45]
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) Providers List:
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) 1.SUN
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) 2.SunRsaSign
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) 3.SunJSSE
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) 4.SunJCE
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) 5.SunJGSS
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) 6.SunSASL
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) 7.XMLDSig
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) 8.SunPCSC
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) 9.SunMSCAPI
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) 10.BC
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) ================= SYS INFO end=====================
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) åŠ è½½ç­¾åè¯ä¹¦==>D:/certs/acp_test_sign.pfx
+[ThinkiveMall] 2016-12-14 14:01:05 [INFO ] (ACP_SDK_LOG:42) Load RSA CertPath=[D:/certs/acp_test_sign.pfx],Pwd=[000000],type=[PKCS12]
+[ThinkiveMall] 2016-12-14 14:01:06 [INFO ] (ACP_SDK_LOG:42) InitSignCert Successful. CertId=[40220995861346480087409489142384722381]
+[ThinkiveMall] 2016-12-14 14:01:06 [INFO ] (ACP_SDK_LOG:42) åŠ è½½æ•æ„Ÿä¿¡æ¯åŠ å¯†è¯ä¹¦==>d:/certs/acp_test_enc.cer
+[ThinkiveMall] 2016-12-14 14:01:06 [INFO ] (ACP_SDK_LOG:42) [d:/certs/acp_test_enc.cer][CertId=68759622183]
+[ThinkiveMall] 2016-12-14 14:01:06 [INFO ] (ACP_SDK_LOG:42) LoadEncryptCert Successful
+[ThinkiveMall] 2016-12-14 14:01:06 [INFO ] (ACP_SDK_LOG:42) WARN: acpsdk.encryptTrackKey.modulus or acpsdk.encryptTrackKey.exponent is empty
+[ThinkiveMall] 2016-12-14 14:01:06 [INFO ] (ACP_SDK_LOG:42) åŠ è½½éªŒè¯ç­¾åè¯ä¹¦ç›®å½•==>D:/certs/
+[ThinkiveMall] 2016-12-14 14:01:06 [INFO ] (ACP_SDK_LOG:42) [D:\certs\acp_test_enc.cer][CertId=68759622183]
+[ThinkiveMall] 2016-12-14 14:01:06 [INFO ] (ACP_SDK_LOG:42) [D:\certs\acp_test_verify_sign.cer][CertId=68759585097]
+[ThinkiveMall] 2016-12-14 14:01:06 [INFO ] (ACP_SDK_LOG:42) LoadVerifyCert Successful
+[ThinkiveMall] 2016-12-14 14:01:06 [INFO ] (ACP_SDK_LOG:42) å¾…ç­¾åè¯·æ±‚æŠ¥æ–‡ä¸²:[accessType=0&bizType=000201&certId=40220995861346480087409489142384722381&encoding=UTF-8&merId=777290058136696&orderId=201612141007501466&signMethod=01&txnSubType=00&txnTime=20161209151824&txnType=00&version=5.0.0]
+[ThinkiveMall] 2016-12-14 14:01:06 [INFO ] (ACP_SDK_LOG:42) ç’‡é”‹çœ°é–¾æƒ°ä»ˆé¦æ¿æ½ƒ:https://101.231.204.80:5000/gateway/api/queryTrans.do
+[ThinkiveMall] 2016-12-14 14:01:06 [INFO ] (ACP_SDK_LOG:42) ç’‡é”‹çœ°éŽ¶ãƒ¦æžƒ(å®¸æ’ä»›æ©å˜¦RLEncodeç¼‚æ «çˆœ):[txnType=00&signMethod=01&certId=40220995861346480087409489142384722381&encoding=UTF-8&bizType=000201&merId=777290058136696&txnSubType=00&signature=C2W%2FjLqrYNM37%2BEdtVZFNGFx%2FKvbOz0ypwzIrQw1QDDYjRcJN7VCfhQ0K2JltlpbcjBJV8xJosh7SbPmlphCXcpK6XtSg7qnwIxHrAkGAwiNk4%2FrlDBns8ckgtfGJfZx2mmZPgQGu2i5T%2Byoy7pQJw%2FjkmbmWPVSCX4pZCtkdbQ%3D&orderId=201612141007501466&version=5.0.0&accessType=0&txnTime=20161209151824]
+[ThinkiveMall] 2016-12-14 14:01:06 [INFO ] (ACP_SDK_LOG:42) ç’‡é”‹çœ°éŽ¶ãƒ¦æžƒ:[txnType=00&signMethod=01&certId=40220995861346480087409489142384722381&encoding=UTF-8&bizType=000201&merId=777290058136696&txnSubType=00&signature=C2W%2FjLqrYNM37%2BEdtVZFNGFx%2FKvbOz0ypwzIrQw1QDDYjRcJN7VCfhQ0K2JltlpbcjBJV8xJosh7SbPmlphCXcpK6XtSg7qnwIxHrAkGAwiNk4%2FrlDBns8ckgtfGJfZx2mmZPgQGu2i5T%2Byoy7pQJw%2FjkmbmWPVSCX4pZCtkdbQ%3D&orderId=201612141007501466&version=5.0.0&accessType=0&txnTime=20161209151824]
+[ThinkiveMall] 2016-12-14 14:01:06 [INFO ] (ACP_SDK_LOG:42) HTTP Return Status-Code:[200]
+[ThinkiveMall] 2016-12-14 14:01:06 [INFO ] (ACP_SDK_LOG:42) éšå±¾î„žæ©æ–¿æ´–éŽ¶ãƒ¦æžƒ:[accessType=0&bizType=000201&encoding=UTF-8&merId=777290058136696&orderId=201612141007501466&respCode=34&respMsg=æŸ¥æ— æ­¤äº¤æ˜“[2600000]&signMethod=01&txnSubType=00&txnTime=20161209151824&txnType=00&version=5.0.0&certId=68759585097&signature=vJooIbZiUiBK/HwE+pSKe1PFi8VgshWoe4OUWm7ML83oyGHnRdf9w4duLRmBTy7SXEa0OcD3Mg+9gHa8Rpam5r4Hmikz/x1K1+Si+27TE4XDFQE1JQVayEMTyuDH0OxsE5Bz7XP8+8WRE4U94x2R/ZABTFx0e3g8VMZjAEDELrFoLIo4l+4j1bPYv5toHR8NC22VfzSF43Yg1QS7Pmz8YtjG8ePi7nueBq15VUepgvyR4RFlOWrs/v6ZgX0eqYvKRKkouvpmzoINRUGAMfT/Kb7IbC3mp7tYe9uu+apUnsRRl6I3tUqwcMqerMs0tulP+ZHZjGJTGHKQXLTGQI5acw==]
+[ThinkiveMall] 2016-12-14 14:01:06 [INFO ] (ACP_SDK_LOG:42) æ¥ å²€î„·æ¾¶å‹­æ‚Šå¯®ï¿½æ¿®ï¿½
+[ThinkiveMall] 2016-12-14 14:01:06 [INFO ] (ACP_SDK_LOG:42) ç€µç¡…ç¹‘é¥ç‚´å§¤é‚å›¦è¦†æ¥ å²€î„·æµ£è·¨æ•¤é¨å‹¯ç™ç»›æƒ§å•é–½ãƒ¥ç°­é’æ¥€å½¿é”›æ­”68759585097]
+[ThinkiveMall] 2016-12-14 14:01:06 [INFO ] (ACP_SDK_LOG:42) å¯°å‘´ç™ç»›æç¹‘é¥ç‚´å§¤é‚å›¦è¦†é”›æ­”accessType=0&bizType=000201&certId=68759585097&encoding=UTF-8&merId=777290058136696&orderId=201612141007501466&respCode=34&respMsg=æŸ¥æ— æ­¤äº¤æ˜“[2600000]&signMethod=01&txnSubType=00&txnTime=20161209151824&txnType=00&version=5.0.0]
+[ThinkiveMall] 2016-12-14 14:01:06 [INFO ] (ACP_SDK_LOG:42) éªŒè¯ç­¾åæˆåŠŸ
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) æµ å·†lasspath: /E:/eclipse/db_thinkmall_web/WebRoot/WEB-INF/classes/ é‘¾å³°å½‡çžç‚´ï¿½Ñ„æžƒæµ ï¿½acp_sdk.properties
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) å¯®ï¿½æ¿®å¬©ç² çžç‚´ï¿½Ñ„æžƒæµ æœµè…‘é”çŠºæµ‡é–°å¶‡ç–†æ¤¤ï¿½
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) é—æ›¡ç˜‰æ¶”ï¸½Äå¯®å¿¥ç´æµ£è·¨æ•¤é–°å¶‡ç–†é‚å›¦æ¬¢é–°å¶‡ç–†é¨å‹­î†é–½ãƒ§î„·éšå¶ˆç˜‰æ¶”ï¸¼ç´SingleCertMode:[true]
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) é–°å¶‡ç–†æ¤¤ç™¸ç´°ç»‰ä¾€æŒœç»›æƒ§æ‚•ç’‡ä½·åŠŸç’ºîˆšç·ž==>acpsdk.signCert.path==>D:/certs/acp_test_sign.pfx å®¸æ’å§žæžï¿½
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) é–°å¶‡ç–†æ¤¤ç™¸ç´°ç»‰ä¾€æŒœç»›æƒ§æ‚•ç’‡ä½·åŠŸç€µå—™çˆœ==>acpsdk.signCert.pwd å®¸æ’å§žæžï¿½
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) é–°å¶‡ç–†æ¤¤ç™¸ç´°ç»‰ä¾€æŒœç»›æƒ§æ‚•ç’‡ä½·åŠŸç»«è¯²ç€·==>acpsdk.signCert.type==>PKCS12 å®¸æ’å§žæžï¿½
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) é–°å¶‡ç–†æ¤¤ç™¸ç´°éå¿”åŠ…æ·‡â„ƒä¼…é”çŠ²ç˜‘ç’‡ä½·åŠŸ==>acpsdk.encryptCert.path==>d:/certs/acp_test_enc.cer å®¸æ’å§žæžï¿½
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) é–°å¶‡ç–†æ¤¤ç™¸ç´°æ¥ å²ƒç˜‰ç»›æƒ§æ‚•ç’‡ä½·åŠŸç’ºîˆšç·ž(æ©æ¬“å™·é–°å¶‡ç–†é¨å‹¬æ§¸é©î†¼ç¶é”›å±¼ç¬‰ç‘•ä½¹å¯šç€¹æ°¬åŸŒéî„„æŒœé‚å›¦æ¬¢)==>acpsdk.validateCert.dir==>D:/certs/ å®¸æ’å§žæžï¿½
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) æ‰“å°è¯·æ±‚æŠ¥æ–‡åŸŸ :
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) txnType-->00
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) signMethod-->01
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) encoding-->UTF-8
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) merId-->777290058136696
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) bizType-->000201
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) txnSubType-->00
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) orderId-->201612141007501466
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) txnTime-->20161214100750
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) accessType-->0
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) version-->5.0.0
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) add BC provider
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) ================= SYS INFO begin====================
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) os_name:Windows 8
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) os_arch:amd64
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) os_version:6.2
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) java_vm_specification_version:1.0
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) java_vm_specification_vendor:Sun Microsystems Inc.
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) java_vm_specification_name:Java Virtual Machine Specification
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) java_vm_version:20.45-b01
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) java_vm_name:Java HotSpot(TM) 64-Bit Server VM
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) java.version:1.6.0_45
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) java.vm.vendor=[Sun Microsystems Inc.]
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) java.version=[1.6.0_45]
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) Providers List:
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) 1.SUN
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) 2.SunRsaSign
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) 3.SunJSSE
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) 4.SunJCE
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) 5.SunJGSS
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) 6.SunSASL
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) 7.XMLDSig
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) 8.SunPCSC
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) 9.SunMSCAPI
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) 10.BC
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) ================= SYS INFO end=====================
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) åŠ è½½ç­¾åè¯ä¹¦==>D:/certs/acp_test_sign.pfx
+[ThinkiveMall] 2016-12-14 14:27:01 [INFO ] (ACP_SDK_LOG:42) Load RSA CertPath=[D:/certs/acp_test_sign.pfx],Pwd=[000000],type=[PKCS12]
+[ThinkiveMall] 2016-12-14 14:27:02 [INFO ] (ACP_SDK_LOG:42) InitSignCert Successful. CertId=[40220995861346480087409489142384722381]
+[ThinkiveMall] 2016-12-14 14:27:02 [INFO ] (ACP_SDK_LOG:42) åŠ è½½æ•æ„Ÿä¿¡æ¯åŠ å¯†è¯ä¹¦==>d:/certs/acp_test_enc.cer
+[ThinkiveMall] 2016-12-14 14:27:02 [INFO ] (ACP_SDK_LOG:42) [d:/certs/acp_test_enc.cer][CertId=68759622183]
+[ThinkiveMall] 2016-12-14 14:27:02 [INFO ] (ACP_SDK_LOG:42) LoadEncryptCert Successful
+[ThinkiveMall] 2016-12-14 14:27:02 [INFO ] (ACP_SDK_LOG:42) WARN: acpsdk.encryptTrackKey.modulus or acpsdk.encryptTrackKey.exponent is empty
+[ThinkiveMall] 2016-12-14 14:27:02 [INFO ] (ACP_SDK_LOG:42) åŠ è½½éªŒè¯ç­¾åè¯ä¹¦ç›®å½•==>D:/certs/
+[ThinkiveMall] 2016-12-14 14:27:02 [INFO ] (ACP_SDK_LOG:42) [D:\certs\acp_test_enc.cer][CertId=68759622183]
+[ThinkiveMall] 2016-12-14 14:27:02 [INFO ] (ACP_SDK_LOG:42) [D:\certs\acp_test_verify_sign.cer][CertId=68759585097]
+[ThinkiveMall] 2016-12-14 14:27:02 [INFO ] (ACP_SDK_LOG:42) LoadVerifyCert Successful
+[ThinkiveMall] 2016-12-14 14:27:02 [INFO ] (ACP_SDK_LOG:42) å¾…ç­¾åè¯·æ±‚æŠ¥æ–‡ä¸²:[accessType=0&bizType=000201&certId=40220995861346480087409489142384722381&encoding=UTF-8&merId=777290058136696&orderId=201612141007501466&signMethod=01&txnSubType=00&txnTime=20161214100750&txnType=00&version=5.0.0]
+[ThinkiveMall] 2016-12-14 14:27:02 [INFO ] (ACP_SDK_LOG:42) ç’‡é”‹çœ°é–¾æƒ°ä»ˆé¦æ¿æ½ƒ:https://101.231.204.80:5000/gateway/api/queryTrans.do
+[ThinkiveMall] 2016-12-14 14:27:02 [INFO ] (ACP_SDK_LOG:42) ç’‡é”‹çœ°éŽ¶ãƒ¦æžƒ(å®¸æ’ä»›æ©å˜¦RLEncodeç¼‚æ «çˆœ):[txnType=00&signMethod=01&certId=40220995861346480087409489142384722381&encoding=UTF-8&bizType=000201&merId=777290058136696&txnSubType=00&signature=ZBG%2F3Nqzhics3ccQ8zhDUvT3x8JLoB7bvdLGIazy%2BM%2Fi%2FXYA8vtQL9IsyOWN3zTNN1Blk5Ws4%2BpRVCiI%2B0jFqLRGsn9DCHZmOAdefe01WjcIbMO9DOvkY54OxhHQQybPt7hAy5ErJpTb2zYNEkgZdkxvJLKMQhKylcTA4BKWUAg%3D&orderId=201612141007501466&version=5.0.0&accessType=0&txnTime=20161214100750]
+[ThinkiveMall] 2016-12-14 14:27:02 [INFO ] (ACP_SDK_LOG:42) ç’‡é”‹çœ°éŽ¶ãƒ¦æžƒ:[txnType=00&signMethod=01&certId=40220995861346480087409489142384722381&encoding=UTF-8&bizType=000201&merId=777290058136696&txnSubType=00&signature=ZBG%2F3Nqzhics3ccQ8zhDUvT3x8JLoB7bvdLGIazy%2BM%2Fi%2FXYA8vtQL9IsyOWN3zTNN1Blk5Ws4%2BpRVCiI%2B0jFqLRGsn9DCHZmOAdefe01WjcIbMO9DOvkY54OxhHQQybPt7hAy5ErJpTb2zYNEkgZdkxvJLKMQhKylcTA4BKWUAg%3D&orderId=201612141007501466&version=5.0.0&accessType=0&txnTime=20161214100750]
+[ThinkiveMall] 2016-12-14 14:27:02 [INFO ] (ACP_SDK_LOG:42) HTTP Return Status-Code:[200]
+[ThinkiveMall] 2016-12-14 14:27:02 [INFO ] (ACP_SDK_LOG:42) éšå±¾î„žæ©æ–¿æ´–éŽ¶ãƒ¦æžƒ:[accNo=6226********0048&accessType=0&bizType=000201&currencyCode=156&encoding=UTF-8&issuerIdentifyMode=0&merId=777290058136696&orderId=201612141007501466&origRespCode=00&origRespMsg=æˆåŠŸ[0000000]&queryId=201612141014334488008&respCode=00&respMsg=æˆåŠŸ[0000000]&settleAmt=10&settleCurrencyCode=156&settleDate=1214&signMethod=01&traceNo=448800&traceTime=1214101433&txnAmt=10&txnSubType=01&txnTime=20161214101433&txnType=01&version=5.0.0&certId=68759585097&signature=blz3OayqBiTt1itSfD9Opv7J3G+vilLNkWZDqRVMSYq3Z4G8H3wHhTPVEUc0s2cQqSeQEitnFlyyQCQDlHwkXD2lbXwwgFGsmlUYk2Ey8DS8Uj1t3KtdF665Km5H9AJ+Jj/4LQeqMGtpDF47fHO14DCcj7s9FFFcbIWWbgn5ErSYhKuRHrErnPjI8TOEL61VWjSDN/3XbKg/qgd6PurYD1+Jv8rkq21n//7FvDz/Muag6+LxzhkXoUTa+vA9Y7FgMkzFuez7L57adK42aruMir8ukQMpZYmcxPaaClNpfPtTc3AiwZ+YLnifAKHtZXJ2GWoTfxaoD/F8pYcXBZHorQ==]
+[ThinkiveMall] 2016-12-14 14:27:02 [INFO ] (ACP_SDK_LOG:42) æ¥ å²€î„·æ¾¶å‹­æ‚Šå¯®ï¿½æ¿®ï¿½
+[ThinkiveMall] 2016-12-14 14:27:02 [INFO ] (ACP_SDK_LOG:42) ç€µç¡…ç¹‘é¥ç‚´å§¤é‚å›¦è¦†æ¥ å²€î„·æµ£è·¨æ•¤é¨å‹¯ç™ç»›æƒ§å•é–½ãƒ¥ç°­é’æ¥€å½¿é”›æ­”68759585097]
+[ThinkiveMall] 2016-12-14 14:27:02 [INFO ] (ACP_SDK_LOG:42) å¯°å‘´ç™ç»›æç¹‘é¥ç‚´å§¤é‚å›¦è¦†é”›æ­”accNo=6226********0048&accessType=0&bizType=000201&certId=68759585097&currencyCode=156&encoding=UTF-8&issuerIdentifyMode=0&merId=777290058136696&orderId=201612141007501466&origRespCode=00&origRespMsg=æˆåŠŸ[0000000]&queryId=201612141014334488008&respCode=00&respMsg=æˆåŠŸ[0000000]&settleAmt=10&settleCurrencyCode=156&settleDate=1214&signMethod=01&traceNo=448800&traceTime=1214101433&txnAmt=10&txnSubType=01&txnTime=20161214101433&txnType=01&version=5.0.0]
+[ThinkiveMall] 2016-12-14 14:27:02 [INFO ] (ACP_SDK_LOG:42) éªŒè¯ç­¾åæˆåŠŸ
+[ThinkiveMall] 2016-12-14 14:27:55 [INFO ] (ACP_SDK_LOG:42) æµ å·†lasspath: /E:/eclipse/db_thinkmall_web/WebRoot/WEB-INF/classes/ é‘¾å³°å½‡çžç‚´ï¿½Ñ„æžƒæµ ï¿½acp_sdk.properties
+[ThinkiveMall] 2016-12-14 14:27:55 [INFO ] (ACP_SDK_LOG:42) å¯®ï¿½æ¿®å¬©ç² çžç‚´ï¿½Ñ„æžƒæµ æœµè…‘é”çŠºæµ‡é–°å¶‡ç–†æ¤¤ï¿½
+[ThinkiveMall] 2016-12-14 14:27:55 [INFO ] (ACP_SDK_LOG:42) é—æ›¡ç˜‰æ¶”ï¸½Äå¯®å¿¥ç´æµ£è·¨æ•¤é–°å¶‡ç–†é‚å›¦æ¬¢é–°å¶‡ç–†é¨å‹­î†é–½ãƒ§î„·éšå¶ˆç˜‰æ¶”ï¸¼ç´SingleCertMode:[true]
+[ThinkiveMall] 2016-12-14 14:27:55 [INFO ] (ACP_SDK_LOG:42) é–°å¶‡ç–†æ¤¤ç™¸ç´°ç»‰ä¾€æŒœç»›æƒ§æ‚•ç’‡ä½·åŠŸç’ºîˆšç·ž==>acpsdk.signCert.path==>D:/certs/acp_test_sign.pfx å®¸æ’å§žæžï¿½
+[ThinkiveMall] 2016-12-14 14:27:55 [INFO ] (ACP_SDK_LOG:42) é–°å¶‡ç–†æ¤¤ç™¸ç´°ç»‰ä¾€æŒœç»›æƒ§æ‚•ç’‡ä½·åŠŸç€µå—™çˆœ==>acpsdk.signCert.pwd å®¸æ’å§žæžï¿½
+[ThinkiveMall] 2016-12-14 14:27:55 [INFO ] (ACP_SDK_LOG:42) é–°å¶‡ç–†æ¤¤ç™¸ç´°ç»‰ä¾€æŒœç»›æƒ§æ‚•ç’‡ä½·åŠŸç»«è¯²ç€·==>acpsdk.signCert.type==>PKCS12 å®¸æ’å§žæžï¿½
+[ThinkiveMall] 2016-12-14 14:27:55 [INFO ] (ACP_SDK_LOG:42) é–°å¶‡ç–†æ¤¤ç™¸ç´°éå¿”åŠ…æ·‡â„ƒä¼…é”çŠ²ç˜‘ç’‡ä½·åŠŸ==>acpsdk.encryptCert.path==>d:/certs/acp_test_enc.cer å®¸æ’å§žæžï¿½
+[ThinkiveMall] 2016-12-14 14:27:55 [INFO ] (ACP_SDK_LOG:42) é–°å¶‡ç–†æ¤¤ç™¸ç´°æ¥ å²ƒç˜‰ç»›æƒ§æ‚•ç’‡ä½·åŠŸç’ºîˆšç·ž(æ©æ¬“å™·é–°å¶‡ç–†é¨å‹¬æ§¸é©î†¼ç¶é”›å±¼ç¬‰ç‘•ä½¹å¯šç€¹æ°¬åŸŒéî„„æŒœé‚å›¦æ¬¢)==>acpsdk.validateCert.dir==>D:/certs/ å®¸æ’å§žæžï¿½
+[ThinkiveMall] 2016-12-14 14:27:55 [INFO ] (ACP_SDK_LOG:42) æ‰“å°è¯·æ±‚æŠ¥æ–‡åŸŸ :
+[ThinkiveMall] 2016-12-14 14:27:55 [INFO ] (ACP_SDK_LOG:42) txnType-->00
+[ThinkiveMall] 2016-12-14 14:27:55 [INFO ] (ACP_SDK_LOG:42) signMethod-->01
+[ThinkiveMall] 2016-12-14 14:27:55 [INFO ] (ACP_SDK_LOG:42) encoding-->UTF-8
+[ThinkiveMall] 2016-12-14 14:27:55 [INFO ] (ACP_SDK_LOG:42) merId-->777290058136696
+[ThinkiveMall] 2016-12-14 14:27:55 [INFO ] (ACP_SDK_LOG:42) bizType-->000201
+[ThinkiveMall] 2016-12-14 14:27:55 [INFO ] (ACP_SDK_LOG:42) txnSubType-->00
+[ThinkiveMall] 2016-12-14 14:27:55 [INFO ] (ACP_SDK_LOG:42) orderId-->201612141007501466
+[ThinkiveMall] 2016-12-14 14:27:55 [INFO ] (ACP_SDK_LOG:42) txnTime-->20161214101050
+[ThinkiveMall] 2016-12-14 14:27:55 [INFO ] (ACP_SDK_LOG:42) accessType-->0
+[ThinkiveMall] 2016-12-14 14:27:55 [INFO ] (ACP_SDK_LOG:42) version-->5.0.0
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) add BC provider
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) ================= SYS INFO begin====================
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) os_name:Windows 8
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) os_arch:amd64
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) os_version:6.2
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) java_vm_specification_version:1.0
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) java_vm_specification_vendor:Sun Microsystems Inc.
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) java_vm_specification_name:Java Virtual Machine Specification
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) java_vm_version:20.45-b01
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) java_vm_name:Java HotSpot(TM) 64-Bit Server VM
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) java.version:1.6.0_45
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) java.vm.vendor=[Sun Microsystems Inc.]
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) java.version=[1.6.0_45]
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) Providers List:
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) 1.SUN
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) 2.SunRsaSign
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) 3.SunJSSE
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) 4.SunJCE
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) 5.SunJGSS
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) 6.SunSASL
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) 7.XMLDSig
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) 8.SunPCSC
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) 9.SunMSCAPI
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) 10.BC
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) ================= SYS INFO end=====================
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) åŠ è½½ç­¾åè¯ä¹¦==>D:/certs/acp_test_sign.pfx
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) Load RSA CertPath=[D:/certs/acp_test_sign.pfx],Pwd=[000000],type=[PKCS12]
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) InitSignCert Successful. CertId=[40220995861346480087409489142384722381]
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) åŠ è½½æ•æ„Ÿä¿¡æ¯åŠ å¯†è¯ä¹¦==>d:/certs/acp_test_enc.cer
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) [d:/certs/acp_test_enc.cer][CertId=68759622183]
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) LoadEncryptCert Successful
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) WARN: acpsdk.encryptTrackKey.modulus or acpsdk.encryptTrackKey.exponent is empty
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) åŠ è½½éªŒè¯ç­¾åè¯ä¹¦ç›®å½•==>D:/certs/
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) [D:\certs\acp_test_enc.cer][CertId=68759622183]
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) [D:\certs\acp_test_verify_sign.cer][CertId=68759585097]
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) LoadVerifyCert Successful
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) å¾…ç­¾åè¯·æ±‚æŠ¥æ–‡ä¸²:[accessType=0&bizType=000201&certId=40220995861346480087409489142384722381&encoding=UTF-8&merId=777290058136696&orderId=201612141007501466&signMethod=01&txnSubType=00&txnTime=20161214101050&txnType=00&version=5.0.0]
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) ç’‡é”‹çœ°é–¾æƒ°ä»ˆé¦æ¿æ½ƒ:https://101.231.204.80:5000/gateway/api/queryTrans.do
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) ç’‡é”‹çœ°éŽ¶ãƒ¦æžƒ(å®¸æ’ä»›æ©å˜¦RLEncodeç¼‚æ «çˆœ):[txnType=00&signMethod=01&certId=40220995861346480087409489142384722381&encoding=UTF-8&bizType=000201&merId=777290058136696&txnSubType=00&signature=ZDqzN6%2BxUJvngw%2FoOHmS3NxyET1mSnRN556MmupgOBqoDyQUQwYM9nneHOA%2FcVMlbCfR9oI1bwduiq5EXhfpGRbH5yiR%2FwkJNw9zPxUaYh9Ndg0yMAh4iLkpBfFU0ixtj6upuTMTxRSCwiNQm9I%2FBFFy6hWqBBKd0jLMPed9v%2B4%3D&orderId=201612141007501466&version=5.0.0&accessType=0&txnTime=20161214101050]
+[ThinkiveMall] 2016-12-14 14:27:56 [INFO ] (ACP_SDK_LOG:42) ç’‡é”‹çœ°éŽ¶ãƒ¦æžƒ:[txnType=00&signMethod=01&certId=40220995861346480087409489142384722381&encoding=UTF-8&bizType=000201&merId=777290058136696&txnSubType=00&signature=ZDqzN6%2BxUJvngw%2FoOHmS3NxyET1mSnRN556MmupgOBqoDyQUQwYM9nneHOA%2FcVMlbCfR9oI1bwduiq5EXhfpGRbH5yiR%2FwkJNw9zPxUaYh9Ndg0yMAh4iLkpBfFU0ixtj6upuTMTxRSCwiNQm9I%2FBFFy6hWqBBKd0jLMPed9v%2B4%3D&orderId=201612141007501466&version=5.0.0&accessType=0&txnTime=20161214101050]
+[ThinkiveMall] 2016-12-14 14:27:57 [INFO ] (ACP_SDK_LOG:42) HTTP Return Status-Code:[200]
+[ThinkiveMall] 2016-12-14 14:27:57 [INFO ] (ACP_SDK_LOG:42) éšå±¾î„žæ©æ–¿æ´–éŽ¶ãƒ¦æžƒ:[accNo=6226********0048&accessType=0&bizType=000201&currencyCode=156&encoding=UTF-8&issuerIdentifyMode=0&merId=777290058136696&orderId=201612141007501466&origRespCode=00&origRespMsg=æˆåŠŸ[0000000]&queryId=201612141014334488008&respCode=00&respMsg=æˆåŠŸ[0000000]&settleAmt=10&settleCurrencyCode=156&settleDate=1214&signMethod=01&traceNo=448800&traceTime=1214101433&txnAmt=10&txnSubType=01&txnTime=20161214101433&txnType=01&version=5.0.0&certId=68759585097&signature=blz3OayqBiTt1itSfD9Opv7J3G+vilLNkWZDqRVMSYq3Z4G8H3wHhTPVEUc0s2cQqSeQEitnFlyyQCQDlHwkXD2lbXwwgFGsmlUYk2Ey8DS8Uj1t3KtdF665Km5H9AJ+Jj/4LQeqMGtpDF47fHO14DCcj7s9FFFcbIWWbgn5ErSYhKuRHrErnPjI8TOEL61VWjSDN/3XbKg/qgd6PurYD1+Jv8rkq21n//7FvDz/Muag6+LxzhkXoUTa+vA9Y7FgMkzFuez7L57adK42aruMir8ukQMpZYmcxPaaClNpfPtTc3AiwZ+YLnifAKHtZXJ2GWoTfxaoD/F8pYcXBZHorQ==]
+[ThinkiveMall] 2016-12-14 14:27:57 [INFO ] (ACP_SDK_LOG:42) æ¥ å²€î„·æ¾¶å‹­æ‚Šå¯®ï¿½æ¿®ï¿½
+[ThinkiveMall] 2016-12-14 14:27:57 [INFO ] (ACP_SDK_LOG:42) ç€µç¡…ç¹‘é¥ç‚´å§¤é‚å›¦è¦†æ¥ å²€î„·æµ£è·¨æ•¤é¨å‹¯ç™ç»›æƒ§å•é–½ãƒ¥ç°­é’æ¥€å½¿é”›æ­”68759585097]
+[ThinkiveMall] 2016-12-14 14:27:57 [INFO ] (ACP_SDK_LOG:42) å¯°å‘´ç™ç»›æç¹‘é¥ç‚´å§¤é‚å›¦è¦†é”›æ­”accNo=6226********0048&accessType=0&bizType=000201&certId=68759585097&currencyCode=156&encoding=UTF-8&issuerIdentifyMode=0&merId=777290058136696&orderId=201612141007501466&origRespCode=00&origRespMsg=æˆåŠŸ[0000000]&queryId=201612141014334488008&respCode=00&respMsg=æˆåŠŸ[0000000]&settleAmt=10&settleCurrencyCode=156&settleDate=1214&signMethod=01&traceNo=448800&traceTime=1214101433&txnAmt=10&txnSubType=01&txnTime=20161214101433&txnType=01&version=5.0.0]
+[ThinkiveMall] 2016-12-14 14:27:57 [INFO ] (ACP_SDK_LOG:42) éªŒè¯ç­¾åæˆåŠŸ
+[ThinkiveMall] 2016-12-15 14:35:32 [INFO ] (ACP_SDK_LOG:42) ´Óclasspath: /E:/eclipse/db_thinkmall_web/WebRoot/WEB-INF/classes/ »ñÈ¡ÊôÐÔÎÄ¼þacp_sdk.properties
+[ThinkiveMall] 2016-12-15 14:35:32 [INFO ] (ACP_SDK_LOG:42) ¿ªÊ¼´ÓÊôÐÔÎÄ¼þÖÐ¼ÓÔØÅäÖÃÏî
+[ThinkiveMall] 2016-12-15 14:35:32 [INFO ] (ACP_SDK_LOG:42) µ¥Ö¤ÊéÄ£Ê½£¬Ê¹ÓÃÅäÖÃÎÄ¼þÅäÖÃµÄË½Ô¿Ç©ÃûÖ¤Êé£¬SingleCertMode:[true]
+[ThinkiveMall] 2016-12-15 14:35:32 [INFO ] (ACP_SDK_LOG:42) ÅäÖÃÏî£ºË½Ô¿Ç©ÃûÖ¤ÊéÂ·¾¶==>acpsdk.signCert.path==>D:/certs/acp_test_sign.pfx ÒÑ¼ÓÔØ
+[ThinkiveMall] 2016-12-15 14:35:32 [INFO ] (ACP_SDK_LOG:42) ÅäÖÃÏî£ºË½Ô¿Ç©ÃûÖ¤ÊéÃÜÂë==>acpsdk.signCert.pwd ÒÑ¼ÓÔØ
+[ThinkiveMall] 2016-12-15 14:35:32 [INFO ] (ACP_SDK_LOG:42) ÅäÖÃÏî£ºË½Ô¿Ç©ÃûÖ¤ÊéÀàÐÍ==>acpsdk.signCert.type==>PKCS12 ÒÑ¼ÓÔØ
+[ThinkiveMall] 2016-12-15 14:35:32 [INFO ] (ACP_SDK_LOG:42) ÅäÖÃÏî£ºÃô¸ÐÐÅÏ¢¼ÓÃÜÖ¤Êé==>acpsdk.encryptCert.path==>d:/certs/acp_test_enc.cer ÒÑ¼ÓÔØ
+[ThinkiveMall] 2016-12-15 14:35:32 [INFO ] (ACP_SDK_LOG:42) ÅäÖÃÏî£ºÑéÖ¤Ç©ÃûÖ¤ÊéÂ·¾¶(ÕâÀïÅäÖÃµÄÊÇÄ¿Â¼£¬²»ÒªÖ¸¶¨µ½¹«Ô¿ÎÄ¼þ)==>acpsdk.validateCert.dir==>D:/certs/ ÒÑ¼ÓÔØ
+[ThinkiveMall] 2016-12-15 14:35:32 [INFO ] (ACP_SDK_LOG:42) ´òÓ¡ÇëÇó±¨ÎÄÓò :
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) txnType-->00
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) signMethod-->01
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) encoding-->UTF-8
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) merId-->777290058136696
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) bizType-->000201
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) txnSubType-->00
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) orderId-->201612151409381511
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) txnTime-->20161215140938
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) accessType-->0
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) version-->5.0.0
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) add BC provider
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) ================= SYS INFO begin====================
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) os_name:Windows 8
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) os_arch:amd64
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) os_version:6.2
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) java_vm_specification_version:1.0
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) java_vm_specification_vendor:Sun Microsystems Inc.
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) java_vm_specification_name:Java Virtual Machine Specification
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) java_vm_version:20.45-b01
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) java_vm_name:Java HotSpot(TM) 64-Bit Server VM
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) java.version:1.6.0_45
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) java.vm.vendor=[Sun Microsystems Inc.]
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) java.version=[1.6.0_45]
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) Providers List:
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) 1.SUN
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) 2.SunRsaSign
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) 3.SunJSSE
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) 4.SunJCE
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) 5.SunJGSS
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) 6.SunSASL
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) 7.XMLDSig
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) 8.SunPCSC
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) 9.SunMSCAPI
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) 10.BC
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) ================= SYS INFO end=====================
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) ¼ÓÔØÇ©ÃûÖ¤Êé==>D:/certs/acp_test_sign.pfx
+[ThinkiveMall] 2016-12-15 14:35:33 [INFO ] (ACP_SDK_LOG:42) Load RSA CertPath=[D:/certs/acp_test_sign.pfx],Pwd=[000000],type=[PKCS12]
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (ACP_SDK_LOG:42) InitSignCert Successful. CertId=[40220995861346480087409489142384722381]
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (ACP_SDK_LOG:42) ¼ÓÔØÃô¸ÐÐÅÏ¢¼ÓÃÜÖ¤Êé==>d:/certs/acp_test_enc.cer
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (ACP_SDK_LOG:42) [d:/certs/acp_test_enc.cer][CertId=68759622183]
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (ACP_SDK_LOG:42) LoadEncryptCert Successful
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (ACP_SDK_LOG:42) WARN: acpsdk.encryptTrackKey.modulus or acpsdk.encryptTrackKey.exponent is empty
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (ACP_SDK_LOG:42) ¼ÓÔØÑéÖ¤Ç©ÃûÖ¤ÊéÄ¿Â¼==>D:/certs/
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (ACP_SDK_LOG:42) [D:\certs\acp_test_enc.cer][CertId=68759622183]
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (ACP_SDK_LOG:42) [D:\certs\acp_test_verify_sign.cer][CertId=68759585097]
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (ACP_SDK_LOG:42) LoadVerifyCert Successful
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (ACP_SDK_LOG:42) ´ýÇ©ÃûÇëÇó±¨ÎÄ´®:[accessType=0&bizType=000201&certId=40220995861346480087409489142384722381&encoding=UTF-8&merId=777290058136696&orderId=201612151409381511&signMethod=01&txnSubType=00&txnTime=20161215140938&txnType=00&version=5.0.0]
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (ACP_SDK_LOG:42) ÇëÇóÒøÁªµØÖ·:https://101.231.204.80:5000/gateway/api/queryTrans.do
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (ACP_SDK_LOG:42) ÇëÇó±¨ÎÄ(ÒÑ×ö¹ýURLEncode±àÂë):[txnType=00&signMethod=01&certId=40220995861346480087409489142384722381&encoding=UTF-8&bizType=000201&merId=777290058136696&txnSubType=00&signature=YvLKpRYdft63zYKw4ik9zy%2FOyu%2FvJ0VkMldozM0Reaox3lxTQXJw%2F2cpgqiwA50v75OSH9gxaj0Yu49zsZhFRY8Lq2I53Li1bEg%2FAPwm1NHIRzahDhvw7ae%2BkSwesVxUHL%2FownEeIy6HX8XEyiVTQF%2BJf7Nm34tSaTRAF%2Bm0l%2Fk%3D&orderId=201612151409381511&version=5.0.0&accessType=0&txnTime=20161215140938]
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (ACP_SDK_LOG:42) ÇëÇó±¨ÎÄ:[txnType=00&signMethod=01&certId=40220995861346480087409489142384722381&encoding=UTF-8&bizType=000201&merId=777290058136696&txnSubType=00&signature=YvLKpRYdft63zYKw4ik9zy%2FOyu%2FvJ0VkMldozM0Reaox3lxTQXJw%2F2cpgqiwA50v75OSH9gxaj0Yu49zsZhFRY8Lq2I53Li1bEg%2FAPwm1NHIRzahDhvw7ae%2BkSwesVxUHL%2FownEeIy6HX8XEyiVTQF%2BJf7Nm34tSaTRAF%2Bm0l%2Fk%3D&orderId=201612151409381511&version=5.0.0&accessType=0&txnTime=20161215140938]
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (ACP_SDK_LOG:42) HTTP Return Status-Code:[200]
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (ACP_SDK_LOG:42) Í¬²½·µ»Ø±¨ÎÄ:[accNo=6226********0095&accessType=0&bizType=000201&currencyCode=156&encoding=UTF-8&issuerIdentifyMode=0&merId=777290058136696&orderId=201612151409381511&origRespCode=00&origRespMsg=³É¹¦[0000000]&queryId=201612151416255822728&respCode=00&respMsg=³É¹¦[0000000]&settleAmt=10&settleCurrencyCode=156&settleDate=1215&signMethod=01&traceNo=582272&traceTime=1215141625&txnAmt=10&txnSubType=01&txnTime=20161215141625&txnType=01&version=5.0.0&certId=68759585097&signature=RyQcVbxJtTYlkQdXrDpiG4CYHgKR7LK2V6BHMyWxFOR/dmJk3OdrxdS9yA2rHNchr1P/Q5CA9GiXwERwKlSEvIp0Xvq4cEoQmMgvANCUyEPngxpQ8Mdi+Bd2mW6RUnavpwck7wHtHUJslqAo+ooaqqXSONBhSUuS0VBIlx2W0GLMFRvXZ6aDKU7Bjs5ZIwp2CZRqiaQI3ExCUDN0agEcvhqREMiWQe19g/GkbwSEpC5vdg5QiUAjw41AJhbNLEaJ8zDK3/BvsdiSkfS6dFPKa2Gyc+v+OlJJ0iIDvZqZT2dL8DqW+/wPMhrIFS4Ssof4bP1SXGWZMELjwvsxm+AeMA==]
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (ACP_SDK_LOG:42) ÑéÇ©´¦Àí¿ªÊ¼
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (ACP_SDK_LOG:42) ¶Ô·µ»Ø±¨ÎÄ´®ÑéÇ©Ê¹ÓÃµÄÑéÇ©¹«Ô¿ÐòÁÐºÅ£º[68759585097]
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (ACP_SDK_LOG:42) ´ýÑéÇ©·µ»Ø±¨ÎÄ´®£º[accNo=6226********0095&accessType=0&bizType=000201&certId=68759585097&currencyCode=156&encoding=UTF-8&issuerIdentifyMode=0&merId=777290058136696&orderId=201612151409381511&origRespCode=00&origRespMsg=³É¹¦[0000000]&queryId=201612151416255822728&respCode=00&respMsg=³É¹¦[0000000]&settleAmt=10&settleCurrencyCode=156&settleDate=1215&signMethod=01&traceNo=582272&traceTime=1215141625&txnAmt=10&txnSubType=01&txnTime=20161215141625&txnType=01&version=5.0.0]
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (ACP_SDK_LOG:42) ÑéÖ¤Ç©Ãû³É¹¦
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (BusClientV2:304) ¹¦ÄÜºÅ¡¾1000117¡¿½Ó¿Úµ÷ÓÃ³ö´í£¬´íÎó´úÂë-9999£¬´íÎóÏûÏ¢£ºÖ§¸¶ÕË»§²»ÄÜÎª¿Õ
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (InfoQuery:123) err_no:-9999
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (InfoQuery:124) err_info:Ö§¸¶ÕË»§²»ÄÜÎª¿Õ
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (InfoQuery:125) È·ÈÏ¶©µ¥½Ó¿Ú·µ»ØÊý¾Ý£º{}
+[ThinkiveMall] 2016-12-15 14:35:34 [INFO ] (InfoQuery:133) Ö§¸¶È·ÈÏÊ§°Ü£ºÖ§¸¶ÕË»§²»ÄÜÎª¿Õ
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) ´Óclasspath: /E:/eclipse/db_thinkmall_web/WebRoot/WEB-INF/classes/ »ñÈ¡ÊôÐÔÎÄ¼þacp_sdk.properties
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) ¿ªÊ¼´ÓÊôÐÔÎÄ¼þÖÐ¼ÓÔØÅäÖÃÏî
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) µ¥Ö¤ÊéÄ£Ê½£¬Ê¹ÓÃÅäÖÃÎÄ¼þÅäÖÃµÄË½Ô¿Ç©ÃûÖ¤Êé£¬SingleCertMode:[true]
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) ÅäÖÃÏî£ºË½Ô¿Ç©ÃûÖ¤ÊéÂ·¾¶==>acpsdk.signCert.path==>D:/certs/acp_test_sign.pfx ÒÑ¼ÓÔØ
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) ÅäÖÃÏî£ºË½Ô¿Ç©ÃûÖ¤ÊéÃÜÂë==>acpsdk.signCert.pwd ÒÑ¼ÓÔØ
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) ÅäÖÃÏî£ºË½Ô¿Ç©ÃûÖ¤ÊéÀàÐÍ==>acpsdk.signCert.type==>PKCS12 ÒÑ¼ÓÔØ
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) ÅäÖÃÏî£ºÃô¸ÐÐÅÏ¢¼ÓÃÜÖ¤Êé==>acpsdk.encryptCert.path==>d:/certs/acp_test_enc.cer ÒÑ¼ÓÔØ
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) ÅäÖÃÏî£ºÑéÖ¤Ç©ÃûÖ¤ÊéÂ·¾¶(ÕâÀïÅäÖÃµÄÊÇÄ¿Â¼£¬²»ÒªÖ¸¶¨µ½¹«Ô¿ÎÄ¼þ)==>acpsdk.validateCert.dir==>D:/certs/ ÒÑ¼ÓÔØ
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) ´òÓ¡ÇëÇó±¨ÎÄÓò :
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) txnType-->00
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) signMethod-->01
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) encoding-->UTF-8
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) merId-->777290058136696
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) bizType-->000201
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) txnSubType-->00
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) orderId-->201612151409381511
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) txnTime-->20161215140938
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) accessType-->0
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) version-->5.0.0
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) add BC provider
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) ================= SYS INFO begin====================
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) os_name:Windows 8
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) os_arch:amd64
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) os_version:6.2
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) java_vm_specification_version:1.0
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) java_vm_specification_vendor:Sun Microsystems Inc.
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) java_vm_specification_name:Java Virtual Machine Specification
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) java_vm_version:20.45-b01
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) java_vm_name:Java HotSpot(TM) 64-Bit Server VM
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) java.version:1.6.0_45
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) java.vm.vendor=[Sun Microsystems Inc.]
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) java.version=[1.6.0_45]
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) Providers List:
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) 1.SUN
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) 2.SunRsaSign
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) 3.SunJSSE
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) 4.SunJCE
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) 5.SunJGSS
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) 6.SunSASL
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) 7.XMLDSig
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) 8.SunPCSC
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) 9.SunMSCAPI
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) 10.BC
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) ================= SYS INFO end=====================
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) ¼ÓÔØÇ©ÃûÖ¤Êé==>D:/certs/acp_test_sign.pfx
+[ThinkiveMall] 2016-12-15 14:36:10 [INFO ] (ACP_SDK_LOG:42) Load RSA CertPath=[D:/certs/acp_test_sign.pfx],Pwd=[000000],type=[PKCS12]
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (ACP_SDK_LOG:42) InitSignCert Successful. CertId=[40220995861346480087409489142384722381]
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (ACP_SDK_LOG:42) ¼ÓÔØÃô¸ÐÐÅÏ¢¼ÓÃÜÖ¤Êé==>d:/certs/acp_test_enc.cer
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (ACP_SDK_LOG:42) [d:/certs/acp_test_enc.cer][CertId=68759622183]
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (ACP_SDK_LOG:42) LoadEncryptCert Successful
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (ACP_SDK_LOG:42) WARN: acpsdk.encryptTrackKey.modulus or acpsdk.encryptTrackKey.exponent is empty
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (ACP_SDK_LOG:42) ¼ÓÔØÑéÖ¤Ç©ÃûÖ¤ÊéÄ¿Â¼==>D:/certs/
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (ACP_SDK_LOG:42) [D:\certs\acp_test_enc.cer][CertId=68759622183]
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (ACP_SDK_LOG:42) [D:\certs\acp_test_verify_sign.cer][CertId=68759585097]
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (ACP_SDK_LOG:42) LoadVerifyCert Successful
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (ACP_SDK_LOG:42) ´ýÇ©ÃûÇëÇó±¨ÎÄ´®:[accessType=0&bizType=000201&certId=40220995861346480087409489142384722381&encoding=UTF-8&merId=777290058136696&orderId=201612151409381511&signMethod=01&txnSubType=00&txnTime=20161215140938&txnType=00&version=5.0.0]
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (ACP_SDK_LOG:42) ÇëÇóÒøÁªµØÖ·:https://101.231.204.80:5000/gateway/api/queryTrans.do
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (ACP_SDK_LOG:42) ÇëÇó±¨ÎÄ(ÒÑ×ö¹ýURLEncode±àÂë):[txnType=00&signMethod=01&certId=40220995861346480087409489142384722381&encoding=UTF-8&bizType=000201&merId=777290058136696&txnSubType=00&signature=YvLKpRYdft63zYKw4ik9zy%2FOyu%2FvJ0VkMldozM0Reaox3lxTQXJw%2F2cpgqiwA50v75OSH9gxaj0Yu49zsZhFRY8Lq2I53Li1bEg%2FAPwm1NHIRzahDhvw7ae%2BkSwesVxUHL%2FownEeIy6HX8XEyiVTQF%2BJf7Nm34tSaTRAF%2Bm0l%2Fk%3D&orderId=201612151409381511&version=5.0.0&accessType=0&txnTime=20161215140938]
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (ACP_SDK_LOG:42) ÇëÇó±¨ÎÄ:[txnType=00&signMethod=01&certId=40220995861346480087409489142384722381&encoding=UTF-8&bizType=000201&merId=777290058136696&txnSubType=00&signature=YvLKpRYdft63zYKw4ik9zy%2FOyu%2FvJ0VkMldozM0Reaox3lxTQXJw%2F2cpgqiwA50v75OSH9gxaj0Yu49zsZhFRY8Lq2I53Li1bEg%2FAPwm1NHIRzahDhvw7ae%2BkSwesVxUHL%2FownEeIy6HX8XEyiVTQF%2BJf7Nm34tSaTRAF%2Bm0l%2Fk%3D&orderId=201612151409381511&version=5.0.0&accessType=0&txnTime=20161215140938]
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (ACP_SDK_LOG:42) HTTP Return Status-Code:[200]
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (ACP_SDK_LOG:42) Í¬²½·µ»Ø±¨ÎÄ:[accNo=6226********0095&accessType=0&bizType=000201&currencyCode=156&encoding=UTF-8&issuerIdentifyMode=0&merId=777290058136696&orderId=201612151409381511&origRespCode=00&origRespMsg=³É¹¦[0000000]&queryId=201612151416255822728&respCode=00&respMsg=³É¹¦[0000000]&settleAmt=10&settleCurrencyCode=156&settleDate=1215&signMethod=01&traceNo=582272&traceTime=1215141625&txnAmt=10&txnSubType=01&txnTime=20161215141625&txnType=01&version=5.0.0&certId=68759585097&signature=RyQcVbxJtTYlkQdXrDpiG4CYHgKR7LK2V6BHMyWxFOR/dmJk3OdrxdS9yA2rHNchr1P/Q5CA9GiXwERwKlSEvIp0Xvq4cEoQmMgvANCUyEPngxpQ8Mdi+Bd2mW6RUnavpwck7wHtHUJslqAo+ooaqqXSONBhSUuS0VBIlx2W0GLMFRvXZ6aDKU7Bjs5ZIwp2CZRqiaQI3ExCUDN0agEcvhqREMiWQe19g/GkbwSEpC5vdg5QiUAjw41AJhbNLEaJ8zDK3/BvsdiSkfS6dFPKa2Gyc+v+OlJJ0iIDvZqZT2dL8DqW+/wPMhrIFS4Ssof4bP1SXGWZMELjwvsxm+AeMA==]
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (ACP_SDK_LOG:42) ÑéÇ©´¦Àí¿ªÊ¼
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (ACP_SDK_LOG:42) ¶Ô·µ»Ø±¨ÎÄ´®ÑéÇ©Ê¹ÓÃµÄÑéÇ©¹«Ô¿ÐòÁÐºÅ£º[68759585097]
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (ACP_SDK_LOG:42) ´ýÑéÇ©·µ»Ø±¨ÎÄ´®£º[accNo=6226********0095&accessType=0&bizType=000201&certId=68759585097&currencyCode=156&encoding=UTF-8&issuerIdentifyMode=0&merId=777290058136696&orderId=201612151409381511&origRespCode=00&origRespMsg=³É¹¦[0000000]&queryId=201612151416255822728&respCode=00&respMsg=³É¹¦[0000000]&settleAmt=10&settleCurrencyCode=156&settleDate=1215&signMethod=01&traceNo=582272&traceTime=1215141625&txnAmt=10&txnSubType=01&txnTime=20161215141625&txnType=01&version=5.0.0]
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (ACP_SDK_LOG:42) ÑéÖ¤Ç©Ãû³É¹¦
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (BusClientV2:304) ¹¦ÄÜºÅ¡¾1000117¡¿½Ó¿Úµ÷ÓÃ³ö´í£¬´íÎó´úÂë-9999£¬´íÎóÏûÏ¢£ºÖ§¸¶ÕË»§²»ÄÜÎª¿Õ
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (InfoQuery:123) err_no:-9999
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (InfoQuery:124) err_info:Ö§¸¶ÕË»§²»ÄÜÎª¿Õ
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (InfoQuery:125) È·ÈÏ¶©µ¥½Ó¿Ú·µ»ØÊý¾Ý£º{}
+[ThinkiveMall] 2016-12-15 14:36:11 [INFO ] (InfoQuery:133) Ö§¸¶È·ÈÏÊ§°Ü£ºÖ§¸¶ÕË»§²»ÄÜÎª¿Õ
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) ´Óclasspath: /E:/eclipse/db_thinkmall_web/WebRoot/WEB-INF/classes/ »ñÈ¡ÊôÐÔÎÄ¼þacp_sdk.properties
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) ¿ªÊ¼´ÓÊôÐÔÎÄ¼þÖÐ¼ÓÔØÅäÖÃÏî
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) µ¥Ö¤ÊéÄ£Ê½£¬Ê¹ÓÃÅäÖÃÎÄ¼þÅäÖÃµÄË½Ô¿Ç©ÃûÖ¤Êé£¬SingleCertMode:[true]
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) ÅäÖÃÏî£ºË½Ô¿Ç©ÃûÖ¤ÊéÂ·¾¶==>acpsdk.signCert.path==>D:/certs/acp_test_sign.pfx ÒÑ¼ÓÔØ
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) ÅäÖÃÏî£ºË½Ô¿Ç©ÃûÖ¤ÊéÃÜÂë==>acpsdk.signCert.pwd ÒÑ¼ÓÔØ
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) ÅäÖÃÏî£ºË½Ô¿Ç©ÃûÖ¤ÊéÀàÐÍ==>acpsdk.signCert.type==>PKCS12 ÒÑ¼ÓÔØ
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) ÅäÖÃÏî£ºÃô¸ÐÐÅÏ¢¼ÓÃÜÖ¤Êé==>acpsdk.encryptCert.path==>d:/certs/acp_test_enc.cer ÒÑ¼ÓÔØ
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) ÅäÖÃÏî£ºÑéÖ¤Ç©ÃûÖ¤ÊéÂ·¾¶(ÕâÀïÅäÖÃµÄÊÇÄ¿Â¼£¬²»ÒªÖ¸¶¨µ½¹«Ô¿ÎÄ¼þ)==>acpsdk.validateCert.dir==>D:/certs/ ÒÑ¼ÓÔØ
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) ´òÓ¡ÇëÇó±¨ÎÄÓò :
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) txnType-->00
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) signMethod-->01
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) encoding-->UTF-8
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) merId-->777290058136696
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) bizType-->000201
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) txnSubType-->00
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) orderId-->201612151409381511
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) txnTime-->20161215140938
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) accessType-->0
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) version-->5.0.0
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) add BC provider
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) ================= SYS INFO begin====================
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) os_name:Windows 8
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) os_arch:amd64
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) os_version:6.2
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) java_vm_specification_version:1.0
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) java_vm_specification_vendor:Sun Microsystems Inc.
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) java_vm_specification_name:Java Virtual Machine Specification
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) java_vm_version:20.45-b01
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) java_vm_name:Java HotSpot(TM) 64-Bit Server VM
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) java.version:1.6.0_45
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) java.vm.vendor=[Sun Microsystems Inc.]
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) java.version=[1.6.0_45]
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) Providers List:
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) 1.SUN
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) 2.SunRsaSign
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) 3.SunJSSE
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) 4.SunJCE
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) 5.SunJGSS
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) 6.SunSASL
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) 7.XMLDSig
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) 8.SunPCSC
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) 9.SunMSCAPI
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) 10.BC
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) ================= SYS INFO end=====================
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) ¼ÓÔØÇ©ÃûÖ¤Êé==>D:/certs/acp_test_sign.pfx
+[ThinkiveMall] 2016-12-15 14:38:36 [INFO ] (ACP_SDK_LOG:42) Load RSA CertPath=[D:/certs/acp_test_sign.pfx],Pwd=[000000],type=[PKCS12]
+[ThinkiveMall] 2016-12-15 14:38:37 [INFO ] (ACP_SDK_LOG:42) InitSignCert Successful. CertId=[40220995861346480087409489142384722381]
+[ThinkiveMall] 2016-12-15 14:38:37 [INFO ] (ACP_SDK_LOG:42) ¼ÓÔØÃô¸ÐÐÅÏ¢¼ÓÃÜÖ¤Êé==>d:/certs/acp_test_enc.cer
+[ThinkiveMall] 2016-12-15 14:38:37 [INFO ] (ACP_SDK_LOG:42) [d:/certs/acp_test_enc.cer][CertId=68759622183]
+[ThinkiveMall] 2016-12-15 14:38:37 [INFO ] (ACP_SDK_LOG:42) LoadEncryptCert Successful
+[ThinkiveMall] 2016-12-15 14:38:37 [INFO ] (ACP_SDK_LOG:42) WARN: acpsdk.encryptTrackKey.modulus or acpsdk.encryptTrackKey.exponent is empty
+[ThinkiveMall] 2016-12-15 14:38:37 [INFO ] (ACP_SDK_LOG:42) ¼ÓÔØÑéÖ¤Ç©ÃûÖ¤ÊéÄ¿Â¼==>D:/certs/
+[ThinkiveMall] 2016-12-15 14:38:37 [INFO ] (ACP_SDK_LOG:42) [D:\certs\acp_test_enc.cer][CertId=68759622183]
+[ThinkiveMall] 2016-12-15 14:38:37 [INFO ] (ACP_SDK_LOG:42) [D:\certs\acp_test_verify_sign.cer][CertId=68759585097]
+[ThinkiveMall] 2016-12-15 14:38:37 [INFO ] (ACP_SDK_LOG:42) LoadVerifyCert Successful
+[ThinkiveMall] 2016-12-15 14:38:37 [INFO ] (ACP_SDK_LOG:42) ´ýÇ©ÃûÇëÇó±¨ÎÄ´®:[accessType=0&bizType=000201&certId=40220995861346480087409489142384722381&encoding=UTF-8&merId=777290058136696&orderId=201612151409381511&signMethod=01&txnSubType=00&txnTime=20161215140938&txnType=00&version=5.0.0]
+[ThinkiveMall] 2016-12-15 14:38:37 [INFO ] (ACP_SDK_LOG:42) ÇëÇóÒøÁªµØÖ·:https://101.231.204.80:5000/gateway/api/queryTrans.do
+[ThinkiveMall] 2016-12-15 14:38:37 [INFO ] (ACP_SDK_LOG:42) ÇëÇó±¨ÎÄ(ÒÑ×ö¹ýURLEncode±àÂë):[txnType=00&signMethod=01&certId=40220995861346480087409489142384722381&encoding=UTF-8&bizType=000201&merId=777290058136696&txnSubType=00&signature=YvLKpRYdft63zYKw4ik9zy%2FOyu%2FvJ0VkMldozM0Reaox3lxTQXJw%2F2cpgqiwA50v75OSH9gxaj0Yu49zsZhFRY8Lq2I53Li1bEg%2FAPwm1NHIRzahDhvw7ae%2BkSwesVxUHL%2FownEeIy6HX8XEyiVTQF%2BJf7Nm34tSaTRAF%2Bm0l%2Fk%3D&orderId=201612151409381511&version=5.0.0&accessType=0&txnTime=20161215140938]
+[ThinkiveMall] 2016-12-15 14:38:37 [INFO ] (ACP_SDK_LOG:42) ÇëÇó±¨ÎÄ:[txnType=00&signMethod=01&certId=40220995861346480087409489142384722381&encoding=UTF-8&bizType=000201&merId=777290058136696&txnSubType=00&signature=YvLKpRYdft63zYKw4ik9zy%2FOyu%2FvJ0VkMldozM0Reaox3lxTQXJw%2F2cpgqiwA50v75OSH9gxaj0Yu49zsZhFRY8Lq2I53Li1bEg%2FAPwm1NHIRzahDhvw7ae%2BkSwesVxUHL%2FownEeIy6HX8XEyiVTQF%2BJf7Nm34tSaTRAF%2Bm0l%2Fk%3D&orderId=201612151409381511&version=5.0.0&accessType=0&txnTime=20161215140938]
+[ThinkiveMall] 2016-12-15 14:38:38 [INFO ] (ACP_SDK_LOG:42) HTTP Return Status-Code:[200]
+[ThinkiveMall] 2016-12-15 14:38:38 [INFO ] (ACP_SDK_LOG:42) Í¬²½·µ»Ø±¨ÎÄ:[accNo=6226********0095&accessType=0&bizType=000201&currencyCode=156&encoding=UTF-8&issuerIdentifyMode=0&merId=777290058136696&orderId=201612151409381511&origRespCode=00&origRespMsg=³É¹¦[0000000]&queryId=201612151416255822728&respCode=00&respMsg=³É¹¦[0000000]&settleAmt=10&settleCurrencyCode=156&settleDate=1215&signMethod=01&traceNo=582272&traceTime=1215141625&txnAmt=10&txnSubType=01&txnTime=20161215141625&txnType=01&version=5.0.0&certId=68759585097&signature=RyQcVbxJtTYlkQdXrDpiG4CYHgKR7LK2V6BHMyWxFOR/dmJk3OdrxdS9yA2rHNchr1P/Q5CA9GiXwERwKlSEvIp0Xvq4cEoQmMgvANCUyEPngxpQ8Mdi+Bd2mW6RUnavpwck7wHtHUJslqAo+ooaqqXSONBhSUuS0VBIlx2W0GLMFRvXZ6aDKU7Bjs5ZIwp2CZRqiaQI3ExCUDN0agEcvhqREMiWQe19g/GkbwSEpC5vdg5QiUAjw41AJhbNLEaJ8zDK3/BvsdiSkfS6dFPKa2Gyc+v+OlJJ0iIDvZqZT2dL8DqW+/wPMhrIFS4Ssof4bP1SXGWZMELjwvsxm+AeMA==]
+[ThinkiveMall] 2016-12-15 14:38:38 [INFO ] (ACP_SDK_LOG:42) ÑéÇ©´¦Àí¿ªÊ¼
+[ThinkiveMall] 2016-12-15 14:38:38 [INFO ] (ACP_SDK_LOG:42) ¶Ô·µ»Ø±¨ÎÄ´®ÑéÇ©Ê¹ÓÃµÄÑéÇ©¹«Ô¿ÐòÁÐºÅ£º[68759585097]
+[ThinkiveMall] 2016-12-15 14:38:38 [INFO ] (ACP_SDK_LOG:42) ´ýÑéÇ©·µ»Ø±¨ÎÄ´®£º[accNo=6226********0095&accessType=0&bizType=000201&certId=68759585097&currencyCode=156&encoding=UTF-8&issuerIdentifyMode=0&merId=777290058136696&orderId=201612151409381511&origRespCode=00&origRespMsg=³É¹¦[0000000]&queryId=201612151416255822728&respCode=00&respMsg=³É¹¦[0000000]&settleAmt=10&settleCurrencyCode=156&settleDate=1215&signMethod=01&traceNo=582272&traceTime=1215141625&txnAmt=10&txnSubType=01&txnTime=20161215141625&txnType=01&version=5.0.0]
+[ThinkiveMall] 2016-12-15 14:38:38 [INFO ] (ACP_SDK_LOG:42) ÑéÖ¤Ç©Ãû³É¹¦
+[ThinkiveMall] 2016-12-15 14:38:57 [INFO ] (BusClientV2:304) ¹¦ÄÜºÅ¡¾1000117¡¿½Ó¿Úµ÷ÓÃ³ö´í£¬´íÎó´úÂë-9999£¬´íÎóÏûÏ¢£ºÖ§¸¶ÕË»§²»ÄÜÎª¿Õ
+[ThinkiveMall] 2016-12-15 14:39:06 [INFO ] (InfoQuery:123) err_no:-9999
+[ThinkiveMall] 2016-12-15 14:39:08 [INFO ] (InfoQuery:124) err_info:Ö§¸¶ÕË»§²»ÄÜÎª¿Õ
+[ThinkiveMall] 2016-12-15 14:39:12 [INFO ] (InfoQuery:125) È·ÈÏ¶©µ¥½Ó¿Ú·µ»ØÊý¾Ý£º{}
+[ThinkiveMall] 2016-12-15 14:39:12 [INFO ] (InfoQuery:133) Ö§¸¶È·ÈÏÊ§°Ü£ºÖ§¸¶ÕË»§²»ÄÜÎª¿Õ
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) ´Óclasspath: /E:/eclipse/db_thinkmall_web/WebRoot/WEB-INF/classes/ »ñÈ¡ÊôÐÔÎÄ¼þacp_sdk.properties
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) ¿ªÊ¼´ÓÊôÐÔÎÄ¼þÖÐ¼ÓÔØÅäÖÃÏî
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) µ¥Ö¤ÊéÄ£Ê½£¬Ê¹ÓÃÅäÖÃÎÄ¼þÅäÖÃµÄË½Ô¿Ç©ÃûÖ¤Êé£¬SingleCertMode:[true]
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) ÅäÖÃÏî£ºË½Ô¿Ç©ÃûÖ¤ÊéÂ·¾¶==>acpsdk.signCert.path==>D:/certs/acp_test_sign.pfx ÒÑ¼ÓÔØ
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) ÅäÖÃÏî£ºË½Ô¿Ç©ÃûÖ¤ÊéÃÜÂë==>acpsdk.signCert.pwd ÒÑ¼ÓÔØ
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) ÅäÖÃÏî£ºË½Ô¿Ç©ÃûÖ¤ÊéÀàÐÍ==>acpsdk.signCert.type==>PKCS12 ÒÑ¼ÓÔØ
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) ÅäÖÃÏî£ºÃô¸ÐÐÅÏ¢¼ÓÃÜÖ¤Êé==>acpsdk.encryptCert.path==>d:/certs/acp_test_enc.cer ÒÑ¼ÓÔØ
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) ÅäÖÃÏî£ºÑéÖ¤Ç©ÃûÖ¤ÊéÂ·¾¶(ÕâÀïÅäÖÃµÄÊÇÄ¿Â¼£¬²»ÒªÖ¸¶¨µ½¹«Ô¿ÎÄ¼þ)==>acpsdk.validateCert.dir==>D:/certs/ ÒÑ¼ÓÔØ
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) ´òÓ¡ÇëÇó±¨ÎÄÓò :
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) txnType-->00
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) signMethod-->01
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) encoding-->UTF-8
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) merId-->777290058136696
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) bizType-->000201
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) txnSubType-->00
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) orderId-->201612151409381511
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) txnTime-->20161215140938
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) accessType-->0
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) version-->5.0.0
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) add BC provider
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) ================= SYS INFO begin====================
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) os_name:Windows 8
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) os_arch:amd64
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) os_version:6.2
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) java_vm_specification_version:1.0
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) java_vm_specification_vendor:Sun Microsystems Inc.
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) java_vm_specification_name:Java Virtual Machine Specification
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) java_vm_version:20.45-b01
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) java_vm_name:Java HotSpot(TM) 64-Bit Server VM
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) java.version:1.6.0_45
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) java.vm.vendor=[Sun Microsystems Inc.]
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) java.version=[1.6.0_45]
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) Providers List:
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) 1.SUN
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) 2.SunRsaSign
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) 3.SunJSSE
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) 4.SunJCE
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) 5.SunJGSS
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) 6.SunSASL
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) 7.XMLDSig
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) 8.SunPCSC
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) 9.SunMSCAPI
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) 10.BC
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) ================= SYS INFO end=====================
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) ¼ÓÔØÇ©ÃûÖ¤Êé==>D:/certs/acp_test_sign.pfx
+[ThinkiveMall] 2016-12-15 14:45:19 [INFO ] (ACP_SDK_LOG:42) Load RSA CertPath=[D:/certs/acp_test_sign.pfx],Pwd=[000000],type=[PKCS12]
+[ThinkiveMall] 2016-12-15 14:45:20 [INFO ] (ACP_SDK_LOG:42) InitSignCert Successful. CertId=[40220995861346480087409489142384722381]
+[ThinkiveMall] 2016-12-15 14:45:20 [INFO ] (ACP_SDK_LOG:42) ¼ÓÔØÃô¸ÐÐÅÏ¢¼ÓÃÜÖ¤Êé==>d:/certs/acp_test_enc.cer
+[ThinkiveMall] 2016-12-15 14:45:20 [INFO ] (ACP_SDK_LOG:42) [d:/certs/acp_test_enc.cer][CertId=68759622183]
+[ThinkiveMall] 2016-12-15 14:45:20 [INFO ] (ACP_SDK_LOG:42) LoadEncryptCert Successful
+[ThinkiveMall] 2016-12-15 14:45:20 [INFO ] (ACP_SDK_LOG:42) WARN: acpsdk.encryptTrackKey.modulus or acpsdk.encryptTrackKey.exponent is empty
+[ThinkiveMall] 2016-12-15 14:45:20 [INFO ] (ACP_SDK_LOG:42) ¼ÓÔØÑéÖ¤Ç©ÃûÖ¤ÊéÄ¿Â¼==>D:/certs/
+[ThinkiveMall] 2016-12-15 14:45:20 [INFO ] (ACP_SDK_LOG:42) [D:\certs\acp_test_enc.cer][CertId=68759622183]
+[ThinkiveMall] 2016-12-15 14:45:20 [INFO ] (ACP_SDK_LOG:42) [D:\certs\acp_test_verify_sign.cer][CertId=68759585097]
+[ThinkiveMall] 2016-12-15 14:45:20 [INFO ] (ACP_SDK_LOG:42) LoadVerifyCert Successful
+[ThinkiveMall] 2016-12-15 14:45:20 [INFO ] (ACP_SDK_LOG:42) ´ýÇ©ÃûÇëÇó±¨ÎÄ´®:[accessType=0&bizType=000201&certId=40220995861346480087409489142384722381&encoding=UTF-8&merId=777290058136696&orderId=201612151409381511&signMethod=01&txnSubType=00&txnTime=20161215140938&txnType=00&version=5.0.0]
+[ThinkiveMall] 2016-12-15 14:45:20 [INFO ] (ACP_SDK_LOG:42) ÇëÇóÒøÁªµØÖ·:https://101.231.204.80:5000/gateway/api/queryTrans.do
+[ThinkiveMall] 2016-12-15 14:45:20 [INFO ] (ACP_SDK_LOG:42) ÇëÇó±¨ÎÄ(ÒÑ×ö¹ýURLEncode±àÂë):[txnType=00&signMethod=01&certId=40220995861346480087409489142384722381&encoding=UTF-8&bizType=000201&merId=777290058136696&txnSubType=00&signature=YvLKpRYdft63zYKw4ik9zy%2FOyu%2FvJ0VkMldozM0Reaox3lxTQXJw%2F2cpgqiwA50v75OSH9gxaj0Yu49zsZhFRY8Lq2I53Li1bEg%2FAPwm1NHIRzahDhvw7ae%2BkSwesVxUHL%2FownEeIy6HX8XEyiVTQF%2BJf7Nm34tSaTRAF%2Bm0l%2Fk%3D&orderId=201612151409381511&version=5.0.0&accessType=0&txnTime=20161215140938]
+[ThinkiveMall] 2016-12-15 14:45:20 [INFO ] (ACP_SDK_LOG:42) ÇëÇó±¨ÎÄ:[txnType=00&signMethod=01&certId=40220995861346480087409489142384722381&encoding=UTF-8&bizType=000201&merId=777290058136696&txnSubType=00&signature=YvLKpRYdft63zYKw4ik9zy%2FOyu%2FvJ0VkMldozM0Reaox3lxTQXJw%2F2cpgqiwA50v75OSH9gxaj0Yu49zsZhFRY8Lq2I53Li1bEg%2FAPwm1NHIRzahDhvw7ae%2BkSwesVxUHL%2FownEeIy6HX8XEyiVTQF%2BJf7Nm34tSaTRAF%2Bm0l%2Fk%3D&orderId=201612151409381511&version=5.0.0&accessType=0&txnTime=20161215140938]
+[ThinkiveMall] 2016-12-15 14:45:20 [INFO ] (ACP_SDK_LOG:42) HTTP Return Status-Code:[200]
+[ThinkiveMall] 2016-12-15 14:45:20 [INFO ] (ACP_SDK_LOG:42) Í¬²½·µ»Ø±¨ÎÄ:[accNo=6226********0095&accessType=0&bizType=000201&currencyCode=156&encoding=UTF-8&issuerIdentifyMode=0&merId=777290058136696&orderId=201612151409381511&origRespCode=00&origRespMsg=³É¹¦[0000000]&queryId=201612151416255822728&respCode=00&respMsg=³É¹¦[0000000]&settleAmt=10&settleCurrencyCode=156&settleDate=1215&signMethod=01&traceNo=582272&traceTime=1215141625&txnAmt=10&txnSubType=01&txnTime=20161215141625&txnType=01&version=5.0.0&certId=68759585097&signature=RyQcVbxJtTYlkQdXrDpiG4CYHgKR7LK2V6BHMyWxFOR/dmJk3OdrxdS9yA2rHNchr1P/Q5CA9GiXwERwKlSEvIp0Xvq4cEoQmMgvANCUyEPngxpQ8Mdi+Bd2mW6RUnavpwck7wHtHUJslqAo+ooaqqXSONBhSUuS0VBIlx2W0GLMFRvXZ6aDKU7Bjs5ZIwp2CZRqiaQI3ExCUDN0agEcvhqREMiWQe19g/GkbwSEpC5vdg5QiUAjw41AJhbNLEaJ8zDK3/BvsdiSkfS6dFPKa2Gyc+v+OlJJ0iIDvZqZT2dL8DqW+/wPMhrIFS4Ssof4bP1SXGWZMELjwvsxm+AeMA==]
+[ThinkiveMall] 2016-12-15 14:45:20 [INFO ] (ACP_SDK_LOG:42) ÑéÇ©´¦Àí¿ªÊ¼
+[ThinkiveMall] 2016-12-15 14:45:20 [INFO ] (ACP_SDK_LOG:42) ¶Ô·µ»Ø±¨ÎÄ´®ÑéÇ©Ê¹ÓÃµÄÑéÇ©¹«Ô¿ÐòÁÐºÅ£º[68759585097]
+[ThinkiveMall] 2016-12-15 14:45:20 [INFO ] (ACP_SDK_LOG:42) ´ýÑéÇ©·µ»Ø±¨ÎÄ´®£º[accNo=6226********0095&accessType=0&bizType=000201&certId=68759585097&currencyCode=156&encoding=UTF-8&issuerIdentifyMode=0&merId=777290058136696&orderId=201612151409381511&origRespCode=00&origRespMsg=³É¹¦[0000000]&queryId=201612151416255822728&respCode=00&respMsg=³É¹¦[0000000]&settleAmt=10&settleCurrencyCode=156&settleDate=1215&signMethod=01&traceNo=582272&traceTime=1215141625&txnAmt=10&txnSubType=01&txnTime=20161215141625&txnType=01&version=5.0.0]
+[ThinkiveMall] 2016-12-15 14:45:20 [INFO ] (ACP_SDK_LOG:42) ÑéÖ¤Ç©Ãû³É¹¦
+[ThinkiveMall] 2016-12-15 14:45:29 [INFO ] (InfoQuery:123) err_no:0
+[ThinkiveMall] 2016-12-15 14:45:30 [INFO ] (InfoQuery:124) err_info:µ÷ÓÃ³É¹¦
+[ThinkiveMall] 2016-12-15 14:45:31 [INFO ] (InfoQuery:125) È·ÈÏ¶©µ¥½Ó¿Ú·µ»ØÊý¾Ý£º{order_quantity=1, product_id=41, order_tot_price=.1, order_state=4, service_end_time=20171215, product_name=Ìâ²Ä¾øÉ±, service_type=, product_type=3, order_id=1511, order_price=0.1, state_message=, deal_state=0, mobile_phone=18749840699, update_time=2016-12-15 14:38:46, product_code=SY1003, service_begin_time=20161215, pay_way=, create_time=2016-12-15 14:09:38, order_channel=0, user_id=555, user_mail=}
+[ThinkiveMall] 2016-12-15 14:45:33 [INFO ] (InfoQuery:131) ³É¹¦

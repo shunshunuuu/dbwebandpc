@@ -1,0 +1,48 @@
+/**自定义其他层样式（不包括loading），非layer部分**/
+.xubox_main {
+	height: auto!important;
+}
+.pop_tip {
+	background:#1D2127;
+	border-top:1px solid #0B7BCD;
+	position:fixed;
+	left:5%;
+	top:50%;
+	margin-top:-40px;
+	width:90%;
+	z-index:10000;
+	text-align:center;
+}
+.pop_tip .icon {
+	width:30px;
+	height:30px;
+	display:block;
+	margin:0 auto;
+	display:none;
+}
+.pop_tip p {
+	padding:25px 10px;
+	color:#959DAB;
+}
+.pop_tip .btn {
+	height:45px;
+	line-height:45px;
+	border-top:1px solid #28323E;
+}
+.pop_tip .btn a {
+	display:block;
+	background:#232B33;
+	font-size:16px;
+	color:#0B7BCE;
+}
+.pop_tip.notice .btn a {
+	width:50%;
+	float:left;
+}
+.pop_tip.notice .btn a:nth-child(1) {
+	box-shadow:-1px 0 0 #1D2228 inset;
+}
+.pop_tip.notice .btn a:nth-child(2) {
+	color:#959DAB;
+	box-shadow:1px 0 0 #28323E inset;
+}

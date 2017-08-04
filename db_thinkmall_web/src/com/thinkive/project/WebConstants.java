@@ -1,0 +1,66 @@
+package com.thinkive.project;
+
+/**
+ * 描述: 
+ * 版权: Copyright (c) 2014
+ * 公司: 思迪信息
+ * 作者: HUANGRONALDO
+ * 版本: 1.0 
+ * 创建日期: Feb 14, 2014 
+ * 创建时间: 10:00:15 AM
+ */
+public class WebConstants
+{
+	/**
+	 * session保存客户ID的key
+	 */
+	public static final String SESSION_USER_ID = "@user_id";
+	/**
+	 * session保存客户ID的key
+	 */
+	public static final String SESSION_FUND_ACCOUNT = "@fund_account";
+	
+	/**
+	 * session保存客户user_token的key
+	 */
+	public static final String SESSION_USER_TOKEN = "@user_token";
+	/**
+	 * session保存客户user的key
+	 */
+	public static final String SESSION_USER = "@user";
+	/**
+	 * session保存客户user_token的key
+	 */
+	public static final String SESSION_TOKEN_TIME = "@token_time";
+	/**
+	 * session保存客户手机验证码时间的key
+	 */
+	public static final String SESSION_MOBILE_VF_CODE_TIME = "@mobile_vf_code_time";
+	/**
+	 * session保存客户手机验证码key
+	 */
+	public static final String SESSION_MOBILE_VF_CODE = "@mobile_vf_code";
+	/**
+	 * session保存客户验证的手机的key
+	 */
+	public static final String SESSION_VF_MOBILE = "@vf_mobile";
+	/**
+	 * session保存客户的手机号信息 
+	 */
+	public static final String SESSION_MOBILE_PHONE = "@mobile_phone";
+	/**
+     * session保存客户的资金账号登录密码【交易密码】
+     */
+    public static final String SESSION_FUND_ACCOUNT_LOGIN_PWD = "@fund_account_login_pwd";
+    
+	/**
+	 * session保存客户login_pwd的key
+	 */
+	public static final String SESSION_LOGIN_PWD = "@login_pwd";
+	
+	/**
+	 * session保存客户ID的key
+	 */
+	public static final String SESSION_CLIENT_ID = "@client_id";
+    
+}

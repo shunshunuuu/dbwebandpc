@@ -1,0 +1,105 @@
+<div class="page"  id="finan_fund_znxj" data-pageTitle="智能选基" data-pageLevel="1"
+	data-urlParam="true" data-refresh="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner header_inner_index">
+			<h1>智能选基</h1>
+			<a href="javascript:void(0);" class="per_search"></a>
+		</div>
+		<div class="mallnav_side">
+			<div class="mallnav flex-father">
+				<a class="curent" href="javascript:void(0);"><span>全部</span></a>
+				<a href="javascript:void(0);"><span>股票型</span></a>
+				<a href="javascript:void(0);"><span>债券型</span></a>
+				<a href="javascript:void(0);"><span>指数型</span></a>
+				<a href="javascript:void(0);"><span>混合型</span></a>
+			</div>
+		</div>
+	</header>
+	<article>
+		<div class="index_page">
+			<!-- 遮罩层 -->
+			<div class="blockbg" style="display:none;"></div>
+			<div class="intell">
+				<a class="sx" href="javascript:void(0);">
+					<p class="zfbtn">我希望近<span>1月</span>以来收益率<s></s></p>
+					<div class="morebox zflist" style="display:none;">
+						<ul>
+							<li>一月</li>
+							<li>三月</li>
+							<li>六月</li>
+							<li>一年</li>
+						</ul>
+					</div>
+				</a>
+				<div class="computebox">
+					<p class="sop1" id="profit">5%</p>
+					<span class="range_box"><input type="range" min="0" max="100" value="13" id="myrange"></span>
+					<!--<div class="combarbox">
+						 <p style="width:30%;"><s id="sound_box"></s></p>
+					</div> -->
+					<div class="bfb_number">
+						<p class="fl">0%</p>
+						<p class="fr" id="maxyield">100%</p>
+					</div>
+					<div class="thempt">目前收益中，产品风险比较适中哦</div>
+				</div>
+				<div class="thereport">
+					<p>为您筛选到 <span>13</span> 条基金结果</p>
+					<a id="search" href="javascript:void(0);">查看</a>
+				</div>
+			</div>
+			<div class="intell">
+				<a class="moreduo" href="javascript:;">更多筛选条件</a>
+				<a class="moretips" href="javascript:;"><i></i>下面的基金经常被选出来哦</a>
+				<div class="pl_two pl_twos" id="sylg">
+					<div class="plin">
+						<s></s>
+						<div class="plin_r">
+							<p class="sp01">45.40<span>%</span></p>
+							<p class="sp02">近一个月收益率</p>
+						</div>
+						<div class="plin_l">
+							<p class="sp01">华安智能装备主题股票</p>
+							<p class="sp02">单位净值：2.1400元</p>
+							<p class="sp03"><span class="san01">1000元起购</span><span class="san02">低风险</span></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer_box total_footer_box">
+			<img src="images/total_footer_pic.png" width="100%" />
+			<p>东北证券股份有限公司版权所有 @ 2015 </p>
+		</div>
+	</article>
+	<footer>
+		<div class="ui layout footer_nav footer_new_nav">
+			<div class="row-1">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>推荐</p>
+				</a>
+			</div>
+			<div class="row-1 active">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>理财</p>
+				</a>
+			</div>
+			<div class="row-1">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>活动</p>
+				</a>
+			</div>
+			<div class="row-1">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>我的</p>
+				</a>
+			</div>
+		</div>
+	</footer>
+</section>
+</div>

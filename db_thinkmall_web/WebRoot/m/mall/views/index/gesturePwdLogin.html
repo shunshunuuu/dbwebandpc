@@ -1,0 +1,74 @@
+<div class="page" id="index_gesturePwdLogin" data-pageTitle="手势密码登录">
+	<section class="main fixed" data-page="home">
+<!-- 		<header class="header">
+			<div class="header_inner no_border">
+				<a href="javascript:void(0);" class="btn_cancel" id="backBtn"></a>
+			</div>
+		</header> -->
+		<article class="boost">
+			<!-- LOGIN_PAGE START -->
+			<div class="login_page">
+				<div class="gesture_box">
+					<div class="thumbnail_box">
+						<a href="javascript:void(0);" class="btn_cancel" id="backBtn"></a>
+						<div class="avatar_box">
+							<img src="" alt="">
+						</div>
+						<p class="text-center" style="color:333333;" id="nickName"></p>
+						<!-- <p class="redcol text-center" id="alert">手势密码登录</p> -->
+					</div>
+					<!-- <div class="thumbnail_box">
+						<ul class="clearfix">
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+						
+					</div> -->
+					<div class="gesture_inner">
+						<div class="mui-content">
+							<div id='holder' class="mui-locker"
+								data-locker-options='{"ringColor":"rgba(210,210,210,1)","fillColor":"#ffffff","pointColor":"#F66677","lineColor":"#F66677"}'
+								data-locker-width='300' data-locker-height='300'></div>
+						</div>
+					</div>
+					<div class="login_operate mt10 text-center redcol">
+						<!-- <a href="javascript:void(0)" id="checkLoginPwd">验证登录密码</a> -->
+						<a href="javascript:void(0)" id="otherAccountLogin" style="color: #4b99fb;">使用账号登入</a>
+					</div>
+				</div>
+			</div>
+			<!-- LOGIN_PAGE END -->
+		</article>
+	</section>
+	<div id="pwdWindow" style="display: none;">
+		<div class="ui dialog-overlay"></div>
+		<div class="pop_box2">
+			<div class="pop_tips bounceInUp">
+				<div class="tips_inner">
+					<h3 class="text-center">验证登录密码</h3>
+					<div class="login_password mt10">
+						<div class="grid_02">
+							<div class="ui field text border rounded">
+								<div class="ui label">登录密码</div>
+								<input maxlength="16" type="password" class="ui input" placeholder="" id="loginPwd">
+							</div>
+						</div>
+						<p class="error_tips"></p>
+					</div>
+				</div>
+				<div class="btns_box">
+					<a href="javascript:void(0)" id="cancelBtn">取消</a>
+					<a href="javascript:void(0)" id="okBtn">确定</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="windowContainer"></div>
+</div>

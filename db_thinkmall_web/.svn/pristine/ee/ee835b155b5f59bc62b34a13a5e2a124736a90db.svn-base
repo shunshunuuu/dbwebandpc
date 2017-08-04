@@ -1,0 +1,108 @@
+<div class="page" id="activity_acceptAddress"  data-pageTitle="抽奖活动" >
+<section class="main fixed" data-page="home">
+<header>
+		<div class="header_inner">
+			<h1>收货地址</h1>
+			<a href="javascript:void(0);" class="back_btn"></a>
+			<a href="javascript:void(0);" class="rules_btn">确认</a>
+		</div>
+	</header>
+	<article>
+		<div class="add_address_page">
+			<div class="add_address_list mt10">
+				<div class="address_item" id="default">
+					<!-- <div class="item_list checked" id="1">
+						<h3>张迪<span class="number">13128676890</span></h3>
+						<p class="address"><em>[默认]</em>湖北省武汉市江夏区关谷大道429号武汉理工学院</p>
+					</div> -->
+				</div>
+				<div class="address_item" id="noDefault">
+					<!-- <div class="item_list" id="2">
+						<h3>张迪<span class="number">13128676890</span></h3>
+						<p class="address">湖北省武汉市洪山区白石洲武汉科技大学黄家湖校区</p>
+					</div>
+					<div class="item_list" id="3">
+						<h3>张迪<span class="number">13128676890</span></h3>
+						<p class="address">湖北省武汉市洪山区白石洲武汉科技大学黄家湖校区</p>
+					</div> -->
+				</div>
+				<a href="javascript:void(0);" class="add_address_btn">+添加新地址</a>
+			</div>
+		</div>
+	</article>
+	
+	<!--遮罩层-->
+	<div class="ui dialog-overlay" style="display: none;"></div>
+	<!--添加地址弹窗-->
+	<div class="dialog_address_box slidedown in" style="display: none;">
+		<div class="dialog_address_text">
+			<ul>
+				<li class="ui layout">
+					<span class="t_name">姓名:</span>
+					<div class="row-1">
+						<input id="name" type="text" class="row-1" placeholder="请填写收货人姓名 (必填)" />
+					</div>
+				</li>
+				<li class="ui layout">
+					<span class="t_name">电话:</span>
+					<div class="row-1">
+						<input id="phone" type="text" class="row-1" placeholder="请填写收货人电话号码 (必填)" />
+					</div>
+				</li>
+				<li class="ui layout">
+					<span class="t_name">地址:</span>
+					<div class="row-1">
+						<input id="address" type="text" class="row-1" placeholder="请填写收货人地址 (必填)" />
+					</div>
+				</li>
+				<li class="ui layout">
+					<span class="row-1 t_name">默认地址:</span>
+					<div class="ui switch">
+						<input type="checkbox" checked="checked" />
+						<div class="ui switch-inner">
+							<div class="ui switch-btn"><span class="active">ON</span><span class="inactive">OFF</span></div>
+							<div class="ui switch-arrow"></div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="ui layout dialog_btn_box">
+			<div class="row-1">
+				<a href="javascript:void(0);" class="ui button block rounded" id="close">关闭</a>
+			</div>
+			<div class="row-1">
+				<a href="javascript:void(0);" class="ui button block rounded" id="save">保存</a>
+			</div>
+		</div>
+	</div>
+	
+	<!--领取成功弹窗-->
+	<div class="dialog_lottery_box" style="display: none;">
+		<div class="dialog_lottery_cet dialog_lottery_cet2">
+			<div class="cet_detail">
+				<div class="tit">
+					<h3>兑奖成功</h3>
+				</div>
+				<div class="dialog_lottery_det">
+					<div class="dialog_award_txt">
+						<p>恭喜您,您的奖品已兑换成功! </p>
+						<p>奖品将尽快为您寄出,届时请注意查收,感谢您的参与!</p>
+						<p class="numbering">中奖编号：<span class="ared"></span></p>
+					</div>
+					<div class="ui layout dialog_btn_box">
+						<div class="row-1">
+							<a href="javascript:void(0);" class="ui button block rounded" id="checkOrder">进入商城</a>
+						</div>
+						<!-- <div class="row-1">
+							<a href="javascript:void(0);" class="ui button block rounded" id="goSee">继续逛逛</a>
+						</div> -->
+					</div>
+					<p class="tips">*请记住您的中奖编号，如有任何问题可关注<span class="ared">东北证券融e通</span> 微信公众号资讯在线客服小融！</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</section>
+</div>

@@ -1,0 +1,65 @@
+<div class="page"  id="infoproduct_searchInfo" data-pageTitle="搜索产品" data-pageLevel="1"
+	data-urlParam="true" data-refresh="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner header_inner_index header_inner_02">
+			<div class="soulbox soulbox_a">
+				<div class="soulinputbox">
+					<a href="javascript:void(0);"><i></i></a>
+					<input type="text" id="search_value"  placeholder="搜索产品"/>
+				</div>
+			</div>
+			<a href="javascript:void(0);" id="away" class="per_btn per_wod">取消</a>
+			<a href="javascript:void(0);" class="back_btn"></a>
+		</div>
+	</header>
+	<article>
+		<div class="index_page">
+			<div class="pronews" style="display: none;" id="searchResult">
+				<ul>
+					<li>月月赢1月期1号</li>
+					<li>月月赢1月期12号</li>
+					<li>月月赢1月期162号</li>
+					<li>月月赢1月期1qw号</li>
+				</ul>
+			</div>
+		
+			<div class="pronews" id="searchView">
+				<div class="hoter_tiit" id="history_title">
+					<p>历史搜索</p>
+					<a href="javascript:void(0);" id="cleanHistory">清除历史记录</a>
+			    </div>
+				<ul>
+<!-- 			  <li> -->
+<!-- 						<div class="sibnews"> -->
+<!-- 							<div class="sibnews_l"> -->
+<!-- 								<img src="images/pronews_bg008.jpg" alt="" /> -->
+<!-- 							</div> -->
+<!-- 							<div class="sibnews_r"> -->
+<!-- 								<div class="newstits"> -->
+<!-- 									<p>两融精研</p> -->
+<!-- 									<span>订阅9999</span> -->
+<!-- 								</div> -->
+<!-- 								<div class="thestarts">推荐指数： -->
+<!-- 								从一颗星到5颗星，分别添加onestart,twostart,threestart,fourstart,fivestart;startbox为默认； -->
+<!-- 									<a class="startbox fourstart" href="javascript:void(0);"> -->
+<!-- 										<span class="str01"></span> -->
+<!-- 										<span class="str02"></span> -->
+<!-- 										<span class="str03"></span> -->
+<!-- 										<span class="str04"></span> -->
+<!-- 										<span class="str05"></span> -->
+<!-- 									</a> -->
+<!-- 								</div> -->
+<!-- 								<div class="theprice"><span>30东北币</span></div> -->
+<!-- 								<div class="exchange"> -->
+<!-- 									<a href="javascript:void(0);">立即兑换</a> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 				</li> -->
+				</ul>
+			</div>
+		</div>
+	</article>
+</section>
+</div>

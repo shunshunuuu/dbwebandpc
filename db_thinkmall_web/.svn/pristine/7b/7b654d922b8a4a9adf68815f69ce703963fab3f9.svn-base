@@ -1,0 +1,47 @@
+define(function(require, exports, module) {
+	var _pageId = "#infoproduct_decisionDetails "; // 页面id
+	var pageCode = "infoproduct/decisionDetails";
+	var appUtils = require("appUtils"); // 核心工具类
+	var service = require("mobileService"); // 业务层接口，请求数据
+	var layerUtils = require("layerUtils"); // 弹出层工具类
+	var global = require("gconfig").global; // 全局配置对象
+	var constants = require("constants");// 常量类
+	var common = require("common"); // 公共类
+	var putils = require("putils"); //
+    var HIscroll = require("hIscroll"); //hIscroll别名已经配置到hSea中
+    var myHIscroll = null;
+	require("mall/scripts/common/plugins/swiperEvent");
+	
+	/*
+	 * 初始化
+	 */
+	
+	function init() {
+		
+	}
+	/*
+	 * 绑定事件
+	 */
+	function bindPageEvent() {
+		// 返回
+		appUtils.bindEvent(_pageId + ".back_btn", function() {
+			appUtils.pageBack();
+		});
+		
+	};
+	
+
+	/*
+	 * 页面销毁
+	 */
+	function destroy() {};
+
+	var main = {
+		"init" : init,
+		"bindPageEvent" : bindPageEvent,
+		"destroy" : destroy
+	};
+	
+	// 暴露对外的接口
+	module.exports = main;
+});

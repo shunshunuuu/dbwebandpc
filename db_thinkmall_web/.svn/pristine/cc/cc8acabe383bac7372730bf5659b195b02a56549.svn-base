@@ -1,0 +1,180 @@
+<div class="page"  id="account_userCenter" data-pageTitle="搜索" data-pageLevel="1"
+	data-urlParam="true" data-refresh="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner header_inner_index">
+			<h1>我的</h1>
+		</div>
+	</header>
+	<article>
+		<div class="index_page">
+		
+		    <!-- 登录前 -->
+			<div class="login_box login_after" id="loginafter" style="display:none;">
+				<div class="allmsag">
+					<div class="usermsg">
+						<div class="userimg">
+							<div class="userimg01">
+								<img src="images/user_mr_tx.png" alt="" />
+							</div>
+						</div>
+						<p class="username"><span></span></p>
+						<a class="dropout" href="javascript:void(0);"></a>
+					</div>
+					<div class="allass">
+						<p class="sp01">总资产（元）</p>
+						<!-- 默认为睁眼，添加close 为闭眼 -->
+						<p class="sp02" id="zzc"><span>0</span><a id="zy" iszk="1" href="javascript:void(0);"></a></p>
+					</div>
+				</div>
+				<div class="othermsg">
+					<div class="othermsg_left">
+						<p class="sp01">可用金额（元）</p>
+						<p class="sp02" id="kyje">0</p>
+					</div>
+					<div class="othermsg_left">
+						<p class="sp01">产品市值（元）</p>
+						<p class="sp02" id="cpsz">0</p>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 登录后 -->
+			<div class="login_box" id="loginfirst" style="display:none;">
+				<div class="deco">
+					<div class="deco01 buy_btn">
+						<div class="deco02">
+							<div class="deco03"><span></span></div>
+						</div>
+					</div>
+				</div>
+				<div class="loginbot">
+					<a href="javascript:void(0);" >立即登陆/注册</a>
+				</div>
+			</div>
+			
+			
+			<div class="pro_box_01">
+				<div class="pro_main">
+					<div class="pro_tits myacc">
+						<a href="javascript:void(0);">
+							<p class="sp01"><i></i>我的账户总览</p>
+						</a>
+					</div>
+					<div class="myapp">
+						<a class="a01" href="javascript:void(0);">
+							<em></em>
+							<span>我的现金管家</span>
+						</a>
+						<a class="a02" href="javascript:void(0);">
+							<em></em>
+							<span>我的理财</span>
+						</a>
+						<a class="a03" href="javascript:void(0);">
+							<em></em>
+							<span>理财订单</span>
+						</a>
+						<a class="a04" href="javascript:void(0);">
+							<em></em>
+							<span>银证转账</span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="pro_box_01">
+				<div class="pro_main">
+					<div class="myapp myapp01">
+						<a class="a01" href="javascript:void(0);">
+							<em></em>
+							<span>中奖查询</span>
+						</a>
+						<a class="a02" href="javascript:void(0);">
+							<em></em>
+							<span>我的米袋子</span>
+						</a>
+						<a class="a03" href="javascript:void(0);">
+							<em></em>
+							<span>米仓订单</span>
+						</a>
+						<a class="a04" href="javascript:void(0);">
+							<em></em>
+							<span>我的资讯</span>
+						</a>
+					</div>
+					<div class="myapp myapp02">
+						<a class="a01" href="javascript:void(0);">
+							<em></em>
+							<span>扫一扫</span>
+						</a>
+						<a class="a02" href="javascript:void(0);">
+							<em></em>
+							<span>我的活动</span>
+						</a>
+						<a class="a03" href="javascript:void(0);">
+							<em></em>
+							<span>风险测评</span>
+						</a>
+						<a class="a04" href="javascript:void(0);">
+							<em></em>
+							<span>我要开户</span>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="pro_box_01">
+				<div class="pro_main">
+					<div class="aother" id="zhyh">
+						<a href="javascript:void(0);">
+							<i class="m1"></i>
+							<p>推荐好友</p>
+							<s></s>
+						</a>
+						<a href="javascript:void(0);">
+							<i class="m2"></i>
+							<p>我的资料</p>
+							<s></s>
+						</a>
+						<a href="javascript:void(0);">
+							<i class="m3"></i>
+							<p>我要吐槽</p>
+							<s></s>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="footer_box total_footer_box">
+				<img src="images/total_footer_pic.png" width="100%" />
+				<p>东北证券股份有限公司版权所有 @2015 </p>
+			</div>
+		</div>
+	</article>
+	<footer>
+		<div class="ui layout footer_nav footer_new_nav">
+			<div class="row-1">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>推荐</p>
+				</a>
+			</div>
+			<div class="row-1">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>理财</p>
+				</a>
+			</div>
+			<div class="row-1">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>活动</p>
+				</a>
+			</div>
+			<div class="row-1 active">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>我的</p>
+				</a>
+			</div>
+		</div>
+	</footer>
+</section>
+</div>

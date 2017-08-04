@@ -1,0 +1,135 @@
+define(function(require, exports, module) {
+	var _pageId = "#infoproduct_infoDetails "; // 页面id
+	var pageCode = "infoproduct/infoDetails";
+	var appUtils = require("appUtils"); // 核心工具类
+	var service = require("mobileService"); // 业务层接口，请求数据
+	var layerUtils = require("layerUtils"); // 弹出层工具类
+	var global = require("gconfig").global; // 全局配置对象
+	var constants = require("constants");// 常量类
+	var common = require("common"); // 公共类
+	var putils = require("putils"); //
+	
+	/*
+	 * 初始化
+	 */
+	
+	function init() {
+		//根据资讯产品编号查询该产品的详细信息
+//		queryProductInfo();
+	}
+	
+	
+	function queryProductInfo(){
+		
+		var param = {
+				"page" : 1, 
+				"numPerPage" : 8,
+				"product_shelf" : 0, //上架状态
+				"product_id" : 1 // 是否按热销排序
+			};
+			service.queryInfo(param,function(resultVo){
+				if(0==resultVo.error_no){
+					var results = resultVo.results[0].data;
+					var zxProductEle = $(_pageId+"#infoproduct").empty();
+				    if(results.length > 0){
+					   for(var i = 0; i < results.length; i++){
+						  var itemHtml='<div class="jp_banner"><img src="images/activity_pic8.jpg" alt="" /></div>'+
+								'<div class="pro_tits pro_tit_ai">' +
+							'<a href="javascript:void(0);">' +
+								'<p class="sp04">每日决策内参</p>' +
+								'<p class="sp03"><s></s>10东北米/5元</p>' +
+							'</a>' +
+						'</div>' +
+						'<div class="mainbox">' +
+							'<div class="main_001">' +
+								'<div class="main_in001">' +
+									'<div class="pro_tits pro_tit_ah">' +
+										'<a href="javascript:void(0);">' +
+											'<p class="sp01"><i></i>产品详情</p>' +
+										'</a>' +
+									'</div>' +
+									'<div class="prowords">本资讯信息来源于第三方机构“博览财经”。本资讯中的内容和意见仅供参考，并不构成对所述证券买卖做出保证,对信息的准确性和完整性不作任何保证，也不保证所包含的信息和建议不会发生任何变更。投资者不应将本资讯作为投资决策的唯一参考因素，亦不应以本资讯取代自己的判断。在任何情况下,东北证券不对的任何内容所引致的任何损失负任何责任。市场有风险，投资需谨慎!</div>'+
+								'</div>' +
+							'</div>' +
+							'<div class="main_001">' +
+								'<div class="main_in001">' +
+									'<div class="pro_tits pro_tit_aj">' +
+										'<a href="javascript:void(0);">' +
+											'<p class="sp01"><i></i>兑换说明</p>' +
+										'</a>' +
+									'</div>'+ 
+									'<div class="prowords prowords_aa">' +
+										'<p>1、深港通倒计时 沪股通逆转净买6亿元(利好大盘）</p>' +
+										'<p>2、明晟：A股现积极迹象 但入围还有待观察(利空大盘）</p>' + 
+										'<p>3、垃圾处理获政策力挺 龙头企业有望领跑行(利好垃圾处理概念股)</p>' +
+										'<p>4、国内首条民营控股高铁落地 行业进入PPP新时代(利好PPP铁路概念股）</p>' +
+										'<p>5、钙钛矿和CIGS太阳能电池 效率创纪录相关公司受关注(利好太阳能概念股）</p>' +
+									'</div>' +
+								'</div>' +
+							'</div>' +
+							'<div class="main_001">' +
+								'<div class="main_in001">' +
+									'<div class="pro_tits pro_tit_ak">' +
+										'<a href="javascript:void(0);">' +
+											'<p class="sp01"><i></i>兑换详情</p>' +
+											'<p class="sp05">已有40人兑换<s></s></p>' +
+										'</a>' +
+									'</div>' +
+									'<div class="prowords prowords_ab">' +
+										'<span><img src="images/user_mr01.png"  alt="" /></span>' +
+										'<span><img src="images/user_mr02.png"  alt="" /></span>' +
+										'<span><img src="images/user_mr03.png"  alt="" /></span>' +
+										'<span><img src="images/user_mr04.png"  alt="" /></span>' +
+										'<span><img src="images/user_mr05.png"  alt="" /></span>' +
+									'</div>' +
+								'</div>' +
+							'</div>' +
+						'</div>' +
+					'</div>';				
+
+						  zxProductEle.append(itemHtml);
+						}
+				    }else{
+				    	zxProductELe.append('<li style="text-align:center; color:#c0c2c6; ">暂无数据</li>');
+				    }
+				}else{
+					layerUtils.iAlert("查询资讯产品列表失败:"+resultVo.error_info,-1);
+				}
+			})
+
+	};
+	/*
+	 * 绑定事件
+	 */
+	function bindPageEvent() {
+		// 返回
+		appUtils.bindEvent(_pageId + ".back_btn", function() {
+			appUtils.pageBack();
+		});
+		
+		//关闭浮动广告
+		appUtils.bindEvent(_pageId + "#close", function(){
+			$(_pageId + ".float_bg").attr("style","display:none;");
+		});
+		
+		//立即兑换
+		appUtils.bindEvent(_pageId + "#exchange", function(){
+			appUtils.pageInit(pageCode,"finan/fund/jjph");
+		})
+	};
+	
+
+	/*
+	 * 页面销毁
+	 */
+	function destroy() {};
+
+	var main = {
+		"init" : init,
+		"bindPageEvent" : bindPageEvent,
+		"destroy" : destroy
+	};
+	
+	// 暴露对外的接口
+	module.exports = main;
+});

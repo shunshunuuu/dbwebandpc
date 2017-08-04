@@ -1,0 +1,513 @@
+ /**
+  * 理财产品详情
+  * @author wanliang
+  * 
+  */
+define(function(require, exports, module){ 
+	var _pageId = "#finan_finanDetail "; // 当前页面ID
+	var appUtils = require("appUtils"); // 核心工具类
+	var service = require("mobileService"); // 服务类
+	var layerUtils = require("layerUtils"); // 弹出层工具类
+	var constants = require("constants");// 常量类
+	var common = require("common"); // 公共类
+	var putils = require("putils");
+	var validatorUtil = require("validatorUtil"); // 校验工具类
+	var global = require("gconfig").global; // 全局配置对象
+	
+	// 页面全局变量，当前js的所有全局变量 定义在该对象中，便于代码中一目了然
+	var pageGlobal = {
+		"productId" : "", // 产品编号
+		"productCode" : "", // 产品代码
+		"productStatus" : "", // 产品状态
+		"followNum" : "0", // 关注数量
+		"fina_belongs" : "", // 理财归属
+		"is_check_buy" : "", // 是否可以购买（购买数量）
+	};
+	
+	/*
+	 * 初始化
+	 */
+	function init(){
+		// 处理ios滚动问题
+		common.dealIOSScrollBug($(_pageId + "article"), $(_pageId + "#pageContent"));
+		
+		//初始化页面
+		initView();
+		appUtils.clearSStorage("productId");
+		var productId = appUtils.getPageParam("product_id");
+		
+		// 防止直接跳到详情页面
+		if(!productId){
+			appUtils.pageInit("finan/finanDetail", "main", {});
+			return false;
+		}
+		appUtils.setSStorageInfo("productId", productId); 
+		// 理财详情
+		finanInfo(productId);
+		
+		// 获取二维码
+		getEWM();
+
+		// 新用户专享活动购买限制
+		newClientOrderNum(productId);
+		
+	}
+	
+	/*
+	 * 初始化页面
+	 */
+	function initView(){
+		clearPage(); // 清空页面信息
+		pageGlobal.productId = ""; // 产品编号
+		pageGlobal.productCode = ""; // 产品代码
+		pageGlobal.productStatus = ""; // 产品状态
+	}
+	
+	/*
+	 * 获取二维码
+	 */
+	function getEWM(){
+		var ewmParam = {
+			"uk" : common.getUserId(), // 用户编号
+			"qr_code_url" : location.href, // 当前地址
+			"size" : "400" // 图片大小
+		}
+		
+		service.twoDimensionCode(ewmParam, function(data){
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+			
+			if (error_no == "0") {
+				var results = data.results;
+				if (results.length > 0) {
+					var result = results[0];
+					var srcStr = 'data:image/png;base64,' + result.base64Str;
+					$(_pageId + ".ewm_pic").html('<img data-serverImg="true" src="' + srcStr + '"/>').show();
+				}
+			} else {
+				$(_pageId + ".ewm_pic img").hide();
+				// 错误信息提示
+				layerUtils.iMsg(-1, error_info);
+			}
+		});
+	}
+	
+	/*
+	 * 根据广告组ID查询广告信息
+	 * @param groupId 广告组ID
+	 * @param callBackFun 处理结果集的回调函数
+	 */
+	function queryAdvert() {
+		var param = {
+			"group_id" : constants.advertGroupId.ADVERT_GROUP_ID_PRODUCT_DETAIL, // 广告组编号
+			"ad_id" : "" // 广告编号
+		};
+		
+		service.queryAd(param, function(data) {
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+			
+			if (error_no == "0") {
+				var result = data.results;
+				if (result.length > 0) {
+					var item = result[0];
+					// 组装广告图片路径
+					var imgPath = item.picture ? item.picture : item.small_picture;
+					if (imgPath) {
+						imgPath = global.url + '/mall' + imgPath;
+						$(_pageId + "#adImg").attr("src", imgPath);
+						$(_pageId + "#advertDiv").show();
+					} else {
+						$(_pageId + "#advertDiv").hide();
+					}
+				} else {
+					$(_pageId + "#advertDiv").hide();
+				}
+			} else {
+				// 错误信息提示
+				layerUtils.iMsg(-1, error_info);
+			}
+		});
+	};
+
+	/*
+	 *	新用户专享活动购买限制
+	 */
+	function newClientOrderNum(productId){
+		var param = {
+			"product_id" : productId
+		};
+
+		service.newClientOrderNum(param, function(data){
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+			if (error_no == "0") {
+				var result = data.results[0];
+				pageGlobal.is_check_buy = result.is_check_buy;//产品是否已购完
+				if(pageGlobal.is_check_buy == "0"){
+					layerUtils.iMsg(-1,"亲，本期宝贝已卖光啦~");
+				}
+
+			} else {
+				layerUtils.iMsg(-1, error_info);
+			}
+		});
+	}
+
+	
+	/*
+	 * 理财详情
+	 */
+	function finanInfo(productId){
+		var param = {
+				"product_id" : productId,
+				"user_id" : common.getUserId()
+		};
+		service.finanInfo(param,function(data){
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+			if(error_no == "0"){
+				var result = data.results[0];
+				var productAbbr = result.product_abbr; // 产品简称
+				var productName = result.product_name; // 产品名称
+				pageGlobal.productStatus = result.product_status; // 产品状态
+				pageGlobal.fina_belongs = result.fina_belongs; // 理财归属
+				var currentPrice = result.current_price; // 最新净值
+				pageGlobal.productCode = result.product_code; // 产品代码
+				var riskLevel = result.risk_level; // 风险等级
+				var finaType = result.fina_type; // 产品类型
+				var perBuyLimit = putils.setAmount(result.per_buy_limit); // 认购起点
+				var productType = result.product_type; // 产品类型
+				var incomeunit = result.incomeunit; // 预期收益率
+				var earnings = result.earnings; // 预期年化收益率
+				pageGlobal.followNum = result.follow_num; // 产品关注数
+				pageGlobal.productId = result.product_id; // 产品ID
+				var followId = result.follow_id; // 关注编号
+//				var recommendDegree = result.recommend_degree; // 推荐度
+				var productNameTemp = putils.delProSpecialStr(productName);
+				if(productNameTemp.length > 16){
+					productNameTemp = productNameTemp.substring(0, 15) + "...";
+				}
+				
+				if(currentPrice == "" || currentPrice == "0"){
+					currentPrice = "--";
+				} else {
+					currentPrice = parseFloat(currentPrice).toFixed(4);
+				}
+				
+				if (validatorUtil.isNotEmpty(followId)) {
+					$(_pageId + "#followNumHead").html('<i class="heart_icon att_icon"></i>' + pageGlobal.followNum);
+				} else {
+					$(_pageId + "#followNumHead").html('<i class="heart_icon"></i>' + pageGlobal.followNum);
+				}
+				
+				$(_pageId + "#productName").html(productNameTemp);
+				$(_pageId + "#productNameBody").html(putils.delProSpecialStr(productName));
+				// 银行、证劵理财账户显示预期年化收益率
+				if(pageGlobal.fina_belongs == "2" || pageGlobal.fina_belongs == "5"){
+					$(_pageId + "#current_price").html(earnings);
+					$(_pageId + "#cur_title").html("业绩比较基准(%)");
+				}else{
+					$(_pageId + "#current_price").html(currentPrice);
+					$(_pageId + "#cur_title").html("当前净值(元)");
+				}
+				// 判断是否是证券理财收益凭证
+				if (pageGlobal.fina_belongs == "5" && finaType == "i") {
+					$(_pageId + "#finaType").html(putils.fundType(finaType) + "理财产品");
+				}
+				
+				// 推荐等级
+//				switch (recommendDegree) {
+//				case "1":
+//					$(_pageId + "#recommendDegree").addClass("level1");
+//					break;
+//				case "2":
+//					$(_pageId + "#recommendDegree").addClass("level2");
+//					break;
+//				case "3":
+//					$(_pageId + "#recommendDegree").addClass("level3");
+//						break;
+//				case "4":
+//					$(_pageId + "#recommendDegree").addClass("level4");
+//					break;
+//				case "5":
+//					$(_pageId + "#recommendDegree").addClass("level5");
+//					break;
+//				default:
+//					$(_pageId + "#recommendDegree").addClass("level1");
+//					break;
+//				}
+				switch (riskLevel) {
+				
+				case "0":
+					if(pageGlobal.fina_belongs == "2" || pageGlobal.fina_belongs == "5"){
+						$(_pageId + "#risk_level").html(putils.bankRiskLevel(riskLevel)+"风险").removeClass();
+					}else{
+						$(_pageId + "#risk_level").html(putils.riskLevel(riskLevel)+"风险").removeClass();
+					}
+					break;
+					
+				case "1":
+					if(pageGlobal.fina_belongs == "2" || pageGlobal.fina_belongs == "5"){
+						$(_pageId + "#risk_level").html(putils.bankRiskLevel(riskLevel)+"风险").removeClass().addClass("agreen");
+					}else{
+						$(_pageId + "#risk_level").html(putils.riskLevel(riskLevel)+"风险").removeClass().addClass("agreen");
+					}
+					break;
+					
+				case "2":
+					if(pageGlobal.fina_belongs == "2" || pageGlobal.fina_belongs == "5"){
+						$(_pageId + "#risk_level").html(putils.bankRiskLevel(riskLevel)+"风险").removeClass().addClass("agreen");
+					}else{
+						$(_pageId + "#risk_level").html(putils.riskLevel(riskLevel)+"风险").removeClass().addClass("agreen");
+					}
+					break;
+					
+				case "3":
+					if(pageGlobal.fina_belongs == "2" || pageGlobal.fina_belongs == "5"){
+						$(_pageId + "#risk_level").html(putils.bankRiskLevel(riskLevel)+"风险").removeClass().addClass("aorange");
+					}else{
+						$(_pageId + "#risk_level").html(putils.riskLevel(riskLevel)+"风险").removeClass().addClass("aorange");
+					}
+					break;
+					
+				case "4":
+					if(pageGlobal.fina_belongs == "2" || pageGlobal.fina_belongs == "5"){
+						$(_pageId + "#risk_level").html(putils.bankRiskLevel(riskLevel)+"风险").removeClass().addClass("ared");
+					}else{
+						$(_pageId + "#risk_level").html(putils.riskLevel(riskLevel)+"风险").removeClass().addClass("aorange");
+					}
+					break;
+					
+				case "5":
+					$(_pageId + "#risk_level").html(putils.riskLevel(riskLevel)+"风险").removeClass().addClass("ared");
+					break;
+					
+				case "6":
+					$(_pageId + "#risk_level").html(putils.riskLevel(riskLevel)+"风险").removeClass().addClass("ared");
+					break;
+
+				default:
+					break;
+				}
+				$(_pageId + "#finaType").html(putils.fundType(finaType) + "理财产品");
+				$(_pageId + "#productCode").html(pageGlobal.productCode);
+				$(_pageId + "#followNum").html(pageGlobal.followNum);
+				// 判断是否是银行、证劵理财产品
+				if(pageGlobal.fina_belongs == "2" || pageGlobal.fina_belongs == "5"){
+					$(_pageId + "#productStatus").html(putils.bankProductStatus(pageGlobal.productStatus));
+				}else{
+					$(_pageId + "#productStatus").html(putils.productStatus(pageGlobal.productStatus));
+				}
+				$(_pageId + "#per_buy_limit").html(perBuyLimit + "<em>元起</em>");
+				$(_pageId + "#perBuyLimit").html("首次购买"+perBuyLimit+"元起");
+				$(_pageId + "#incomeunit").html(parseFloat(incomeunit * 100).toFixed(2)+"<em>%</em>");
+				$(_pageId + "#incomeunitDesc").html("业绩比较基准(%)");
+				$(_pageId + "#productType").html(productType);
+				
+				// 关注/取消关注
+				appUtils.bindEvent(_pageId + "#followNumHead", function(){
+					var childEle = $(this).find("i");
+					if (childEle.hasClass("att_icon")) {
+						// 取消关注
+						attentionProduct(0);
+					} else {
+						// 关注
+						attentionProduct(1);
+					}
+				}, 'click');
+				
+			}else{
+				layerUtils.iMsg(-1,error_info);
+				return false;
+			}
+		});
+	}
+	
+	/**
+	 * 关注/取消关注
+	 * @param isAttent：0取消产品关注，1关注产品
+	 * @param productId 产品编号
+	 */
+	function attentionProduct(isAttent){
+		var _loginInPageCode = "finan/finanDetail";
+		var param = appUtils.getPageParam();
+		if (!common.checkUserIsLogin(false, false, _loginInPageCode, param)) {
+			return false;
+		}
+		var userId = common.getUserId();
+		var param = {
+			"user_id" : userId,
+			"product_id" : pageGlobal.productId,
+			"product_sub_type" : constants.product_sub_type.FINANCIAL
+		}
+		
+		if (isAttent == 1) {
+			// 关注产品
+			service.attention(param, function(data){
+				var error_no = data.error_no;
+				var error_info = data.error_info;
+				if (error_no == "0") {
+					pageGlobal.followNum = parseInt(pageGlobal.followNum) + 1;
+					// 更新头部和详情信息中的关注数量
+					$(_pageId + "#followNumHead").html('<i class="heart_icon att_icon"></i>' + pageGlobal.followNum);
+					$(_pageId + "#followNum").html(pageGlobal.followNum);
+				} else {
+					layerUtils.iMsg(-1, error_info);
+				}
+			});
+		} else {
+			// 取消产品关注
+			service.cancelAttention(param, function(data){
+				var error_no = data.error_no;
+				var error_info = data.error_info;
+				if (error_no == "0") {
+					pageGlobal.followNum = parseInt(pageGlobal.followNum) - 1;
+					// 更新头部和详情信息中的关注数量
+					$(_pageId + "#followNumHead").html('<i class="heart_icon"></i>' + pageGlobal.followNum);
+					$(_pageId + "#followNum").html(pageGlobal.followNum);
+				} else {
+					layerUtils.iMsg(-1, error_info);
+				}
+			});
+		}
+	}
+	
+	
+	/*
+	 * 校验产品是否能够购买
+	 */
+	function checkProductStatus(){
+		if(pageGlobal.fina_belongs == "2" || pageGlobal.fina_belongs == "5"){
+			if (pageGlobal.productStatus != "8" && pageGlobal.productStatus != "1" && pageGlobal.productStatus != "2") {
+				layerUtils.iMsg(-1, "该产品非购买时期");
+				return false;
+			}
+		}else{
+			if (pageGlobal.productStatus != "0" && pageGlobal.productStatus != "1" && pageGlobal.productStatus != "2") {
+				layerUtils.iMsg(-1, "该产品非购买时期");
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	/*
+	 * 绑定事件
+	 */
+	function bindPageEvent(){
+		
+		// 禁止头部和底部滑动
+		common.stopHeadAndFooterEvent(_pageId); 
+		
+		// 返回
+		appUtils.bindEvent(_pageId + ".back_btn", function(){
+			var prePageCode = appUtils.getSStorageInfo("_prePageCode"); 
+			if (prePageCode && prePageCode != "finan/buy" && prePageCode != "login/userLogin") {
+				appUtils.pageBack();
+			} else {
+				appUtils.pageInit("finan/finanDetail", "finan/market", {});
+			}
+		});
+		
+		// 更多信息
+		appUtils.bindEvent(_pageId + "#more", function(){
+			appUtils.pageInit("finan/finanDetail", "finan/finanMore", {"product_id" : pageGlobal.productId});
+		});
+		
+		// 立即购买
+		appUtils.bindEvent(_pageId + "#sub_box", function(){
+			if(checkProductStatus()){
+				var recommendPersonId = appUtils.getPageParam("uk"); // 获取请求参数中推荐人用户编号
+				var param = {
+						"product_id" : pageGlobal.productId,
+						"product_code" : pageGlobal.productCode,
+						"sub_type" : constants.product_sub_type.FINANCIAL,
+						"recommend_person_id" : recommendPersonId
+					}
+					var _loginInPageCode = "finan/buy";
+					if (common.checkUserIsLogin(true, false, _loginInPageCode, param, true)) {
+						// 新客专享的收益凭证类理财产品
+							if(pageGlobal.productCode == constants.product_code.new_client_product){
+							var userInfo = appUtils.getSStorageInfo("userInfo"); // 用户信息
+							var open_date = JSON.parse(userInfo).open_date; // 获取开户时间
+							if (open_date) {
+								open_date = open_date.substring(0,open_date.length);
+							}
+							// 判断客户是否配置了新用户开户日期条件判断条件
+							if(global.kh_data_star && global.kh_data_end){
+								if (!(open_date && global.kh_data_star <= open_date && open_date <= global.kh_data_end)) {
+									layerUtils.iAlert("亲，真遗憾，你不符合此次新客专享活动条件！","","","朕知道了");
+									return false;
+								}
+								//判断该产品是否已经购买了200笔订单
+								if(pageGlobal.is_check_buy == "0"){
+									layerUtils.iAlert("亲，本期宝贝已卖光啦~","",function(){
+										appUtils.pageInit("finan/finanDetail", "finan/market", {});
+									},"更多精彩，尽在商城理财");
+									return false;
+								}
+
+							}else{
+								layerUtils.iMsg(-1, "新客户专享活动暂时不能参加，请继续关注！");
+								return false;
+							}
+						}
+						appUtils.pageInit("finan/finanDetail", "finan/buy", param);
+						return false;
+					}
+			}
+		});
+		
+		// 分享
+		appUtils.bindEvent(_pageId + ".ewm_txt", function(){
+			$(_pageId + "#ewmWindow").show();
+		});
+		
+		// 关闭广告
+		appUtils.bindEvent(_pageId + "#advertDiv .close_btn", function(){
+			$(this).parent().hide();
+		});
+		
+		// 关闭二维码窗口
+		appUtils.bindEvent(_pageId + "#closeEwm", function(){
+			$(_pageId + "#ewmWindow").hide();
+		});
+		
+	}
+	
+	/*
+	 * 清理页面显示的属性值 
+	 */
+	function clearPage(){
+		$(_pageId + "#followNumHead").html('<i class="heart_icon"></i>0');
+		$(_pageId + "#productName").html("");
+		$(_pageId + "#productNameBody").html("");	
+		$(_pageId + "#current_price").html("");
+		$(_pageId + "#risk_level").html("")
+		$(_pageId + "#finaType").html("");
+		$(_pageId + "#productCode").html("");
+		$(_pageId + "#productStatus").html("");
+		$(_pageId + "#per_buy_limit").html("");
+		$(_pageId + "#perBuyLimit").html("");
+		$(_pageId + "#incomeunit").html("");
+		$(_pageId + "#incomeunitDesc").html("");
+		$(_pageId + "#productType").html("");
+	}
+	
+	/*
+	 * 页面销毁
+	 */
+	function destroy(){
+		
+	}
+	
+	var finanDetail = {
+		"init": init,
+		"bindPageEvent": bindPageEvent,
+		"destroy": destroy
+	};
+	
+	// 暴露对外的接口
+	module.exports = finanDetail;
+});

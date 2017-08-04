@@ -1,0 +1,953 @@
+define(function(require, exports, module) {
+	var appUtils = require('appUtils');
+	var layerUtils = require("layerUtils");
+	var gconfig = require("gconfig");
+	var global = gconfig.global;
+	var common = require("common");
+	var validatorUtil = require("validatorUtil");
+
+	/**
+	 * 登录超时
+	 */
+	function filterLoginOut(data) {
+		if (data.error_no == "-999") {
+			// 清空cookie 注销用户，但不清除来源信息
+			common.clearSessionUserInfo();
+			layerUtils.iMsg(-1, "系统长时间未操作，请您重新登录");
+			var pageCode = appUtils.getSStorageInfo("_curPageCode");
+			var pageParam = appUtils.getPageParam();
+			appUtils.setSStorageInfo("_loginInPageCode", pageCode); // 设置登录成功后跳转的页面
+			appUtils.setSStorageInfo("_loginInPageParam", JSON.stringify(pageParam)); // 设置登录成功后跳转页面需要传的参数
+			appUtils.pageInit(pageCode, "login/userLogin", pageParam);
+		}
+	}
+
+	/**
+	 * 判断输入的值是否合法
+	 */ 
+	function numberLimit(id) {
+		// 先把非数字的都替换掉，除了数字和.
+		$(id).val($(id).val().replace(/[^\d.]/g, ""));
+		
+		// 必须保证第一个为数字而不是.
+		$(id).val($(id).val().replace(/^\./g, ""));
+		
+		$(id).val($(id).val().replace(/^0+([1-9])/, "$1"));
+		$(id).val($(id).val().replace(/^0+$/, "0"));
+		
+		// 保证只有出现一个.而没有多个.
+		$(id).val($(id).val().replace(/\.{2,}/g, "."));
+		
+		// 保证.只出现一次，而不能出现两次以上
+		$(id).val($(id).val().replace(".", "$#$").replace(/\./g, "").replace("$#$", "."));
+		
+		// 只能输入两个小数
+		$(id).val($(id).val().replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3'));
+	}
+	
+	function moneyFormat(mStr) {//
+		// 1先把非数字的都替换掉，除了数字和.2保证只有出现一个.而没有多个.3保证.只出现一次，而不能出现两次以上 4只能输入两个小数
+		// mStr =
+		// mStr.replace(/[^\d\.]/g,"").replace(/(\.\d{2}).+$/,"$1").replace(/^0+([1-9])/,"$1").replace(/^0+$/,"0");
+		mStr = mStr.replace(/[^\d.]/g, "").replace(/^\./g, "")
+				.replace(/\.{2,}/g, ".").replace(/^0+([1-9])/, "$1")
+				.replace(/^0+$/, "0").replace(".", "$#$").replace(/\./g, "")
+				.replace("$#$", ".").replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3');
+		if (mStr == "0.00" || mStr == "") {
+			mStr = "0";
+		}
+		
+		if (mStr.indexOf(".") < 0) {
+			return (mStr + ".00");
+		}
+		
+		return mStr;
+	}
+
+	/**
+	 * @author 汪卫中
+	 * @param type:
+	 *            风险等级枚举类型
+	 */
+	function riskLevel(type) {
+		var levelDesc = "--";
+		switch (type) {
+		case "0":
+			levelDesc = "默认";
+			break;
+		case "1":
+			levelDesc = "低";
+			break;
+		case "2":
+			levelDesc = "低";
+			break;
+		case "3":
+			levelDesc = "中低";
+			break;
+		case "4":
+			levelDesc = "中";
+			break;
+		case "5":
+			levelDesc = "中高";
+			break;
+		case "6":
+			levelDesc = "高";
+			break;
+		default:
+			break;
+		}
+
+		return levelDesc;
+	}
+	
+	/**
+	 * @author 万亮
+	 * @param type: 定投协议状态（0：终止，1：启用，2：暂停）
+	 */
+	function agreementStatus(type) {
+		var agreementDesc = "--";
+		switch (type) {
+		case "0":
+			agreementDesc = "终止";
+			break;
+		case "1":
+			agreementDesc = "启用";
+			break;
+		case "2":
+			agreementDesc = "暂停";
+			break;
+		case "3":
+			agreementDesc = "新建";
+			break;
+		case "4":
+			agreementDesc = "失败";
+			break;
+		default:
+			break;
+		}
+
+		return agreementDesc;
+	}
+	
+	/**
+	 * @author 万亮
+	 * @param type:
+	 *      银行理财产品风险等级枚举类型
+	 */
+	function bankRiskLevel(type) {
+		var levelDesc = "--";
+		switch (type) {
+		case "0":
+			levelDesc = "默认";
+			break;
+		case "1":
+			levelDesc = "低";
+			break;
+		case "2":
+			levelDesc = "低";
+			break;
+		case "3":
+			levelDesc = "中";
+			break;
+		case "4":
+			levelDesc = "高";
+			break;
+		default:
+			break;
+		}
+		
+		return levelDesc;
+	}
+
+	/**
+	 * @author 汪卫中
+	 * @param type:
+	 *            用户风险等级枚举类型
+	 */
+	function userRiskLevel(level) {
+		var desc = "";
+		switch (level) {
+		case "0":
+			desc = "默认型";
+			break;
+		case "1":
+			desc = "保守型";
+			break;
+		case "2":
+			desc = "稳健型";
+			break;
+		case "3":
+			desc = "积极型";
+			break;
+		case "4":
+			desc = "激进型";
+			break;
+		case "5":
+			desc = "谨慎型";
+			break;
+		case "6":
+			desc = "成长型";
+			break;
+		case "99":
+			desc = "专业投资者";
+			break;
+		case "100":
+			desc = "自定义风险等级";
+			break;
+		default:
+			break;
+		}
+
+		return desc;
+	}
+
+	/**
+	 * @author 汪卫中
+	 * @param type:
+	 *            基金类型
+	 */
+	function fundType(type) {
+		var desc = "--";
+
+		switch (type) {
+		case "1":
+			desc = "股票型";
+			break;
+		case "2":
+			desc = "货币型";
+			break;
+		case "3":
+			desc = "偏股型";
+			break;
+		case "4":
+			desc = "股债平衡型";
+			break;
+		case "5":
+			desc = "偏债型";
+			break;
+		case "6":
+			desc = "债券型";
+			break;
+		case "7":
+			desc = "保本型";
+			break;
+		case "8":
+			desc = "指数型";
+			break;
+		case "9":
+			desc = "短债型";
+			break;
+		case "a":
+			desc = "QDII";
+			break;
+		case "b":
+			desc = "混合基金";
+			break;
+		case "c":
+			desc = "券商理财";
+			break;
+		case "d":
+			desc = "牛熊宝";
+			break;
+		case "e":
+			desc = "封闭式T+0";
+			break;
+		case "o":
+			desc = "保证金理财";
+			break;
+		case "m":
+			desc = "现金产品";
+			break;
+		case "n":
+			desc = "一对多产品";
+			break;
+		case "s":
+			desc = "短期理财产品";
+			break;
+		case "i":
+			desc = "收益凭证";
+			break;
+		default:
+			break;
+		}
+
+		return desc;
+	}
+
+	/**
+	 * 根据产品状态返回状态描述
+	 * 
+	 * @author 汪卫中
+	 * @param type:
+	 *            产品状态
+	 */
+	function productStatus(status) {
+
+		var statusDesc = "--";
+		switch (status) {
+		case "0":
+			statusDesc = "正常开放";
+			break;
+		case "1":
+			statusDesc = "认购时期";
+			break;
+		case "2":
+			statusDesc = "停止赎回";
+			break;
+		case "3":
+			statusDesc = "停止申购";
+			break;
+		case "4":
+			statusDesc = "封闭期";
+			break;
+		case "5":
+			statusDesc = "停止交易";
+			break;
+		case "6":
+			statusDesc = "基金终止";
+			break;
+		case "7":
+			statusDesc = "权益登记";
+			break;
+		case "8":
+			statusDesc = "红利发放";
+			break;
+		case "9":
+			statusDesc = "发行失败";
+			break;
+		case "a":
+			statusDesc = "非本机构代销";
+			break;
+		case "b":
+			statusDesc = "发行成功";
+			break;
+		case "z":
+			statusDesc = "转认购期";
+			break;
+		default:
+			break;
+		}
+
+		return statusDesc;
+	}
+	
+	/**
+	 * 根据银行理财产品状态返回状态描述
+	 * 
+	 * @author 万亮
+	 * @param type:
+	 *            产品状态
+	 */
+	function bankProductStatus(status) {
+
+		var statusDesc = "--";
+		switch (status) {
+		case "0":
+			statusDesc = "默认";
+			break;
+		case "1":
+			statusDesc = "开放期";
+			break;
+		case "2":
+			statusDesc = "认购期";
+			break;
+		case "3":
+			statusDesc = "预约认购期";
+			break;
+		case "4":
+			statusDesc = "产品成立 ";
+			break;
+		case "5":
+			statusDesc = "产品终止";
+			break;
+		case "6":
+			statusDesc = "停止交易";
+			break;
+		case "7":
+			statusDesc = "停止申购";
+			break;
+		case "8":
+			statusDesc = "停止赎回";
+			break;
+		default:
+			break;
+		}
+
+		return statusDesc;
+	}
+
+	// 判断理财目标
+	function geuid(rt) {
+		var t = null;
+		if (rt == "1") {
+			return t = "投资理财";
+		}
+		if (rt == "2") {
+			return t = "资产增值";
+		}
+		if (rt == "3") {
+			return t = "投资理财&nbsp;资产增值";
+		}
+	}
+
+	/**
+	 * car 是否开放期
+	 * 
+	 * @param product_status
+	 */
+	function checkProdStatus(product_status) {
+		var flag = true;
+		if (product_status == "3") {
+			flag = false;
+		}
+		return flag;
+	}
+
+	/**
+	 * car投资类型
+	 * 
+	 * @param fund_type
+	 */
+	function tzFundType(rt) {
+		var t = null;
+		if (rt == "0") {
+			return t = "股票型";
+		}
+		if (rt == "1") {
+			return t = "混合型";
+		}
+		if (rt == "2") {
+			return t = "债券型";
+		}
+		if (rt == "3") {
+			return t = "货币型";
+		}
+		if (rt == "4") {
+			return t = "保本型";
+		}
+		if (rt == "5") {
+			return t = "QDII型";
+		} else {
+			return t = "其他类型";
+		}
+
+	}
+
+	/* 币种类型 0 是人民币，1 是港币，2 是美元 */
+	function moneyType(type) {
+		var moneyTypeDesc = "";
+		switch (type) {
+		case "0":
+			moneyTypeDesc = "人民币";
+			break;
+		case "1":
+			moneyTypeDesc = "港币";
+			break;
+		case "2":
+			moneyTypeDesc = "美元";
+			break;
+		default:
+			break;
+		}
+		return moneyTypeDesc;
+	}
+
+	/* 产品订单状态 */
+	function orderState(order_state) {
+		var order_stateLabel = null;
+		if (order_state == "1") {
+			order_stateLabel = "已报";
+		} else if (order_state == "0") {
+			order_stateLabel = "未报";
+		} else if (order_state == "2") {
+			order_stateLabel = "确认";
+		} else if (order_state == "3") {
+			order_stateLabel = "部撤";
+		} else if (order_state == "4") {
+			order_stateLabel = "全撤";
+		} else if (order_state == "5") {
+			order_stateLabel = "部成";
+		} else if (order_state == "6") {
+			order_stateLabel = "全成";
+		} else if (order_state == "7") {
+			order_stateLabel = "废单";
+		} else if (order_state == "8") {
+			order_stateLabel = "已报待撤";
+		} else if (order_state == "9") {
+			order_stateLabel = "部成待撤";
+		} else if (order_state == "A") {
+			order_stateLabel = "待撤销";
+		} else if (order_state == "B") {
+			order_stateLabel = "TA确认";
+		} else if (order_state == "C") {
+			order_stateLabel = "TA失败";
+		} else if (order_state == "D") {
+			order_stateLabel = "待申报";
+		} else if (order_state == "E") {
+			order_stateLabel = "对手拒绝";
+		} else if (order_state == "N") {
+			order_stateLabel = "新建";
+		} else if (order_state == "S") {
+			order_stateLabel = "提交成功";
+		} else if (order_state == "Q") {
+			order_stateLabel = "取消支付";
+		} else if (order_state == "L") {
+			order_stateLabel = "提交失败";
+		}
+		return order_stateLabel;
+	}
+
+	/**
+	 * 自定义确认框
+	 * 
+	 * @param layerMsg
+	 *            确认框的内容
+	 * @param oneText
+	 *            第一个按钮按钮的文本内容
+	 * @param twoText
+	 *            第二个按钮的文本内容
+	 * @param funcOne
+	 *            第一个按钮的回调函数
+	 * @param funcTwo
+	 *            第二个按钮的回调函数
+	 */
+	function layerTwoButton(layerMsg, oneText, twoText, funcOne, funcTwo) {
+		var viewContent = '<div class="pop_tip notice" id="utils_confirm"><span class="icon"></span><p style="text-align:left">'
+				+ layerMsg
+				+ '</p><div class="btn"><a href="javascript:void(0);" id="utils_confirm_one">'
+				+ oneText
+				+ '</a><a href="javascript:void(0);" id="utils_confirm_two">'
+				+ twoText + '</a></div></div>';
+		var iConfirm = layerUtils.layerCustom(viewContent);
+		appUtils.preBindEvent($("#utils_confirm"), " #utils_confirm_one", function() {
+			if (funcOne) {
+				funcOne();
+			}
+			layerUtils.iCustomClose();
+		});
+		appUtils.preBindEvent($("#utils_confirm"), " #utils_confirm_two", function() {
+			if (funcTwo) {
+				funcTwo();
+			}
+			layerUtils.iCustomClose();
+		});
+	}
+
+	/**
+	 * @param businessType
+	 *            交易类型
+	 * @returns 交易类型说明
+	 */
+	function tradeBusinessType(businessType) {
+		var businessTypeName = "";
+
+		switch (businessType) {
+		case "0":
+			businessTypeName = "认购";
+			break;
+		case "1":
+			businessTypeName = "申购";
+			break;
+		case "2":
+			businessTypeName = "赎回";
+			break;
+		case "3":
+			businessTypeName = "买入";
+			break;
+		case "4":
+			businessTypeName = "卖出";
+			break;
+		case "5":
+			businessTypeName = "产品登记";
+			break;
+		default:
+			break;
+		}
+
+		return businessTypeName;
+	}
+
+	/**
+	 * 基金分红方式
+	 */
+	function shareType(type) {
+		var desc = "--";
+		switch (type) {
+		case "h":
+			desc = "份额分红";
+			break;
+		case "1":
+			desc = "现金分红";
+			break;
+		default:
+			break;
+		}
+
+		return desc;
+	}
+
+	/**
+	 * @param operating_type
+	 *            操作类型
+	 * @returns 操作类型说明
+	 */
+	function tradeOperating_type(operating_type) {
+		var operating_typeName = "";
+
+		switch (operating_type) {
+		case "0":
+			operating_typeName = "无操作";
+			break;
+		case "3":
+			operating_typeName = "撤单";
+			break;
+		case "12":
+			operating_typeName = "支付/取消";
+			break;
+		default:
+			break;
+		}
+
+		return operating_typeName;
+	}
+	
+	/**
+     * desc:金额超过10000，样式为~万，金额数字统一3位一逗，如：1,000万元
+     */
+	function setAmount(data, defaultStr) {
+    	if(validatorUtil.isEmpty(data)){
+    		data = defaultStr ;
+    	}else {
+    		data = parseInt(data);
+        	if(data >= 1000 && data < 10000 ){
+        		data = parseFloat(data).toLocaleString();
+        	}else if( data >= 10000){
+        		data = (data/10000);
+        		data = parseFloat(data).toLocaleString();
+        		data = data + "万";
+        	}
+    	}
+    	return data ;
+    };
+    
+    /**
+     * 根据后台配置的类型，获取要展示的推荐产品字段名称和值
+     * @param product 推荐产品信息
+     * @param isFinan 理财产品是否需要特殊处理
+     * @returns 返回待推荐展示字段名称&值信息【如：{"name" : "近一个月收益率", "value" : "1.20"}】
+     */
+    function getRecomField(index, product, isFinan){
+    	var result = {
+			"name" : "",
+			"value" : ""
+    	};
+    	var filedValue = "";
+    	var annualProfit = product.annual_profit || "0"; // 七日年化收益率
+    	annualProfit = parseFloat(annualProfit).toFixed(2);
+    	var yieldrate1m = product.yieldrate1m || "0"; // 近一个月收益率
+    	yieldrate1m = parseFloat(yieldrate1m).toFixed(2);
+    	var yieldrate3m = product.yieldrate3m || "0"; // 近三个月收益率
+    	yieldrate3m = parseFloat(yieldrate3m).toFixed(2);
+    	var yieldrate6m = product.yieldrate6m || "0"; // 近六个月收益率
+    	yieldrate6m = parseFloat(yieldrate6m).toFixed(2);
+    	var yieldrate1y = product.yieldrate1y || "0"; // 近一年收益率
+    	yieldrate1y = parseFloat(yieldrate1y).toFixed(2);
+    	var profitOfTenThousands = product.profit_of_10_thousands || "0"; // 万份收益率
+    	profitOfTenThousands = (parseFloat(profitOfTenThousands)/100).toFixed(2);
+    	var currentPrice = product.current_price || "0"; // 净值
+    	currentPrice = parseFloat(currentPrice).toFixed(4);
+    	var incomeunit = product.incomeunit || "0"; // 预期收益
+    	incomeunit = parseFloat(incomeunit * 100).toFixed(2);
+    	var perBuyLimit = product.per_buy_limit || "0"; // 起购金额
+    	var fina_belongs = product.fina_belongs; // 产品子类型
+    	var investment_horizon = product.investment_horizon || "--"; // 投资期限
+    	var earnings = product.earnings || "--"; // 预期年化收益率
+    	perBuyLimit = setAmount(perBuyLimit);
+    	var level = product.risk_level; // 开放状态
+    	
+    	// 处理第index个自定义属性，和默认值处理。
+    	switch (index) {
+		case 1:
+			filedValue = product.recommended_fields_one;
+			if (product.product_sub_type == "1" && isFinan) {
+				if(fina_belongs == '2' || fina_belongs == '5'){
+					result.name = "业绩比较基准";
+					result.value = earnings + '<em style="font-size: smaller;">%</em>';
+				}else{
+					result.name = "最新净值";
+					result.value = currentPrice;
+				}
+			} else {
+				result.name = "近一个月收益率";
+				result.value = yieldrate1m + '<em style="font-size: smaller;">%</em>';
+			}
+			break;
+		case 2:
+			filedValue = product.recommended_fields_two;
+			if (product.product_sub_type == "1" && isFinan) {
+				result.name = "投资期限";
+				result.value = investment_horizon;
+				/*if(fina_belongs == '2' || fina_belongs == '5'){
+					result.name = "投资期限";
+					result.value = investment_horizon;
+				}else{
+					result.name = "风险等级";
+					result.value = riskLevel(level);
+				}*/
+			} else {
+				result.name = "最新净值";
+				result.value = currentPrice;
+			}
+			break;
+		case 3:
+			filedValue = product.recommended_fields_three;
+			result.name = "起购金额";
+			result.value = perBuyLimit;
+			break;
+		default:
+			break;
+		}
+    	
+    	switch (filedValue) {
+		case "0":
+			result.name = "业绩比较基准";
+			result.value = annualProfit + '<em>%</em>';
+			break;
+		case "1":
+			result.name = "近一个月收益率";
+			result.value = yieldrate1m + '<em>%</em>';
+			break;
+		case "2":
+			result.name = "近三个月收益率";
+			result.value = yieldrate3m + '<em>%</em>';
+			break;
+		case "3":
+			result.name = "近六个月收益率";
+			result.value = yieldrate6m + '<em>%</em>';
+			break;
+		case "4":
+			result.name = "近一年收益率";
+			result.value = yieldrate1y + '<em>%</em>';
+			break;
+		case "5":
+			result.name = "万份收益率";
+			result.value = profitOfTenThousands + '<em>%</em>';
+			break;
+		case "6":
+			result.name = "最新净值";
+			result.value = currentPrice;
+			break;
+		case "7":
+			result.name = "业绩比较基准";
+			result.value = incomeunit + '<em>%</em>';
+			break;
+		case "8":
+			result.name = "起购金额";
+			result.value = perBuyLimit;
+			break;
+		default:
+			break;
+		}
+    	
+    	return result;
+    }
+    
+    /**
+     * 主题类型
+     */
+    function customType(type){
+    	var typeDesc = "";
+    	switch (type) {
+		case "1":
+			typeDesc = "新能源";
+			break;
+		case "2":
+			typeDesc = "工业4.0";
+			break;
+		case "3":
+			typeDesc = "一带一路";
+			break;
+		case "4":
+			typeDesc = "房地产";
+			break;
+		case "5":
+			typeDesc = "国企改革";
+			break;
+		case "6":
+			typeDesc = "互联网";
+			break;
+		case "7":
+			typeDesc = "美丽中国";
+			break;
+		case "8":
+			typeDesc = "智慧城市";
+			break;
+		default:
+			break;
+		}
+    	return typeDesc;
+    }
+    
+    /**
+     * 累计方向
+     */
+    function directionStatus(type){
+    	var typeDesc = "";
+    	switch (type) {
+		case "0":
+			typeDesc = "-";
+			break;
+		case "1":
+			typeDesc = "+";
+			break;
+		default:
+			break;
+		}
+    	return typeDesc;
+    }
+    
+    /*
+     * 去掉产品名称中特殊字符串【资产管理集合计划】
+     */
+    function delProSpecialStr(productName){
+    	if (productName) {
+			productName = productName.replace("集合资产管理计划", "");
+		}
+    	return productName;
+    }
+    
+    /*
+     * 检测是否在活动规定时间内
+     */
+    function checkTimeInvaid(startTime, endTime){
+    	return true;
+    }
+    
+    /*
+     * 计算剩余时间
+     */
+    function calSurplusTime(endTime, curTime){
+    	if (!curTime) {
+			curTime = new Date().getTime();
+		} else {
+			curTime = curTime.replace(new RegExp("-","gm"), "/");
+			curTime = (new Date(curTime)).getTime(); // 毫秒数
+		}
+    	endTime = endTime.replace(new RegExp("-","gm"), "/");
+    	endTime = (new Date(endTime)).getTime(); // 毫秒数
+    	
+    	var difValueTime = endTime - curTime; // 时间差
+		var surplusTime = {}; // 剩余时间描述
+		if (difValueTime > 0) {
+			difValueTime = parseInt(difValueTime / 1000);
+			var surplusDay = difValueTime / 3600 / 24; // 剩余天数
+			surplusDay = Math.floor(surplusDay);
+			var surplusHour = (difValueTime / 3600) % 24; // 剩余小时数 
+			surplusHour = Math.floor(surplusHour);
+			var surplusMin =  (difValueTime / 60) % 60; // 剩余分钟数 
+			surplusMin = Math.ceil(surplusMin);
+			surplusTime.day = surplusDay;
+			surplusTime.hour = surplusHour;
+			surplusTime.min = surplusMin;
+		}
+		
+		return surplusTime;
+    }
+     
+    /**
+     * 除法运算，解决部分js压缩后报错的问题
+     * @param divisor : 除数
+     * @param dividend : 被除数
+     */
+    function division(divisor, dividend){
+    	if (divisor && dividend) {
+			return divisor / dividend;
+		}
+    	return 0;
+    }
+    
+    /**
+     * 获取时间毫秒数，
+     * @param dateTime: 2015-10-12 12:12:11.0
+     */
+    function getDateTime(dateTime){
+    	if (!dateTime) {
+			return 0;
+		}
+    	//去掉后面毫秒数
+    	if (dateTime.indexOf(".") != -1) {
+    		dateTime = dateTime.substring(0, dateTime.indexOf("."));
+		}
+    	// 把 - 替换成 /
+    	dateTime = dateTime.replace(new RegExp("-", "gm"), "/");
+    	// 转换时间生成毫秒数
+    	dateTime = (new Date(dateTime)).getTime(); // 毫秒数
+    	
+    	return dateTime;
+    }
+    
+    /**
+     * 手机号码加密 例如135****1234
+     * @param phone
+     */
+    function encryptMobilePhone(phone){
+    	if (validatorUtil.isEmpty(phone)) {
+			return "--";
+		}
+    	
+    	if (!validatorUtil.isMobile(phone)) {
+			return phone;
+		}
+    	
+    	return phone.substring(0, 3) + "****" + phone.substring(7, 11);
+    }
+    
+    /**
+	 * 显示手机号码前三位和后四位
+	 * @param  mobile_phone 手机号码
+	 */
+	function phoneNoShow(mobile_phone){
+		if (mobile_phone && mobile_phone.length == 11) {
+			var mobile_back4 = mobile_phone.substring(mobile_phone.length-4, mobile_phone.length);
+			var mobile_go3 = mobile_phone.substring(0, 3);
+			var str = mobile_go3 + "****" + mobile_back4;
+			return str;
+		}
+		return mobile_phone;
+	}
+
+	var putils = {
+		"layerTwoButton" : layerTwoButton,
+		"checkProdStatus" : checkProdStatus,
+		"productStatus" : productStatus,
+		"bankProductStatus" : bankProductStatus, // 银行理财产品状态
+		"bankRiskLevel" : bankRiskLevel, // 银行理财风险等级
+		"geuid" : geuid,
+		"orderState" : orderState,
+		"riskLevel" : riskLevel,
+		"phoneNoShow" : phoneNoShow,
+		"numberLimit" : numberLimit,
+		"tzFundType" : tzFundType,
+		"moneyFormat" : moneyFormat,
+		"agreementStatus" : agreementStatus, // 定投协议状态
+		"division" : division, // 除法运算，解决部分js压缩后报错的问题
+		"filterLoginOut" : filterLoginOut,
+		"tradeBusinessType" : tradeBusinessType, // 获取交易类型说明
+		"tradeOperating_type" : tradeOperating_type, // 获取操作类型说明
+		"moneyType" : moneyType, // 币种类型
+		"fundType" : fundType, // 基金类型
+		"setAmount" : setAmount, // 格式化金额
+		"getRecomField" : getRecomField, // 获取推荐展示字段名称和值
+		"customType" : customType, // 主题类型
+		"directionStatus" : directionStatus, // 累计方向
+		"delProSpecialStr" : delProSpecialStr, // 去掉产品名称中的特殊字符串
+		"checkTimeInvaid" : checkTimeInvaid, // 检测是否在活动规定时间内
+		"calSurplusTime" : calSurplusTime, // 计算剩余时间
+		"getDateTime" : getDateTime, // 获取时间毫秒数
+		"encryptMobilePhone" : encryptMobilePhone // 手机加密隐藏
+	
+	};
+
+	// 暴露对外的接口
+	module.exports = putils;
+});

@@ -1,0 +1,277 @@
+ /**
+  * 活动详情
+  * @author wanliang
+  */
+define(function(require, exports, module){ 
+	var _pageId = "#active_details "; // 当前页面ID
+	var appUtils = require("appUtils"); // 核心工具类
+	var service = require("mobileService"); // 服务类
+	var layerUtils = require("layerUtils"); // 弹出层工具类
+	var common = require("common"); // 公共类
+	var global = require("gconfig").global; // 全局配置对象
+	var constants = require("constants");// 常量类
+	var validatorUtil = require("validatorUtil"); // 校验工具类
+	var putils = require("putils");
+	
+	// 页面全局变量，当前js的所有全局变量 定义在该对象中
+	var pageGlobal = {
+		"intervalTimer" : null, // 定时器
+		"type" : 0, //区别当前定时器所代表的是哪个中类型 0：抢购还没开始，1：抢购已经开始
+		"leftSecond" : 0, // 当前时间与活动时间差 精确到秒，【需要与服务器时间校准】
+		"rightSecond" : 0, // 当前时间与活动结束时间差
+		"surplusAmount" : "" // 剩余库存
+	};
+
+	/*
+	 * 初始化
+	 */
+	function init(){
+		
+		// 处理ios滚动的问题
+		common.dealIOSScrollBug($(_pageId + "article"), $(_pageId + "#pageContent"));
+		
+		// 初始化页面
+		initView();
+		
+		var productId = appUtils.getPageParam("product_id"); // 活动编号
+		
+		if (!productId) {
+			appUtils.pageInit("active/details", "active/index", {});
+		}
+		
+		queryProductDetails(productId); // 查询活动详情
+	}
+	
+	function initView(){
+		var timeHtml = '<p>揭晓倒计时<span id="time_h">00</span>：<span id="time_m">00</span>:<span id="time_s">00</span></p>';
+		$(_pageId + "#timer").html(timeHtml);
+		$(_pageId + "#actPdtName").html("");
+		$(_pageId + "#productIntegral").html("");
+		$(_pageId + "#soldAmount p").html("已兑换0%");
+		$(_pageId + "#soldAmount span").css("width", "0%");
+		$(_pageId + "#surplusAmount").html("");
+		$(_pageId + "#productDetail").html("");
+		$(_pageId + "#productImg").attr("src", "");
+	}
+	
+	/*
+	 * 查询活动详情
+	 */
+	function queryProductDetails(productId){
+		var reqParam = {
+			"product_id" : productId
+		};
+		service.activePdtDetail(reqParam, function(data){
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+			if(error_no == "0"){
+				var results = data.results;
+				if (results.length > 0) {
+					var item = results[0];
+					var beginTime = item.activity_per_begin_time;  //参与活动的产品的活动计时开始时间
+					var endTime = item.activity_per_end_time;  //参与活动的产品的活动计时开始时间
+					
+					var logoImgUrl = item.logo_url; // 详情大图片
+					logoImgUrl = global.url + '/mall' + logoImgUrl;
+					$(_pageId + "#productImg").attr("src", logoImgUrl);
+					
+					var actPdtName = item.product_name; // 产品名称
+					var actIntegral = item.act_integral; // 活动积分【优先用活动积分】
+					var productIntegral = item.product_integral; // 活动所需积分
+					
+					var perProductTotAmount = item.per_product_tot_amount; // 产品在活动期最多能卖多少个
+					if (validatorUtil.isNotEmpty(perProductTotAmount)) {
+						// 如果产品活动期限制购买数不为空时，目标份额取该字段值
+						productAmount = perProductTotAmount;
+					}
+					
+					var soldAmount = item.sold_amount || "0"; // 已售数量
+					
+					pageGlobal.surplusAmount = parseInt(productAmount) - parseInt(soldAmount); // 剩余数量
+					
+					var appendHtml = '东北米<span>' + parseInt(productIntegral) + '东北米</span>';
+					if (validatorUtil.isEmpty(actIntegral)) {
+						actIntegral = productIntegral;
+						appendHtml = '';
+					}
+					var intergralShow = parseInt(actIntegral) + appendHtml; // 所需积分展示
+					
+					
+					var productAmount = item.product_amount; // 产品数量
+					var perProductTotAmount = item.per_product_tot_amount; // 产品在活动期最多能卖多少个
+					if (validatorUtil.isNotEmpty(perProductTotAmount)) {
+						productAmount = perProductTotAmount;
+					}
+					
+					var soldAmount = item.sold_amount; // 已售数量
+					var soldPerTotal = parseFloat(putils.division(soldAmount, productAmount) * 100).toFixed(2); // 已售数量占产品总数量的百分比
+					var productDetail = item.product_detail; // 产品简介
+					var surplusAmount = productAmount - soldAmount; // 产品剩余数量
+					
+					$(_pageId + "#actPdtName").html(actPdtName);
+					$(_pageId + "#productIntegral").html(intergralShow);
+					$(_pageId + "#soldAmount p").html("已兑换" + soldPerTotal + "%");
+					$(_pageId + "#soldAmount span").css("width", soldPerTotal + "%");
+					$(_pageId + "#surplusAmount").html(surplusAmount);
+					$(_pageId + "#productDetail").html(productDetail);
+					
+					// 剩余数量为0时，按钮置灰 
+					if (surplusAmount <= 0) {
+						$(_pageId + ".sub_btn").unbind().css("background", "#CCC").html("抢光了");
+						layerUtils.iLoading(false);
+					} else {
+						$(_pageId + ".sub_btn").css("background", "#5eb2f8").html("立即兑换");
+						// 立即兑换
+						appUtils.bindEvent(_pageId + ".sub_btn", function(){
+							appUtils.pageInit("active/details", "active/orderSure", {"product_id" : appUtils.getPageParam("product_id"),"activeType" : constants.activeType.ACTIVE_TYPE_BUYLIMIT,"surplusAmount" : pageGlobal.surplusAmount});
+						});
+						
+						// 获取服务器时间后刷新抢购时间
+						getServerTime(function(serverTime){
+							serverTime = putils.getDateTime(serverTime); // 计算服务器时间毫秒数
+							endTime = putils.getDateTime(endTime); // 产品活动结束时间
+							beginTime = putils.getDateTime(beginTime); // 产品活动开始时间
+							var timeTemp = endTime;  // 用于计算倒计时的结束时间，
+							var type = 1;
+							/*
+							 * 1、如果活动开始时间大于当前时间 ，产品不能购买，此时倒计时代表开始购买倒计时
+							 * 2、如果活动开始时间小于当前时间 ，产品可购买，此时倒计时代表购买截止时间倒计时
+							 */
+							if (beginTime > serverTime) {
+								timeTemp = beginTime;
+								type = 0;
+								$(_pageId + ".sub_btn").unbind().css("background", "#CCC").html("呀~活动还没开始^_^");
+							}
+							var leftSecond = parseInt((timeTemp - serverTime) / 1000); // 差值并转秒
+							pageGlobal.leftSecond = leftSecond; // 记录差值到全局变量中。
+							pageGlobal.rightSecond = parseInt((endTime - serverTime) / 1000); // 记录差值到全局变量中。
+							pageGlobal.type = type; // 根据活动开始&结束时间判断当前倒计时类型
+							
+							// 默认刷新显示时间
+							freshTime(); 
+							
+							// 设置定时任务刷新抢购时间
+							pageGlobal.intervalTimer = setInterval(freshTime, 1000);   
+						});
+					}
+				}
+				
+			}else{
+				layerUtils.iLoading(false);
+				layerUtils.iMsg(-1,error_info);
+				return false;
+			}
+		}, {"isLastReq":false});
+	}
+	
+	/**
+	 * 获取服务器时间
+	 */
+	function getServerTime(callBack){
+		service.getServerTime({}, function(data){
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+			if(error_no == "0"){
+				var results = data.results;
+				if (results.length > 0) {
+					var item = results[0];
+					callBack(item.now_time);
+				}
+			}else{
+				layerUtils.iMsg(-1,error_info);
+				layerUtils.iLoading(false);
+				return false;
+			}
+		});
+	}
+	
+	/*
+	 * 刷新抢购时间函数
+	 */
+	function freshTime() {
+		var leftSecond = pageGlobal.leftSecond; // 距离活动结束时间还有多少秒
+		var timeHtml = '<p>揭晓倒计时<span id="time_h">00</span>：<span id="time_m">00</span>:<span id="time_s">00</span></p>';
+		
+		// 时间差小于0时，抢购结束
+		if (leftSecond <= 0) {
+			if (pageGlobal.type == "0") {
+				pageGlobal.type = 1;
+				pageGlobal.leftSecond = pageGlobal.rightSecond;
+				$(_pageId + ".sub_btn").css("background", "#5eb2f8").html("立即兑换");
+				// 立即兑换
+				appUtils.bindEvent(_pageId + ".sub_btn", function(){
+					appUtils.pageInit("active/details", "active/orderSure", {"product_id" : appUtils.getPageParam("product_id")});
+				});
+			} else {
+				if (pageGlobal.intervalTimer) {
+					clearInterval(pageGlobal.intervalTimer);
+				}
+				
+				// 时间到了 按钮置灰并提示 抢购时间已到
+				$(_pageId + ".sub_btn").unbind().css("background", "#CCC").html("抢购结束");
+			}
+		} else {
+			var day = parseInt(leftSecond / 3600 / 24); // 计算活动剩余天数
+			var hour = parseInt((leftSecond / 3600) % 24); // 计算活动剩余小时数
+			hour = (day * 24) + hour; // 超过一天的按24小时处理
+			if (hour < 10) {
+				hour = "0" + hour;
+			}
+			var min = parseInt((leftSecond / 60) % 60); // 计算活动剩余分钟数
+			if (min < 10) {
+				min = "0" + min;
+			}
+			var second = parseInt(leftSecond % 60); // 计算活动剩余秒数
+			if (second < 10) {
+				second = "0" + second;
+			}
+			
+			timeHtml = '<p>揭晓倒计时<span id="time_h">' + hour + '</span>：<span id="time_m">' + min + '</span>:<span id="time_s">' + second + '</span></p>';
+		}
+		
+		$(_pageId + "#timer").html(timeHtml);
+		
+		// 执行完后时间减一
+		pageGlobal.leftSecond--;
+	}   
+	
+	/*
+	 * 判断用户是否可以兑换
+	 */
+	function isExchange(){
+		
+	}
+	
+	/*
+	 * 绑定事件
+	 */
+	function bindPageEvent(){
+		
+		// 禁止头部和底部滑动
+		common.stopHeadAndFooterEvent(_pageId); 
+		
+		// 返回按钮
+		appUtils.bindEvent(_pageId + ".back_btn", function(){
+			appUtils.pageInit("active/details", "active/index", {});
+		});
+	}
+	
+	/*
+	 * 页面销毁
+	 */
+	function destroy(){
+		// 离开页面时销毁定时任务
+		if (pageGlobal.intervalTimer) {
+			clearInterval(pageGlobal.intervalTimer);
+		}
+		pageGlobal = {};
+	}
+	
+	var activedetails = {
+		"init": init,
+		"bindPageEvent": bindPageEvent,
+		"destroy": destroy
+	};
+	// 暴露对外的接口
+	module.exports = activedetails;
+});

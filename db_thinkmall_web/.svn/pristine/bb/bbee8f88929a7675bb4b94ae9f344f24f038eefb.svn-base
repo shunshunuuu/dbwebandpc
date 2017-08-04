@@ -1,0 +1,193 @@
+<div class="page"  id="active_answerActive" data-pageTitle="答题活动">
+<section class="main fixed" data-page="home">
+	<article>
+		<div class="index_page answer_bg">
+			<div class="decoration_box">
+				<em class="lantern_icon"></em>
+				<em class="branch_p1"></em>
+				<em class="branch_p2"></em>
+			</div>
+			<!-- 分数小于80结果页 -->
+			<div id="resultWrong" style="display:none;">
+				<div class="result_box">
+					<div class="result_box_tit">
+						<div class="tit_con">
+							<h3><span class="txt_p1"></span><span class="fraction_txt" id="score">40</span><span class="txt_p2"></span></h3>
+							<p></p>
+						</div>
+					</div>
+					<div class="result_box_tips">
+						<img src="images/answerActive/tips_p1.png" width="100%">
+					</div>
+				</div>
+				<div class="btn_box_active">
+					<a href="javascript:void(0)" id="again" class="ui button block rounded again">重新挑战</a>
+				</div>
+			</div>
+			
+			<!-- 分数大于80结果页 -->
+			<div id="resultRight" style="display:none;">
+				<div class="result_box result_box2">
+					<div class="result_box_tit">
+						<div class="tit_con">
+							<h3><span class="txt_p1"></span><span class="fraction_txt" id="score">80</span><span class="txt_p2"></span></h3>
+						</div>
+					</div>
+					<div class="result_box_tips">
+						<img src="images/answerActive/tips_p2.png" width="100%" />
+					</div>	
+				</div>
+				<div class="btn_box_active">
+					<!-- <input type="text" id="mobile" class="phone_text" placeholder="输入手机号码" maxlength="11" /> -->
+					<a href="javascript:void(0)" class="ui button block rounded again" id="luckDraw">参与抽奖</a>
+					<a href="javascript:void(0)" class="ui button block rounded again" style="margin-top: 0.1rem;" id="again">重新挑战</a>
+				</div>
+			</div>
+			
+			<div class="problem_box" id="question1">
+				<div class="topic_box">
+					<img src="images/answerActive/topic_p1.png" width="100%" />
+				</div>
+				<div class="answer_list">
+					<ul>
+						<li>fàng</li>
+						<li>diū</li>
+						<li value="1">gāo</li>
+					</ul>
+				</div>
+			</div>
+			<div class="problem_box" id="question2" style="display: none;">
+				<div class="topic_box">
+					<img src="images/answerActive/topic_p2.png" width="100%" />
+				</div>
+				<div class="answer_list">
+					<ul>
+						<li value="1">苶</li>
+						<li>颞</li>
+						<li>乜</li>
+					</ul>
+				</div>
+			</div>
+			<div class="problem_box" id="question3" style="display: none;">
+				<div class="topic_box">
+					<img src="images/answerActive/topic_p3.png" width="100%" />
+				</div>
+				<div class="answer_list">
+					<ul>
+						<li>zhuài</li>
+						<li value="1">hāo</li>
+						<li>chě</li>
+					</ul>
+				</div>
+			</div>
+			<div class="problem_box" id="question4" style="display: none;">
+				<div class="topic_box">
+					<img src="images/answerActive/topic_p4.png" width="100%" />
+				</div>
+				<div class="answer_list">
+					<ul>
+						<li value="1">扽</li>
+						<li>扥</li>
+						<li>坉</li>
+					</ul>
+				</div>
+			</div>
+			<div class="problem_box" id="question5" style="display: none;">
+				<div class="topic_box">
+					<img src="images/answerActive/topic_p5.png" width="100%" />
+				</div>
+				<div class="answer_list">
+					<ul>
+						<li value="1">yè</li>
+						<li>rè</li>
+						<li>qiè</li>
+					</ul>
+				</div>
+			</div>
+			<div class="problem_box" id="question6" style="display: none;">
+				<div class="topic_box">
+					<img src="images/answerActive/topic_p6.png" width="100%" />
+				</div>
+				<div class="answer_list">
+					<ul>
+						<li>捣</li>
+						<li value="1">捯</li>
+						<li>擣</li>
+					</ul>
+				</div>
+			</div>
+			<div class="problem_box" id="question7" style="display: none;">
+				<div class="topic_box">
+					<img src="images/answerActive/topic_p7.png" width="100%" />
+				</div>
+				<div class="answer_list">
+					<ul>
+						<li>cùn</li>
+						<li>jùn</li>
+						<li value="1">zùn</li>
+					</ul>
+				</div>
+			</div>
+			<div class="problem_box" id="question8" style="display: none;">
+				<div class="topic_box">
+					<img src="images/answerActive/topic_p8.png" width="100%" />
+				</div>
+				<div class="answer_list">
+					<ul>
+						<li>尅</li>
+						<li value="1">剋</li>
+						<li>磕</li>
+					</ul>
+				</div>
+			</div>
+			<div class="problem_box" id="question9" style="display: none;">
+				<div class="topic_box">
+					<img src="images/answerActive/topic_p9.png" width="100%" />
+				</div>
+				<div class="answer_list">
+					<ul>
+						<li value="1">nèng</li>
+						<li>gāo</li>
+						<li>nòng</li>
+					</ul>
+				</div>
+			</div>
+			<div class="problem_box" id="question10" style="display: none;">
+				<div class="topic_box">
+					<img src="images/answerActive/topic_p10.png" width="100%" />
+				</div>
+				<div class="answer_list">
+					<ul>
+						<li>kōu</li>
+						<li value="1">kēi</li>
+						<li>dèn</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</article>
+	<!--遮罩层-->
+	<div class="ui dialog-overlay" id="overlay" style="display: none;"></div>
+	<!--弹窗-->
+	<div class="dialog_tip" id="answerRight" style="display: none;">
+		<img src="images/answerActive/right_tips.png" />
+	</div>
+	<div class="dialog_tip" id="answerWrong" style="display: none;">
+		<img src="images/answerActive/wrong_tips.png.png">
+	</div>
+	<div class="dialog" id="success" style="display:none;">
+		<a href="javascript:void(0)" class="close_btn"></a>
+		<div class="dialog_tit"></div>
+		<div class="dialog_cet">
+			<div class="dia_txt">
+				<p>您已参与成功</p>
+				<p>活动结束后将统一进行抽奖</p>
+				<p>请关注“<em class="ared">东北证券融e通</em>”并领奖</p>
+			</div>
+			<div class="dia_btn">
+				<a href="javascript:void(0)" class="sub_btn">OK</a>
+			</div>
+		</div>
+	</div>
+</section>
+</div>

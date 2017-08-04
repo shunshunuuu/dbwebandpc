@@ -1,0 +1,67 @@
+<div class="page"  id="tucao_myTc" data-pageTitle="我的吐槽" data-pageLevel="1" 
+	data-urlParam="true" data-refresh="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner header_inner_02">
+			<h1>我要吐槽</h1>
+			<a href="#" class="back_btn"></a>
+		</div>
+	</header>
+	<article>
+		<div class="index_page">
+			<div class="tucaobanner">
+				<img src="images/tucao_001.jpg" alt="" />
+			</div>
+			<div class="tucao_btn clearfix">
+				<a class="btnleft" href="javascript:void(0);">
+					<img src="images/tucao_002.png" alt="" />
+				</a>
+				<a class="btnright" href="javascript:void(0);">
+					<img src="images/tucao_003.png" alt="" />
+				</a>
+			</div>
+			<div class="tucaobg_01"><img src="images/tucao_004.jpg" alt="" /></div>
+			<div class="tucaobg_02">
+				<img src="images/tucao_006.png" alt="" />
+			</div>
+			<div class="tucaobg_03">
+				<p>2017年3月6日～2017年4月6日</p>
+			</div>
+			<div class="tucaobg_01"><img src="images/tucao_007.png" alt="" /></div>
+			<div class="tucaobg_01"><img src="images/tucao_008.png" alt="" /></div>
+			<div class="tucaobg_03 tucaobg_04">
+				<p>1.    同一用户，可提交多条吐槽意见</p>
+				<p>2.   同一吐槽意见，将以反馈时间在前为优选</p>
+				<p>3.   管理员将在5个工作日内确认意见是否被采纳并发放奖励</p>
+			</div>
+			<div class="tucaobg_01">
+				<img src="images/tucao_009.png"  alt="" />
+			</div>
+			<div class="tucaobg_03 tucaobg_05">
+				<p>1. 每条被采纳的有效反馈，将获得<span>10</span>元话费奖励</p>
+				<p>2. 对于优质的有效反馈，将获得<span>50</span>元的特别奖励</p>
+			</div>
+			<div class="tucaobg_06">
+				<img src="images/tucao_010.png" alt="" />
+				<div class="tucao_07"></div>
+			</div>
+		</div>
+	</article>
+	<!-- 弹层 -->
+	<div class="tcfox" style="display:none;">
+		<div class="blockbg_pay"></div>
+		<div class="putplase">
+			<p><i></i>请输入您的手机号</p>
+			<div class="yournb">
+				<input type="text" />
+			</div>
+			<div class="thisbtn">
+				<a href="javascript:void(0);">
+					<img src="images/tucao_013.png" alt="" />
+				</a>
+			</div>
+			<a class="closebtm" href="javascript:void(0);"></a>
+		</div>
+	</div>
+</section>
+</div>

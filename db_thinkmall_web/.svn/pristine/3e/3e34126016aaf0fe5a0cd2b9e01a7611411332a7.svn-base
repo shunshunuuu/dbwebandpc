@@ -1,0 +1,85 @@
+<div class="page"  id="account_myBankCard" data-pageTitle="我的银行卡">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner_02">
+			<a href="javascript:void(0);" class="back_btn"></a>
+			<h1>我的银行卡</h1>
+		</div>
+	</header>
+	<article>
+		<div class="card_page" id="addFirst" style="display:none;">
+			<div class="add_cards_box">
+				<a href="javascript:void(0);" class="add_cards_btn" id="add_cards_btn"></a>
+				<p>添加银行卡</p>
+				<span>（所添加的银行卡暂时只可用于购买固收类产品）</span>
+			</div>
+		</div>
+		
+		<div class="card_page">
+			<div class="my_cards_list mt10" id="bankCardList">
+				<ul>
+					<!-- 直连银行 -->
+<!-- 					<li>
+						<div class="li_con">
+							<div class="ui layout li_up">
+								<div class="bank_icon">
+									<em><img src="images/bank_p1.png" width="24"/></em>
+								</div>
+								<div class="row-1 bank_mes">
+									<h3>招商银行</h3>
+									<p>6226 **** **** 7114</p>
+								</div>
+								<div class="bank_txt">
+									<p>直连银行</p>
+								</div>
+							</div>
+						</div>
+						<a href="javascript:void(0);" class="del_btn"><span>删除</span></a>
+					</li> -->
+					
+<!-- 					<li>
+						<div class="li_con">
+							<div class="ui layout li_up">
+								<div class="bank_icon">
+									<em><img src="images/bank_p1.png" width="24"/></em>
+								</div>
+								<div class="row-1 bank_mes">
+									<h3>招商银行</h3>
+									<p>6226 **** **** 7114</p>
+								</div>
+								<div class="bank_txt">
+									<p>存管银行</p>
+								</div>
+							</div>
+							<div class="li_lower clearfix">
+								<span>银证转账</span>
+								<p>可用余额:<em class="ared">3,000.00</em>元</p>
+							</div>
+						</div>
+						<a href="javascript:void(0);" class="del_btn"><span>删除</span></a>
+					</li> -->
+				</ul>
+				<div class="btn_box" id="add">
+					<a href="javascript:void(0);" class="ui button block rounded"><i class="add_icon"></i>添加银行卡 </a>
+				</div>
+			</div>
+		</div>
+	</article>
+	<!--遮罩-->
+	<div class="ui dialog-overlay" style="display: none;"></div>
+	<!--弹窗-->
+	<div class="dialog_box"  style="display: none;">
+		<div class="dialog_cnt">
+			<h4>确定删除银行卡</h4>
+		</div>
+		<div class="ui layout dialog_btn">
+			<div class="row-1">
+				<a href="javascript:void(0);" id="cancel" class="ui button block">取消</a>
+			</div>
+			<div class="row-1">
+				<a href="javascript:void(0);" id="enter" class="ui button block">确定</a>
+			</div>
+		</div>
+	</div>
+</section>
+</div>

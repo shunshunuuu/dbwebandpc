@@ -1,0 +1,68 @@
+<div class="page"  id="account_balance_openDetail" data-pageTitle="余额宝">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner_02">
+			<h1 id="title">现金理财</h1>
+			<a href="javascript:void(0);" class="back_btn"></a>
+		</div>
+	</header>
+		<article>
+		<div class="index_page">
+			<!-- one -->
+			<div class="gray_tit">
+				<p>设置保留资金额度</p>
+			</div>
+			<div class="formass">
+				<ul>
+					<li class="flex-father">
+						<p class="p1">产品名称</p>
+						<p class="flex-child">东方基金余额宝</p>
+					</li>
+					<li class="flex-father">
+						<p class="p1">产品代码</p>
+						<p class="flex-child">002243</p>
+					</li>
+					<li class="flex-father">
+						<p class="p1">资金金额</p>
+						<p class="flex-child"><span id="kyje">0</span>元</p>
+					</li>
+				</ul>
+			</div>
+			<!-- two -->
+<!-- 			<div class="gray_tit">
+				<p>保留金额</p>
+			</div>
+			<div class="formass">
+				<ul>
+					<li class="flex-father">
+						<div class="inputbox">
+							<input type="text" id="retainsMoney" placeholder="请输入保留金额额度"/>
+						</div>
+					</li>
+				</ul>
+			</div> -->
+			<!-- three -->
+			<div class="gray_tit">
+				<p>签署协议</p>
+			</div>
+			<div class="formass">
+				<ul id="agreementUl">
+					<li class="flex-father">
+						<p class="p3 flex-child">东方金证通货币市场基金合同</p>
+						<a class="aoc1" href="javascript:void(0);"></a>
+					</li>
+				</ul>
+			</div>
+			<!-- 按钮 -->
+			<div class="footbtn">
+				<div class="gray_tit">
+					<p class="p1"><label id="checkbox_agreement" class="on" for=""></label><input type="checked" />我已同意签署风险协议书</p>
+				</div>
+				<div class="sendnow">
+					<a href="javascript:void(0);" id="next">提交</a>
+				</div>
+			</div>
+		</div>
+	</article>
+</section>
+</div>

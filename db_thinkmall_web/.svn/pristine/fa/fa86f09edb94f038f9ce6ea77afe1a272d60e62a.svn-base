@@ -1,0 +1,103 @@
+<div class="page"  id="login_userLogin" data-pageTitle="登录">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner_02">
+			<h1>客户登录</h1>
+			<!-- <a href="http://222.168.95.184:8999/indexnew?befromFlag=sidi" class="account_txt">开户</a> -->
+			<!-- <a href="javascript:void(0)" class="rt_icon close_btn2" id="close_btn"></a> -->
+			<a href="javascript:void(0);" class="back_btn"></a>
+		</div>
+	</header>
+	<article>
+		<div class="login_page">
+			<div class="login_tab">
+				<div class="ui layout" id="tra_tab_list">
+					<div class="row-1">
+						<a href="javascript:void(0)" class="act">普通登录</a>
+					</div>
+					<div class="row-1">
+						<a href="javascript:void(0)">短信密码登录</a>
+					</div>
+				</div>
+			</div>
+			<div class="register_list login_list" id="tra_tab_0">
+				<div class="login_list_det">
+					<div class="text_item">
+						<div class="ui field  rounded">
+							<input type="tel" class="ui input" id="loginAccount" maxlength="11" keyboard-plugin="true" placeholder="输入手机号或资金账号">
+							<a href="javascript:void(0)" class="del_btn"></a>
+						</div>
+					</div>
+					<div class="text_item">
+						<div class="ui field  rounded">
+							<input type="password" class="ui input" id="loginPwd" maxlength="16" keyboard-plugin="true" placeholder="请输入密码">
+							<a href="javascript:void(0)" class="del_btn"></a>
+						</div>
+					</div>
+					<div class="text_item">
+						<div class="ui field  rounded">
+							<input type="tel" class="ui input" id="recomCode" maxlength="20" keyboard-plugin="true" placeholder="请输入推荐码（选填）">
+							<a href="javascript:void(0)" class="del_btn"></a>
+						</div>
+					</div>
+					<div class="text_item">
+						<div class="ui field rounded">
+							<input type="tel" class="ui input" id="get_code" placeholder="请输入验证码">
+							<a href="javascript:void(0)" class="yzm_pic"><img id="code_pic" src="" /></a>
+						</div>
+					</div>
+				</div>
+				<div class="next_btn_box">
+					<div class="ui layout">
+						<div class="row-1">
+							<a href="javascript:void(0)" class="ui button block rounded" id="login">登录</a>
+						</div>
+					</div>
+					<a href="javascript:void(0)" class="forget_tips">忘记密码？</a>
+				</div>
+				<div style="text-align: center;">
+					<a href="javascript:void(0)" class="bottom_register_btn" style="display:inline-block;" id="register">快速注册</a>&nbsp;&nbsp;or&nbsp;&nbsp;
+					<a href="http://222.168.95.184:8999/indexnew?befromFlag=sidi" style="display:inline-block;" class="bottom_register_btn">立即开户</a>
+				</div>
+			<!-- 手机验证码方式登录 -->
+			<div class="register_list login_list" id="tra_tab_1" style="display: none;">
+				<div class="login_list_det">
+					<div class="text_item">
+						<div class="ui field  rounded">
+							<input type="tel" class="ui input" id="mobilePhone" placeholder="输入手机号" maxlength="11">
+							<a href="javascript:void(0)" class="del_btn"></a>
+						</div>
+					</div>
+					<div class="text_item">
+						<div class="ui field  rounded">
+							<input type="tel" id="get_code_value" class="ui input" placeholder="请输入验证码" maxlength="6">
+							<a href="javascript:void(0)" class="yzm_btn" id="get_code_by" data-state="true">发送验证码</a>
+						</div>
+					</div>
+				</div>
+				<div class="next_btn_box">
+					<div class="ui layout">
+						<div class="row-1">
+							<a href="javascript:void(0)" class="ui button block rounded lg_btn" id="code_login">登录</a>
+						</div>
+					</div>
+				</div>
+				<div style="text-align: center;">
+					<a href="javascript:void(0)" class="bottom_register_btn" style="display:inline-block;" id="register">快速注册</a>&nbsp;&nbsp;or&nbsp;&nbsp;
+					<a href="http://222.168.95.184:8999/indexnew?befromFlag=sidi" style="display:inline-block;" class="bottom_register_btn">立即开户</a>
+				</div>
+			</div>
+
+<!--  			<div class="banner_box">
+				<div class="ui layout">
+					<div class="row-1">
+						<p>
+							<img src="images/bot_banner.jpg" width="100%" data-pro_url=""/>
+						</p>
+					</div>
+				</div>
+			</div> -->
+		</div>
+	</article>
+</section>
+</div>

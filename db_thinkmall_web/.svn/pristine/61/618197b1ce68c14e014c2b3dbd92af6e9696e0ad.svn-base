@@ -1,0 +1,213 @@
+<div class="page"  id="account_balance_detail" data-pageTitle="抱米余额理财" data-urlParam="true" data-refresh="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner header_inner_02">
+			<h1>抱米余额理财</h1>
+			<a href="javascript:void(0);" class="back_btn"></a>
+		</div>
+	</header>
+	<article>
+		<!-- 余额宝开通前页面 -->
+		<div class="index_page" id="balanceAd">
+			<div class="pagesbox">
+				<img src="images/thepage01.jpg" alt="" />
+			</div>
+			<div class="pagesbox">
+				<img src="images/thepage02.jpg" alt="" />
+				<div class="seyfor">
+					<p class="p1" id="incomeunitHead">2.2333<span>%</span></p>
+					<p class="p2">近七日年化收益</p>
+				</div>
+			</div>
+			<div class="pagesbox">
+				<img src="images/thepage03.jpg" alt="" />
+			</div>
+			<div class="pagesbox">
+				<img src="images/thepage04.jpg" alt="" />
+				<div class="seyfor_02">
+					<p><i></i>本产品仅限上海局门路营业部客户购买</p>
+				</div>
+			</div>
+			<div class="pagesbox">
+				<img src="images/thepage05.jpg" alt="" />
+				<div class="seyfor_03">
+					<a href="javascript:void(0);" id="openBtn">我要开通，赚收益</a>
+				</div>
+			</div>
+		</div>
+		<!-- 开通后的余额宝 -->
+		<div class="index_page" id="balanceShow" style="display:none;">
+			<!-- banner -->
+			<div class="jp_banner"><img src="images/activity_pic12.jpg" alt=""></div>
+			<!-- 切换按钮 -->
+			<div class="ckbtn flex-father" id="tabnav">
+				<a class="flex-children on" href="javascript:void(0);">设置保留金额</a>
+				<a class="flex-children" href="javascript:void(0);">取款</a>
+			</div>
+			<!-- 内容 -->
+			<div class="pro_box_01" id="balanceBox">
+				<div class="mainfor">
+					<div class="maintits flex-father">
+						<p class="flex-children">东方金证通货币市场基金<span>002243</span></p>
+						<a href="javascript:void(0);">已开通</a>
+					</div>
+					<div class="allsey">
+						<div class="allsely">
+							<p class="p1" id="annualProfit"></p>
+							<p class="p2">七日年化收益</p>
+						</div>
+					</div>
+					<div class="selythree flex-father" id="moneyCss">
+						<div class="fe flex-children">
+							<p class="p1" id="userableSell"></p>
+							<p class="p2">可取资金</p>
+						</div>
+						<div class="fe flex-children">
+							<p class="p1" id="money"></p>
+							<p class="p2">保留金额</p>
+						</div>
+						<div class="fe flex-children">
+							<p class="p1" id="userableAmount"></p>
+							<p class="p2">总份额</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 取款 -->
+			<div class="pro_box_01" id="drawBox" style="display:none;">
+				<div class="mainfor">
+					<div class="maintits flex-father">
+						<p class="flex-children">东方金证通货币市场基金<span>002243</span></p>
+						<a href="javascript:void(0);">已开通</a>
+					</div>
+					<div class="selythree selyfour flex-father">
+						<div class="fe flex-children">
+							<p class="p1 reds" id="userableAmount_">9999.42</p>
+							<p class="p2">总份额</p>
+						</div>
+						<div class="fe flex-children">
+							<p class="p1 reds" id="userableSell_">92.42</p>
+							<p class="p2">可取资金</p>
+						</div>
+					</div>
+				</div>
+				<div class="suppex">
+					<p>1.赎回操作时间：<span>9：30-16：00；</span></p>
+					<p>2.赎回（普通赎回或快速赎回）后，可通过交易客户端<span>“银证转账”</span>菜单<span>转出至银行卡；</span></p>
+					<p>3.快速赎回后,由于银行原因目前仅有工行、招行、交行、平安、民生、兴业、邮储、华夏等8家银行支持当日转出；</p>
+				</div>
+			</div>
+		</div>
+	</article>
+	<footer>
+		<div class="flex-father gardbtn" id="balanceSet">
+			<a class="flex-children" href="javascript:void(0);" id="sub_btn_into">修改保留金额</a>
+			<a class="flex-children" href="javascript:void(0);" id="sub_btn_out">解约</a>
+		</div>
+		<div class="flex-father gardbtn" id="balanceRemdem" style="display:none;">
+			<a class="flex-children" href="javascript:void(0);" id="redeem">赎回</a>
+			<a class="flex-children" href="javascript:void(0);" id="quickRedeem">快速赎回</a>
+		</div>
+	</footer>
+	<!-- 设置保留金额弹出层 -->
+	<div class="window_dialog" id="setMoneyDiv" style="display: none;">
+		<!-- <div class="blockbg_pay" style="display:block;"></div> -->
+		<div class="amountkeep">
+			<p class="p1">设置保留金额</p>
+			<div class="shur flex-father">
+				<p>保留金额</p>
+				<div class="inputbox2 flex-children">
+					<input type="tel" id="totalPrice" maxlength="15">
+				</div>
+			</div>
+			<a href="javascript:void(0);" id="submitSetBtn">确认设置</a>
+		</div>
+	</div>
+	<!-- 设置赎回弹出层 -->
+	<div class="window_dialog" id="redeemBox" style="display: none;">
+		<div class="amountkeep">
+			<p class="p1">赎回</p>
+			<div class="shur flex-father">
+				<p>赎回份额</p>
+				<div class="inputbox2 flex-children">
+					<input type="tel" id="redeemPrice" maxlength="15">
+				</div>
+			</div>
+			<a href="javascript:void(0);" id="taking">确认赎回</a>
+		</div>
+	</div>
+	<!-- 设置快速赎回弹出层 -->
+	<div class="window_dialog" id="quickRedeemBox" style="display: none;">
+		<div class="amountkeep">
+			<p class="p1">快速赎回</p>
+			<div class="shur flex-father">
+				<p>赎回份额</p>
+				<div class="inputbox2 flex-children">
+					<input type="tel" id="totalPrice_take" maxlength="15">
+				</div>
+			</div>
+			<a href="javascript:void(0);" id="quickTaking">确认赎回</a>
+		</div>
+	</div>
+	<!--开通深市TA户弹窗-->
+	<!--弹窗-->
+	<div class="window_dialog" id="window_two" style="display: none;">
+		<div class="dialog_cet dialog_cet3">
+			<div class="order_det_list">
+				<div class="order_det_tit" style="height: 0.45rem">
+					<h3 style="line-height: 0.45rem">东方金证通货币市场基金开户</h3>
+					<span class="lt_dot"></span>
+					<span class="rt_dot"></span>
+				</div>
+				<div class="order_det_table">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%">
+						<tr>
+							<th style="height: 0.38rem">基金公司:</th>
+							<td id="exchangeName" style="height: 0.38rem"></td>
+						</tr>
+						<tr>
+							<th style="height: 0.38rem">公司代码:</th>
+							<td id="fundCompany" style="height: 0.38rem"></td>
+						</tr>
+						<tr>
+							<th style="height: 0.38rem">用户姓名:</th>
+							<td id="holderName" style="height: 0.38rem"></td>
+						</tr>
+						<tr>
+							<th style="height: 0.38rem">证件号码:</th>
+							<td id="idNo" style="height: 0.38rem"></td>
+						</tr>
+						<tr>
+							<th style="height: 0.38rem">联系电话:</th>
+							<td id="telephone" style="height: 0.38rem"></td>
+						</tr>
+						<tr>
+							<th style="height: 0.38rem">电子邮箱:</th>
+							<td id="userMail" style="height: 0.38rem"></td>
+						</tr>
+						<tr>
+							<th style="height: 0.38rem">详细地址:</th>
+							<td id="address" style="height: 0.38rem"></td>
+						</tr>
+						<tr>
+							<th style="height: 0.38rem">邮箱编号:</th>
+							<td id="postCode" style="height: 0.38rem"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="agreemet_box" style="display: none;">
+				<div class="ui checkbox">
+					<input type="checkbox" id="checkbox_2" checked="checked" /><label></label><a id="agreement" href="javascript:void(0)">《基金户开通协议》</a>	
+				</div>
+			</div>
+			<div class="ui layout btn_box">
+				<div class="row-1">
+					<a href="javascript:void(0)" class="save_btn" id="cancelFund" style="width: 50%;float: left;">取消</a>
+					<a href="javascript:void(0)" class="save_btn" id="openFund" style="width: 50%;float: left;">开通</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+</div>

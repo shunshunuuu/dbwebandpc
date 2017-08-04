@@ -1,0 +1,219 @@
+<div class="page"  id="account_cashbutler_detail" data-pageTitle="我的" data-urlParam="true" data-refresh="true">
+	<section class="main fixed" data-page="home">
+	
+		<header>
+		<div class="header_inner_03 header_inner_05">
+			<h1>现金管家</h1>
+			<a href="javascript:void(0);" class="back_btn2"></a>
+			<a href="javascript:void(0);" class="tc_btn"  id="sub_btn_out">我要解约</a>
+		</div>
+	</header>
+	<article>
+		<div class="pro_page login_page" id="pageContent">
+			<div class="menage_box">
+				<div class="menage_box_up">
+					<strong id="incomeunitHead">0.00</strong>
+					<h3>业绩比较基准</h3>
+				</div>
+				<div class="ui layout menage_box_lower">
+					<div class="row-1">
+						<h4 id="money">0.00</h4>
+						<p>保留金额</p>
+					</div>
+					<div class="row-1">
+						<h4 id="userableSell">0.00</h4>
+						<p>可用份额</p>
+					</div>
+				</div>
+			</div>
+			<div class="menage_info_list">
+				<ul>
+					<li class="ui layout">
+						<div class="lt_box"></div>
+						<div class="row-1">
+							<h3>7×24小时</h3>
+							<p>白天炒股  晚上理财,7×24小时赚钱不打烊</p>
+						</div>
+					</li>
+					<!-- <li class="ui layout">
+						<div class="lt_box"></div>
+						<div class="row-1">
+							<h3>约5-26倍</h3>
+							<p>约活期利息的5-26倍,完胜银行存款</p>
+						</div>
+					</li> -->
+					<li class="ui layout">
+						<div class="lt_box"></div>
+						<div class="row-1">
+							<h3>低风险</h3>
+							<p>主要投资货币市场,资金安全更可靠</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</article>
+	<footer>
+		<!-- 开通现金管家开通前显示 -->
+		<div class="ui layout btn_box" id="open">
+			<a href="javascript:void(0);" class="sub_btn" style="display:none;" id="openBtn">立即参与</a>
+		</div>
+		<!-- 开通现金管家开通后显示 -->
+		<div class="ui layout btn_box" id="cancelBtn" style="display: none;">
+			<div class="row-1">
+				<a href="javascript:void(0);" class="sub_btn" id="sub_btn_into">设置保留金额</a>
+			</div>
+			<div class="row-1">
+				<a href="javascript:void(0);" class="sub_btn" id="quickAccess">快速取现</a>
+				<!-- <a href="javascript:void(0);" class="sub_btn" id="sub_btn_out">我要解约</a> -->
+			</div>
+		</div>
+	</footer>
+		<!--开通现金管家完成提示弹窗-->
+		<div class="window_dialog" id="openDetail" style="display: none">
+			<div class="dialog_cet_02">
+				<a href="javascript:void(0);" class="close_btn"></a>
+				<i class="crtoon"></i>
+				<div class="dialog_tips">
+					<div class="tips_icon">
+						<em></em>
+						<h3>恭喜您，开通成功！</h3>
+					</div>
+					<div class="tips_txt">
+						<!-- <p>快去转入留存金额！您可以在下一个交易日将转入的存留金额转出!</p> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 设置预留金额弹出层 -->
+		<div class="dropdown_box" style="display: none" id="setMoneyDiv">
+			<div class="cate_dropdown">
+				<div class="order_list_box2">		
+					<div class="order_tab_con order_tab_con1">
+						<h3>设置保留金额</h3>
+						<div class="text_item">
+							<div class="ui field border rounded">
+								<input type="tel" class="ui input nickname_text" id="totalPrice" maxlength="15">
+								<p class="nickname">保留金额</p>
+								<span class="unit">元</span>
+							</div>
+						</div>
+						<p class="tips_txt"></p>
+					</div>
+				</div>
+				<a href="javascript:void(0)" class="sub_btn" id="submitSetBtn">确认设置</a>
+		    </div>
+		</div>
+		
+		<!-- 快速取现弹出层 -->
+		<div class="dropdown_box" style="display: none" id="quickAccess_box">
+			<div class="cate_dropdown">
+				<div class="order_list_box2">		
+					<div class="order_tab_con order_tab_con1">
+						<h3>取现份额</h3>
+						<div class="text_item">
+							<div class="ui field border rounded">
+								<input type="number" class="ui input nickname_text" onkeyup="value=value.replace(/[^\d]/g,'')" id="totalPrice_take" placeholder="请输入取现金额">
+								<p class="nickname">取现份额</p>
+								<span class="unit">元</span>
+							</div>
+						</div>
+						<p class="tips_txt">温馨提示：</p>
+						<p class="tips_txt">1.快速取现份额必须大于或等于1000份，且须为整数份。</p>
+						<p class="tips_txt">2.快速取现时间为每交易日9:30-11:30和13:00-15:00。</p>
+						<p class="tips_txt">3.快速取现成功份额不享有当日产品收益。</p>
+						<p class="tips_txt">4.具体事项请查阅东北证券相关公告。</p>
+					</div>
+				</div>
+				<a href="javascript:void(0)" class="sub_btn"  id="submitTaking">确认取现</a>
+		    </div>
+		</div>
+		
+		<!--快速取现确定弹窗-->
+		<div class="window_dialog" id="window_Three" style="display: none;">
+			<div class="dialog_cet">
+				<div class="dialog_tit" style="background: #4AC7FD;">
+					<h3>东北证券现金管家集合计划</h3>
+				</div>
+				<div class="dialog_cet_det">
+					<div class="dialog_txt">
+						<p style="margin: 0rem 0rem 0rem 1.17rem;text-align: left;">产品代码：AF0008</p>
+						<p style="margin: 0rem 0rem 0rem 1.17rem;text-align: left;" id="totalPriceTake"></p>
+						<p style="margin: 0rem 0rem 0rem 1.17rem;text-align: left;">操作类型：现金产品取现</p>
+					</div>
+				</div>
+				<div class="dialog_btn">
+					<div class="ui layout">
+						<div class="row-1">
+							<a href="javascript:void(0);" id="taking">确认</a>
+						</div>
+						<div class="row-1">
+							<a href="javascript:void(0);" id="cancel">取消</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--开通深市TA户弹窗-->
+		<!--弹窗-->
+		<div class="window_dialog" id="window_two" style="display: none;">
+			<div class="dialog_cet dialog_cet3">
+				<div class="order_det_list">
+					<div class="order_det_tit" style="height: 0.45rem">
+						<h3 style="line-height: 0.45rem">现金管家开户</h3>
+						<span class="lt_dot"></span>
+						<span class="rt_dot"></span>
+					</div>
+					<div class="order_det_table">
+						<table cellpadding="0" cellspacing="0" border="0" width="100%">
+							<tr>
+								<th style="height: 0.38rem">基金公司:</th>
+								<td id="exchangeName" style="height: 0.38rem"></td>
+							</tr>
+							<tr>
+								<th style="height: 0.38rem">公司代码:</th>
+								<td id="fundCompany" style="height: 0.38rem"></td>
+							</tr>
+							<tr>
+								<th style="height: 0.38rem">用户姓名:</th>
+								<td id="holderName" style="height: 0.38rem"></td>
+							</tr>
+							<tr>
+								<th style="height: 0.38rem">证件号码:</th>
+								<td id="idNo" style="height: 0.38rem"></td>
+							</tr>
+							<tr>
+								<th style="height: 0.38rem">联系电话:</th>
+								<td id="telephone" style="height: 0.38rem"></td>
+							</tr>
+							<tr>
+								<th style="height: 0.38rem">电子邮箱:</th>
+								<td id="userMail" style="height: 0.38rem"></td>
+							</tr>
+							<tr>
+								<th style="height: 0.38rem">详细地址:</th>
+								<td id="address" style="height: 0.38rem"></td>
+							</tr>
+							<tr>
+								<th style="height: 0.38rem">邮箱编号:</th>
+								<td id="postCode" style="height: 0.38rem"></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div class="agreemet_box" style="display: none;">
+					<div class="ui checkbox">
+						<input type="checkbox" id="checkbox_2" checked="checked" /><label></label><a id="agreement" href="javascript:void(0)">《基金户开通协议》</a>	
+					</div>
+				</div>
+				<div class="ui layout btn_box">
+					<div class="row-1">
+						<a href="javascript:void(0)" class="save_btn" id="cancelFund" style="width: 50%;float: left;">取消</a>
+						<a href="javascript:void(0)" class="save_btn" id="openFund" style="width: 50%;float: left;">开通</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

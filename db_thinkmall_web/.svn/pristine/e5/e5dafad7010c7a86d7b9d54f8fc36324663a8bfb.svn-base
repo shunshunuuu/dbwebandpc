@@ -1,0 +1,464 @@
+define(function(require, exports, module) {
+	var appUtils = require("appUtils"); // 核心工具类
+	var service = require("mobileService"); // 业务层接口，请求数据
+	var layerUtils = require("layerUtils"); // 弹出层工具类
+	var global = require("gconfig").global; // 全局配置对象
+	var constants = require("constants");// 常量类
+	var common = require("common"); // 公共类
+	var putils = require("putils"); //
+	var _pageId = "#finan_fund_index "; // 页面id
+	var pageCode = "finan/fund/index";
+    var HIscroll = require("hIscroll"); //hIscroll别名已经配置到hSea中
+    var myHIscroll = null;
+	require("mall/scripts/common/plugins/swiperEvent");
+	
+	var pageGlobal = {
+			"isFileState" : "0", // 广告是否有效
+			"enumData" : [] // 用户缓存数据字典信息item_name,item_value
+		}
+	
+	/*
+	 * 初始化
+	 */
+	
+	function init() {
+		// 初始化页面
+		initView();
+		
+		// 底部导航
+		common.footerTab(_pageId);
+		
+		//查询数据字典
+		queryMotifType();
+		//优选基金
+		yxjjProduct();
+		//稳健债基
+		wjzjProduct
+		//基金首发
+		jjsfProduct();
+		
+		// 是否显示登录成功后的窗口
+		var showLoginSuccess = appUtils.getPageParam("showLoginSuccess");
+		if (showLoginSuccess && showLoginSuccess == "1") {
+			// 显示注册成功窗口
+			$(_pageId + ".window_dialog").show();
+			$(_pageId + "#userCenter").addClass("highlight");
+			
+			// 只有注册成功后才加载当前图片，不要直接放到html页面中，影响首页加载速度
+			var imgHtml = '<img src="images/sy_win_icon2.png" width="100%" />';
+			$(_pageId + ".window_dialog .dialog_icon_box").html(imgHtml);
+			
+			// 点击页面关闭弹出窗口
+			appUtils.bindEvent(_pageId , function(){
+				$(_pageId + ".window_dialog").hide();
+				$(_pageId + "#userCenter").removeClass("highlight");
+			});
+		}
+	}
+
+	
+	function initView(){
+		// 设置APP综合首页地址
+		$(_pageId + ".home_btn").attr("href", global.appIndexUrl);
+		
+		
+		// 判断链接来源是否来自APP, 如果来自APP,头部隐藏 首先去cookie里面是否有值，再去页面参数中是否有值
+		var isFromApp = appUtils.getSStorageInfo("isFromApp");
+		if (isFromApp && isFromApp == "zzapp") { 
+			$(_pageId + "header").hide();
+		} else {
+			var  srcType = appUtils.getPageParam("src_type");
+			if (srcType && srcType == "zzapp") {
+				appUtils.setSStorageInfo("isFromApp", "zzapp");
+				$(_pageId + "header").hide();
+			} else {
+				$(_pageId + "header").show();
+			}
+		}
+	}
+	
+	//优选基金
+    function yxjjProduct(){
+		var param = {
+				"product_type" : 0, //基金
+				"is_rate" : 1, // 按收益率排行
+				"page" : 1, 
+				"numPerPage" : 8
+			};
+		service.queryAllProduct(param,function(resultVo){
+			if(0==resultVo.error_no){
+				var results = resultVo.results[0].data;
+				var yxjjEle = $(_pageId+"#yxjj").empty();
+			    if(results.length > 0){
+					for(var i = 0; i < 2; i++){
+						// 显示标题
+					  var title = "";
+					  if (i == 0){
+						 title='<div class="pro_tits pro_tits_ae">'+
+							     '<a href="javascript:void(0);">'+
+								  '<p class="sp01"><i></i>优选基金</p>'+
+								  '<p class="sp02">优质基金等你来选</p>'+
+							     '</a>'+
+						      '</div>';
+					  }
+						
+						var item = results[i];
+						var productName = item.product_name; // 产品名称
+						var productSubType = item.product_sub_type; // 产品类型
+						var productId = item.product_id; // 产品编号
+						var productCode = item.product_code; // 产品代码
+						var yieldrate1m = item.yieldrate1m || "0"; // 近一个月收益率
+						var yield1 = parseFloat(yieldrate1m).toFixed(2);
+						var currentPrice = item.current_price || "0"; // 单位净值
+						var dwjz = parseFloat(currentPrice).toFixed(4);
+						productName = putils.delProSpecialStr(productName);
+						var qgjg = item.per_buy_limit;
+						var cplb = item.fund_type;
+						cplb = queryenum(cplb);
+					var  itemHtml='' + title + '' +	
+						'<div class="pl_two pl_twos">'+
+						'<div class="plin" productCode="' + productCode + '" productId="' + productId + '" productSubType="' + productSubType + '">'+
+							'<div class="plin_r">'+
+								'<p class="sp01">'+yield1+'<span>%</span></p>'+
+								'<p class="sp02">近一个月收益率</p>'+
+							'</div>'+
+							'<div class="plin_l">'+
+								'<p class="sp01">'+productName+'</p>'+
+								'<p class="sp02">单位净值：'+dwjz+'元</p>'+
+								'<p class="sp03"><span class="san01">'+cplb+'</span><span class="san02">'+qgjg+'元起购</span></p>'+
+							'</div>'+
+						'</div>'+
+					'</div>';
+						yxjjEle.append(itemHtml);
+					}
+					
+					// 绑定详情事件
+					appUtils.bindEvent(_pageId + ".plin", function(){
+						var curEle = $(this);
+						productDetail(curEle.attr("productId"), curEle.attr("productSubType"), curEle.attr("productCode"));
+					});
+			    }
+			}else{
+				layerUtils.iAlert("查询优选基金列表失败:"+resultVo.error_info,-1);
+			}
+		})
+	}
+    
+    /*
+	 * 产品详情
+	 */
+	function productDetail(productId, subType, productCode) {
+		if (productCode == global.product_code) {
+			// 现金管家
+			appUtils.pageInit("finan/index", "account/cashbutler/detail", {});
+		} else {
+			// 非现金管家
+			if(subType == constants.product_sub_type.FUND){
+				// 基金产品详情
+				appUtils.pageInit("finan/index", "finan/detail", {"product_id" : productId});	
+			}else if(subType == constants.product_sub_type.FINANCIAL){
+				// 理财产品详情
+				appUtils.pageInit("finan/index", "finan/finanDetail", {"product_id" : productId});	
+			}
+		}
+		
+	}
+    
+    
+    //基金首发
+    function jjsfProduct(){
+		// 推荐产品结果集回调函数
+    	var jjsfProductFun = function(result) {
+			var jjsfEle = $(_pageId + "#jjsf").empty();
+
+			// 热销产品区域填充数据
+			for (var i = 0; i < result.length; i++) {
+				// 显示标题
+				 var title = "";
+				 if (i == 0){
+				 title='<div class="pro_tits pro_tits_af">'+
+						     '<a href="javascript:void(0);">'+
+							  '<p class="sp01"><i></i>基金首发</p>'+
+							  '<p class="sp02">首发基金，买到就是赚到</p>'+
+						     '</a>'+
+					   '</div>';
+				}
+				var item = result[i];
+				var productName = item.product_name; // 产品名称
+				var productSubType = item.product_sub_type; // 产品类型
+				var productId = item.product_id; // 产品编号
+				var productCode = item.product_code; // 产品代码
+				var yieldrate1m = item.yieldrate1m || "0"; // 近一个月收益率
+				var yield1 = parseFloat(yieldrate1m).toFixed(2);
+				var currentPrice = item.current_price || "0"; // 单位净值
+				var dwjz = parseFloat(currentPrice).toFixed(4);
+				productName = putils.delProSpecialStr(productName);
+				var qgjg = item.per_buy_limit;
+				var cplb = item.fund_type;
+				cplb = queryenum(cplb);
+				var  itemHtml='' + title + '' +	
+				'<div class="pl_two pl_twos">'+
+				'<div class="plin" productCode="' + productCode + '" productId="' + productId + '" productSubType="' + productSubType + '">'+
+					'<div class="plin_r">'+
+						'<p class="sp01">'+yield1+'<span>%</span></p>'+
+						'<p class="sp02">近一个月收益率</p>'+
+					'</div>'+
+					'<div class="plin_l">'+
+						'<p class="sp01">'+productName+'</p>'+
+						'<p class="sp02">单位净值：'+dwjz+'元</p>'+
+						'<p class="sp03"><span class="san01">'+cplb+'</span><span class="san02">'+qgjg+'元起购</span></p>'+
+					'</div>'+
+				'</div>'+
+			  '</div>';
+				
+				jjsfEle.append(itemHtml);
+			}
+			
+			// 绑定详情事件
+			appUtils.bindEvent(_pageId + ".plin", function(){
+				var curEle = $(this);
+				productDetail(curEle.attr("productId"), curEle.attr("productSubType"), curEle.attr("productCode"));
+			});
+		};
+
+		// 调用后台方法查询基金首发
+		var recommendType = constants.recommendType.RECOMMEND_TYPE_FUND_FIRST;
+		queryRecomProductByType(recommendType, jjsfProductFun);
+    }
+    
+    /*
+	 * 根据推荐类型查询推荐产品
+	 * @param recommendType 推荐类型。
+	 * @param callBackFun 查询成功后回调函数。
+	 * @param 查询失败或结果为空时回调函数。
+	 */
+	function queryRecomProductByType(recommendType, callBackFun) {
+		var param = {
+			"recommend_type" : recommendType
+		};
+
+		service.queryRecomProduct(param, function(data) {
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+
+			if (error_no == "0") {
+				var result = data.results;
+				
+				if (result && result.length > 0) {
+					// 数据处理函数
+					callBackFun(result);
+				}
+			} else {
+				// 错误信息提示
+				layerUtils.iMsg(-1, error_info);
+			}
+		});
+	};
+	    
+	    
+    //稳健债基
+    function wjzjProduct(){
+		var param = {
+				"product_type" : 0, //基金
+				"is_rate" : 1, // 按收益率排行
+				"page" : 1, 
+				"fund_type" : 6, //债券型
+				"numPerPage" : 8
+			};
+		service.queryAllProduct(param,function(resultVo){
+			if(0==resultVo.error_no){
+				var results = resultVo.results[0].data;
+				var wjzjEle = $(_pageId+"#wjzj").empty();
+			    if(results.length > 0){
+					for(var i = 0; i < 2; i++){
+						// 显示标题
+					  var title = "";
+					  if (i == 0){
+						 title='<div class="pro_tits pro_tits_ag">'+
+							     '<a href="javascript:void(0);">'+
+								  '<p class="sp01"><i></i>稳健债基</p>'+
+								  '<p class="sp02">首发基金，买到就是赚到</p>'+
+							     '</a>'+
+						      '</div>';
+					  }
+						var item = results[i];
+						var productName = item.product_name; // 产品名称
+						var productSubType = item.product_sub_type; // 产品类型
+						var productId = item.product_id; // 产品编号
+						var productCode = item.product_code; // 产品代码
+						var yieldrate1m = item.yieldrate1m || "0"; // 近一个月收益率
+						var yield1 = parseFloat(yieldrate1m).toFixed(2);
+						var currentPrice = item.current_price || "0"; // 单位净值
+						var dwjz = parseFloat(currentPrice).toFixed(4);
+						productName = putils.delProSpecialStr(productName);
+						var qgjg = item.per_buy_limit;
+						var cplb = item.fund_type;
+						cplb = queryenum(cplb);
+					var  itemHtml='' + title + '' +	
+						'<div class="pl_two pl_twos">'+
+						'<div class="plin" productCode="' + productCode + '" productId="' + productId + '" productSubType="' + productSubType + '">'+
+							'<div class="plin_r">'+
+								'<p class="sp01">'+yield1+'<span>%</span></p>'+
+								'<p class="sp02">近一个月收益率</p>'+
+							'</div>'+
+							'<div class="plin_l">'+
+								'<p class="sp01">'+productName+'</p>'+
+								'<p class="sp02">单位净值：'+dwjz+'元</p>'+
+								'<p class="sp03"><span class="san01">'+cplb+'</span><span class="san02">'+qgjg+'元起购</span></p>'+
+							'</div>'+
+						'</div>'+
+					'</div>';
+					wjzjEle.append(itemHtml);
+				  }
+					// 绑定详情事件
+					appUtils.bindEvent(_pageId + ".plin", function(){
+						var curEle = $(this);
+						productDetail(curEle.attr("productId"), curEle.attr("productSubType"), curEle.attr("productCode"));
+					});
+			    }
+			}else{
+				layerUtils.iAlert("查询稳健债基列表失败:"+resultVo.error_info,-1);
+			}
+		})
+	}
+		
+
+	
+	/*
+	 * 根据推荐类型查询推荐产品
+	 * @param recommendType 推荐类型。
+	 * @param callBackFun 查询成功后回调函数。
+	 * @param 查询失败或结果为空时回调函数。
+	 */ 
+	function queryRecomProductByType(recommendType, callBackFun) {
+		var param = {
+			"recommend_type" : recommendType
+		};
+
+		service.queryRecomProduct(param, function(data) {
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+
+			if (error_no == "0") {
+				var result = data.results;
+				
+				if (result && result.length > 0) {
+					// 数据处理函数
+					callBackFun(result);
+				}
+			} else {
+				// 错误信息提示
+				layerUtils.iMsg(-1, error_info);
+			}
+		});
+	};
+	
+	/*
+	 * 获取产品类别所有数据字典
+	 */
+	function queryMotifType(){
+		// 清空数据字典数据
+		pageGlobal.enumData = [];
+		
+		var param = {
+			"enum_name" : "product_catogory" 
+		}
+		
+		service.queryEnum(param, function(data){
+			var error_no = data.error_no;
+			var error_info = data.error_info;
+			
+			if(error_no == "0"){
+				var results = data.results;
+				if (results.length > 0) {
+					for (var i = 0; i < results.length; i++) {
+						var result = data.results[i];
+						var item_id = result.item_id; // 值编号 
+						var item_name = result.item_name; // 项目名
+						var item_value = result.item_value; // 项目值
+						var enumTemp = {
+								"itemValue" : item_value,
+								"itemName" : item_name,
+								"itemId" : item_id
+							}
+						pageGlobal.enumData.push(enumTemp);
+					}
+					//优选基金
+					yxjjProduct();
+					//稳健债基
+					wjzjProduct();
+					//基金首发
+					jjsfProduct();
+				}
+			}else{
+				layerUtils.iMsg(-1,error_info);
+				return false;
+			}
+		});
+	}
+	
+
+	/*
+	 * 查询数据字典
+	 */
+	function queryenum(key){
+		var enumData = pageGlobal.enumData;
+		for (var i = 0; i < enumData.length; i++) {
+			var item = enumData[i];
+			if (item.itemValue == key) {
+				return item.itemName;
+			}
+		}
+	}
+	
+	/*
+	 * 绑定事件
+	 */
+	function bindPageEvent() {
+		// 登录
+		appUtils.bindEvent(_pageId + ".per_btn", function() {
+			appUtils.pageInit(pageCode, "account/userCenter", {});
+			return false;
+		});
+		
+		//基金排行
+		appUtils.bindEvent(_pageId+"#jjph", function(){
+			appUtils.pageInit(pageCode,"finan/fund/jjph");
+		});
+		//定投精选
+		appUtils.bindEvent(_pageId+"#dtjx", function(e){
+			appUtils.pageInit(pageCode,"");
+		});
+		//智能优选
+		appUtils.bindEvent(_pageId+"#znxj", function(e){
+			appUtils.pageInit(pageCode,"finan/fund/znxj");
+		})
+		//otc
+		appUtils.bindEvent(_pageId+"#otc", function(e){
+			appUtils.pageInit(pageCode, "finan/otc/index");
+		});
+		//资管
+		appUtils.bindEvent(_pageId+"#ziguan", function(e){
+			appUtils.pageInit(pageCode, "finan/ziguan/index");
+		});
+		
+		// 禁止头部和底部滑动
+		common.stopHeadAndFooterEvent(_pageId); 
+	};
+	
+
+	/*
+	 * 页面销毁
+	 */
+	function destroy() {
+	};
+
+	var main = {
+		"init" : init,
+		"bindPageEvent" : bindPageEvent,
+		"destroy" : destroy
+	};
+	
+	// 暴露对外的接口
+	module.exports = main;
+});

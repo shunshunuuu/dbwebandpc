@@ -1,0 +1,260 @@
+<div class="page"  id="main" data-pageTitle="精品推荐" data-pageLevel="1"
+	data-urlParam="true" data-refresh="true">
+<section class="main fixed" data-page="home">
+	<header>
+		<div class="header_inner">
+			<h1>精品推荐</h1>
+			<a href="javascript:void(0);" class="home_btn"></a>
+			<a href="javascript:void(0);" class="per_btn"></a>
+		</div>
+	</header>
+	<article class="boost">
+		<div class="index_page">
+
+              <!-- 广告图片区域 -->
+           	  <div class="mall_banner">
+					<div class="pic_box pic_box_ccs" id="rotation_box" style="height: 1.44rem; overflow: hidden;">
+						<ul class="boost" id="inner">
+							<!-- <li><img src="images/mall_banner.png" width="100%"></li> -->
+						</ul>
+					</div>
+					<div class="dots_box" id="dots_box">
+						<em class="act"></em> <em></em> <em></em>
+					</div>
+				</div>
+                               
+			 <div class="smnews">
+				<div class="smnews_in">
+					<em></em>
+					<div class="scroll_verticals" id="scroll_vertical">
+				        <ul id="gmxx">
+
+					    </ul>
+					</div>
+					<div class="scroll_verticals" id="scroll_vertical1">
+					  
+					</div>
+					<div class="scroll_verticals" id="scroll_vertical2">
+					
+					</div>
+				</div>
+			</div>
+			
+		<div class="pro_box_01">
+				<div class="pro_main">
+					<div class="pro_tits pro_tits_ad">
+						<a href="javascript:;">
+							<p class="sp01"><i></i>特色理财</p>
+							<p class="sp02">安全稳健更放心</p>
+						</a>
+					</div>
+					<div class="smallbanner">
+						<div class="smallbox">
+							<ul class="flex-father" id="tslc">
+<!-- 								<li> -->
+<!-- 									<a href="javascript:;"> -->
+<!-- 										<img src="images/smalbanner01.jpg" alt="" /> -->
+<!-- 										<p class="sp01">智能投资</p> -->
+<!-- 										<p class="sp02">让投资更简单</p> -->
+<!-- 									</a> -->
+<!-- 								</li> -->
+<!-- 								<li> -->
+<!-- 									<a href="javascript:;"> -->
+<!-- 										<img src="images/smalbanner02.jpg" alt="" /> -->
+<!-- 										<p class="sp01">工资理财</p> -->
+<!-- 										<p class="sp02">基金定投</p> -->
+<!-- 									</a> -->
+<!-- 								</li> -->
+<!-- 								<li> -->
+<!-- 									<a href="javascript:;"> -->
+<!-- 										<img src="images/smalbanner03.jpg" alt="" /> -->
+<!-- 										<p class="sp01">爸妈理财</p> -->
+<!-- 										<p class="sp02">寿险理财</p> -->
+<!-- 									</a> -->
+<!-- 								</li> -->
+<!-- 								<li> -->
+<!-- 									<a href="javascript:;"> -->
+<!-- 										<img src="images/smalbanner01.jpg" alt="" /> -->
+<!-- 										<p class="sp01">智能投资</p> -->
+<!-- 										<p class="sp02">让投资更简单</p> -->
+<!-- 									</a> -->
+<!-- 								</li> -->
+<!-- 								<li> -->
+<!-- 									<a href="javascript:;"> -->
+<!-- 										<img src="images/smalbanner02.jpg" alt="" /> -->
+<!-- 										<p class="sp01">工资理财</p> -->
+<!-- 										<p class="sp02">基金定投</p> -->
+<!-- 									</a> -->
+<!-- 								</li> -->
+<!-- 								<li> -->
+<!-- 									<a href="javascript:;"> -->
+<!-- 										<img src="images/smalbanner03.jpg" alt="" /> -->
+<!-- 										<p class="sp01">爸妈理财</p> -->
+<!-- 										<p class="sp02">寿险理财</p> -->
+<!-- 									</a> -->
+<!-- 								</li> -->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="pro_box_01" id="remcp">
+				<div class="pro_main" id="pro_main">
+<!-- 					<div class="pro_tits"> -->
+<!-- 						<a href="javascript:;"> -->
+<!-- 							<p class="sp01"><i></i>精选产品</p> -->
+<!-- 							<p class="sp02">安全稳健更放心，5万起投<s></s></p> -->
+<!-- 						</a> -->
+<!-- 					</div> -->
+<!-- 					<div class="prolist"> -->
+<!-- 						<div class="dutc_tit"> -->
+<!-- 							<p class="sp01">融鑫理财一号</p> -->
+<!-- 							<p class="sp02"> -->
+<!-- 								<span class="san01">5万起购</span> -->
+<!-- 								<span class="san02">银行理财</span> -->
+<!-- 							</p> -->
+<!-- 						</div> -->
+<!-- 						<div class="dutc_box flex-father"> -->
+<!-- 							<s></s> -->
+<!-- 							<div class="dutc_bl flex-children"> -->
+<!-- 								<p class="sp01">3.70<span>%</span></p> -->
+<!-- 								<p class="sp02">业绩比较基准</p> -->
+<!-- 							</div> -->
+<!-- 							<div class="dutc_bt flex-children"> -->
+<!-- 								<p class="sp01">63<span>天</span></p> -->
+<!-- 								<p class="sp02">投资期限</p> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="prolist"> -->
+<!-- 						<div class="dutc_tit"> -->
+<!-- 							<p class="sp01">融鑫理财一号</p> -->
+<!-- 							<p class="sp02"> -->
+<!-- 								<span class="san01">5万起购</span> -->
+<!-- 								<span class="san02">银行理财</span> -->
+<!-- 							</p> -->
+<!-- 						</div> -->
+<!-- 						<div class="dutc_box flex-father"> -->
+<!-- 							<s></s> -->
+<!-- 							<div class="dutc_bl flex-children"> -->
+<!-- 								<p class="sp01">3.70<span>%</span></p> -->
+<!-- 								<p class="sp02">业绩比较基准</p> -->
+<!-- 							</div> -->
+<!-- 							<div class="dutc_bt flex-children"> -->
+<!-- 								<p class="sp01">63<span>天</span></p> -->
+<!-- 								<p class="sp02">投资期限</p> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+				</div>
+			</div>
+			<div class="pro_box_01">
+				<div class="pro_main" id = "tzzt">
+<!-- 					<div class="pro_tits pro_tits_ac"> -->
+<!-- 						<a href="javascript:void(0);"> -->
+<!-- 							<p class="sp01"><i></i>投资主题</p> -->
+<!-- 							<p class="sp02" id="gd">找准投顾让你赚翻天<s></s></p> -->
+<!-- 						</a> -->
+<!-- 					</div> -->
+<!-- 					<div class="pl_two"> -->
+<!-- 						<div class="plin"> -->
+<!-- 							<s></s> -->
+<!-- 							<div class="plin_l"> -->
+<!-- 								<p class="sp01">长盛电子信息主题</p> -->
+<!-- 								<p class="sp02">单位净值：2.1400元</p> -->
+<!-- 								<p class="sp03"><span class="san01">股票型</span><span class="san02">1000元起购</span></p> -->
+<!-- 							</div> -->
+<!-- 							<div class="plin_r"> -->
+<!-- 								<p class="sp01">4.40<span>%</span></p> -->
+<!-- 								<p class="sp02">近一个月收益率</p> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 					<div class="pl_two"> -->
+<!-- 						<div class="plin"> -->
+<!-- 							<s></s> -->
+<!-- 							<div class="plin_l"> -->
+<!-- 								<p class="sp01">长盛电子信息主题</p> -->
+<!-- 								<p class="sp02">单位净值：2.1400元</p> -->
+<!-- 								<p class="sp03"><span class="san01">股票型</span><span class="san02">1000元起购</span></p> -->
+<!-- 							</div> -->
+<!-- 							<div class="plin_r"> -->
+<!-- 								<p class="sp01">4.40<span>%</span></p> -->
+<!-- 								<p class="sp02">近一个月收益率</p> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+				</div>
+			</div>
+<!-- 			<div class="pro_box_01"> -->
+<!-- 				<div class="pro_main"> -->
+<!-- 					<div class="pro_tits pro_tits_ac"> -->
+<!-- 						<a href="javascript:void(0);"> -->
+<!-- 							<p class="sp01"><i></i>投资参考</p> -->
+<!-- 							<p class="sp02" id="gd">找准投顾让你赚翻天<s></s></p> -->
+<!-- 						</a> -->
+<!-- 					</div> -->
+<!-- 					<div class="newslist"> -->
+<!-- 						<ul id="tzck"> -->
+<!-- 							<li> -->
+<!-- 								<a href="javascript:;"> -->
+<!-- 									<span class="sps01">资讯</span> -->
+<!-- 									<span class="sps02">基金经理论市：稀缺产品 年化收益超7%</span> -->
+<!-- 								</a> -->
+<!-- 							</li> -->
+<!-- 							<li> -->
+<!-- 								<a href="javascript:;"> -->
+<!-- 									<span class="sps01 sps03">咨询</span> -->
+<!-- 									<span class="sps02">买基金送份额，新股IPO重启，打新基金有哪些</span> -->
+<!-- 								</a> -->
+<!-- 							</li> -->
+<!-- 							<li> -->
+<!-- 								<a href="javascript:;"> -->
+<!-- 									<span class="sps01 sps04">基金</span> -->
+<!-- 									<span class="sps02">新股IPO重启，打新基金有哪些？稀缺产品年利</span> -->
+<!-- 								</a> -->
+<!-- 							</li> -->
+<!-- 						</ul> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+            	<div class="mt10" id="coming_soon">
+<!-- 					<img src="images/index_p4.jpg" width="100%"> -->
+				</div>
+			<div class="footer_box total_footer_box">
+				<img src="images/total_footer_pic.png" width="100%" />
+				<p>东北证券股份有限公司版权所有 @ 2015 </p>
+			</div>
+		</div>
+	</article>
+	<footer>
+		<div class="ui layout footer_nav footer_new_nav" id = "bottom">
+			<div class="row-1 active">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>推荐</p>
+				</a>
+			</div>
+			<div class="row-1">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>理财</p>
+				</a>
+			</div>
+			<div class="row-1">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>活动</p>
+				</a>
+			</div>
+			<div class="row-1">
+				<a href="javascript:void(0);">
+					<em></em>
+					<p>我的</p>
+				</a>
+			</div>
+		</div>
+	</footer>
+</section>
+</div>
